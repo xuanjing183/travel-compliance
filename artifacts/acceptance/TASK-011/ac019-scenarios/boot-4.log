@@ -1,0 +1,53 @@
+INFO:     Started server process [28440]
+INFO:     Waiting for application startup.
+2026-10-20 10:06:58,564 INFO travel_desk: startup recovery aborted=0 delivered=0 still_pending=0
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:56275 (Press CTRL+C to quit)
+INFO:     127.0.0.1:56515 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56516 - "GET /api/trips/963d4f69-63e1-4fa9-8203-99a2fbe6d58d HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56516 - "GET /api/approvals?status=pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56516 - "GET /api/approvals?status=pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56516 - "POST /api/trips/963d4f69-63e1-4fa9-8203-99a2fbe6d58d/decision HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56516 - "GET /api/trips/963d4f69-63e1-4fa9-8203-99a2fbe6d58d/audit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56516 - "GET /api/trips/963d4f69-63e1-4fa9-8203-99a2fbe6d58d/audit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56516 - "GET /api/outbox?trip_id=963d4f69-63e1-4fa9-8203-99a2fbe6d58d HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56516 - "GET /api/outbox?trip_id=963d4f69-63e1-4fa9-8203-99a2fbe6d58d HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56516 - "GET /api/trips/963d4f69-63e1-4fa9-8203-99a2fbe6d58d HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56516 - "GET /api/trips/963d4f69-63e1-4fa9-8203-99a2fbe6d58d HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56517 - "GET /api/trips/963d4f69-63e1-4fa9-8203-99a2fbe6d58d/audit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56518 - "POST /api/demo/reset HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56518 - "POST /api/trips HTTP/1.1" 201 Created
+INFO:     127.0.0.1:56518 - "POST /api/uploads HTTP/1.1" 201 Created
+INFO:     127.0.0.1:56518 - "POST /api/trips/0235b8d2-2570-4340-9651-f2d34bfe0b55/image-extractions HTTP/1.1" 201 Created
+INFO:     127.0.0.1:56518 - "GET /api/trips/0235b8d2-2570-4340-9651-f2d34bfe0b55 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56518 - "GET /api/trips/0235b8d2-2570-4340-9651-f2d34bfe0b55/audit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56518 - "POST /api/trips/0235b8d2-2570-4340-9651-f2d34bfe0b55/image-extractions/4312bec3-6448-4ea5-8fe7-0da7ac981093/confirm HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56518 - "GET /api/trips/0235b8d2-2570-4340-9651-f2d34bfe0b55/audit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56518 - "GET /api/trips/0235b8d2-2570-4340-9651-f2d34bfe0b55/audit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56518 - "POST /api/trips/0235b8d2-2570-4340-9651-f2d34bfe0b55/image-extractions/4312bec3-6448-4ea5-8fe7-0da7ac981093/confirm HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:56518 - "GET /api/trips/0235b8d2-2570-4340-9651-f2d34bfe0b55/audit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56519 - "POST /api/demo/reset HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56519 - "POST /api/trips HTTP/1.1" 201 Created
+INFO:     127.0.0.1:56519 - "PATCH /api/trips/c31f13dc-f516-479d-a637-d8eed8dee8dd/slots HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56519 - "POST /api/trips/c31f13dc-f516-479d-a637-d8eed8dee8dd/submit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56519 - "GET /api/trips/c31f13dc-f516-479d-a637-d8eed8dee8dd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56519 - "POST /api/policies HTTP/1.1" 201 Created
+INFO:     127.0.0.1:56519 - "POST /api/policies/v1.3/extract HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56519 - "PATCH /api/policies/v1.3/rules/RULE-CITY-001 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56519 - "PATCH /api/policies/v1.3/rules/RULE-HOTEL-001 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56519 - "PATCH /api/policies/v1.3/rules/RULE-HOTEL-002 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56519 - "PATCH /api/policies/v1.3/rules/RULE-MEAL-001 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56519 - "PATCH /api/policies/v1.3/rules/RULE-CLASS-001 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56519 - "PATCH /api/policies/v1.3/rules/RULE-ADVANCE-001 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56519 - "PATCH /api/policies/v1.3/rules/RULE-AUTO-001 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56519 - "PATCH /api/policies/v1.3/rules/RULE-DURATION-001 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56519 - "PATCH /api/policies/v1.3/rules/RULE-DURATION-002 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56519 - "POST /api/policies/v1.3/publish HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56519 - "GET /api/trips/c31f13dc-f516-479d-a637-d8eed8dee8dd HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56519 - "GET /api/trips/c31f13dc-f516-479d-a637-d8eed8dee8dd/audit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56519 - "POST /api/trips/c31f13dc-f516-479d-a637-d8eed8dee8dd/revalidate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56519 - "GET /api/trips/c31f13dc-f516-479d-a637-d8eed8dee8dd/audit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56519 - "GET /api/trips/c31f13dc-f516-479d-a637-d8eed8dee8dd/audit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56519 - "GET /api/trips/c31f13dc-f516-479d-a637-d8eed8dee8dd/audit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56519 - "GET /api/trips/c31f13dc-f516-479d-a637-d8eed8dee8dd/audit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56520 - "GET /api/health/providers HTTP/1.1" 200 OK

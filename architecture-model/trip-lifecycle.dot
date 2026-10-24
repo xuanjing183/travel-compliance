@@ -1,0 +1,99 @@
+// Trip 生命周期状态机（current-state，high confidence）
+// 证据：src/travel_desk/domain/states.py 的 _TRANSITIONS 表（唯一权威来源）
+//       + services/trips.py apply_transition（带源状态守卫的 UPDATE）
+// 性质：所有状态变化必须经 transition()；非法边抛 InvalidTransition。
+//       工作流与服务层都不得以其他方式写 trips.status。
+// 说明：revision 增量标注在边上；未标注即 revision 不变。
+
+digraph trip_lifecycle {
+    rankdir=TB;
+    nodesep=0.45;
+    ranksep=0.6;
+    fontname="Helvetica";
+    node [fontname="Helvetica", fontsize=11, shape=box, style="rounded,filled"];
+    edge [fontname="Helvetica", fontsize=9];
+    label="Trip 生命周期状态机 — 证据：domain/states.py _TRANSITIONS";
+    labelloc=t;
+    fontsize=13;
+
+    start [label="开始", shape=circle, width=0.5, fillcolor="#000000", fontcolor="#ffffff"];
+
+    // ---- 可编辑状态（EDITABLE_STATES：允许对话与 PATCH slots，IMP-03）----
+    subgraph cluster_editable {
+        label="可编辑状态（EDITABLE_STATES）\n接受对话消息与槽位修改";
+        style="rounded,dashed";
+        color="#4a90d9";
+        fontcolor="#2c5f8a";
+        COLLECTING      [label="COLLECTING\n信息收集中", fillcolor="#d6eaf8"];
+        POLICY_BLOCKED  [label="POLICY_BLOCKED\n政策硬阻断\n（不计价、不调用供应商）", fillcolor="#fadbd8"];
+    }
+
+    // ---- 系统处理中（无外部副作用可安全中止）----
+    subgraph cluster_processing {
+        label="系统处理中（启动恢复会 abort 回 COLLECTING）";
+        style="rounded,dashed";
+        color="#e0a800";
+        fontcolor="#8a6d00";
+        VALIDATING [label="VALIDATING\n规则校验中", fillcolor="#fcf3cf"];
+        PLANNING   [label="PLANNING\n查询候选并计价中", fillcolor="#fcf3cf"];
+    }
+
+    // ---- 人工判断 ----
+    subgraph cluster_human {
+        label="等待人工判断（启动恢复保持不动，S-10）";
+        style="rounded,dashed";
+        color="#8e44ad";
+        fontcolor="#6c3483";
+        PENDING_APPROVAL [label="PENDING_APPROVAL\n等待直属经理决定\n（图中断点 interrupt）", fillcolor="#ebdef0"];
+    }
+
+    // ---- 通过后 ----
+    subgraph cluster_approved {
+        label="已通过";
+        style="rounded,dashed";
+        color="#27ae60";
+        fontcolor="#1e8449";
+        AUTO_APPROVED  [label="AUTO_APPROVED\n自动通过", fillcolor="#d5f5e3"];
+        APPROVED       [label="APPROVED\n经理批准", fillcolor="#d5f5e3"];
+    }
+
+    // ---- 交付 ----
+    subgraph cluster_delivery {
+        label="交付（Outbox，受 (trip_id, revision, kind) 唯一约束保证只交付一次）";
+        style="rounded,dashed";
+        color="#16a085";
+        fontcolor="#117864";
+        DELIVERY_PENDING [label="DELIVERY_PENDING\n交付写入失败，等待管理员重试\n（记 delivery_error + delivery_attempts）", fillcolor="#d1f2eb"];
+        DELIVERED        [label="DELIVERED\n已交付（终态）", fillcolor="#a3e4d7", penwidth=2];
+    }
+
+    REJECTED [label="REJECTED\n已驳回（终态）", fillcolor="#f5b7b1", penwidth=2];
+
+    // ---- 边 ----
+    start -> COLLECTING [label="创建申请"];
+
+    COLLECTING -> VALIDATING      [label="submit\n员工显式提交（D-13）\n槽位必须齐全且合法"];
+    VALIDATING -> POLICY_BLOCKED  [label="block\n硬阻断：START_DATE_IN_PAST /\nEND_BEFORE_START / DURATION_EXCEEDED"];
+    VALIDATING -> PLANNING        [label="validated\n无硬阻断"];
+    PLANNING -> AUTO_APPROVED     [label="auto_approve\n无违规且无审批理由"];
+    PLANNING -> PENDING_APPROVAL  [label="require_approval\n有违规或审批理由\n（建唯一一张审批卡）"];
+    PLANNING -> COLLECTING        [label="no_approver\n申请人无直属经理（D-21）\n方案只进审计（IMP-06）"];
+
+    POLICY_BLOCKED -> COLLECTING  [label="edit_after_block\n第一次有效修改（D-09）\n写 blocked_cleared 审计"];
+
+    PENDING_APPROVAL -> APPROVED   [label="approve\n仅直属经理，非本人"];
+    PENDING_APPROVAL -> REJECTED   [label="reject\n必须填非空意见（IMP-41）"];
+    PENDING_APPROVAL -> COLLECTING [label="request_changes\nrevision +1\n旧卡置 superseded（IMP-95）"];
+    PENDING_APPROVAL -> VALIDATING [label="revalidate\n制度变更后按新版本重判（D-12）\nrevision +1，复用已选候选，不调用供应商"];
+
+    AUTO_APPROVED -> DELIVERY_PENDING [label="start_delivery"];
+    APPROVED      -> DELIVERY_PENDING [label="start_delivery"];
+    DELIVERY_PENDING -> DELIVERED     [label="delivered\n写入行程单 + trip_delivery 邮件成功"];
+
+    // ---- 异常路径 ----
+    VALIDATING -> COLLECTING [label="abort\n意外失败，不保留半成品方案（IMP-21）", style=dashed, color="#c0392b", fontcolor="#c0392b"];
+    PLANNING   -> COLLECTING [label="abort", style=dashed, color="#c0392b", fontcolor="#c0392b"];
+
+    // ---- 自环：交付失败留在原地 ----
+    DELIVERY_PENDING -> DELIVERY_PENDING [label="交付写入失败\n回滚，状态不变，只记错误", style=dotted, color="#16a085"];
+}

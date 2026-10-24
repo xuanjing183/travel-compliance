@@ -1,0 +1,134 @@
+{
+  "decision": {
+    "request": {
+      "approver": "u-lisi",
+      "key": "decide-1",
+      "revision": 1,
+      "decision": "approve"
+    },
+    "status_code": 200,
+    "trip_status": "DELIVERY_PENDING",
+    "revision": 1
+  },
+  "after_failure": {
+    "status": "DELIVERY_PENDING",
+    "delivery": {
+      "error": "OSError：交付写入失败，可由管理员重试",
+      "attempts": 1,
+      "itinerary_url": null
+    }
+  },
+  "after_retry": {
+    "status": "DELIVERED",
+    "delivery": {
+      "error": null,
+      "attempts": 2,
+      "itinerary_url": "/api/trips/ed77e734-4a6d-4a8a-92af-36dfc39f09ac/itinerary?revision=1"
+    }
+  },
+  "second_retry": {
+    "status_code": 409,
+    "code": "INVALID_STATE"
+  },
+  "sse_event_types": null,
+  "status_timeline": [
+    {
+      "seq": 83,
+      "revision": 1,
+      "from": "COLLECTING",
+      "to": "VALIDATING",
+      "event": "submit",
+      "previous_revision": 1
+    },
+    {
+      "seq": 87,
+      "revision": 1,
+      "from": "VALIDATING",
+      "to": "PLANNING",
+      "event": "validated",
+      "previous_revision": 1
+    },
+    {
+      "seq": 95,
+      "revision": 1,
+      "from": "PLANNING",
+      "to": "PENDING_APPROVAL",
+      "event": "require_approval",
+      "previous_revision": 1
+    },
+    {
+      "seq": 98,
+      "revision": 1,
+      "from": "PENDING_APPROVAL",
+      "to": "APPROVED",
+      "event": "approve",
+      "previous_revision": 1
+    },
+    {
+      "seq": 99,
+      "revision": 1,
+      "from": "APPROVED",
+      "to": "DELIVERY_PENDING",
+      "event": "start_delivery",
+      "previous_revision": 1
+    },
+    {
+      "seq": 101,
+      "revision": 1,
+      "from": "DELIVERY_PENDING",
+      "to": "DELIVERED",
+      "event": "delivered",
+      "previous_revision": 1
+    }
+  ],
+  "counts": {
+    "approvals": 1,
+    "decided_approvals": 1,
+    "outbox_trip_delivery": 1,
+    "outbox_workflow_notification": 0,
+    "itineraries": 1,
+    "decision_recorded_events": 1
+  },
+  "outbox": [
+    {
+      "id": "3a33fbf6-8b74-40bc-8fc1-7ad8975e7c24",
+      "trip_id": "ed77e734-4a6d-4a8a-92af-36dfc39f09ac",
+      "revision": 1,
+      "kind": "trip_delivery",
+      "to": [
+        "u-zhangsan"
+      ],
+      "cc": [
+        "u-lisi"
+      ],
+      "subject": "[差旅行程单] 北京→上海 2026-10-28～2026-10-30（revision 1）",
+      "body": "张三，您好：\n\n您的差旅申请（北京→上海，2026-10-28～2026-10-30，事由：供应商大会）已批准。revision 1，制度版本 v1.2。\n\n行程单：/api/trips/ed77e734-4a6d-4a8a-92af-36dfc39f09ac/itinerary?revision=1\n\n交通：\n  去程：XC1028 北京→上海，10-28 09:30 出发，1,800.00 元（来源 demo_fixture）\n  返程：XC1030 上海→北京，10-30 19:00 出发，1,700.00 元（来源 demo_fixture）\n  住宿：星衡协议酒店·外滩店，2 晚 × 480.00 元 = 960.00 元（来源 demo_fixture）\n  伙食补贴：3 天 × 100.00 元 = 300.00 元\n合计：4,760.00 元；申报预算：4,000.00 元\n\n审批：李四 批准\n\n行程摘要（Fake 模型生成（确定性测试替身），仅供参考，安排与金额以上文为准）：\n2026-10-28至2026-10-30赴上海，事由：供应商大会。去程乘 XC1028 于 09:30 出发、12:45 抵达。入住星衡协议酒店·外滩店，共 2 晚。行程期间有雨，请携带雨具。返程乘 XC1030 于 19:00 出发。",
+      "created_at": "2026-10-19T15:17:01.869Z",
+      "unique_key": "ed77e734-4a6d-4a8a-92af-36dfc39f09ac:1:trip_delivery"
+    }
+  ],
+  "audit_event_types": [
+    "trip_created",
+    "slots_changed",
+    "status_changed",
+    "submitted",
+    "preference_snapshot",
+    "policy_bound",
+    "status_changed",
+    "provider_call",
+    "provider_call",
+    "provider_call",
+    "provider_call",
+    "candidates_selected",
+    "plan_created",
+    "rules_evaluated",
+    "status_changed",
+    "approval_requested",
+    "decision_recorded",
+    "status_changed",
+    "status_changed",
+    "delivery_failed",
+    "status_changed",
+    "delivery_written"
+  ]
+}

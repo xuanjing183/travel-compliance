@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>美化效果图 v5 · Element Plus · 折叠区极简</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/element-plus@2.8.8/dist/index.css">
+<style>
+/* ============ 基础令牌：延续 v2-v4（纯白 + 靓蓝），正文黑色，警示红色加粗 ============ */
+:root {
+  --ink: #1f2328;
+  --line: #d8dee4;
+  --hair: #eaeef2;
+  --canvas: #fafbfc;
+  --warn-red: #cf222e;
+  --blue: #3b5bdb;
+  --mono: "Cascadia Mono", Consolas, "Courier New", monospace;
+  /* Element Plus 主题对接：主色换成靓蓝，正文全部黑 */
+  --el-color-primary: #3b5bdb;
+  --el-color-primary-dark-2: #2f49af;
+  --el-color-primary-light-3: #768ce6;
+  --el-color-primary-light-5: #9daded;
+  --el-color-primary-light-7: #c4cef4;
+  --el-color-primary-light-8: #d8def8;
+  --el-color-primary-light-9: #ebeefb;
+  --el-text-color-primary: #1f2328;
+  --el-text-color-regular: #1f2328;
+  --el-text-color-secondary: #1f2328;
+  --el-border-color: #d8dee4;
+  --el-border-color-light: #eaeef2;
+  --el-border-color-lighter: #eaeef2;
+  --el-fill-color-light: #fafbfc;
+  --el-fill-color-blank: #ffffff;
+  --el-font-family: "Segoe UI", "Microsoft YaHei", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: #fff; color: var(--ink);
+  font-family: "Segoe UI", "Microsoft YaHei", system-ui, sans-serif; font-size: 14px; line-height: 1.6; }
+.mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
+/* 警示 tag：红色加粗（用户要求） */
+.el-tag--danger { font-weight: 700; }
+
+/* ============ 顶栏 ============ */
+.topbar { display: flex; align-items: center; gap: 24px; padding: 0 32px; height: 56px;
+  background: #fff; border-bottom: 1px solid var(--hair); position: sticky; top: 0; z-index: 10; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--ink); }
+.brand-mark { width: 28px; height: 28px; display: grid; place-items: center;
+  background: var(--blue); color: #fff; border-radius: 7px; font-weight: 700; font-size: 12.5px; }
+.brand h1 { font-size: 14.5px; margin: 0; font-weight: 600; }
+.brand p { margin: 0; font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase; color: #8b949e; }
+.nav { display: flex; gap: 6px; flex: 1; }
+.nav a { color: var(--ink); padding: 5px 12px; border-radius: 7px; font-size: 13.5px; text-decoration: none;
+  transition: background .2s; }
+.nav a:hover { background: var(--canvas); }
+.nav a.active { background: var(--el-color-primary-light-9); color: var(--blue); font-weight: 600; }
+.top-right { display: flex; align-items: center; gap: 16px; font-size: 12.5px; color: var(--ink); }
+.top-right .demo { color: #8b949e; }
+
+.shell { max-width: 880px; margin: 0 auto; padding: 32px 32px 100px; }
+.back { font-size: 13px; color: #8b949e; display: inline-block; margin-bottom: 16px; text-decoration: none; }
+.back:hover { color: var(--blue); }
+
+/* ============ 页头 ============ */
+.mh-top { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.mh-sub { font-size: 13px; color: var(--ink); }
+.mh-amount { margin-left: auto; font-family: var(--mono); font-variant-numeric: tabular-nums;
+  font-size: 20px; font-weight: 700; }
+.mh-amount .cap { font-family: "Segoe UI", "Microsoft YaHei", sans-serif; font-size: 12.5px; font-weight: 400;
+  color: #8b949e; margin-left: 10px; }
+.mh-route { margin: 12px 0 4px; font-size: 24px; font-weight: 700; letter-spacing: .01em; }
+.mh-route .arrow { color: #8b949e; font-weight: 400; padding: 0 4px; }
+.mh-meta { margin: 0; color: var(--ink); font-size: 13px; }
+
+/* ============ 折叠区（el-collapse 定制） ============ */
+.secs { margin-top: 26px; border-top: 1px solid var(--hair); }
+.secs .el-collapse { border-top: none; border-bottom: none; --el-collapse-header-height: 54px; }
+.sec-title { display: flex; align-items: baseline; gap: 12px; flex: 1; min-width: 0; padding-right: 12px; }
+.sec-title .t { font-size: 14.5px; font-weight: 600; color: var(--ink); transition: color .2s; }
+.sec-title .en { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: #8b949e; }
+.sec-title .meta { margin-left: auto; font-size: 12.5px; color: var(--ink); white-space: nowrap; }
+.sec-title .meta.red { color: var(--warn-red); font-weight: 700; }
+.el-collapse-item__header:hover .sec-title .t { color: var(--blue); }
+.sec-body { padding: 2px 4px 20px; font-size: 14px; }
+
+/* 行程票根行 */
+.leg { display: flex; flex-wrap: wrap; align-items: baseline; gap: 14px; padding: 11px 2px;
+  border-bottom: 1px solid var(--hair); }
+.leg:last-child { border-bottom: none; }
+.leg .k { flex: none; width: 44px; color: #8b949e; font-size: 12.5px; }
+.leg .no { font-weight: 600; flex: 1; min-width: 0; }
+.leg .no small { font-weight: 400; margin-left: 8px; }
+.leg .p { flex: none; margin-left: auto; font-family: var(--mono); font-variant-numeric: tabular-nums; font-weight: 700; }
+.leg .todo { color: var(--warn-red); font-weight: 700; white-space: nowrap; }
+.leg .sub { flex-basis: 100%; font-size: 12.5px; padding-left: 58px; margin-top: -4px; }
+.leg-wrap { border: 1px solid var(--hair); border-radius: 8px; padding: 4px 14px; }
+
+/* 天气行 */
+.weather-row { display: flex; gap: 22px; padding: 12px 2px 2px; font-size: 13px; flex-wrap: wrap; }
+.weather-row .d { color: #8b949e; font-family: var(--mono); font-size: 12.5px; margin-right: 6px; }
+.weather-row .t { font-weight: 600; margin-right: 6px; }
+.weather-row .r { font-family: var(--mono); font-variant-numeric: tabular-nums; margin-right: 6px; }
+
+/* 成本表 */
+.cost { width: 100%; border-collapse: collapse; max-width: 480px; }
+.cost td { padding: 7px 0; border-bottom: 1px solid var(--hair); font-size: 13.5px; }
+.cost td.v { text-align: right; font-family: var(--mono); font-variant-numeric: tabular-nums; font-weight: 600; }
+.cost tr.total td { border-top: 2px solid var(--ink); border-bottom: none; font-weight: 700; font-size: 14.5px; }
+.cost .pending-tag { color: var(--warn-red); font-weight: 700; }
+
+/* 规则卡 */
+.rule { padding: 12px 14px; border: 1px solid var(--line); border-radius: 8px; margin-bottom: 10px;
+  max-width: 560px; transition: box-shadow .2s; }
+.rule:hover { box-shadow: 0 2px 10px rgba(31, 35, 40, .06); }
+.rule .rn { font-weight: 600; }
+.rule .msg { font-size: 13px; margin-top: 2px; }
+.rule .nums { font-size: 12px; margin-top: 2px; }
+.rule .nums b { color: var(--warn-red); }
+.quote { margin: 8px 0 0; padding: 8px 12px; border-left: 3px solid var(--el-color-primary-light-7);
+  background: var(--canvas); border-radius: 0 6px 6px 0; font-size: 12.5px; }
+.quote .qh { font-size: 11px; color: #8b949e; margin-bottom: 2px; }
+
+/* 操作记录时间线 */
+.audit-more { margin-top: 4px; }
+
+/* ============ 列表页 ============ */
+.list-head { display: flex; align-items: center; gap: 12px; margin: 44px 0 6px; }
+.list-head h2 { margin: 0; font-size: 19px; font-weight: 700; }
+.list-head .cnt { color: #8b949e; font-size: 13px; }
+.list-head .btn { margin-left: auto; }
+.trip-row { display: flex; align-items: center; gap: 16px; padding: 13px 16px;
+  border-bottom: 1px solid var(--hair); cursor: pointer; border-radius: 8px; transition: background .2s; }
+.trip-row:first-of-type { border-top: 1px solid var(--hair); margin-top: 14px; border-radius: 8px 8px 0 0; }
+.trip-row:hover { background: var(--canvas); }
+.trip-row .st { flex: none; width: 96px; }
+.trip-row .main { flex: 1; min-width: 0; }
+.trip-row .route { font-weight: 600; font-size: 14.5px; }
+.trip-row .route small { font-weight: 400; color: #8b949e; margin-left: 10px; font-size: 12.5px; }
+.trip-row .meta { font-size: 12px; margin-top: 1px; }
+.trip-row .amt { flex: none; text-align: right; white-space: nowrap; }
+.trip-row .amt .a { font-family: var(--mono); font-variant-numeric: tabular-nums; font-weight: 700; font-size: 15px; }
+.trip-row .amt .u { font-size: 11.5px; color: #8b949e; margin-top: 1px; }
+</style>
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">TC</span>
+      <div><h1>差旅合规工作台</h1><p>Travel Compliance Desk</p></div>
+    </div>
+    <nav class="nav">
+      <a class="active" href="#">我的申请</a><a href="#">制度问答</a><a href="#">偏好</a>
+    </nav>
+    <div class="top-right">
+      <span class="demo">演示日期 2026-10-20</span>
+      <span><strong>张三</strong> 员工 · 销售部 · 切换身份</span>
+    </div>
+  </header>
+
+  <main class="shell">
+    <a class="back" href="#">← 返回列表</a>
+
+    <div class="mh-top">
+      <el-tag type="danger" size="large" effect="light">待审批</el-tag>
+      <span class="mh-sub">等待李四确认</span>
+      <span class="mh-amount">¥2,918 起<span class="cap">预算 ¥3,000</span></span>
+    </div>
+    <h2 class="mh-route">北京 <span class="arrow">→</span> 洛阳</h2>
+    <p class="mh-meta">学术会议 · 10-20 ～ 10-23 · 3 晚</p>
+
+    <div class="secs">
+      <el-collapse v-model="opened">
+
+        <el-collapse-item name="plan">
+          <template #title>
+            <div class="sec-title"><span class="t">出行方案</span><span class="en">Plan</span>
+              <span class="meta">住宿 3 晚 · 天气 3 天</span></div>
+          </template>
+          <div class="sec-body">
+            <div class="leg-wrap">
+              <div class="leg"><span class="k">去程</span><span class="todo">待人工补录</span>
+                <span class="p">—</span>
+                <span class="sub">10-20 北京 → 洛阳：无可用交通候选</span></div>
+              <div class="leg"><span class="k">住宿</span><span class="no">洛阳克里斯国际酒店<small>距市政府约 5 分钟</small></span>
+                <span class="p">¥350/晚 × 3</span></div>
+              <div class="leg"><span class="k">返程</span><span class="no">QW6053<small>青岛航空 · 经济舱</small></span>
+                <span class="p">¥1,628</span>
+                <span class="sub">10-23 14:00 洛阳北郊 → 10-24 10:00 北京首都</span></div>
+            </div>
+            <div class="weather-row">
+              <span><span class="d">10-21</span><span class="t">晴</span><span class="r">9–16℃</span></span>
+              <span><span class="d">10-22</span><span class="t">小雨</span><span class="r">8–14℃</span></span>
+              <span><span class="d">10-23</span><span class="t">晴</span><span class="r">10–17℃</span></span>
+            </div>
+          </div>
+        </el-collapse-item>
+
+        <el-collapse-item name="daily">
+          <template #title>
+            <div class="sec-title"><span class="t">逐日日程</span><span class="en">Itinerary</span>
+              <span class="meta">4 天</span></div>
+          </template>
+          <div class="sec-body">
+            <p style="margin:4px 0 0">
+              10-20 去程待补录 · 入住 · 学术会议 ｜ 10-21 学术会议 ｜ 10-22 学术会议 · 雨天提醒 ｜ 10-23 学术会议 · 14:00 返程出发</p>
+          </div>
+        </el-collapse-item>
+
+        <el-collapse-item name="cost">
+          <template #title>
+            <div class="sec-title"><span class="t">成本明细</span><span class="en">Cost</span>
+              <span class="meta">¥2,918 起 · 缺去程</span></div>
+          </template>
+          <div class="sec-body">
+            <table class="cost">
+              <tr><td>去程交通</td><td class="v"><span class="pending-tag">待补录</span></td></tr>
+              <tr><td>返程交通</td><td class="v">¥1,628.00</td></tr>
+              <tr><td>住宿（3 晚 × ¥350）</td><td class="v">¥1,050.00</td></tr>
+              <tr><td>伙食补贴（4 天 × ¥60）</td><td class="v">¥240.00</td></tr>
+              <tr class="total"><td>合计（缺去程）</td><td class="v">¥2,918 起</td></tr>
+              <tr><td>申报预算</td><td class="v">¥3,000.00</td></tr>
+              <tr><td>预算差</td><td class="v">补录去程后结算</td></tr>
+            </table>
+          </div>
+        </el-collapse-item>
+
+        <el-collapse-item name="rules">
+          <template #title>
+            <div class="sec-title"><span class="t">规则依据</span><span class="en">Compliance</span>
+              <span class="meta red">住宿超标，需审批</span></div>
+          </template>
+          <div class="sec-body">
+            <div class="rule">
+              <div class="rn">住宿超标</div>
+              <div class="msg">洛阳克里斯国际酒店每晚 350 元，超过 C 类城市上限 300 元（超 50 元/晚）。</div>
+              <div class="nums">实际 <b>¥350/晚</b> · 上限 ¥300/晚</div>
+              <blockquote class="quote"><div class="qh">制度原文</div>员工住宿上限：A 类城市每晚上限 500 元；B 类城市每晚上限 400 元；C 类城市每晚上限 300 元。</blockquote>
+            </div>
+            <div class="rule">
+              <div class="rn">方案不完整</div>
+              <div class="msg">去程交通待人工补录，需经理确认后才能通过。</div>
+            </div>
+          </div>
+        </el-collapse-item>
+
+        <el-collapse-item name="approval">
+          <template #title>
+            <div class="sec-title"><span class="t">审批记录</span><span class="en">Approval</span>
+              <span class="meta">等待 李四 审批</span></div>
+          </template>
+          <div class="sec-body">
+            <p style="margin:4px 0 8px">10-21 11:29 发给 <b>李四</b>（销售部 · 经理）。审批原因：住宿超标 · 方案不完整。</p>
+            <p style="margin:0;font-size:12.5px">完整审批卡在李四的「待我审批」中，审批结果会同步显示在这里。</p>
+          </div>
+        </el-collapse-item>
+
+        <el-collapse-item name="audit">
+          <template #title>
+            <div class="sec-title"><span class="t">操作记录</span><span class="en">Audit</span>
+              <span class="meta">18 条</span></div>
+          </template>
+          <div class="sec-body">
+            <el-timeline style="padding-left:6px;max-width:640px">
+              <el-timeline-item timestamp="10-21 11:29:27" type="primary">创建申请 · 一句话填写 6 项信息</el-timeline-item>
+              <el-timeline-item timestamp="10-21 11:29:27" type="primary">提交 · 开始查询与校验</el-timeline-item>
+              <el-timeline-item timestamp="10-21 11:29:29" type="success">生成方案 · 返程 QW6053 · 住宿 3 晚 · 天气 3 天</el-timeline-item>
+              <el-timeline-item timestamp="10-21 11:29:29" type="danger">合规判断 · 住宿超标 · 需审批</el-timeline-item>
+              <el-timeline-item timestamp="10-21 11:29:29" type="warning">发起审批 · 审批发给 李四</el-timeline-item>
+            </el-timeline>
+            <div class="audit-more">
+              <el-link type="primary" :underline="false" @click="showAllAudit = !showAllAudit">
+                {{ showAllAudit ? "收起" : "查看全部 18 条" }}</el-link>
+              <p v-show="showAllAudit" style="margin:8px 0 0;font-size:12.5px">
+                #432 查询去程交通 · 无候选 ｜ #433 查询返程交通 · 15 个候选 ｜ #434 查询协议酒店 · 无 ｜ #435 查询备用酒店 · 2 家 ｜
+                #436 查询天气 · 4 天 ｜ #437 选定酒店（超标例外）</p>
+            </div>
+          </div>
+        </el-collapse-item>
+
+      </el-collapse>
+    </div>
+
+    <!-- ===================== 列表页 ===================== -->
+    <div class="list-head">
+      <h2>我的出差申请</h2><span class="cnt">25 份</span>
+      <el-button type="primary" class="btn">＋ 新建申请</el-button>
+    </div>
+
+    <div class="trip-row" v-for="row in rows" :key="row.route">
+      <span class="st">
+        <el-tag :type="row.type" :effect="row.type === 'danger' ? 'light' : 'plain'">{{ row.status }}</el-tag>
+      </span>
+      <div class="main">
+        <div class="route">{{ row.route }}<small>{{ row.note }}</small></div>
+        <div class="meta">{{ row.meta }}</div>
+      </div>
+      <div class="amt"><div class="a">{{ row.amount }}</div><div class="u">{{ row.sub }}</div></div>
+    </div>
+
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@3.4.38/dist/vue.global.prod.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/element-plus@2.8.8/dist/index.full.min.js"></script>
+<script>
+const { createApp } = Vue;
+const app = createApp({
+  data() {
+    const hash = location.hash;
+    const keys = ["plan", "daily", "cost", "rules", "approval", "audit"].filter(k => hash.includes(k));
+    return {
+      opened: keys,
+      showAllAudit: false,
+      rows: [
+        { type: "danger", status: "待审批", route: "北京 → 洛阳", note: "学术会议 · 住宿超标待批",
+          meta: "张三 · 更新 10-21 11:29", amount: "¥2,918 起", sub: "预算 ¥3,000 · 10-20 ~ 10-23" },
+        { type: "danger", status: "待审批", route: "北京 → 深圳", note: "客户回访",
+          meta: "张三 · 更新 10-21 11:49", amount: "¥2,624 起", sub: "预算 ¥4,000 · 10-22 ~ 10-28" },
+        { type: "success", status: "已交付", route: "北京 → 上海", note: "供应商大会 · 行程单已生成",
+          meta: "张三 · 更新 10-21 11:37", amount: "¥2,557", sub: "预算 ¥3,000 · 10-31 ~ 11-02" },
+        { type: "primary", status: "收集信息", route: "— → —", note: "还缺：出发城市、目的城市、日期…",
+          meta: "张三 · 更新 10-21 11:32", amount: "—", sub: "预算未定" },
+      ],
+    };
+  },
+  mounted() {
+    const h = location.hash.slice(1);
+    if (h) this.$nextTick(() => {
+      const el = document.querySelector(`[aria-controls*="${h}"], #${h}`) ||
+        [...document.querySelectorAll(".el-collapse-item__header")].find(x => x.getAttribute("aria-controls") || "").length;
+      const target = [...document.querySelectorAll(".el-collapse-item")].find(x => {
+        const btn = x.querySelector(".el-collapse-item__header");
+        return btn && btn.getAttribute("aria-controls") && this.opened.length;
+      });
+      const header = [...document.querySelectorAll(".el-collapse-item__header")][["plan","daily","cost","rules","approval","audit"].indexOf(h)];
+      (header || target || el || document.body).scrollIntoView({ block: "start" });
+    });
+  },
+});
+app.use(ElementPlus);
+app.mount("#app");
+</script>
+</body>
+</html>

@@ -1,0 +1,295 @@
+{
+  "status_code": 200,
+  "body": {
+    "version": "v9.1-test",
+    "reused": false,
+    "replaced": [],
+    "generator": "recorded:hand_written",
+    "candidates": [
+      {
+        "id": "RULE-CITY-001",
+        "version": "v9.1-test",
+        "type": "city_tier",
+        "supported": true,
+        "condition": {
+          "scope": "all"
+        },
+        "value": {
+          "tiers": {
+            "A": [
+              "北京",
+              "上海",
+              "广州",
+              "深圳"
+            ],
+            "B": [
+              "杭州",
+              "南京",
+              "成都",
+              "武汉",
+              "西安",
+              "重庆",
+              "苏州",
+              "天津"
+            ]
+          },
+          "fallback_tier": "C"
+        },
+        "unit": "city_tier",
+        "clause": "POL-1",
+        "quote": "A 类城市：北京、上海、广州、深圳。B 类城市：杭州、南京、成都、武汉、西安、重庆、苏州、天津。C 类城市：上述以外的其他城市。",
+        "locator": "line:9",
+        "quote_status": "valid",
+        "status": "candidate",
+        "problems": [],
+        "confirmed_by": null,
+        "modification_reason": null,
+        "created_at": "2026-10-19T16:36:08.313Z",
+        "updated_at": "2026-10-19T16:36:08.313Z",
+        "source": "policy"
+      },
+      {
+        "id": "RULE-HOTEL-001",
+        "version": "v9.1-test",
+        "type": "hotel_cap",
+        "supported": true,
+        "condition": {
+          "level": "employee"
+        },
+        "value": {
+          "caps_fen": {
+            "A": 50000,
+            "B": 40000,
+            "C": 30000
+          }
+        },
+        "unit": "fen_per_night",
+        "clause": "POL-2",
+        "quote": "员工住宿上限：A 类城市每晚上限 500 元；B 类城市每晚上限 400 元；C 类城市每晚上限 300 元。",
+        "locator": "line:13",
+        "quote_status": "valid",
+        "status": "candidate",
+        "problems": [],
+        "confirmed_by": null,
+        "modification_reason": null,
+        "created_at": "2026-10-19T16:36:08.313Z",
+        "updated_at": "2026-10-19T16:36:08.313Z",
+        "source": "policy"
+      },
+      {
+        "id": "RULE-HOTEL-002",
+        "version": "v9.1-test",
+        "type": "hotel_cap",
+        "supported": true,
+        "condition": {
+          "level": "manager"
+        },
+        "value": {
+          "caps_fen": {
+            "A": 65000,
+            "B": 50000,
+            "C": 40000
+          }
+        },
+        "unit": "fen_per_night",
+        "clause": "POL-2",
+        "quote": "经理及以上人员住宿上限：A 类城市每晚上限 650 元；B 类城市每晚上限 500 元；C 类城市每晚上限 400 元。",
+        "locator": "line:15",
+        "quote_status": "valid",
+        "status": "candidate",
+        "problems": [],
+        "confirmed_by": null,
+        "modification_reason": null,
+        "created_at": "2026-10-19T16:36:08.313Z",
+        "updated_at": "2026-10-19T16:36:08.313Z",
+        "source": "policy"
+      },
+      {
+        "id": "RULE-MEAL-001",
+        "version": "v9.1-test",
+        "type": "meal_allowance",
+        "supported": true,
+        "condition": {
+          "scope": "all"
+        },
+        "value": {
+          "caps_fen": {
+            "A": 10000,
+            "B": 8000,
+            "C": 6000
+          }
+        },
+        "unit": "fen_per_day",
+        "clause": "POL-3",
+        "quote": "伙食补贴按出差自然日计发：A 类城市每天 100 元；B 类城市每天 80 元；C 类城市每天 60 元。",
+        "locator": "line:21",
+        "quote_status": "valid",
+        "status": "candidate",
+        "problems": [],
+        "confirmed_by": null,
+        "modification_reason": null,
+        "created_at": "2026-10-19T16:36:08.313Z",
+        "updated_at": "2026-10-19T16:36:08.313Z",
+        "source": "policy"
+      },
+      {
+        "id": "RULE-CLASS-001",
+        "version": "v9.1-test",
+        "type": "cabin_class",
+        "supported": true,
+        "condition": {
+          "scope": "all"
+        },
+        "value": {
+          "allowed": [
+            "economy",
+            "second_class"
+          ]
+        },
+        "unit": "cabin",
+        "clause": "POL-4",
+        "quote": "全体员工乘坐经济舱或高铁二等座，不得乘坐公务舱、头等舱或高铁一等座。",
+        "locator": "line:25",
+        "quote_status": "valid",
+        "status": "candidate",
+        "problems": [],
+        "confirmed_by": null,
+        "modification_reason": null,
+        "created_at": "2026-10-19T16:36:08.313Z",
+        "updated_at": "2026-10-19T16:36:08.313Z",
+        "source": "policy"
+      },
+      {
+        "id": "RULE-ADVANCE-001",
+        "version": "v9.1-test",
+        "type": "advance_booking_days",
+        "supported": true,
+        "condition": {
+          "mode": "air"
+        },
+        "value": {
+          "days": 3
+        },
+        "unit": "days",
+        "clause": "POL-5",
+        "quote": "机票出发日距申请日不少于 3 个自然日。",
+        "locator": "line:29",
+        "quote_status": "valid",
+        "status": "candidate",
+        "problems": [],
+        "confirmed_by": null,
+        "modification_reason": null,
+        "created_at": "2026-10-19T16:36:08.313Z",
+        "updated_at": "2026-10-19T16:36:08.313Z",
+        "source": "policy"
+      },
+      {
+        "id": "RULE-AUTO-001",
+        "version": "v9.1-test",
+        "type": "auto_approve_limit",
+        "supported": true,
+        "condition": {
+          "scope": "all"
+        },
+        "value": {
+          "value_fen": 300000
+        },
+        "unit": "fen",
+        "clause": "POL-6",
+        "quote": "单次差旅总额不超过 3000 元、无制度违规且不超过申报预算的，可自动通过；否则由直属经理审批。",
+        "locator": "line:33",
+        "quote_status": "valid",
+        "status": "candidate",
+        "problems": [],
+        "confirmed_by": null,
+        "modification_reason": null,
+        "created_at": "2026-10-19T16:36:08.313Z",
+        "updated_at": "2026-10-19T16:36:08.313Z",
+        "source": "policy"
+      },
+      {
+        "id": "RULE-DURATION-001",
+        "version": "v9.1-test",
+        "type": "trip_duration_limit",
+        "supported": true,
+        "condition": {
+          "scope": "all"
+        },
+        "value": {
+          "days": 15
+        },
+        "unit": "days",
+        "clause": "POL-7",
+        "quote": "单次出差不超过 15 个自然日。",
+        "locator": "line:37",
+        "quote_status": "valid",
+        "status": "candidate",
+        "problems": [],
+        "confirmed_by": null,
+        "modification_reason": null,
+        "created_at": "2026-10-19T16:36:08.313Z",
+        "updated_at": "2026-10-19T16:36:08.313Z",
+        "source": "policy"
+      },
+      {
+        "id": "RULE-DURATION-002",
+        "version": "v9.1-test",
+        "type": "trip_duration_limit",
+        "supported": true,
+        "condition": {
+          "scope": "all"
+        },
+        "value": {
+          "days": 15
+        },
+        "unit": "days",
+        "clause": "POL-7",
+        "quote": "出差时间最长不得超过 15 天。",
+        "locator": null,
+        "quote_status": "invalid_quote",
+        "status": "candidate",
+        "problems": [
+          {
+            "code": "INVALID_QUOTE",
+            "message": "原文引用在规范化后的制度全文中找不到"
+          }
+        ],
+        "confirmed_by": null,
+        "modification_reason": null,
+        "created_at": "2026-10-19T16:36:08.313Z",
+        "updated_at": "2026-10-19T16:36:08.313Z",
+        "source": "policy"
+      },
+      {
+        "id": "RULE-OTHER-001",
+        "version": "v9.1-test",
+        "type": "taxi_expense",
+        "supported": false,
+        "condition": {
+          "scope": "all"
+        },
+        "value": {
+          "reimbursement": "actual",
+          "counts_toward_total": false
+        },
+        "unit": "policy_flag",
+        "clause": "POL-8",
+        "quote": "出租车费用实报实销，不计入差旅总额。",
+        "locator": "line:41",
+        "quote_status": "valid",
+        "status": "unsupported",
+        "problems": [
+          {
+            "code": "UNSUPPORTED_RULE_TYPE",
+            "message": "规则引擎不支持类型 taxi_expense"
+          }
+        ],
+        "confirmed_by": null,
+        "modification_reason": null,
+        "created_at": "2026-10-19T16:36:08.313Z",
+        "updated_at": "2026-10-19T16:36:08.313Z",
+        "source": "policy"
+      }
+    ]
+  }
+}

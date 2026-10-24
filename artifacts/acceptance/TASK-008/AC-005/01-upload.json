@@ -1,0 +1,59 @@
+{
+  "markdown": {
+    "status_code": 201,
+    "body": {
+      "version": "v9.1-test",
+      "status": "draft",
+      "effective_date": "2026-11-01",
+      "document": {
+        "kind": "markdown",
+        "sha256": "72f941b6449e5d9519b2270c6f38bf0726428119f7b05fabe84e44502306367b"
+      },
+      "created_at": "2026-10-19T16:36:08.219Z",
+      "published_at": null,
+      "rule_counts": {
+        "candidate": 0,
+        "confirmed": 0,
+        "rejected": 0,
+        "unsupported": 0,
+        "invalid_quote": 0
+      },
+      "rules": []
+    }
+  },
+  "text_pdf": {
+    "status_code": 201,
+    "body": {
+      "version": "v9.2-test",
+      "status": "draft",
+      "effective_date": "2026-11-01",
+      "document": {
+        "kind": "pdf",
+        "sha256": "1ce28632478afd3125658e5fb4a5b31be9b1411932b9f183396660e303ac069e"
+      },
+      "created_at": "2026-10-19T16:36:08.294Z",
+      "published_at": null,
+      "rule_counts": {
+        "candidate": 0,
+        "confirmed": 0,
+        "rejected": 0,
+        "unsupported": 0,
+        "invalid_quote": 0
+      },
+      "rules": []
+    }
+  },
+  "scanned_pdf": {
+    "status_code": 415,
+    "body": {
+      "error": {
+        "code": "SCANNED_PDF",
+        "message": "该 PDF 没有文本层（扫描件），请上传文本型 PDF 或 Markdown",
+        "details": {
+          "pages": 1
+        },
+        "trace_id": "a3e6a674eed54f94a4ad4464046cb0f2"
+      }
+    }
+  }
+}

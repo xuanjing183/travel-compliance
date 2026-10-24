@@ -1,0 +1,185 @@
+[
+  {
+    "id": "77509b42-e98c-4e86-851f-508df112ab69",
+    "seq": 1,
+    "trip_id": "b0d836bf-a4fc-4adf-afb6-abdbd709f49f",
+    "revision": 1,
+    "ts": "2026-10-19T15:51:33.547Z",
+    "actor": "u-zhangsan",
+    "type": "trip_created",
+    "payload": {
+      "employee_id": "u-zhangsan"
+    },
+    "refs": [],
+    "trace_id": "f979c0f5dc69452189900c2fc11e172e"
+  },
+  {
+    "id": "60dae777-804e-43ee-aee0-8f362bb49080",
+    "seq": 2,
+    "trip_id": "b0d836bf-a4fc-4adf-afb6-abdbd709f49f",
+    "revision": 1,
+    "ts": "2026-10-19T15:51:33.557Z",
+    "actor": "u-zhangsan",
+    "type": "slots_changed",
+    "payload": {
+      "changes": [
+        {
+          "field": "destination",
+          "before": null,
+          "after": "杭州"
+        }
+      ],
+      "origin": "message",
+      "generator": "fake"
+    },
+    "refs": [],
+    "trace_id": "f3021b3b369942fa88598d84b6fbf83a"
+  },
+  {
+    "id": "1d514769-5dad-4b9b-b3c7-5bf08ebe0b22",
+    "seq": 3,
+    "trip_id": "b0d836bf-a4fc-4adf-afb6-abdbd709f49f",
+    "revision": 1,
+    "ts": "2026-10-19T15:51:33.557Z",
+    "actor": "u-zhangsan",
+    "type": "message_processed",
+    "payload": {
+      "generator": "fake",
+      "proposed_fields": [
+        "destination"
+      ],
+      "changed_fields": [
+        "destination"
+      ],
+      "rejected": [],
+      "missing_fields": [
+        "origin",
+        "start_date",
+        "end_date",
+        "purpose",
+        "declared_budget_fen"
+      ],
+      "ask": "已记录：目的城市 杭州。还需要：出发城市、出发日期（具体到日，如 10月28日）、返回日期（具体到日）、出差事由、申报预算（元）。"
+    },
+    "refs": [],
+    "trace_id": "f3021b3b369942fa88598d84b6fbf83a"
+  },
+  {
+    "id": "83b6fd9b-af9d-4dd0-9b5f-5f7d157c8eba",
+    "seq": 4,
+    "trip_id": "b0d836bf-a4fc-4adf-afb6-abdbd709f49f",
+    "revision": 1,
+    "ts": "2026-10-19T15:51:33.567Z",
+    "actor": "u-zhangsan",
+    "type": "slots_changed",
+    "payload": {
+      "changes": [
+        {
+          "field": "origin",
+          "before": null,
+          "after": "北京"
+        },
+        {
+          "field": "start_date",
+          "before": null,
+          "after": "2026-10-28"
+        },
+        {
+          "field": "end_date",
+          "before": null,
+          "after": "2026-10-30"
+        },
+        {
+          "field": "purpose",
+          "before": null,
+          "after": "供应商大会"
+        },
+        {
+          "field": "declared_budget_fen",
+          "before": null,
+          "after": 400000
+        }
+      ],
+      "origin": "message",
+      "generator": "fake"
+    },
+    "refs": [],
+    "trace_id": "20ef7eddaf1e49f5ba877bd51c63f129"
+  },
+  {
+    "id": "a54f7c4c-bd4d-46d7-9c2e-03313006fa8e",
+    "seq": 5,
+    "trip_id": "b0d836bf-a4fc-4adf-afb6-abdbd709f49f",
+    "revision": 1,
+    "ts": "2026-10-19T15:51:33.567Z",
+    "actor": "u-zhangsan",
+    "type": "message_processed",
+    "payload": {
+      "generator": "fake",
+      "proposed_fields": [
+        "declared_budget_fen",
+        "end_date",
+        "origin",
+        "purpose",
+        "start_date"
+      ],
+      "changed_fields": [
+        "origin",
+        "start_date",
+        "end_date",
+        "purpose",
+        "declared_budget_fen"
+      ],
+      "rejected": [],
+      "missing_fields": [],
+      "ask": "已记录：出发城市 北京，出发日期 2026-10-28，返回日期 2026-10-30，出差事由 供应商大会，申报预算 4,000.00 元。信息已齐全：出发城市 北京，目的城市 杭州，出发日期 2026-10-28，返回日期 2026-10-30，出差事由 供应商大会，申报预算 4,000.00 元。请核对，确认无误后点击“提交”。"
+    },
+    "refs": [],
+    "trace_id": "20ef7eddaf1e49f5ba877bd51c63f129"
+  },
+  {
+    "id": "eedee96e-3ca0-404e-992f-9995bc293155",
+    "seq": 6,
+    "trip_id": "b0d836bf-a4fc-4adf-afb6-abdbd709f49f",
+    "revision": 1,
+    "ts": "2026-10-19T15:51:33.578Z",
+    "actor": "u-zhangsan",
+    "type": "slots_changed",
+    "payload": {
+      "changes": [
+        {
+          "field": "declared_budget_fen",
+          "before": 400000,
+          "after": 500000
+        }
+      ],
+      "origin": "message",
+      "generator": "fake"
+    },
+    "refs": [],
+    "trace_id": "209b087731f74ea3b27b8b55dd32a3e6"
+  },
+  {
+    "id": "aa13a6f0-7cba-45e4-b3ba-d7afcc2230d4",
+    "seq": 7,
+    "trip_id": "b0d836bf-a4fc-4adf-afb6-abdbd709f49f",
+    "revision": 1,
+    "ts": "2026-10-19T15:51:33.578Z",
+    "actor": "u-zhangsan",
+    "type": "message_processed",
+    "payload": {
+      "generator": "fake",
+      "proposed_fields": [
+        "declared_budget_fen"
+      ],
+      "changed_fields": [
+        "declared_budget_fen"
+      ],
+      "rejected": [],
+      "missing_fields": [],
+      "ask": "已记录：申报预算 5,000.00 元。信息已齐全：出发城市 北京，目的城市 杭州，出发日期 2026-10-28，返回日期 2026-10-30，出差事由 供应商大会，申报预算 5,000.00 元。请核对，确认无误后点击“提交”。"
+    },
+    "refs": [],
+    "trace_id": "209b087731f74ea3b27b8b55dd32a3e6"
+  }
+]

@@ -1,0 +1,98 @@
+{
+  "attempts": {
+    "employee_self": {
+      "request": {
+        "user": "u-zhangsan",
+        "key": "a-1",
+        "revision": 1,
+        "decision": "approve"
+      },
+      "status_code": 403,
+      "code": "FORBIDDEN",
+      "details": {
+        "required_role": "manager"
+      }
+    },
+    "non_direct_manager": {
+      "request": {
+        "user": "u-zhaoliu",
+        "key": "a-2",
+        "revision": 1,
+        "decision": "approve"
+      },
+      "status_code": 403,
+      "code": "NOT_DIRECT_MANAGER",
+      "details": {}
+    },
+    "old_revision": {
+      "request": {
+        "user": "u-lisi",
+        "key": "a-3",
+        "revision": 2,
+        "decision": "approve"
+      },
+      "status_code": 409,
+      "code": "STALE_REVISION",
+      "details": {
+        "requested_revision": 2,
+        "current_revision": 1
+      }
+    },
+    "first": {
+      "request": {
+        "user": "u-lisi",
+        "key": "a-4",
+        "revision": 1,
+        "decision": "approve"
+      },
+      "status_code": 200,
+      "trip_status": "DELIVERED",
+      "revision": 1,
+      "approval_decision": "approve"
+    },
+    "same_key_replay": {
+      "request": {
+        "user": "u-lisi",
+        "key": "a-4",
+        "revision": 1,
+        "decision": "approve"
+      },
+      "status_code": 200,
+      "trip_status": "DELIVERED",
+      "revision": 1,
+      "approval_decision": "approve"
+    },
+    "different_key": {
+      "request": {
+        "user": "u-lisi",
+        "key": "a-5",
+        "revision": 1,
+        "decision": "approve"
+      },
+      "status_code": 409,
+      "code": "ALREADY_DECIDED",
+      "details": {
+        "approval_id": "f675f806-afd5-4b4e-a354-9fd17cb2629c",
+        "decision": "approve",
+        "current_revision": 1,
+        "status": "DELIVERED"
+      }
+    }
+  },
+  "db_counts_before_valid_decision": {
+    "approvals": 1,
+    "decided_approvals": 0,
+    "outbox_trip_delivery": 0,
+    "outbox_workflow_notification": 0,
+    "itineraries": 0,
+    "decision_recorded_events": 0
+  },
+  "db_counts_after": {
+    "approvals": 1,
+    "decided_approvals": 1,
+    "outbox_trip_delivery": 1,
+    "outbox_workflow_notification": 0,
+    "itineraries": 1,
+    "decision_recorded_events": 1
+  }
+}

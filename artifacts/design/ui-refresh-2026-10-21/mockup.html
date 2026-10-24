@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>美化效果图 · 差旅合规工作台</title>
+<style>
+/* ============ 设计令牌：冷纸白 + 深青墨 + 信号色（合规台专属，非通用模板） ============ */
+:root {
+  --paper: #f3f6f6;
+  --panel: #ffffff;
+  --ink: #1b2b32;
+  --muted: #5f7078;
+  --teal: #0e6b5c;          /* 品牌青：通过 / 合规 */
+  --teal-ink: #0a3f37;      /* 顶栏深底 */
+  --teal-soft: #e3f1ee;
+  --amber: #925200;         /* 待办：待审批 / 待补录 */
+  --amber-soft: #fdf3df;
+  --amber-line: #eed9ab;
+  --red: #b03a30;           /* 违规 */
+  --red-soft: #fceae7;
+  --red-line: #efc7c1;
+  --blue: #2b5d8a;          /* 信息 */
+  --blue-soft: #eaf2f9;
+  --line: #dfe6e8;
+  --hair: #e8edef;
+  --mono: "Cascadia Mono", Consolas, "Courier New", monospace;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font-family: "Segoe UI", "Microsoft YaHei", system-ui, sans-serif;
+  font-size: 14px; line-height: 1.55;
+}
+a { color: var(--teal); text-decoration: none; }
+.mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.muted { color: var(--muted); }
+.small { font-size: 12px; }
+
+/* ============ 顶栏 ============ */
+.topbar {
+  display: flex; align-items: center; gap: 20px;
+  padding: 0 28px; height: 54px;
+  background: var(--teal-ink); color: #fff;
+}
+.brand { display: flex; align-items: center; gap: 10px; }
+.brand-mark {
+  width: 30px; height: 30px; display: grid; place-items: center;
+  background: var(--teal); border-radius: 7px; font-weight: 700; font-size: 13px;
+}
+.brand h1 { font-size: 15px; margin: 0; font-weight: 600; }
+.brand p { margin: 0; font-size: 9.5px; letter-spacing: .16em; text-transform: uppercase; opacity: .55; }
+.nav { display: flex; gap: 4px; flex: 1; }
+.nav a { color: rgba(255,255,255,.75); padding: 6px 12px; border-radius: 999px; font-size: 13.5px; }
+.nav a.active { background: rgba(255,255,255,.14); color: #fff; font-weight: 600; }
+.top-right { display: flex; align-items: center; gap: 14px; font-size: 12px; color: rgba(255,255,255,.75); }
+.top-right .me strong { color: #fff; font-weight: 600; }
+
+.shell { max-width: 1120px; margin: 0 auto; padding: 24px 32px 90px; }
+.back { font-size: 13px; color: var(--muted); display: inline-block; margin-bottom: 12px; }
+.back:hover { color: var(--teal); }
+
+/* ============ 1. masthead：一眼看懂状态 + 钱 ============ */
+.masthead {
+  background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+  padding: 22px 26px 20px; margin-bottom: 14px;
+  display: grid; grid-template-columns: 1fr auto; gap: 8px 32px;
+  box-shadow: 0 1px 2px rgba(20,40,40,.04);
+}
+.mh-status { display: inline-flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 600;
+  padding: 3px 12px 3px 9px; border-radius: 999px; margin-bottom: 8px; }
+.st-pending { background: var(--amber-soft); color: var(--amber); border: 1px solid var(--amber-line); }
+.st-pending::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--amber); }
+.st-delivered { background: var(--teal-soft); color: var(--teal); border: 1px solid #bcded6; }
+.st-delivered::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--teal); }
+.st-collecting { background: var(--blue-soft); color: var(--blue); border: 1px solid #c6dbee; }
+.st-collecting::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--blue); }
+.mh-route { margin: 0; font-size: 26px; font-weight: 700; letter-spacing: .01em; line-height: 1.2; }
+.mh-route .arrow { color: var(--teal); font-weight: 400; padding: 0 6px; }
+.mh-meta { margin: 6px 0 0; color: var(--muted); font-size: 13px; }
+.mh-meta b { color: var(--ink); font-weight: 600; }
+.mh-budget { text-align: right; min-width: 240px; }
+.mh-amount { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: 30px; font-weight: 700; letter-spacing: -.01em; }
+.mh-amount small { font-size: 13px; font-weight: 500; color: var(--muted); display: block; margin-top: 2px; }
+.budget-bar { margin-top: 12px; }
+.budget-bar .scale { height: 6px; border-radius: 999px; background: var(--hair); overflow: hidden; }
+.budget-bar .fill { height: 100%; border-radius: 999px; background: var(--teal); }
+.budget-bar .cap { margin-top: 6px; font-size: 12px; color: var(--muted); display: flex; justify-content: space-between; }
+.budget-bar .cap b { color: var(--ink); }
+
+/* ============ 2. 区块标题 ============ */
+.sec { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 16px; align-items: start; }
+@media (max-width: 980px) { .sec { grid-template-columns: 1fr; } }
+.sec-title { display: flex; align-items: baseline; gap: 10px; margin: 22px 0 10px; }
+.sec-title .en { font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.sec-title h3 { margin: 0; font-size: 15.5px; font-weight: 700; }
+.sec-title .hint { font-size: 12px; color: var(--muted); margin-left: auto; }
+
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; }
+
+/* ============ 3. 行程轴 + 票根卡（signature） ============ */
+.rail { position: relative; margin: 4px 0 0; padding-left: 30px; }
+.rail::before { content: ""; position: absolute; left: 8px; top: 8px; bottom: 12px; width: 2px; background: var(--hair); }
+.stop { position: relative; padding-bottom: 16px; }
+.stop:last-child { padding-bottom: 0; }
+.stop::before { content: ""; position: absolute; left: -27px; top: 16px; width: 10px; height: 10px; border-radius: 50%;
+  background: var(--panel); border: 2.5px solid var(--teal); }
+.stop.todo::before { border-color: #c9d4d8; border-style: dashed; }
+.stop-date { font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+.stop-date b { color: var(--ink); font-weight: 600; }
+
+.leg {
+  border: 1px solid var(--line); border-radius: 10px; padding: 12px 16px;
+  display: grid; grid-template-columns: 1fr auto; gap: 2px 16px; background: #fff;
+}
+.leg.missing { border: 1.5px dashed #c9d4d8; background: #fafcfb; }
+.leg-kind { font-size: 11px; letter-spacing: .1em; color: var(--muted); }
+.leg-no { font-size: 16.5px; font-weight: 700; }
+.leg-no small { font-size: 12px; font-weight: 400; color: var(--muted); margin-left: 8px; }
+.leg-route { grid-column: 1 / -1; display: flex; align-items: center; gap: 10px; color: var(--ink); font-size: 13.5px; }
+.leg-route .t { font-family: var(--mono); font-variant-numeric: tabular-nums; font-weight: 600; }
+.leg-route .line { flex: 1; border-top: 1px solid var(--hair); position: relative; }
+.leg-route .line::after { content: "✈"; position: absolute; top: -9px; left: 50%; transform: translateX(-50%);
+  background: #fff; padding: 0 6px; color: var(--muted); font-size: 11px; }
+.leg-price { grid-row: span 2; align-self: center; text-align: right; }
+.leg-price .p { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: 19px; font-weight: 700; }
+.todo-text { color: var(--amber); font-weight: 600; font-size: 13.5px; }
+.todo-sub { color: var(--muted); font-size: 12.5px; margin-top: 2px; }
+
+/* 住宿卡 */
+.hotel { border: 1px solid var(--line); border-radius: 10px; padding: 12px 16px; background: #fff; }
+.hotel-top { display: flex; align-items: baseline; gap: 10px; }
+.hotel-name { font-size: 15.5px; font-weight: 700; }
+.hotel-price { margin-left: auto; font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: 15px; font-weight: 700; }
+.hotel-price small { font-weight: 400; color: var(--muted); font-size: 12px; }
+.hotel-sub { margin-top: 3px; font-size: 12.5px; color: var(--muted); }
+.exc { display: inline-block; font-size: 11px; padding: 1px 8px; border-radius: 999px;
+  background: var(--amber-soft); color: var(--amber); border: 1px solid var(--amber-line); font-weight: 600; }
+.hotel-note { margin: 8px 0 0; padding: 8px 12px; border-radius: 8px; background: var(--amber-soft);
+  color: #6b4a08; font-size: 12.5px; border: 1px solid var(--amber-line); }
+
+/* ============ 4. 徽标（降噪：浅底、小号、统一灰度优先） ============ */
+.src { display: inline-block; font-family: var(--mono); font-size: 10px; padding: 0 6px; border-radius: 4px;
+  border: 1px solid; vertical-align: 1px; white-space: nowrap; line-height: 1.6; }
+.src-live { color: #5b3d8f; border-color: #d5c6ec; background: #f6f1fc; }
+.src-backup_fixture { color: #7a5413; border-color: #e3cba0; background: #fdf6e9; }
+.src-model { color: #8a2f4b; border-color: #e6bccb; background: #fcf1f5; }
+.src-policy { color: #2f6b47; border-color: #b3d4bf; background: #f0f8f3; }
+.src-demo_fixture { color: #285a8a; border-color: #b7cde5; background: #f1f6fb; }
+
+/* ============ 5. 天气条 ============ */
+.weather-strip { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+.wchip { border: 1px solid var(--line); border-radius: 10px; padding: 8px 14px; display: flex; align-items: center; gap: 10px; background: #fff; }
+.wchip .d { font-size: 12px; color: var(--muted); }
+.wchip .ico { font-size: 17px; }
+.wchip .t { font-weight: 600; font-size: 13.5px; }
+.wchip .r { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: 12.5px; color: var(--muted); }
+.weather-note { margin-top: 8px; font-size: 12px; color: var(--muted); }
+
+/* ============ 6. 折叠 details ============ */
+details.fold { margin-top: 12px; border-top: 1px dashed var(--hair); padding-top: 10px; }
+details.fold summary { cursor: pointer; font-size: 12.5px; color: var(--muted); user-select: none; }
+details.fold summary:hover { color: var(--teal); }
+.kv { display: grid; grid-template-columns: max-content 1fr; gap: 5px 18px; margin: 10px 0 0; font-size: 12.5px; }
+.kv dt { color: var(--muted); }
+.kv dd { margin: 0; }
+
+/* 摘要引用 */
+.summary-quote { margin-top: 14px; padding: 12px 16px; border-radius: 10px; background: var(--teal-soft); }
+.summary-quote .lbl { font-size: 11px; letter-spacing: .1em; color: var(--teal); font-weight: 700; margin-bottom: 4px; }
+.summary-quote p { margin: 0; font-size: 13.5px; line-height: 1.7; }
+
+/* ============ 7. 成本 + 规则（右栏） ============ */
+.cost-row { display: flex; justify-content: space-between; align-items: baseline; padding: 7px 0; border-bottom: 1px dashed var(--hair); font-size: 13.5px; }
+.cost-row .k { color: var(--muted); }
+.cost-row .k small { display: block; font-size: 11.5px; }
+.cost-row .v { font-family: var(--mono); font-variant-numeric: tabular-nums; font-weight: 600; }
+.cost-row.total { border-top: 2px solid var(--ink); border-bottom: none; margin-top: 2px; padding-top: 10px; }
+.cost-row.total .k { color: var(--ink); font-weight: 700; }
+.cost-row.total .v { font-size: 17px; font-weight: 700; }
+.pending-tag { display: inline-block; font-size: 11px; padding: 0 8px; border-radius: 999px;
+  background: var(--amber-soft); color: var(--amber); border: 1px solid var(--amber-line); font-weight: 600; }
+.cost-foot { margin-top: 8px; font-size: 12px; color: var(--muted); }
+
+.rule-item { border: 1px solid var(--line); border-left: 3.5px solid var(--muted); border-radius: 9px;
+  padding: 10px 14px; margin-top: 10px; background: #fff; }
+.rule-item.violation { border-left-color: var(--red); }
+.rule-item.reason { border-left-color: var(--amber); }
+.rule-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 3px; }
+.rule-name { font-weight: 700; font-size: 13.5px; }
+.rule-code { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+.rule-msg { font-size: 13px; }
+.rule-nums { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.rule-nums b.over { color: var(--red); }
+.quote { margin: 8px 0 0; padding: 8px 12px; border-left: 3px solid #b3d4bf; background: #f6faf7; border-radius: 0 8px 8px 0; font-size: 12.5px; }
+.quote .qh { font-size: 11px; color: var(--muted); margin-bottom: 2px; }
+
+/* ============ 8. 审批一行卡 ============ */
+.approval-line { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.approval-line .who { display: flex; align-items: center; gap: 10px; }
+.avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--teal-soft); color: var(--teal);
+  display: grid; place-items: center; font-weight: 700; font-size: 14px; }
+.approval-line .what { font-size: 13px; }
+.approval-line .what b { display: block; font-size: 14px; }
+.approval-line .sp { margin-left: auto; }
+.btn { font: inherit; border-radius: 8px; padding: 7px 16px; cursor: pointer; border: 1px solid transparent; font-size: 13.5px; }
+.btn-primary { background: var(--teal); color: #fff; }
+.btn-ghost { background: #fff; border-color: var(--line); color: var(--ink); }
+
+/* ============ 9. 审计（折叠摘要） ============ */
+.audit-brief { margin: 0; padding: 0; list-style: none; }
+.audit-brief li { display: flex; gap: 12px; padding: 7px 0; border-bottom: 1px dashed var(--hair); font-size: 13px; align-items: baseline; }
+.audit-brief li:last-child { border-bottom: none; }
+.audit-brief .t { font-family: var(--mono); font-size: 11.5px; color: var(--muted); min-width: 128px; }
+.audit-brief .e { font-weight: 600; min-width: 76px; }
+.audit-brief .x { color: var(--muted); }
+.audit-brief .s { margin-left: auto; }
+.dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-right: 6px; vertical-align: 1px; }
+.dot.ok { background: var(--teal); } .dot.warn { background: var(--amber); } .dot.err { background: var(--red); } .dot.info { background: var(--blue); }
+
+/* ============ 10. 列表页新版 ============ */
+.list-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 16px; }
+.list-head h2 { margin: 0; font-size: 20px; font-weight: 700; }
+.list-head .cnt { color: var(--muted); font-size: 13px; }
+.list-head .btn { margin-left: auto; }
+.trip-card {
+  background: var(--panel); border: 1px solid var(--line); border-radius: 12px;
+  padding: 14px 18px; margin-bottom: 10px; cursor: pointer;
+  display: flex; align-items: center; gap: 16px;
+  transition: border-color .12s ease, transform .12s ease;
+}
+.trip-card:hover { border-color: var(--teal); transform: translateY(-1px); }
+.trip-card .bar { width: 4px; height: 44px; border-radius: 4px; flex: none; }
+.bar.amber { background: var(--amber); } .bar.teal { background: var(--teal); } .bar.blue { background: var(--blue); } .bar.red { background: var(--red); }
+.tc-status { flex: none; width: 96px; }
+.tc-main { flex: 1; min-width: 0; }
+.tc-route { font-weight: 700; font-size: 15.5px; }
+.tc-route small { font-weight: 400; color: var(--muted); margin-left: 10px; font-size: 12.5px; }
+.tc-meta { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+.tc-amount { flex: none; text-align: right; white-space: nowrap; }
+.tc-amount .a { font-family: var(--mono); font-variant-numeric: tabular-nums; font-weight: 700; font-size: 16px; }
+.tc-amount .u { font-size: 11.5px; color: var(--muted); margin-top: 2px; }
+.demo-note { margin: 26px 0 8px; font-size: 12.5px; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<!-- ===================== 顶栏 ===================== -->
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">TC</span>
+    <div><h1>差旅合规工作台</h1><p>Travel Compliance Desk</p></div>
+  </div>
+  <nav class="nav">
+    <a class="active" href="#">我的申请</a><a href="#">制度问答</a><a href="#">偏好</a>
+  </nav>
+  <div class="top-right">
+    <span>演示日期 2026-10-20 · 模型模式 fake</span>
+    <span class="me"><strong>张三</strong> 员工 · 销售部 · 切换身份</span>
+  </div>
+</header>
+
+<!-- ===================== 详情页（美化后） ===================== -->
+<main class="shell">
+  <a class="back" href="#">← 返回列表</a>
+
+  <!-- 1. masthead：状态 / 路线 / 钱与预算 -->
+  <section class="masthead">
+    <div>
+      <span class="mh-status st-pending">待审批 · 等待李四确认</span>
+      <h2 class="mh-route">北京 <span class="arrow">→</span> 洛阳</h2>
+      <p class="mh-meta">学术会议 · <b>张三</b>（销售部） · 2026-10-20 ～ 10-23 · 4 天 3 晚 · 制度 v1.2 · rev 1</p>
+    </div>
+    <div class="mh-budget">
+      <div class="mh-amount">¥2,918<small>已知小计 · 去程待补录，不按 0 计入</small></div>
+      <div class="budget-bar">
+        <div class="scale"><div class="fill" style="width:97%"></div></div>
+        <div class="cap"><span>占申报预算 <b>¥3,000</b> 的 97%</span><span>预算差：待方案完整后计算</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. 出行方案（左） + 成本与规则（右） -->
+  <div class="sec">
+
+    <div>
+      <div class="sec-title"><h3>出行方案</h3><span class="en">Plan</span>
+        <span class="hint">方案不完整：交通缺 1 项，需人工补录后重算</span></div>
+      <div class="card">
+
+        <!-- 行程轴 -->
+        <div class="rail">
+          <!-- 去程：缺失 -->
+          <div class="stop todo">
+            <div class="stop-date"><b>10-20</b> 去程 · 北京 → 洛阳</div>
+            <div class="leg missing">
+              <div>
+                <span class="todo-text">待人工补录</span>
+                <div class="todo-sub">10-20 无可用交通候选。可补录车次/航班号与票价，或由经理批准后线下安排。</div>
+              </div>
+              <div class="leg-price"><span class="pending-tag">缺 1 项</span></div>
+            </div>
+          </div>
+
+          <!-- 住宿 -->
+          <div class="stop">
+            <div class="stop-date"><b>10-20 ～ 10-23</b> 住宿 · 3 晚</div>
+            <div class="hotel">
+              <div class="hotel-top">
+                <span class="hotel-name">洛阳克里斯国际酒店</span>
+                <span class="exc">超标最少例外</span>
+                <span class="hotel-price">¥350<small>/晚 × 3 = ¥1,050</small></span>
+              </div>
+              <div class="hotel-sub">备用目录 <span class="src src-backup_fixture">backup_fixture</span> · 评分 4.3 · 洛龙区，距市政府约 5 分钟车程</div>
+              <p class="hotel-note">无合规可订协议酒店；C 类城市住宿上限 ¥300/晚，已选用超标最少的已验证备用候选，需经理审批。</p>
+            </div>
+          </div>
+
+          <!-- 返程 -->
+          <div class="stop">
+            <div class="stop-date"><b>10-23</b> 返程 · 洛阳 → 北京</div>
+            <div class="leg">
+              <div>
+                <div class="leg-kind">QW6053 · 青岛航空 · 经济舱 <span class="src src-live">live</span></div>
+                <div class="leg-route"><span class="t">10-23 14:00</span> 洛阳北郊 <span class="line"></span> <span class="t">10-24 10:00</span> 北京首都</div>
+              </div>
+              <div class="leg-price"><div class="p">¥1,628</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 天气条 -->
+        <div class="weather-strip">
+          <div class="wchip"><span class="ico">☀️</span><span class="d">10-21</span><span class="t">晴</span><span class="r">9–16℃</span><span class="src src-live">live</span></div>
+          <div class="wchip"><span class="ico">🌧️</span><span class="d">10-22</span><span class="t">小雨</span><span class="r">8–14℃</span><span class="src src-live">live</span></div>
+          <div class="wchip"><span class="ico">☀️</span><span class="d">10-23</span><span class="t">晴</span><span class="r">10–17℃</span><span class="src src-live">live</span></div>
+        </div>
+        <p class="weather-note">历史日期 10-20 无预报，已省略（和风天气仅提供当日及以后的预报）。</p>
+
+        <!-- 行程摘要（引用块） -->
+        <div class="summary-quote">
+          <div class="lbl">行程摘要 <span class="src src-model">model</span></div>
+          <p>10-20 赴洛阳参加学术会议，入住洛阳克里斯国际酒店共 3 晚；行程期间有雨，请携带雨具；10-23 乘 QW6053 于 14:00 返程。</p>
+        </div>
+
+        <details class="fold">
+          <summary>▸ 逐日日程与候选排序（技术细节）</summary>
+          <dl class="kv">
+            <dt>10-20</dt><dd>去程待补录 · 入住洛阳克里斯国际酒店 · 学术会议</dd>
+            <dt>10-21</dt><dd>学术会议</dd>
+            <dt>10-22</dt><dd>学术会议 · 天气小雨，建议携带雨具</dd>
+            <dt>10-23</dt><dd>学术会议 · 14:00 QW6053 洛阳→北京 出发</dd>
+            <dt>酒店候选</dt><dd>H-LUO-BACKUP-02（选中）、H-LUO-BACKUP-01</dd>
+            <dt>返程候选</dt><dd>15 个航班候选，按“符合舱位 → 最低价”选定 QW6053</dd>
+          </dl>
+        </details>
+      </div>
+    </div>
+
+    <!-- 右栏：成本 + 规则 -->
+    <div>
+      <div class="sec-title"><h3>成本与规则</h3><span class="en">Cost &amp; Compliance</span></div>
+      <div class="card">
+        <div class="cost-row"><span class="k">去程交通</span><span class="v" style="color:var(--amber)">待人工补录</span></div>
+        <div class="cost-row"><span class="k">返程交通</span><span class="v">¥1,628.00</span></div>
+        <div class="cost-row"><span class="k">住宿 <small>3 晚 × ¥350</small></span><span class="v">¥1,050.00</span></div>
+        <div class="cost-row"><span class="k">伙食补贴 <small>4 天 × ¥60</small></span><span class="v">¥240.00</span></div>
+        <div class="cost-row total"><span class="k">合计</span><span class="v">≥ ¥2,918.00</span></div>
+        <div class="cost-row"><span class="k">申报预算</span><span class="v">¥3,000.00</span></div>
+        <p class="cost-foot">目的地为 C 类城市；金额由代码按已发布制度计算，缺失部分不按 0 计入。</p>
+
+        <div class="rule-item violation">
+          <div class="rule-head"><span class="rule-name">住宿超标</span><span class="rule-code">HOTEL_OVER_CAP</span><span class="src src-policy">policy</span></div>
+          <div class="rule-msg">洛阳克里斯国际酒店每晚 350 元，超过 C 类城市上限 300 元。</div>
+          <div class="rule-nums">实际 <b class="over">¥350.00/晚</b>，上限 ¥300.00/晚 · RULE-HOTEL-001 · v1.2</div>
+          <blockquote class="quote"><div class="qh">v1.2 POL-2 · line:13</div>员工住宿上限：A 类城市每晚上限 500 元；B 类城市每晚上限 400 元；C 类城市每晚上限 300 元。</blockquote>
+        </div>
+        <div class="rule-item reason">
+          <div class="rule-head"><span class="rule-name">方案不完整</span><span class="rule-code">PLAN_INCOMPLETE</span><span class="src src-policy">policy</span></div>
+          <div class="rule-msg">去程交通待人工补录，系统不能自动通过，需经理判断。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. 审批：一行卡 -->
+  <div class="sec-title"><h3>审批</h3><span class="en">Approval</span></div>
+  <div class="card approval-line">
+    <span class="who"><span class="avatar">李</span></span>
+    <span class="what"><b>等待 李四（销售部 · 经理） 审批</b>提交于 10-21 11:29 · 审批卡 rev 1 · 制度 v1.2</span>
+    <span class="sp"></span>
+    <button class="btn btn-ghost">催办提醒</button>
+    <button class="btn btn-primary">查看审批卡详情</button>
+  </div>
+
+  <!-- 4. 审计：关键事件 + 折叠 -->
+  <div class="sec-title"><h3>审计时间线</h3><span class="en">Audit</span><span class="hint">18 条记录，全部只读、不可篡改</span></div>
+  <div class="card">
+    <ul class="audit-brief">
+      <li><span class="t">10-21 11:29:27</span><span class="e"><span class="dot info"></span>创建申请</span><span class="x">一句话抽取 6 项信息（message）</span><span class="s small muted">#424</span></li>
+      <li><span class="t">10-21 11:29:27</span><span class="e"><span class="dot info"></span>提交</span><span class="x">COLLECTING → VALIDATING</span><span class="s small muted">#427</span></li>
+      <li><span class="t">10-21 11:29:29</span><span class="e"><span class="dot ok"></span>生成方案</span><span class="x">返程 QW6053 · 住宿 3 晚 · 天气 3 天 <span class="src src-live">live</span></span><span class="s small muted">#438</span></li>
+      <li><span class="t">10-21 11:29:29</span><span class="e"><span class="dot err"></span>规则判断</span><span class="x">1 项违规 · 1 项需审批 → PENDING_APPROVAL</span><span class="s small muted">#439</span></li>
+      <li><span class="t">10-21 11:29:29</span><span class="e"><span class="dot warn"></span>发起审批</span><span class="x">审批卡发给 李四</span><span class="s small muted">#441</span></li>
+    </ul>
+    <details class="fold">
+      <summary>▸ 展开全部 18 条（含 Provider 调用与 payload）</summary>
+      <dl class="kv">
+        <dt>#432 · Provider</dt><dd>transport/live_transport ok · 10-20 北京→洛阳，候选 0 个（1.0s）</dd>
+        <dt>#433 · Provider</dt><dd>transport/live_transport ok · 10-23 洛阳→北京，候选 15 个（1.5s）</dd>
+        <dt>#434 · Provider</dt><dd>hotel_contract/live_hotel_hybrid ok · 洛阳，候选 0 个</dd>
+        <dt>#435 · Provider</dt><dd>hotel_backup/live_hotel_hybrid ok · 洛阳，候选 2 个</dd>
+        <dt>#436 · Provider</dt><dd>weather/live_weather_qweather ok · 请求 4 天（0.3s）</dd>
+        <dt>#437 · 选定候选</dt><dd>返程 kiwi-…· 住宿 H-LUO-BACKUP-02（超标例外）</dd>
+      </dl>
+    </details>
+  </div>
+
+  <p class="demo-note">— 以下为「申请列表页」美化后效果 —</p>
+
+  <!-- ===================== 列表页（美化后） ===================== -->
+  <div class="list-head">
+    <h2>我的出差申请</h2><span class="cnt">25 份</span>
+    <button class="btn btn-primary">＋ 新建申请</button>
+  </div>
+
+  <div class="trip-card">
+    <span class="bar amber"></span>
+    <span class="tc-status"><span class="mh-status st-pending">待审批</span></span>
+    <div class="tc-main">
+      <div class="tc-route">北京 → 洛阳<small>学术会议 · 洛阳克里斯国际酒店（超标例外）</small></div>
+      <div class="tc-meta">张三 · 制度 v1.2 · rev 1 · 更新 10-21 11:29</div>
+    </div>
+    <div class="tc-amount"><div class="a">≥ ¥2,918</div><div class="u">预算 ¥3,000 · 10-20 ~ 10-23</div></div>
+  </div>
+
+  <div class="trip-card">
+    <span class="bar amber"></span>
+    <span class="tc-status"><span class="mh-status st-pending">待审批</span></span>
+    <div class="tc-main">
+      <div class="tc-route">北京 → 深圳<small>客户回访</small></div>
+      <div class="tc-meta">张三 · 制度 v1.2 · rev 1 · 更新 10-21 11:49</div>
+    </div>
+    <div class="tc-amount"><div class="a">≥ ¥2,624</div><div class="u">预算 ¥4,000 · 10-22 ~ 10-28</div></div>
+  </div>
+
+  <div class="trip-card">
+    <span class="bar teal"></span>
+    <span class="tc-status"><span class="mh-status st-delivered">已交付</span></span>
+    <div class="tc-main">
+      <div class="tc-route">北京 → 上海<small>供应商大会 · 行程单已生成</small></div>
+      <div class="tc-meta">张三 · 制度 v1.2 · rev 1 · 更新 10-21 11:37</div>
+    </div>
+    <div class="tc-amount"><div class="a">¥2,557</div><div class="u">预算 ¥3,000 · 10-31 ~ 11-02</div></div>
+  </div>
+
+  <div class="trip-card">
+    <span class="bar blue"></span>
+    <span class="tc-status"><span class="mh-status st-collecting">收集信息</span></span>
+    <div class="tc-main">
+      <div class="tc-route">— → —<small>还缺：出发城市、目的城市、日期…</small></div>
+      <div class="tc-meta">张三 · 未绑定制度 · rev 1 · 更新 10-21 11:32</div>
+    </div>
+    <div class="tc-amount"><div class="a">—</div><div class="u">预算未定</div></div>
+  </div>
+
+</main>
+</body>
+</html>

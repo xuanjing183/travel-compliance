@@ -1,0 +1,19 @@
+{
+  "status_code": 201,
+  "id": "39fe5742-5dfe-4c64-b74f-ad8ea4b7f06b",
+  "trip_id": "72c88b3a-894a-4582-8b5f-c7cd73c77bac",
+  "upload_id": "64e49628-4b44-4f5f-872f-3d6f24ca21cc",
+  "status": "pending",
+  "fields": {
+    "destination": "上海",
+    "start_date": "2026-10-28",
+    "end_date": "2026-10-30",
+    "purpose": "供应商大会：年度合作评审与新品对接",
+    "meeting_address": "上海市浦东新区滨江大道 2727 号星衡国际会议中心 3 号厅"
+  },
+  "source": "model",
+  "generator": "recorded:model",
+  "applied": null,
+  "created_at": "2026-10-19T15:51:33.620Z",
+  "confirmed_at": null
+}

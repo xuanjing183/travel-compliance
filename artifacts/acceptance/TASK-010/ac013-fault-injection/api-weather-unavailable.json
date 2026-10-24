@@ -1,0 +1,79 @@
+{
+  "trip_id": "cb245bbf-3c35-4245-8e22-557fb54ad206",
+  "status": "DELIVERED",
+  "revision": 1,
+  "plan_incomplete": false,
+  "plan_missing": [],
+  "transport": {
+    "status": "selected",
+    "note": null,
+    "outbound_id": "T-BJS-SHA-1025-B",
+    "return_id": "T-SHA-BJS-1026-B"
+  },
+  "hotel": {
+    "status": "selected",
+    "note": null,
+    "candidate_id": "H-SHA-CONTRACT-02",
+    "candidate_source": "demo_fixture"
+  },
+  "weather": {
+    "status": "unavailable",
+    "note": "天气 Provider 不可用，已省略天气信息",
+    "days": []
+  },
+  "cost_breakdown": {
+    "nights": 1,
+    "days": 2,
+    "destination_tier": "A",
+    "transport_fen": 130000,
+    "outbound_fen": 65000,
+    "return_fen": 65000,
+    "hotel_per_night_fen": 40000,
+    "hotel_fen": 40000,
+    "meal_per_day_fen": 10000,
+    "meal_fen": 20000,
+    "total_fen": 190000,
+    "known_subtotal_fen": 190000,
+    "declared_budget_fen": 250000,
+    "budget_delta_fen": -60000,
+    "missing_components": []
+  },
+  "approval_reasons": [],
+  "violations": [],
+  "provider_calls": {
+    "transport": "ok",
+    "hotel_contract": "ok",
+    "weather": "unavailable"
+  },
+  "provider_call_log": [
+    {
+      "provider": "transport",
+      "status": "ok"
+    },
+    {
+      "provider": "transport",
+      "status": "ok"
+    },
+    {
+      "provider": "hotel_contract",
+      "status": "ok"
+    },
+    {
+      "provider": "weather",
+      "status": "unavailable"
+    }
+  ],
+  "trajectory": [
+    "VALIDATING",
+    "PLANNING",
+    "AUTO_APPROVED",
+    "DELIVERY_PENDING",
+    "DELIVERED"
+  ],
+  "fault": "weather_unavailable",
+  "fault_injected": {
+    "no_protocol_hotel": false,
+    "transport_timeout": false,
+    "weather_unavailable": true
+  }
+}

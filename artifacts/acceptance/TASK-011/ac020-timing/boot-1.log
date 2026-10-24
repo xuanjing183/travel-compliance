@@ -1,0 +1,25 @@
+INFO:     Started server process [41736]
+INFO:     Waiting for application startup.
+2026-10-20 11:10:06,450 INFO travel_desk: startup recovery aborted=0 delivered=0 still_pending=0
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:52774 (Press CTRL+C to quit)
+INFO:     127.0.0.1:52777 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52780 - "POST /api/trips HTTP/1.1" 201 Created
+INFO:     127.0.0.1:52780 - "PATCH /api/trips/ae946534-dcec-4f92-a21f-982f41c21206/slots HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52780 - "POST /api/trips/ae946534-dcec-4f92-a21f-982f41c21206/submit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52780 - "GET /api/trips/ae946534-dcec-4f92-a21f-982f41c21206 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52780 - "GET /api/approvals?status=pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52780 - "GET /api/trips/ae946534-dcec-4f92-a21f-982f41c21206/audit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52780 - "POST /api/trips HTTP/1.1" 201 Created
+INFO:     127.0.0.1:52780 - "PATCH /api/trips/eae60329-0c30-420d-836d-dbd6cf78746b/slots HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52780 - "POST /api/trips/eae60329-0c30-420d-836d-dbd6cf78746b/submit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52780 - "GET /api/trips/eae60329-0c30-420d-836d-dbd6cf78746b HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52780 - "GET /api/approvals?status=pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52780 - "GET /api/trips/eae60329-0c30-420d-836d-dbd6cf78746b/audit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52780 - "POST /api/trips HTTP/1.1" 201 Created
+INFO:     127.0.0.1:52780 - "PATCH /api/trips/2cb2dc67-58cf-4608-bcdd-19c66ff4dbfe/slots HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52780 - "POST /api/trips/2cb2dc67-58cf-4608-bcdd-19c66ff4dbfe/submit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52780 - "GET /api/trips/2cb2dc67-58cf-4608-bcdd-19c66ff4dbfe HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52780 - "GET /api/approvals?status=pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52780 - "GET /api/trips/2cb2dc67-58cf-4608-bcdd-19c66ff4dbfe/audit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52529 - "GET /api/health/providers HTTP/1.1" 200 OK

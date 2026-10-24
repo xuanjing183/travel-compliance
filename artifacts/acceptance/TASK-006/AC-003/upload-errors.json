@@ -1,0 +1,28 @@
+{
+  "wrong_type": {
+    "status_code": 415,
+    "error": {
+      "code": "UNSUPPORTED_MEDIA_TYPE",
+      "message": "只支持 PNG 或 JPG 图片（按文件内容判定）",
+      "details": {
+        "allowed": [
+          "image/png",
+          "image/jpeg"
+        ]
+      },
+      "trace_id": "ca577ced8b5142b0bd72a6f7dd1665e2"
+    }
+  },
+  "too_big": {
+    "status_code": 413,
+    "bytes_sent": 10485768,
+    "error": {
+      "code": "PAYLOAD_TOO_LARGE",
+      "message": "文件超过 10 MiB 上限",
+      "details": {
+        "max_bytes": 10485760
+      },
+      "trace_id": "5b32b746139a45d0b5d60160543a38b3"
+    }
+  }
+}

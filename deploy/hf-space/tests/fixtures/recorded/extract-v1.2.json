@@ -1,0 +1,167 @@
+{
+  "description": "Recorded rule-extraction output for policy v1.2 (contract §7.1.1). Matched by the SHA-256 of the normalized document text (§4.8 normalization), so the same content uploaded under any version number gets this output. Rule IDs are assigned by code, not recorded.",
+  "source": "hand_written",
+  "source_note": "Hand-written before any authorised real extraction run; deterministic fixture for AC-005, S-12 and AC-024 only. Must not be used as evidence for the gated AC-018 (contract §7.1.1).",
+  "documents": {
+    "1810017a416e80c754dd45f0eb2dfb76af9b6b38de37f52897cf9455ca023c3b": "tests/fixtures/policies/v1.2.md",
+    "4586c9f71f85b24f75142a784f9c5fc1013a14d333bd1d5620cc7a5e5eb15c45": "tests/fixtures/policies/v1.2-text.pdf"
+  },
+  "candidates": [
+    {
+      "type": "city_tier",
+      "condition": {
+        "scope": "all"
+      },
+      "value": {
+        "tiers": {
+          "A": [
+            "北京",
+            "上海",
+            "广州",
+            "深圳"
+          ],
+          "B": [
+            "杭州",
+            "南京",
+            "成都",
+            "武汉",
+            "西安",
+            "重庆",
+            "苏州",
+            "天津"
+          ]
+        },
+        "fallback_tier": "C"
+      },
+      "unit": "city_tier",
+      "clause": "POL-1",
+      "quote": "A 类城市：北京、上海、广州、深圳。B 类城市：杭州、南京、成都、武汉、西安、重庆、苏州、天津。C 类城市：上述以外的其他城市。"
+    },
+    {
+      "type": "hotel_cap",
+      "condition": {
+        "level": "employee"
+      },
+      "value": {
+        "caps_fen": {
+          "A": 50000,
+          "B": 40000,
+          "C": 30000
+        }
+      },
+      "unit": "fen_per_night",
+      "clause": "POL-2",
+      "quote": "员工住宿上限：A 类城市每晚上限 500 元；B 类城市每晚上限 400 元；C 类城市每晚上限 300 元。"
+    },
+    {
+      "type": "hotel_cap",
+      "condition": {
+        "level": "manager"
+      },
+      "value": {
+        "caps_fen": {
+          "A": 65000,
+          "B": 50000,
+          "C": 40000
+        }
+      },
+      "unit": "fen_per_night",
+      "clause": "POL-2",
+      "quote": "经理及以上人员住宿上限：A 类城市每晚上限 650 元；B 类城市每晚上限 500 元；C 类城市每晚上限 400 元。"
+    },
+    {
+      "type": "meal_allowance",
+      "condition": {
+        "scope": "all"
+      },
+      "value": {
+        "caps_fen": {
+          "A": 10000,
+          "B": 8000,
+          "C": 6000
+        }
+      },
+      "unit": "fen_per_day",
+      "clause": "POL-3",
+      "quote": "伙食补贴按出差自然日计发：A 类城市每天 100 元；B 类城市每天 80 元；C 类城市每天 60 元。"
+    },
+    {
+      "type": "cabin_class",
+      "condition": {
+        "scope": "all"
+      },
+      "value": {
+        "allowed": [
+          "economy",
+          "second_class"
+        ]
+      },
+      "unit": "cabin",
+      "clause": "POL-4",
+      "quote": "全体员工乘坐经济舱或高铁二等座，不得乘坐公务舱、头等舱或高铁一等座。"
+    },
+    {
+      "type": "advance_booking_days",
+      "condition": {
+        "mode": "air"
+      },
+      "value": {
+        "days": 3
+      },
+      "unit": "days",
+      "clause": "POL-5",
+      "quote": "机票出发日距申请日不少于 3 个自然日。"
+    },
+    {
+      "type": "auto_approve_limit",
+      "condition": {
+        "scope": "all"
+      },
+      "value": {
+        "value_fen": 300000
+      },
+      "unit": "fen",
+      "clause": "POL-6",
+      "quote": "单次差旅总额不超过 3000 元、无制度违规且不超过申报预算的，可自动通过；否则由直属经理审批。"
+    },
+    {
+      "type": "trip_duration_limit",
+      "condition": {
+        "scope": "all"
+      },
+      "value": {
+        "days": 15
+      },
+      "unit": "days",
+      "clause": "POL-7",
+      "quote": "单次出差不超过 15 个自然日。"
+    },
+    {
+      "type": "trip_duration_limit",
+      "condition": {
+        "scope": "all"
+      },
+      "value": {
+        "days": 15
+      },
+      "unit": "days",
+      "clause": "POL-7",
+      "quote": "出差时间最长不得超过 15 天。",
+      "_note": "deliberately paraphrased quote: not in the document, must be marked invalid_quote"
+    },
+    {
+      "type": "taxi_expense",
+      "condition": {
+        "scope": "all"
+      },
+      "value": {
+        "reimbursement": "actual",
+        "counts_toward_total": false
+      },
+      "unit": "policy_flag",
+      "clause": "POL-8",
+      "quote": "出租车费用实报实销，不计入差旅总额。",
+      "_note": "not one of the 7 closed rule types: must be marked unsupported"
+    }
+  ]
+}

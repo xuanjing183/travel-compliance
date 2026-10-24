@@ -1,0 +1,31 @@
+============================= test session starts =============================
+platform win32 -- Python 3.11.0, pytest-9.1.1, pluggy-1.7.0 -- C:\Users\22316\Desktop\1\lc-course\travel-compliance-desk\.venv\Scripts\python.exe
+rootdir: C:\Users\22316\Desktop\1\lc-course\travel-compliance-desk
+configfile: pyproject.toml
+plugins: anyio-4.15.1, langsmith-0.14.11, asyncio-1.4.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 20 items
+
+tests/test_workflow.py::test_s01_golden_path_pending_then_approved_and_delivered_once PASSED [  5%]
+tests/test_workflow.py::test_s02_auto_approved_is_delivered_without_an_approval PASSED [ 10%]
+tests/test_workflow.py::test_s06_hard_block_never_calls_a_provider PASSED [ 15%]
+tests/test_workflow.py::test_s07_reject_writes_one_notification_and_no_delivery PASSED [ 20%]
+tests/test_workflow.py::test_s08_request_changes_bumps_revision_and_reapproval_delivers PASSED [ 25%]
+tests/test_workflow.py::test_s09_transport_timeout_forces_approval_with_known_subtotal PASSED [ 30%]
+tests/test_workflow.py::test_d21_manager_without_manager_gets_no_approver_and_no_kept_plan PASSED [ 35%]
+tests/test_workflow.py::test_ac009_decision_permissions_and_validation PASSED [ 40%]
+tests/test_workflow.py::test_self_approval_is_forbidden PASSED           [ 45%]
+tests/test_workflow.py::test_ac009_same_key_replays_and_other_keys_conflict PASSED [ 50%]
+tests/test_workflow.py::test_ac009_concurrent_decisions_apply_exactly_once PASSED [ 55%]
+tests/test_workflow.py::test_submit_validation_order_and_idempotent_replay PASSED [ 60%]
+tests/test_workflow.py::test_preference_snapshot_sources PASSED          [ 65%]
+tests/test_workflow.py::test_s10_restart_resumes_from_the_approval_interrupt PASSED [ 70%]
+tests/test_workflow.py::test_recover_aborts_runs_cut_off_mid_planning PASSED [ 75%]
+tests/test_workflow.py::test_ac011_delivery_failure_stays_pending_and_retry_writes_one_email PASSED [ 80%]
+tests/test_workflow.py::test_startup_recovery_redelivers_pending_trips PASSED [ 85%]
+tests/test_workflow.py::test_summary_with_money_is_dropped_but_the_plan_continues PASSED [ 90%]
+tests/test_workflow.py::test_unexpected_failure_aborts_to_collecting_with_one_error_event PASSED [ 95%]
+tests/test_workflow.py::test_reset_clears_trips_and_checkpoint_threads PASSED [100%]
+
+- generated xml file: C:\Users\22316\Desktop\1\lc-course\travel-compliance-desk\artifacts\acceptance\TASK-005\junit.xml -
+============================= 20 passed in 2.29s ==============================

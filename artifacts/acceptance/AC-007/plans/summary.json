@@ -1,0 +1,139 @@
+[
+  {
+    "scenario": "S-01",
+    "selected_ids": [
+      "T-BJS-SHA-1028-A",
+      "T-SHA-BJS-1030-A",
+      "H-SHA-CONTRACT-01"
+    ],
+    "outcome": "PENDING_APPROVAL",
+    "total_fen": 476000,
+    "known_subtotal_fen": 476000,
+    "violations": [],
+    "approval_reasons": [
+      "BUDGET_EXCEEDED",
+      "OVER_AUTO_APPROVAL_LIMIT"
+    ],
+    "all_selected_ids_in_responses": true
+  },
+  {
+    "scenario": "S-02",
+    "selected_ids": [
+      "T-BJS-SHA-1025-B",
+      "T-SHA-BJS-1026-B",
+      "H-SHA-CONTRACT-02"
+    ],
+    "outcome": "AUTO_APPROVED",
+    "total_fen": 190000,
+    "known_subtotal_fen": 190000,
+    "violations": [],
+    "approval_reasons": [],
+    "all_selected_ids_in_responses": true
+  },
+  {
+    "scenario": "S-03",
+    "selected_ids": [
+      "T-BJS-CTU-1027-A",
+      "T-CTU-BJS-1029-A",
+      "H-CTU-BACKUP-01"
+    ],
+    "outcome": "PENDING_APPROVAL",
+    "total_fen": 274000,
+    "known_subtotal_fen": 274000,
+    "violations": [
+      "HOTEL_OVER_CAP"
+    ],
+    "approval_reasons": [],
+    "all_selected_ids_in_responses": true
+  },
+  {
+    "scenario": "S-04",
+    "selected_ids": [
+      "T-BJS-SHA-1022-E",
+      "T-SHA-BJS-1023-E",
+      "H-SHA-CONTRACT-02"
+    ],
+    "outcome": "PENDING_APPROVAL",
+    "total_fen": 180000,
+    "known_subtotal_fen": 180000,
+    "violations": [
+      "ADVANCE_BOOKING_VIOLATION"
+    ],
+    "approval_reasons": [],
+    "all_selected_ids_in_responses": true
+  },
+  {
+    "scenario": "AC-023-neutral",
+    "selected_ids": [
+      "T-BJS-SHA-1105-EARLY",
+      "T-SHA-BJS-1106-P",
+      "H-SHA-CONTRACT-02"
+    ],
+    "outcome": "AUTO_APPROVED",
+    "total_fen": 190000,
+    "known_subtotal_fen": 190000,
+    "violations": [],
+    "approval_reasons": [],
+    "all_selected_ids_in_responses": true
+  },
+  {
+    "scenario": "AC-023-avoid-early",
+    "selected_ids": [
+      "T-BJS-SHA-1105-LATE",
+      "T-SHA-BJS-1106-P",
+      "H-SHA-CONTRACT-02"
+    ],
+    "outcome": "AUTO_APPROVED",
+    "total_fen": 190000,
+    "known_subtotal_fen": 190000,
+    "violations": [],
+    "approval_reasons": [],
+    "all_selected_ids_in_responses": true
+  },
+  {
+    "scenario": "S-09-transport-timeout",
+    "selected_ids": [
+      "H-SHA-CONTRACT-02"
+    ],
+    "outcome": "PENDING_APPROVAL",
+    "total_fen": null,
+    "known_subtotal_fen": 60000,
+    "violations": [],
+    "approval_reasons": [
+      "PLAN_INCOMPLETE"
+    ],
+    "all_selected_ids_in_responses": true
+  },
+  {
+    "scenario": "AC-013-no-protocol-hotel",
+    "selected_ids": [
+      "T-BJS-SHA-1025-B",
+      "T-SHA-BJS-1026-B"
+    ],
+    "outcome": "PENDING_APPROVAL",
+    "total_fen": null,
+    "known_subtotal_fen": 150000,
+    "violations": [],
+    "approval_reasons": [
+      "PLAN_INCOMPLETE"
+    ],
+    "all_selected_ids_in_responses": true
+  },
+  {
+    "scenario": "AC-013-weather-unavailable",
+    "selected_ids": [
+      "T-BJS-SHA-1028-A",
+      "T-SHA-BJS-1030-A",
+      "H-SHA-CONTRACT-01"
+    ],
+    "outcome": "PENDING_APPROVAL",
+    "total_fen": 476000,
+    "known_subtotal_fen": 476000,
+    "violations": [],
+    "approval_reasons": [
+      "BUDGET_EXCEEDED",
+      "OVER_AUTO_APPROVAL_LIMIT"
+    ],
+    "all_selected_ids_in_responses": true
+  }
+]

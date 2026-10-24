@@ -1,0 +1,32 @@
+services:
+  travel-desk:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    container_name: travel-compliance-desk
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    env_file:
+      - ../.env
+    environment:
+      - TRAVEL_DESK_HOST=0.0.0.0
+      - TRAVEL_DESK_PORT=8000
+      - TRAVEL_DESK_LLM_MODE=real
+      - TRAVEL_DESK_PROVIDER_MODE=live
+    volumes:
+      # Persistent data: SQLite DB, uploads, checkpoints, logs
+      - desk-data:/home/appuser/app/var
+      - desk-artifacts:/home/appuser/app/artifacts
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/health')"]
+      interval: 30s
+      timeout: 5s
+      start_period: 15s
+      retries: 3
+
+volumes:
+  desk-data:
+    driver: local
+  desk-artifacts:
+    driver: local

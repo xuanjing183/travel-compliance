@@ -1,0 +1,96 @@
+{
+  "decision": {
+    "request": {
+      "approver": "u-lisi",
+      "key": "decide-1",
+      "revision": 1,
+      "decision": "request_changes",
+      "comment": "请把预算调整为 5000 元后重提"
+    },
+    "status_code": 200,
+    "trip_status": "COLLECTING",
+    "revision": 2
+  },
+  "sse_event_types": null,
+  "status_timeline": [
+    {
+      "seq": 64,
+      "revision": 1,
+      "from": "COLLECTING",
+      "to": "VALIDATING",
+      "event": "submit",
+      "previous_revision": 1
+    },
+    {
+      "seq": 68,
+      "revision": 1,
+      "from": "VALIDATING",
+      "to": "PLANNING",
+      "event": "validated",
+      "previous_revision": 1
+    },
+    {
+      "seq": 76,
+      "revision": 1,
+      "from": "PLANNING",
+      "to": "PENDING_APPROVAL",
+      "event": "require_approval",
+      "previous_revision": 1
+    },
+    {
+      "seq": 80,
+      "revision": 2,
+      "from": "PENDING_APPROVAL",
+      "to": "COLLECTING",
+      "event": "request_changes",
+      "previous_revision": 1
+    }
+  ],
+  "counts": {
+    "approvals": 1,
+    "decided_approvals": 1,
+    "outbox_trip_delivery": 0,
+    "outbox_workflow_notification": 1,
+    "itineraries": 0,
+    "decision_recorded_events": 1
+  },
+  "outbox": [
+    {
+      "id": "858acec4-283a-4906-99d0-7ca603ec96a1",
+      "trip_id": "ab60d793-0540-40cd-b468-b2a3a5ecae9e",
+      "revision": 1,
+      "kind": "workflow_notification",
+      "to": [
+        "u-zhangsan"
+      ],
+      "cc": [
+        "u-lisi"
+      ],
+      "subject": "[差旅审批] 您的申请被要求修改（revision 1）",
+      "body": "张三，您好：\n\n您的差旅申请（北京→上海，2026-10-28～2026-10-30，事由：供应商大会）审批结果：要求修改。\n审批人：李四\n审批意见：请把预算调整为 5000 元后重提\n对应 revision：1，制度版本：v1.2\n\n请按意见修改后重新提交（新 revision 为 2）。\n\n本邮件为审批流程通知，不是出行确认，不包含可用的行程单。",
+      "created_at": "2026-10-19T15:17:01.782Z",
+      "unique_key": "ab60d793-0540-40cd-b468-b2a3a5ecae9e:1:workflow_notification"
+    }
+  ],
+  "audit_event_types": [
+    "trip_created",
+    "slots_changed",
+    "status_changed",
+    "submitted",
+    "preference_snapshot",
+    "policy_bound",
+    "status_changed",
+    "provider_call",
+    "provider_call",
+    "provider_call",
+    "provider_call",
+    "candidates_selected",
+    "plan_created",
+    "rules_evaluated",
+    "status_changed",
+    "approval_requested",
+    "decision_recorded",
+    "notification_written",
+    "status_changed"
+  ]
+}

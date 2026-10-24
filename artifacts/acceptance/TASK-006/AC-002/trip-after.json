@@ -1,0 +1,36 @@
+{
+  "id": "b0d836bf-a4fc-4adf-afb6-abdbd709f49f",
+  "employee_id": "u-zhangsan",
+  "status": "COLLECTING",
+  "revision": 1,
+  "slots": {
+    "origin": "北京",
+    "destination": "杭州",
+    "start_date": "2026-10-28",
+    "end_date": "2026-10-30",
+    "purpose": "供应商大会",
+    "declared_budget_fen": 500000,
+    "meeting_address": null,
+    "preferences": null
+  },
+  "missing_fields": [],
+  "invalid_fields": [],
+  "policy_version": null,
+  "preference_source": "none",
+  "preferences_used": {},
+  "plan": null,
+  "cost_breakdown": null,
+  "violations": [],
+  "approval_reasons": [],
+  "blocks": [],
+  "current_approval": null,
+  "policy_change_notice": null,
+  "delivery": {
+    "error": null,
+    "attempts": 0,
+    "itinerary_url": null
+  },
+  "thread_id": "b0d836bf-a4fc-4adf-afb6-abdbd709f49f:rev-1",
+  "created_at": "2026-10-19T15:51:33.546Z",
+  "updated_at": "2026-10-19T15:51:33.578Z"
+}

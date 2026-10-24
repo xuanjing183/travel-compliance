@@ -1,0 +1,566 @@
+[
+  {
+    "seq": 17,
+    "ts": "2026-10-19T16:36:08.576Z",
+    "actor": "u-wangwu",
+    "type": "policy_uploaded",
+    "payload": {
+      "version": "v1.3",
+      "effective_date": "2026-11-01",
+      "kind": "markdown",
+      "sha256": "3e3b8c1edb46fed8164962d24078f132d81f40fe27431b21a2415a84a9492024",
+      "size_bytes": 1461,
+      "normalized_text_sha256": "6c14999f47b6c8d2e8a000d216f0689d0d77c7b7a4ab85e1137b22ad53f911df",
+      "segments": 22,
+      "pages": null,
+      "filename": "v1.3.md"
+    },
+    "refs": [
+      {
+        "kind": "policy",
+        "id": "v1.3"
+      }
+    ]
+  },
+  {
+    "seq": 18,
+    "ts": "2026-10-19T16:36:08.584Z",
+    "actor": "u-wangwu",
+    "type": "policy_extracted",
+    "payload": {
+      "version": "v1.3",
+      "generator": "recorded:hand_written",
+      "overwrite": false,
+      "replaced": [],
+      "candidates": [
+        {
+          "id": "RULE-CITY-001",
+          "type": "city_tier",
+          "status": "candidate",
+          "quote_status": "valid"
+        },
+        {
+          "id": "RULE-HOTEL-001",
+          "type": "hotel_cap",
+          "status": "candidate",
+          "quote_status": "valid"
+        },
+        {
+          "id": "RULE-HOTEL-002",
+          "type": "hotel_cap",
+          "status": "candidate",
+          "quote_status": "valid"
+        },
+        {
+          "id": "RULE-MEAL-001",
+          "type": "meal_allowance",
+          "status": "candidate",
+          "quote_status": "valid"
+        },
+        {
+          "id": "RULE-CLASS-001",
+          "type": "cabin_class",
+          "status": "candidate",
+          "quote_status": "valid"
+        },
+        {
+          "id": "RULE-ADVANCE-001",
+          "type": "advance_booking_days",
+          "status": "candidate",
+          "quote_status": "valid"
+        },
+        {
+          "id": "RULE-AUTO-001",
+          "type": "auto_approve_limit",
+          "status": "candidate",
+          "quote_status": "valid"
+        },
+        {
+          "id": "RULE-DURATION-001",
+          "type": "trip_duration_limit",
+          "status": "candidate",
+          "quote_status": "valid"
+        },
+        {
+          "id": "RULE-DURATION-002",
+          "type": "trip_duration_limit",
+          "status": "candidate",
+          "quote_status": "invalid_quote"
+        },
+        {
+          "id": "RULE-OTHER-001",
+          "type": "taxi_expense",
+          "status": "unsupported",
+          "quote_status": "valid"
+        }
+      ],
+      "counts": {
+        "candidate": 9,
+        "confirmed": 0,
+        "rejected": 0,
+        "unsupported": 1,
+        "invalid_quote": 1
+      }
+    },
+    "refs": [
+      {
+        "kind": "policy",
+        "id": "v1.3"
+      }
+    ]
+  },
+  {
+    "seq": 19,
+    "ts": "2026-10-19T16:36:08.592Z",
+    "actor": "u-wangwu",
+    "type": "policy_rule_updated",
+    "payload": {
+      "version": "v1.3",
+      "rule_id": "RULE-CITY-001",
+      "before": {
+        "status": "candidate",
+        "value": {
+          "tiers": {
+            "A": [
+              "北京",
+              "上海",
+              "广州",
+              "深圳"
+            ],
+            "B": [
+              "杭州",
+              "南京",
+              "成都",
+              "武汉",
+              "西安",
+              "重庆",
+              "苏州",
+              "天津"
+            ]
+          },
+          "fallback_tier": "C"
+        },
+        "condition": {
+          "scope": "all"
+        }
+      },
+      "after": {
+        "status": "confirmed",
+        "value": {
+          "tiers": {
+            "A": [
+              "北京",
+              "上海",
+              "广州",
+              "深圳"
+            ],
+            "B": [
+              "杭州",
+              "南京",
+              "成都",
+              "武汉",
+              "西安",
+              "重庆",
+              "苏州",
+              "天津"
+            ]
+          },
+          "fallback_tier": "C"
+        },
+        "condition": {
+          "scope": "all"
+        }
+      },
+      "modified_fields": [],
+      "modification_reason": null,
+      "quote": "A 类城市：北京、上海、广州、深圳。B 类城市：杭州、南京、成都、武汉、西安、重庆、苏州、天津。C 类城市：上述以外的其他城市。",
+      "locator": "line:9"
+    },
+    "refs": [
+      {
+        "kind": "rule",
+        "id": "RULE-CITY-001",
+        "version": "v1.3"
+      }
+    ]
+  },
+  {
+    "seq": 20,
+    "ts": "2026-10-19T16:36:08.599Z",
+    "actor": "u-wangwu",
+    "type": "policy_rule_updated",
+    "payload": {
+      "version": "v1.3",
+      "rule_id": "RULE-HOTEL-001",
+      "before": {
+        "status": "candidate",
+        "value": {
+          "caps_fen": {
+            "A": 45000,
+            "B": 40000,
+            "C": 30000
+          }
+        },
+        "condition": {
+          "level": "employee"
+        }
+      },
+      "after": {
+        "status": "confirmed",
+        "value": {
+          "caps_fen": {
+            "A": 45000,
+            "B": 40000,
+            "C": 30000
+          }
+        },
+        "condition": {
+          "level": "employee"
+        }
+      },
+      "modified_fields": [],
+      "modification_reason": null,
+      "quote": "员工住宿上限：A 类城市每晚上限 450 元；B 类城市每晚上限 400 元；C 类城市每晚上限 300 元。",
+      "locator": "line:13"
+    },
+    "refs": [
+      {
+        "kind": "rule",
+        "id": "RULE-HOTEL-001",
+        "version": "v1.3"
+      }
+    ]
+  },
+  {
+    "seq": 21,
+    "ts": "2026-10-19T16:36:08.606Z",
+    "actor": "u-wangwu",
+    "type": "policy_rule_updated",
+    "payload": {
+      "version": "v1.3",
+      "rule_id": "RULE-HOTEL-002",
+      "before": {
+        "status": "candidate",
+        "value": {
+          "caps_fen": {
+            "A": 65000,
+            "B": 50000,
+            "C": 40000
+          }
+        },
+        "condition": {
+          "level": "manager"
+        }
+      },
+      "after": {
+        "status": "confirmed",
+        "value": {
+          "caps_fen": {
+            "A": 65000,
+            "B": 50000,
+            "C": 40000
+          }
+        },
+        "condition": {
+          "level": "manager"
+        }
+      },
+      "modified_fields": [],
+      "modification_reason": null,
+      "quote": "经理及以上人员住宿上限：A 类城市每晚上限 650 元；B 类城市每晚上限 500 元；C 类城市每晚上限 400 元。",
+      "locator": "line:15"
+    },
+    "refs": [
+      {
+        "kind": "rule",
+        "id": "RULE-HOTEL-002",
+        "version": "v1.3"
+      }
+    ]
+  },
+  {
+    "seq": 22,
+    "ts": "2026-10-19T16:36:08.613Z",
+    "actor": "u-wangwu",
+    "type": "policy_rule_updated",
+    "payload": {
+      "version": "v1.3",
+      "rule_id": "RULE-MEAL-001",
+      "before": {
+        "status": "candidate",
+        "value": {
+          "caps_fen": {
+            "A": 10000,
+            "B": 8000,
+            "C": 6000
+          }
+        },
+        "condition": {
+          "scope": "all"
+        }
+      },
+      "after": {
+        "status": "confirmed",
+        "value": {
+          "caps_fen": {
+            "A": 10000,
+            "B": 8000,
+            "C": 6000
+          }
+        },
+        "condition": {
+          "scope": "all"
+        }
+      },
+      "modified_fields": [],
+      "modification_reason": null,
+      "quote": "伙食补贴按出差自然日计发：A 类城市每天 100 元；B 类城市每天 80 元；C 类城市每天 60 元。",
+      "locator": "line:21"
+    },
+    "refs": [
+      {
+        "kind": "rule",
+        "id": "RULE-MEAL-001",
+        "version": "v1.3"
+      }
+    ]
+  },
+  {
+    "seq": 23,
+    "ts": "2026-10-19T16:36:08.619Z",
+    "actor": "u-wangwu",
+    "type": "policy_rule_updated",
+    "payload": {
+      "version": "v1.3",
+      "rule_id": "RULE-CLASS-001",
+      "before": {
+        "status": "candidate",
+        "value": {
+          "allowed": [
+            "economy",
+            "second_class"
+          ]
+        },
+        "condition": {
+          "scope": "all"
+        }
+      },
+      "after": {
+        "status": "confirmed",
+        "value": {
+          "allowed": [
+            "economy",
+            "second_class"
+          ]
+        },
+        "condition": {
+          "scope": "all"
+        }
+      },
+      "modified_fields": [],
+      "modification_reason": null,
+      "quote": "全体员工乘坐经济舱或高铁二等座，不得乘坐公务舱、头等舱或高铁一等座。",
+      "locator": "line:25"
+    },
+    "refs": [
+      {
+        "kind": "rule",
+        "id": "RULE-CLASS-001",
+        "version": "v1.3"
+      }
+    ]
+  },
+  {
+    "seq": 24,
+    "ts": "2026-10-19T16:36:08.627Z",
+    "actor": "u-wangwu",
+    "type": "policy_rule_updated",
+    "payload": {
+      "version": "v1.3",
+      "rule_id": "RULE-ADVANCE-001",
+      "before": {
+        "status": "candidate",
+        "value": {
+          "days": 3
+        },
+        "condition": {
+          "mode": "air"
+        }
+      },
+      "after": {
+        "status": "confirmed",
+        "value": {
+          "days": 3
+        },
+        "condition": {
+          "mode": "air"
+        }
+      },
+      "modified_fields": [],
+      "modification_reason": null,
+      "quote": "机票出发日距申请日不少于 3 个自然日。",
+      "locator": "line:29"
+    },
+    "refs": [
+      {
+        "kind": "rule",
+        "id": "RULE-ADVANCE-001",
+        "version": "v1.3"
+      }
+    ]
+  },
+  {
+    "seq": 25,
+    "ts": "2026-10-19T16:36:08.635Z",
+    "actor": "u-wangwu",
+    "type": "policy_rule_updated",
+    "payload": {
+      "version": "v1.3",
+      "rule_id": "RULE-AUTO-001",
+      "before": {
+        "status": "candidate",
+        "value": {
+          "value_fen": 300000
+        },
+        "condition": {
+          "scope": "all"
+        }
+      },
+      "after": {
+        "status": "confirmed",
+        "value": {
+          "value_fen": 300000
+        },
+        "condition": {
+          "scope": "all"
+        }
+      },
+      "modified_fields": [],
+      "modification_reason": null,
+      "quote": "单次差旅总额不超过 3000 元、无制度违规且不超过申报预算的，可自动通过；否则由直属经理审批。",
+      "locator": "line:33"
+    },
+    "refs": [
+      {
+        "kind": "rule",
+        "id": "RULE-AUTO-001",
+        "version": "v1.3"
+      }
+    ]
+  },
+  {
+    "seq": 26,
+    "ts": "2026-10-19T16:36:08.642Z",
+    "actor": "u-wangwu",
+    "type": "policy_rule_updated",
+    "payload": {
+      "version": "v1.3",
+      "rule_id": "RULE-DURATION-001",
+      "before": {
+        "status": "candidate",
+        "value": {
+          "days": 15
+        },
+        "condition": {
+          "scope": "all"
+        }
+      },
+      "after": {
+        "status": "confirmed",
+        "value": {
+          "days": 15
+        },
+        "condition": {
+          "scope": "all"
+        }
+      },
+      "modified_fields": [],
+      "modification_reason": null,
+      "quote": "单次出差不超过 15 个自然日。",
+      "locator": "line:37"
+    },
+    "refs": [
+      {
+        "kind": "rule",
+        "id": "RULE-DURATION-001",
+        "version": "v1.3"
+      }
+    ]
+  },
+  {
+    "seq": 27,
+    "ts": "2026-10-19T16:36:08.650Z",
+    "actor": "u-wangwu",
+    "type": "policy_rule_updated",
+    "payload": {
+      "version": "v1.3",
+      "rule_id": "RULE-DURATION-002",
+      "before": {
+        "status": "candidate",
+        "value": {
+          "days": 15
+        },
+        "condition": {
+          "scope": "all"
+        }
+      },
+      "after": {
+        "status": "rejected",
+        "value": {
+          "days": 15
+        },
+        "condition": {
+          "scope": "all"
+        }
+      },
+      "modified_fields": [],
+      "modification_reason": null,
+      "quote": "出差时间最长不得超过 15 天。",
+      "locator": null
+    },
+    "refs": [
+      {
+        "kind": "rule",
+        "id": "RULE-DURATION-002",
+        "version": "v1.3"
+      }
+    ]
+  },
+  {
+    "seq": 28,
+    "ts": "2026-10-19T16:36:08.657Z",
+    "actor": "u-wangwu",
+    "type": "policy_published",
+    "payload": {
+      "version": "v1.3",
+      "archived": "v1.2",
+      "confirmed_rule_ids": [
+        "RULE-CITY-001",
+        "RULE-HOTEL-001",
+        "RULE-HOTEL-002",
+        "RULE-MEAL-001",
+        "RULE-CLASS-001",
+        "RULE-ADVANCE-001",
+        "RULE-AUTO-001",
+        "RULE-DURATION-001"
+      ],
+      "counts": {
+        "candidate": 0,
+        "confirmed": 8,
+        "rejected": 1,
+        "unsupported": 1,
+        "invalid_quote": 1
+      }
+    },
+    "refs": [
+      {
+        "kind": "policy",
+        "id": "v1.3"
+      },
+      {
+        "kind": "policy",
+        "id": "v1.2"
+      }
+    ]
+  }
+]

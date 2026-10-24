@@ -1,0 +1,224 @@
+{
+  "generated_at": "2026-10-19T16:49:37+00:00",
+  "llm_mode": "real",
+  "kind": "smoke (not an evaluation; AC-004/017/025 use the frozen set in TASK-011)",
+  "text_model": "qwen3.8-max",
+  "embedding_model": "qwen3.7-text-embedding",
+  "retrieval_mode": "vector",
+  "questions": [
+    {
+      "question": "员工去上海出差，住宿每晚最多能报多少？",
+      "expect": "answerable",
+      "clauses": [
+        "POL-2"
+      ],
+      "status_code": 200,
+      "answerable": false,
+      "answer": "不知道：当前制度（v1.2）中没有找到能回答这个问题的条款。",
+      "generator": "qwen3.8-max",
+      "citations": [],
+      "retrieval": {
+        "mode": "vector",
+        "chunks": [
+          {
+            "rank": 1,
+            "clause": "POL-2",
+            "locator": "line:13",
+            "score": 0.750112
+          },
+          {
+            "rank": 2,
+            "clause": "POL-2",
+            "locator": "line:15",
+            "score": 0.73297
+          },
+          {
+            "rank": 3,
+            "clause": "POL-3",
+            "locator": "line:21",
+            "score": 0.667752
+          },
+          {
+            "rank": 4,
+            "clause": "POL-2",
+            "locator": "line:17",
+            "score": 0.606359
+          },
+          {
+            "rank": 5,
+            "clause": "制度信息",
+            "locator": "line:3-5",
+            "score": 0.604741
+          }
+        ]
+      },
+      "check": {
+        "expectation_met": false,
+        "cited_clauses": []
+      }
+    },
+    {
+      "question": "经理去成都出差，酒店每晚上限是多少？",
+      "expect": "answerable",
+      "clauses": [
+        "POL-1",
+        "POL-2"
+      ],
+      "status_code": 200,
+      "answerable": false,
+      "answer": "不知道：当前制度（v1.2）中没有找到能回答这个问题的条款。",
+      "generator": "qwen3.8-max",
+      "citations": [],
+      "retrieval": {
+        "mode": "vector",
+        "chunks": [
+          {
+            "rank": 1,
+            "clause": "POL-2",
+            "locator": "line:15",
+            "score": 0.758133
+          },
+          {
+            "rank": 2,
+            "clause": "POL-2",
+            "locator": "line:13",
+            "score": 0.704009
+          },
+          {
+            "rank": 3,
+            "clause": "POL-2",
+            "locator": "line:17",
+            "score": 0.63156
+          },
+          {
+            "rank": 4,
+            "clause": "制度信息",
+            "locator": "line:3-5",
+            "score": 0.592391
+          },
+          {
+            "rank": 5,
+            "clause": "POL-6",
+            "locator": "line:33",
+            "score": 0.585333
+          }
+        ]
+      },
+      "check": {
+        "expectation_met": false,
+        "cited_clauses": []
+      }
+    },
+    {
+      "question": "公司每年有几天年假？",
+      "expect": "refusal",
+      "clauses": [],
+      "status_code": 200,
+      "answerable": false,
+      "answer": "不知道：当前制度（v1.2）中没有找到能回答这个问题的条款。",
+      "generator": "qwen3.8-max",
+      "citations": [],
+      "retrieval": {
+        "mode": "vector",
+        "chunks": [
+          {
+            "rank": 1,
+            "clause": "POL-7",
+            "locator": "line:37",
+            "score": 0.466318
+          },
+          {
+            "rank": 2,
+            "clause": "制度信息",
+            "locator": "line:3-5",
+            "score": 0.423322
+          },
+          {
+            "rank": 3,
+            "clause": "POL-3",
+            "locator": "line:21",
+            "score": 0.410969
+          },
+          {
+            "rank": 4,
+            "clause": "POL-2",
+            "locator": "line:13",
+            "score": 0.403732
+          },
+          {
+            "rank": 5,
+            "clause": "POL-2",
+            "locator": "line:15",
+            "score": 0.372282
+          }
+        ]
+      },
+      "check": {
+        "expectation_met": true,
+        "cited_clauses": []
+      }
+    }
+  ],
+  "usage": {
+    "calls": [
+      {
+        "purpose": "policy_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 562,
+        "est_cost_cny": 0.020232,
+        "latency_ms": 1268
+      },
+      {
+        "purpose": "policy_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 38,
+        "est_cost_cny": 0.001368,
+        "latency_ms": 314
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 28,
+        "est_cost_cny": 0.001008,
+        "latency_ms": 245
+      },
+      {
+        "purpose": "policy_answer",
+        "model": "qwen3.8-max",
+        "total_tokens": 799,
+        "est_cost_cny": 0.028764,
+        "latency_ms": 1170
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 27,
+        "est_cost_cny": 0.000972,
+        "latency_ms": 226
+      },
+      {
+        "purpose": "policy_answer",
+        "model": "qwen3.8-max",
+        "total_tokens": 788,
+        "est_cost_cny": 0.028368,
+        "latency_ms": 1162
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 22,
+        "est_cost_cny": 0.000792,
+        "latency_ms": 220
+      },
+      {
+        "purpose": "policy_answer",
+        "model": "qwen3.8-max",
+        "total_tokens": 792,
+        "est_cost_cny": 0.028512,
+        "latency_ms": 1157
+      }
+    ],
+    "total_tokens": 3056,
+    "est_cost_cny": 0.110016
+  }
+}

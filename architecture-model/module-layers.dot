@@ -1,0 +1,116 @@
+// 模块依赖图（compile-time import 依赖，current-state，high confidence）
+// 证据：对 src/travel_desk/*/**.py 的 `from travel_desk.X` 导入语句穷举统计
+//       （命令：grep -rhoP "from travel_desk\.\K[a-z_]+" <dir>/*.py | sort | uniq -c）
+//
+// 边类型说明（严格区分，避免把静态导入说成运行时调用）：
+//   实线 = compile-time import 依赖，边上数字为导入语句计数
+//   红色粗线 = 双向依赖（环）
+//   橙色虚线 = 向上层/旁层的导入（层序倒置），标注了实际导入的符号
+//
+// 本图只描述结构事实。是否构成风险、如何整改属于 risk-quality-reviewer / evolution-planner 的职责。
+
+digraph module_layers {
+    rankdir=TB;
+    nodesep=0.5;
+    ranksep=0.75;
+    fontname="Helvetica";
+    node [fontname="Helvetica", fontsize=11, shape=box, style="rounded,filled"];
+    edge [fontname="Helvetica", fontsize=9];
+    label="模块依赖图（compile-time import）— 依赖方向自上而下，domain 为零外部依赖的纯核心";
+    labelloc=t;
+    fontsize=13;
+
+    // ============ 第 1 层：接口 ============
+    subgraph cluster_l1 {
+        label="L1 接口层（薄：身份依赖 / 读 body / 调服务 / 序列化）";
+        style="rounded,filled"; color="#eaf2f8"; fontcolor="#2c5f8a";
+        api [label="api/\n路由 + SSE + 错误体 + trace_id\n(routes_trips/approvals/policies/\nadmin/users/reports/health)", fillcolor="#aed6f1"];
+    }
+
+    // ============ 第 2 层：编排与用例 ============
+    subgraph cluster_l2 {
+        label="L2 编排层与用例服务层（事务边界在此）";
+        style="rounded,filled"; color="#fef9e7"; fontcolor="#8a6d00";
+        workflow [label="workflow/\nLangGraph 图 + Workflow 引擎\nsubmit/decide/revalidate/\nretry_delivery/recover/reset", fillcolor="#f9e79f"];
+        services [label="services/\n用例服务\nconversation · trips · approvals ·\ndelivery · policies · policy_qa ·\npreferences · revalidation · uploads ·\naudit · idempotency · access · views", fillcolor="#f9e79f"];
+    }
+
+    // ============ 第 3 层：能力适配 ============
+    subgraph cluster_l3 {
+        label="L3 能力适配层（可替换实现：LLM 三模式 / Provider 双模式 / RAG 三检索）";
+        style="rounded,filled"; color="#f4ecf7"; fontcolor="#6c3483";
+        planning [label="planning/\nplanner · selector · plan\n候选过滤排序 + 防伪造", fillcolor="#d7bde2"];
+        policy   [label="policy/\ndocuments · extraction · rag\n制度编译 + 检索问答", fillcolor="#d7bde2"];
+        llm      [label="llm/\ndashscope · slots · summary · vision\n模型适配 + 费用守卫", fillcolor="#d7bde2"];
+        providers [label="providers/\nbase(Protocol) · demo(fixture) ·\nlive(Kiwi/Tavily/QWeather) · qweather_geo", fillcolor="#d7bde2"];
+    }
+
+    // ============ 第 4 层：确定性核心与基础设施 ============
+    subgraph cluster_l4 {
+        label="L4 确定性核心与基础设施";
+        style="rounded,filled"; color="#e8f8f5"; fontcolor="#117864";
+        domain [label="domain/  ★ 纯函数核心\nrules · states · policy · slots ·\nmodels · dates · money\n零 I/O，只导入自身", fillcolor="#a3e4d7", penwidth=3];
+        db     [label="db/\nschema · database ·\nrepositories · seed", fillcolor="#d1f2eb"];
+        guard  [label="network_guard\n（横切：进程内补丁，\n不被业务模块 import，\n由 main.py lifespan 安装）", fillcolor="#f2f3f4", style="rounded,filled,dashed"];
+        config [label="config\nSettings.from_env()", fillcolor="#f2f3f4"];
+    }
+
+    // ============ 主依赖边（实线 = import，数字 = 语句计数）============
+    api -> services   [label="14"];
+    api -> db         [label="8"];
+    api -> workflow   [label="1"];
+    api -> providers  [label="1"];
+    api -> llm        [label="1"];
+    api -> config     [label="1"];
+
+    workflow -> services  [label="15"];
+    workflow -> domain    [label="5"];
+    workflow -> providers [label="3"];
+    workflow -> db        [label="3"];
+    workflow -> llm       [label="2"];
+    workflow -> planning  [label="1"];
+    workflow -> config    [label="2"];
+
+    services -> domain  [label="19"];
+    services -> db      [label="11"];
+    services -> config  [label="8"];
+    services -> llm     [label="6"];
+    services -> policy  [label="3"];
+
+    planning -> domain    [label="10"];
+    planning -> providers [label="1"];
+
+    policy -> llm    [label="2"];
+    policy -> config [label="2"];
+    policy -> domain [label="1"];
+
+    providers -> domain [label="7"];
+
+    llm -> config [label="4"];
+
+    db -> config [label="3"];
+
+    // ============ 环：services ↔ workflow ============
+    // 精确范围：services 侧只有 conversation.py 一个文件参与环。
+    services -> workflow [label="2  ← 环\nconversation.py 导入\nworkflow.events +\nSubmitRun/Workflow",
+                          color="#c0392b", fontcolor="#c0392b", penwidth=2.5, constraint=true];
+    workflow -> services [label="15  ← 环", color="#c0392b", fontcolor="#c0392b", penwidth=2.5];
+
+    // ============ 层序倒置：llm 向上/旁导入 ============
+    llm -> db       [label="slots.py:\nfrom db.seed import CITY_TIERS\n（fake 正则的城市名单）",
+                     style=dashed, color="#e67e22", fontcolor="#a04000"];
+    llm -> services [label="slots.py + summary.py:\nfrom services.idempotency\nimport fingerprint\n（recorded 模式的缓存键）",
+                     style=dashed, color="#e67e22", fontcolor="#a04000"];
+    llm -> planning [label="summary.py:\nfrom planning.plan\nimport Plan, PlanSummary\n（摘要的输出契约）",
+                     style=dashed, color="#e67e22", fontcolor="#a04000"];
+
+    // ============ 关键结构性质（证据可复核）============
+    node [shape=note, fillcolor="#fdfefe", fontsize=9, style="filled"];
+    n1 [label="性质 1：domain/ 只导入 domain/ 自身（8 处自引用，0 处向外）。\n这是「金额、合规结论、候选选择、状态转换全部由代码决定」（HC-01/HC-02）\n在依赖结构上的落点：规则核心无法被模型层、Provider 层或存储层影响。"];
+    n2 [label="性质 2：providers/ 只导入 domain/（值类型）。\n因此 demo（fixture）与 live（真实 HTTP）两个实现可整体替换，\n替换面被 Protocol + 共享 Pydantic 值类型收窄。"];
+    n3 [label="性质 3：network_guard 不被任何业务模块 import，\n由 main.py 的 lifespan 在进程启动时安装猴子补丁。\n因此它是横切边界而非依赖节点 —— 业务代码无法绕过它，也无法感知它。"];
+    n4 [label="性质 4：唯一的模块环是 services ↔ workflow，\n且 services 侧只有 conversation.py 参与\n（它需要 SubmitRun 以复用同一套 SSE 流语义）。\n其余 12 个 services 模块都不导入 workflow。"];
+
+    { rank=same; n1; n2; }
+    { rank=same; n3; n4; }
+}

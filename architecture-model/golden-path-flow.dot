@@ -1,0 +1,144 @@
+// 业务端到端流程：差旅申请 → 合规判定 → 审批 → 交付（S-01 黄金路径 + 分支）
+// current-state，业务语言视图。技术组件下钻见 module-layers.dot 与 system-model.structurizr.dsl。
+//
+// 证据（high confidence，均为代码路径而非推断）：
+//   workflow/graph.py       8 个节点与条件边
+//   workflow/engine.py      submit / decide / recover 入口，每 Trip 进程内锁，后台任务
+//   services/conversation.py 对话→抽取→格式检查→写入→代码拼追问（IMP-43）
+//   planning/planner.py     build_plan：候选收集、降级为待人工补录、防伪造自检
+//   domain/rules.py         evaluate_trip：成本、违规、审批理由、结论
+//   llm/summary.py          make_summary + check_summary（空/超400字/含金额即丢弃）
+//   services/delivery.py    三段事务交付 + Outbox unique_key
+// 验收互证：AC-019（S-01～S-12 各 3 次 36/36）、AC-027（真实模型整链 S-01）、AC-013（三种故障降级）
+
+digraph golden_path {
+    rankdir=TB;
+    nodesep=0.4;
+    ranksep=0.55;
+    fontname="Helvetica";
+    node [fontname="Helvetica", fontsize=10, shape=box, style="rounded,filled"];
+    edge [fontname="Helvetica", fontsize=9];
+    label="业务端到端流程：差旅申请 → 合规判定 → 审批 → 交付\n（业务语言；实线=已取证，虚线=降级/异常分支，菱形=代码决策点）";
+    labelloc=t;
+    fontsize=13;
+
+    // ================= 员工：收集信息 =================
+    subgraph cluster_collect {
+        label="① 员工收集信息（可编辑，无外部副作用）";
+        style="rounded,filled"; color="#eaf2f8"; fontcolor="#2c5f8a"; fontsize=11;
+
+        a1 [label="员工用自然语言描述出差\n「下周去上海参加供应商大会，预算四千」", fillcolor="#d6eaf8"];
+        a2 [label="模型只提议槽位值\n（fake 正则 / recorded 冻结 / real 结构化输出）", fillcolor="#fdebd0"];
+        a3 [label="代码用与手工填写相同的规则\n逐个校验提议值", fillcolor="#d5f5e3"];
+        a4 [label="合法值写入槽位并审计 slots_changed\n非法值不写入、连同缺失项一起追问", fillcolor="#d5f5e3"];
+        a5 [label="追问文本由代码按槽位状态拼出\n（generator=template，只问缺失与非法项）", fillcolor="#d5f5e3"];
+        a6 [label="可选：上传会议邀请函图片\n识别结果是 pending 提议，不改 Trip", fillcolor="#fdebd0"];
+        a7 [label="员工确认（可改值）后才写入\n审计 image_confirmed 记 edited_fields", fillcolor="#d5f5e3"];
+
+        a1 -> a2 -> a3 -> a4 -> a5;
+        a6 -> a7;
+        a7 -> a4 [style=dashed, label="确认后并入槽位"];
+        a5 -> a1 [style=dashed, label="信息不齐，继续对话"];
+    }
+
+    // ================= 提交 =================
+    submit [label="员工显式提交（D-13）\n槽位齐全且合法才允许；写偏好快照（D-20）", shape=box, fillcolor="#aed6f1", penwidth=2];
+    a5 -> submit [label="信息已齐全"];
+
+    // ================= 系统处理（LangGraph 一次运行）=================
+    subgraph cluster_run {
+        label="② 系统处理（一次 LangGraph 运行 = 一个 checkpoint 线程；后台任务，客户端断开不中断写入）";
+        style="rounded,filled"; color="#fef9e7"; fontcolor="#8a6d00"; fontsize=11;
+
+        b1 [label="绑定当前已发布制度版本\n审计 policy_bound（记 previous / changed）", fillcolor="#d5f5e3"];
+
+        b2 [label="硬阻断检查（代码，先于任何供应商调用）\n出发日已过 / 返程早于出发 / 天数 > 15", shape=diamond, fillcolor="#fcf3cf"];
+
+        b3 [label="申请被政策阻断\n不计价、不调用供应商（S-06）\n员工修改后回到收集状态", fillcolor="#fadbd8"];
+
+        b4 [label="查询交通 / 酒店 / 天气候选\n（取一次故障快照，同一次规划看到一致配置）", fillcolor="#fdebd0"];
+
+        b5 [label="过滤与排序选出候选\n交通：不合规→价格→偏好惩罚→当地出发时刻→候选ID\n酒店：阶段→超标金额→价格→评分→协议优先→ID", fillcolor="#d5f5e3"];
+
+        b6 [label="防伪造自检 verify_choice\n选中候选必须与本次响应中同 ID 候选完全相等", fillcolor="#d5f5e3"];
+
+        b7 [label="代码计算成本与合规结论\n交通+酒店+补贴；违规三类；审批理由三类\n金额全为整数分，等于上限即合规", fillcolor="#d5f5e3"];
+
+        b8 [label="生成行程摘要（模型只写这段文字）\n输出经检查：空 / 超400字 / 含金额 → 丢弃并标 unavailable", fillcolor="#fdebd0"];
+
+        b9 [label="结论分支", shape=diamond, fillcolor="#fcf3cf"];
+
+        b1 -> b2;
+        b2 -> b3 [label="命中", style=dashed, color="#c0392b"];
+        b2 -> b4 [label="无阻断"];
+        b4 -> b5 -> b6 -> b7 -> b8 -> b9;
+    }
+    submit -> b1;
+
+    // ---- 降级分支（AC-013，从不编造数据）----
+    degrade [label="供应商失败/无候选 → 该部分「待人工补录」\ntotal_fen=null、known_subtotal_fen=已定价部分之和\n审批理由含 PLAN_INCOMPLETE，仍进入审批\n天气不可用只省略天气段、不阻断规划",
+             fillcolor="#fae5d3", shape=note];
+    b4 -> degrade [style=dashed, label="超时 / 不可用 / 返回无效数据", color="#c0392b", fontcolor="#c0392b"];
+    degrade -> b7 [style=dashed];
+
+    // ================= 三条出口 =================
+    subgraph cluster_outcome {
+        label="③ 结论出口";
+        style="rounded,filled"; color="#f4ecf7"; fontcolor="#6c3483"; fontsize=11;
+
+        c1 [label="自动通过\n无违规且无审批理由", fillcolor="#d5f5e3"];
+        c2 [label="需要人工审批\n生成唯一一张审批卡：\n成本明细、预算差、违规与理由、\n条款引用（quote + locator）、来源、revision", fillcolor="#ebdef0"];
+        c3 [label="无审批人（D-21）\n方案只写入审计、不保留为当前方案\n回到收集状态（IMP-06）", fillcolor="#fadbd8"];
+    }
+    b9 -> c1 [label="AUTO_APPROVED"];
+    b9 -> c2 [label="PENDING_APPROVAL"];
+    b9 -> c3 [label="申请人无直属经理", style=dashed];
+
+    // ================= 经理审批 =================
+    subgraph cluster_approval {
+        label="④ 直属经理审批（图中断点 interrupt；进程重启后待办不丢失，AC-010）";
+        style="rounded,filled"; color="#fdf2e9"; fontcolor="#a04000"; fontsize=11;
+
+        d1 [label="权限校验（服务端）\n非经理 403 → 审批本人 403 → 非直属 403", fillcolor="#d5f5e3"];
+        d2 [label="乐观锁与幂等\n旧 revision 409；同 Key 重放同一结果；\n不同 Key 对已处理 revision 409", fillcolor="#d5f5e3"];
+        d3 [label="经理决定", shape=diamond, fillcolor="#fcf3cf"];
+        d4 [label="批准", fillcolor="#d5f5e3"];
+        d5 [label="驳回（终态）\n必须填非空意见", fillcolor="#f5b7b1"];
+        d6 [label="要求修改\nrevision +1，旧卡置 superseded\n员工在详情页看到经理意见", fillcolor="#fdebd0"];
+
+        d1 -> d2 -> d3;
+        d3 -> d4 [label="approve"];
+        d3 -> d5 [label="reject"];
+        d3 -> d6 [label="request_changes"];
+    }
+    c2 -> d1;
+    d6 -> a1 [style=dashed, label="回到员工修改"];
+
+    // ================= 交付 =================
+    subgraph cluster_deliver {
+        label="⑤ 交付（三段事务；图节点、管理员重试、启动自动重试共用同一函数）";
+        style="rounded,filled"; color="#e8f8f5"; fontcolor="#117864"; fontsize=11;
+
+        e1 [label="① 转 DELIVERY_PENDING", fillcolor="#d1f2eb"];
+        e2 [label="② 同一事务写行程单 + trip_delivery 邮件\nOutbox unique_key = trip_id:revision:kind（INSERT OR IGNORE）\n随后转 DELIVERED", fillcolor="#a3e4d7"];
+        e3 [label="③ 写入失败 → 回滚\n只记 delivery_error（异常类型+固定文案）与 attempts\n停在 DELIVERY_PENDING 等管理员重试；重试不重复发信", fillcolor="#fae5d3"];
+
+        e1 -> e2;
+        e2 -> e3 [style=dashed, label="失败", color="#c0392b"];
+        e3 -> e1 [style=dashed, label="重试"];
+    }
+    c1 -> e1;
+    d4 -> e1;
+
+    done [label="员工收到行程单\n全过程审计可回溯（append-only）", shape=doubleoctagon, fillcolor="#a3e4d7", penwidth=2];
+    e2 -> done;
+
+    // ================= 横切 =================
+    subgraph cluster_cross {
+        label="横切关注点（贯穿全流程）";
+        style="rounded,dashed"; color="#7f8c8d"; fontcolor="#566573"; fontsize=11;
+        x1 [label="审计：每次状态变化 + 每个业务事件\nappend-only（触发器拒绝 UPDATE；\nDELETE 仅 Demo reset）", fillcolor="#f2f3f4", shape=note];
+        x2 [label="网络出站守卫：全程安装\n允许清单由配置推导（fake 空集 / real 仅模型域名 /\nlive 追加 Provider 域名）；无法归一化的主机名一律拒绝", fillcolor="#f2f3f4", shape=note];
+        x3 [label="费用守卫：每次真实调用前查累计\n达 40 元暂停线即拒绝；台账不可读也拒绝", fillcolor="#f2f3f4", shape=note];
+    }
+}

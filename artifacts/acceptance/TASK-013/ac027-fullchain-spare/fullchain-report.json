@@ -1,0 +1,501 @@
+{
+  "generated_at": "2026-10-20T05:06:22+00:00",
+  "task": "TASK-013",
+  "acceptance": "AC-027",
+  "llm_mode": "real",
+  "authorization": "AUTH-01",
+  "start_command": "python -m travel_desk (= uv run travel-desk)",
+  "purpose": "整链真实模型运行：自然语言原话 → 真实槽位抽取 → 真实行程摘要 → 审批卡；并与同一场景的确定性（fake）运行逐项比对。AC-020 只计时了「提交→审批卡」且槽位为预填，未覆盖真实槽位抽取，本运行补上该缺口。",
+  "scenario": "S-01（北京→上海，2026-10-28~30，供应商大会，申报预算 400000 分）",
+  "natural_language_inputs": [
+    "下周去上海参加供应商大会，预算四千",
+    "从北京出发，10月28日到10月30日",
+    "出发地北京，出发日期2026-10-28，返回日期2026-10-30，事由供应商大会，预算4000元"
+  ],
+  "expected": {
+    "status": "PENDING_APPROVAL",
+    "total_fen": 476000,
+    "slots": {
+      "origin": "北京",
+      "destination": "上海",
+      "start_date": "2026-10-28",
+      "end_date": "2026-10-30",
+      "purpose": "供应商大会",
+      "declared_budget_fen": 400000
+    },
+    "baseline": "measured in Phase A (fake mode), not hard-coded"
+  },
+  "machine": {
+    "platform": "Windows-10-10.0.26100-SP0",
+    "machine": "AMD64",
+    "python": "3.11.0",
+    "cpu_count": 24
+  },
+  "runs_requested": 1,
+  "passed": true,
+  "baseline": {
+    "llm_mode": "fake",
+    "boot": {
+      "boot": 1,
+      "pid": 29332,
+      "started_at": "2026-10-20T05:06:22.796298Z",
+      "ready_at": "2026-10-20T05:06:24.151739Z"
+    },
+    "status": "PENDING_APPROVAL",
+    "slots": {
+      "origin": "北京",
+      "destination": "上海",
+      "start_date": "2026-10-28",
+      "end_date": "2026-10-30",
+      "purpose": "供应商大会",
+      "declared_budget_fen": 400000
+    },
+    "missing_fields": [],
+    "invalid_fields": [],
+    "selected_ids": {
+      "outbound": "T-BJS-SHA-1028-A",
+      "return": "T-SHA-BJS-1030-A",
+      "hotel": "H-SHA-CONTRACT-01"
+    },
+    "cost": {
+      "nights": 2,
+      "days": 3,
+      "transport_fen": 350000,
+      "hotel_fen": 96000,
+      "meal_fen": 30000,
+      "total_fen": 476000,
+      "budget_delta_fen": 76000
+    },
+    "violations": [],
+    "approval_reasons": [
+      "BUDGET_EXCEEDED",
+      "OVER_AUTO_APPROVAL_LIMIT"
+    ],
+    "summary": {
+      "status": "ok",
+      "generator": "fake",
+      "chars": 119,
+      "text": "2026-10-28至2026-10-30赴上海，事由：供应商大会。去程乘 XC1028 于 09:30 出发、12:45 抵达。入住星衡协议酒店·外滩店，共 2 晚。行程期间有雨，请携带雨具。返程乘 XC1030 于 19:00 出发。"
+    },
+    "trip_id": "c61f70ac-c8a3-49ca-a928-f415a918995b",
+    "card_total_fen": 476000
+  },
+  "real": {
+    "boot": {
+      "boot": 1,
+      "pid": 23684,
+      "started_at": "2026-10-20T05:06:24.262226Z",
+      "ready_at": "2026-10-20T05:06:25.571920Z"
+    },
+    "provider_health": {
+      "llm_mode": "real",
+      "llm": {
+        "mode": "real",
+        "text_model": "qwen3.8-max",
+        "vision_model": "qwen3.5-plus",
+        "api_key_configured": true
+      },
+      "providers": [
+        {
+          "name": "transport",
+          "implementation": "demo_transport",
+          "mode": "demo",
+          "status": "ok",
+          "fault": "transport_timeout",
+          "last_error": null
+        },
+        {
+          "name": "hotel_contract",
+          "implementation": "demo_hotel",
+          "mode": "demo",
+          "status": "ok",
+          "fault": "no_protocol_hotel",
+          "last_error": null
+        },
+        {
+          "name": "hotel_backup",
+          "implementation": "demo_hotel",
+          "mode": "demo",
+          "status": "ok",
+          "fault": null,
+          "last_error": null
+        },
+        {
+          "name": "weather",
+          "implementation": "demo_weather",
+          "mode": "demo",
+          "status": "ok",
+          "fault": "weather_unavailable",
+          "last_error": null
+        }
+      ],
+      "network": {
+        "installed": true,
+        "allowed_hosts": [
+          "dashscope.aliyuncs.com"
+        ],
+        "attempts": 1,
+        "external_attempts": 0,
+        "blocked": 0,
+        "allowed": 0,
+        "local": 1,
+        "external_hosts": {},
+        "blocked_by_caller": []
+      }
+    },
+    "text_model": "qwen3.8-max",
+    "vision_model": "qwen3.5-plus",
+    "embed_model": null,
+    "api_key_configured": true,
+    "network": {
+      "installed": true,
+      "allowed_hosts": [
+        "dashscope.aliyuncs.com"
+      ],
+      "attempts": 1,
+      "external_attempts": 0,
+      "blocked": 0,
+      "allowed": 0,
+      "local": 1,
+      "external_hosts": {},
+      "blocked_by_caller": []
+    },
+    "boot_log_tail": "INFO:     Started server process [38764]\nINFO:     Waiting for application startup.\n2026-10-20 13:06:25,435 INFO travel_desk: startup recovery aborted=0 delivered=0 still_pending=0\nINFO:     Application startup complete.\nINFO:     Uvicorn running on http://127.0.0.1:57208 (Press CTRL+C to quit)\nINFO:     127.0.0.1:57213 - \"GET /api/health HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:57214 - \"POST /api/trips HTTP/1.1\" 201 Created\nINFO:     127.0.0.1:57214 - \"GET /api/trips/a22d23ea-f55c-4eaa-a774-e6aeca2d640c HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:57214 - \"POST /api/trips/a22d23ea-f55c-4eaa-a774-e6aeca2d640c/messages HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:57214 - \"GET /api/trips/a22d23ea-f55c-4eaa-a774-e6aeca2d640c HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:57214 - \"POST /api/trips/a22d23ea-f55c-4eaa-a774-e6aeca2d640c/submit HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:57214 - \"GET /api/trips/a22d23ea-f55c-4eaa-a774-e6aeca2d640c HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:57214 - \"GET /api/approvals?status=pending HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:57214 - \"GET /api/trips/a22d23ea-f55c-4eaa-a774-e6aeca2d640c/audit HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56169 - \"GET /api/health/providers HTTP/1.1\" 200 OK\n"
+  },
+  "runs": [
+    {
+      "run": 1,
+      "turns": [
+        {
+          "turn": 1,
+          "via": "POST /api/trips {text}",
+          "utterance": "下周去上海参加供应商大会，预算四千",
+          "assistant_text": "已记录：目的城市 上海，出差事由 供应商大会，申报预算 4,000.00 元。还需要：出发城市、出发日期（具体到日，如 10月28日）、返回日期（具体到日）。",
+          "slots": {
+            "origin": null,
+            "destination": "上海",
+            "start_date": null,
+            "end_date": null,
+            "purpose": "供应商大会",
+            "declared_budget_fen": 400000
+          },
+          "missing_fields": [
+            "origin",
+            "start_date",
+            "end_date"
+          ]
+        },
+        {
+          "turn": 2,
+          "via": "POST /api/trips/{id}/messages",
+          "utterance": "从北京出发，10月28日到10月30日",
+          "slots": {
+            "origin": "北京",
+            "destination": "上海",
+            "start_date": "2026-10-28",
+            "end_date": "2026-10-30",
+            "purpose": "供应商大会",
+            "declared_budget_fen": 400000
+          },
+          "missing_fields": [],
+          "invalid_fields": []
+        }
+      ],
+      "trip_id": "a22d23ea-f55c-4eaa-a774-e6aeca2d640c",
+      "topup_used": false,
+      "submit_elapsed_s": 2.703,
+      "final": {
+        "status": "PENDING_APPROVAL",
+        "slots": {
+          "origin": "北京",
+          "destination": "上海",
+          "start_date": "2026-10-28",
+          "end_date": "2026-10-30",
+          "purpose": "供应商大会",
+          "declared_budget_fen": 400000
+        },
+        "missing_fields": [],
+        "invalid_fields": [],
+        "selected_ids": {
+          "outbound": "T-BJS-SHA-1028-A",
+          "return": "T-SHA-BJS-1030-A",
+          "hotel": "H-SHA-CONTRACT-01"
+        },
+        "cost": {
+          "nights": 2,
+          "days": 3,
+          "transport_fen": 350000,
+          "hotel_fen": 96000,
+          "meal_fen": 30000,
+          "total_fen": 476000,
+          "budget_delta_fen": 76000
+        },
+        "violations": [],
+        "approval_reasons": [
+          "BUDGET_EXCEEDED",
+          "OVER_AUTO_APPROVAL_LIMIT"
+        ],
+        "summary": {
+          "status": "ok",
+          "generator": "qwen3.8-max",
+          "chars": 127,
+          "text": "本次差旅前往上海参加供应商大会，行程为2026年10月28日至30日。去程乘XC1028于09:30从北京出发，12:45抵沪；返程乘XC1030于19:00离沪，21:30抵京。入住星衡协议酒店·外滩店共2晚。期间天气依次为小雨、阴、多云，请备好雨具。"
+        }
+      },
+      "sse_event_types": [
+        "trip_status",
+        "status",
+        "plan",
+        "violations",
+        "approval_required",
+        "trip_status",
+        "done"
+      ],
+      "card_total_fen": 476000,
+      "card_policy_version": "v1.2",
+      "card_sources": [],
+      "audit_approval_requested_events": 1,
+      "valid": true,
+      "checks": [
+        {
+          "check": "原话抽取出 destination=上海",
+          "passed": true,
+          "observed": "上海"
+        },
+        {
+          "check": "抽取出 purpose=供应商大会",
+          "passed": true,
+          "observed": "供应商大会"
+        },
+        {
+          "check": "抽取出 declared_budget_fen=400000（四千→整数分）",
+          "passed": true,
+          "observed": 400000
+        },
+        {
+          "check": "不把「下周」猜成具体日期",
+          "passed": true,
+          "observed": [
+            null,
+            null
+          ]
+        },
+        {
+          "check": "补齐后无缺失/非法槽位",
+          "passed": true,
+          "observed": [
+            [],
+            []
+          ]
+        },
+        {
+          "check": "最终槽位与 S-01 逐项一致",
+          "passed": true,
+          "observed": {
+            "origin": "北京",
+            "destination": "上海",
+            "start_date": "2026-10-28",
+            "end_date": "2026-10-30",
+            "purpose": "供应商大会",
+            "declared_budget_fen": 400000
+          }
+        },
+        {
+          "check": "状态 PENDING_APPROVAL",
+          "passed": true,
+          "observed": "PENDING_APPROVAL"
+        },
+        {
+          "check": "总额 476000 分",
+          "passed": true,
+          "observed": 476000
+        },
+        {
+          "check": "选中候选与确定性基线一致",
+          "passed": true,
+          "observed": {
+            "real": {
+              "outbound": "T-BJS-SHA-1028-A",
+              "return": "T-SHA-BJS-1030-A",
+              "hotel": "H-SHA-CONTRACT-01"
+            },
+            "baseline": {
+              "outbound": "T-BJS-SHA-1028-A",
+              "return": "T-SHA-BJS-1030-A",
+              "hotel": "H-SHA-CONTRACT-01"
+            }
+          }
+        },
+        {
+          "check": "成本拆解与基线一致",
+          "passed": true,
+          "observed": {
+            "real": {
+              "nights": 2,
+              "days": 3,
+              "transport_fen": 350000,
+              "hotel_fen": 96000,
+              "meal_fen": 30000,
+              "total_fen": 476000,
+              "budget_delta_fen": 76000
+            },
+            "baseline": {
+              "nights": 2,
+              "days": 3,
+              "transport_fen": 350000,
+              "hotel_fen": 96000,
+              "meal_fen": 30000,
+              "total_fen": 476000,
+              "budget_delta_fen": 76000
+            }
+          }
+        },
+        {
+          "check": "违规与审批理由与基线一致",
+          "passed": true,
+          "observed": {
+            "real": [
+              [],
+              [
+                "BUDGET_EXCEEDED",
+                "OVER_AUTO_APPROVAL_LIMIT"
+              ]
+            ],
+            "baseline": [
+              [],
+              [
+                "BUDGET_EXCEEDED",
+                "OVER_AUTO_APPROVAL_LIMIT"
+              ]
+            ]
+          }
+        },
+        {
+          "check": "审批卡可获取且总额一致",
+          "passed": true,
+          "observed": 476000
+        },
+        {
+          "check": "行程摘要 status=ok",
+          "passed": true,
+          "observed": {
+            "status": "ok",
+            "generator": "qwen3.8-max",
+            "chars": 127,
+            "text": "本次差旅前往上海参加供应商大会，行程为2026年10月28日至30日。去程乘XC1028于09:30从北京出发，12:45抵沪；返程乘XC1030于19:00离沪，21:30抵京。入住星衡协议酒店·外滩店共2晚。期间天气依次为小雨、阴、多云，请备好雨具。"
+          }
+        },
+        {
+          "check": "行程摘要来自真实模型（generator 非 fake）",
+          "passed": true,
+          "observed": "qwen3.8-max"
+        },
+        {
+          "check": "SSE 流含 approval_required 帧",
+          "passed": true,
+          "observed": [
+            "trip_status",
+            "status",
+            "plan",
+            "violations",
+            "approval_required",
+            "trip_status",
+            "done"
+          ]
+        },
+        {
+          "check": "审计含恰好 1 条 approval_requested",
+          "passed": true,
+          "observed": 1
+        }
+      ]
+    }
+  ],
+  "usage": {
+    "n": 3,
+    "total_tokens": 2015,
+    "est_cost_cny": 0.07254,
+    "by_purpose": [
+      "itinerary_summary",
+      "slot_extraction"
+    ],
+    "models": [
+      "qwen3.8-max"
+    ],
+    "calls": [
+      {
+        "purpose": "slot_extraction",
+        "model": "qwen3.8-max",
+        "total_tokens": 786,
+        "est_cost_cny": 0.028296,
+        "elapsed_ms": null,
+        "ts": "2026-10-20T05:06:29Z"
+      },
+      {
+        "purpose": "slot_extraction",
+        "model": "qwen3.8-max",
+        "total_tokens": 807,
+        "est_cost_cny": 0.029052,
+        "elapsed_ms": null,
+        "ts": "2026-10-20T05:06:31Z"
+      },
+      {
+        "purpose": "itinerary_summary",
+        "model": "qwen3.8-max",
+        "total_tokens": 422,
+        "est_cost_cny": 0.015192,
+        "elapsed_ms": null,
+        "ts": "2026-10-20T05:06:34Z"
+      }
+    ]
+  },
+  "runs_valid": 1,
+  "all_runs_valid": true,
+  "real_model_corroboration": {
+    "slot_extraction_calls": 2,
+    "itinerary_summary_calls": 1,
+    "purposes_used": [
+      "itinerary_summary",
+      "slot_extraction"
+    ],
+    "models_used": [
+      "qwen3.8-max"
+    ],
+    "summary_generators": [
+      "qwen3.8-max"
+    ],
+    "no_fake_or_recorded_output": true,
+    "passed": true
+  },
+  "egress": {
+    "allowed_hosts": [
+      "dashscope.aliyuncs.com"
+    ],
+    "attempts": 1,
+    "external_attempts": 0,
+    "blocked": 0,
+    "allowed": 0,
+    "local": 1,
+    "external_hosts": {},
+    "external_host_names": [
+      "dashscope.aliyuncs.com"
+    ],
+    "imp97_bytes_hosts_misclassified_as_local": [
+      {
+        "logged_as": "b'dashscope.aliyuncs.com'",
+        "decoded_host": "dashscope.aliyuncs.com",
+        "via": "getaddrinfo",
+        "decision_recorded": "local",
+        "on_allowlist": true,
+        "decision_after_imp97": "allowed"
+      }
+    ],
+    "note": "external_attempts/local 计数受 IMP-97 影响：bytes 主机名被误判为 local。本字段以解码后的主机名对允许清单重新判定，故 only_allowlisted_hosts 反映实质结论；IMP-97 修复落地后同一调用应记为 decision=allowed、external_attempts=1。",
+    "only_allowlisted_hosts": true
+  },
+  "desensitised": {
+    "scanned_files": 6,
+    "hits": [],
+    "clean": true
+  }
+}

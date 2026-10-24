@@ -1,0 +1,401 @@
+{
+  "id": "e39a1126-269d-428c-8ca8-a6581d447b30",
+  "employee_id": "u-zhangsan",
+  "status": "PENDING_APPROVAL",
+  "revision": 2,
+  "slots": {
+    "origin": "北京",
+    "destination": "上海",
+    "start_date": "2026-10-28",
+    "end_date": "2026-10-30",
+    "purpose": "供应商大会",
+    "declared_budget_fen": 400000,
+    "meeting_address": null,
+    "preferences": null
+  },
+  "missing_fields": [],
+  "invalid_fields": [],
+  "policy_version": "v1.3",
+  "preference_source": "none",
+  "preferences_used": {},
+  "plan": {
+    "revision": 2,
+    "policy_version": "v1.3",
+    "incomplete": false,
+    "missing": [],
+    "transport": {
+      "status": "selected",
+      "outbound": {
+        "id": "T-BJS-SHA-1028-A",
+        "origin": "北京",
+        "destination": "上海",
+        "mode": "air",
+        "carrier": "星衡航空",
+        "service_no": "XC1028",
+        "depart_at": "2026-10-28T01:30:00Z",
+        "arrive_at": "2026-10-28T04:45:00Z",
+        "cabin": "economy",
+        "price_fen": 180000,
+        "source": "demo_fixture"
+      },
+      "return": {
+        "id": "T-SHA-BJS-1030-A",
+        "origin": "上海",
+        "destination": "北京",
+        "mode": "air",
+        "carrier": "星衡航空",
+        "service_no": "XC1030",
+        "depart_at": "2026-10-30T11:00:00Z",
+        "arrive_at": "2026-10-30T13:30:00Z",
+        "cabin": "economy",
+        "price_fen": 170000,
+        "source": "demo_fixture"
+      },
+      "exception_legs": [],
+      "note": null
+    },
+    "hotel": {
+      "status": "selected",
+      "candidate": {
+        "id": "H-SHA-CONTRACT-01",
+        "city": "上海",
+        "name": "星衡协议酒店·外滩店",
+        "price_fen": 48000,
+        "rating": 4.7,
+        "distance_note": "距会议中心约 2 公里",
+        "valid_until": "2026-12-31",
+        "available_date_ranges": null,
+        "source": "demo_fixture",
+        "kind": "contract"
+      },
+      "nights": 2,
+      "exception": false,
+      "note": null
+    },
+    "weather": {
+      "status": "ok",
+      "days": [
+        {
+          "date": "2026-10-28",
+          "summary": "小雨",
+          "temp_low_c": 17,
+          "temp_high_c": 21,
+          "source": "demo_fixture"
+        },
+        {
+          "date": "2026-10-29",
+          "summary": "阴",
+          "temp_low_c": 16,
+          "temp_high_c": 20,
+          "source": "demo_fixture"
+        },
+        {
+          "date": "2026-10-30",
+          "summary": "多云",
+          "temp_low_c": 16,
+          "temp_high_c": 22,
+          "source": "demo_fixture"
+        }
+      ],
+      "note": null
+    },
+    "itinerary": [
+      {
+        "date": "2026-10-28",
+        "items": [
+          {
+            "time": "09:30",
+            "title": "XC1028 北京→上海 出发",
+            "source": "demo_fixture"
+          },
+          {
+            "time": "12:45",
+            "title": "抵达上海",
+            "source": "demo_fixture"
+          },
+          {
+            "time": null,
+            "title": "入住 星衡协议酒店·外滩店",
+            "source": "demo_fixture"
+          },
+          {
+            "time": null,
+            "title": "供应商大会",
+            "source": null
+          },
+          {
+            "time": null,
+            "title": "天气小雨，建议携带雨具",
+            "source": "demo_fixture"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-29",
+        "items": [
+          {
+            "time": null,
+            "title": "供应商大会",
+            "source": null
+          }
+        ]
+      },
+      {
+        "date": "2026-10-30",
+        "items": [
+          {
+            "time": null,
+            "title": "供应商大会",
+            "source": null
+          },
+          {
+            "time": "19:00",
+            "title": "XC1030 上海→北京 出发",
+            "source": "demo_fixture"
+          }
+        ]
+      }
+    ],
+    "ranking": {
+      "preference_applied": false,
+      "preference_affected": false,
+      "considered": {
+        "outbound": [
+          "T-BJS-SHA-1028-A"
+        ],
+        "return": [
+          "T-SHA-BJS-1030-A"
+        ],
+        "hotel": [
+          "H-SHA-CONTRACT-01"
+        ]
+      },
+      "filtered_out": [
+        {
+          "id": "H-SHA-CONTRACT-02",
+          "reason": "NOT_AVAILABLE_ON_NIGHTS",
+          "nights": [
+            "2026-10-28",
+            "2026-10-29"
+          ]
+        }
+      ]
+    },
+    "summary": {
+      "status": "ok",
+      "text": "2026-10-28至2026-10-30赴上海，事由：供应商大会。去程乘 XC1028 于 09:30 出发、12:45 抵达。入住星衡协议酒店·外滩店，共 2 晚。行程期间有雨，请携带雨具。返程乘 XC1030 于 19:00 出发。",
+      "source": "model",
+      "generator": "fake",
+      "note": null
+    }
+  },
+  "cost_breakdown": {
+    "nights": 2,
+    "days": 3,
+    "destination_tier": "A",
+    "transport_fen": 350000,
+    "outbound_fen": 180000,
+    "return_fen": 170000,
+    "hotel_per_night_fen": 48000,
+    "hotel_fen": 96000,
+    "meal_per_day_fen": 10000,
+    "meal_fen": 30000,
+    "total_fen": 476000,
+    "known_subtotal_fen": 476000,
+    "declared_budget_fen": 400000,
+    "budget_delta_fen": 76000,
+    "missing_components": []
+  },
+  "violations": [
+    {
+      "code": "HOTEL_OVER_CAP",
+      "rule_id": "RULE-HOTEL-001",
+      "policy_version": "v1.3",
+      "clause": "POL-2",
+      "quote": "员工住宿上限：A 类城市每晚上限 450 元；B 类城市每晚上限 400 元；C 类城市每晚上限 300 元。",
+      "locator": "line:13",
+      "actual_value": 48000,
+      "limit_value": 45000,
+      "unit": "fen_per_night",
+      "subject": "H-SHA-CONTRACT-01",
+      "source": "policy",
+      "message": "星衡协议酒店·外滩店 每晚 480.00 元，超过 A 类城市上限 450.00 元（超 30.00 元/晚）"
+    }
+  ],
+  "approval_reasons": [
+    {
+      "code": "BUDGET_EXCEEDED",
+      "actual_value": 476000,
+      "limit_value": 400000,
+      "unit": "fen",
+      "lower_bound": false,
+      "missing": [],
+      "basis": null,
+      "message": "总额 4,760.00 元 超过申报预算 4,000.00 元（超 760.00 元）"
+    },
+    {
+      "code": "OVER_AUTO_APPROVAL_LIMIT",
+      "actual_value": 476000,
+      "limit_value": 300000,
+      "unit": "fen",
+      "lower_bound": false,
+      "missing": [],
+      "basis": {
+        "rule_id": "RULE-AUTO-001",
+        "policy_version": "v1.3",
+        "clause_ref": "POL-6"
+      },
+      "message": "总额 4,760.00 元 超过自动通过阈值 3,000.00 元"
+    }
+  ],
+  "blocks": [],
+  "current_approval": {
+    "id": "9185ff2d-f715-480c-9df9-4b4a41cc5d7c",
+    "trip_id": "e39a1126-269d-428c-8ca8-a6581d447b30",
+    "revision": 2,
+    "approver_id": "u-lisi",
+    "status": "pending",
+    "decision": null,
+    "comment": null,
+    "created_at": "2026-10-19T16:19:25.116Z",
+    "decided_at": null,
+    "idempotency_key": null,
+    "card": {
+      "employee": {
+        "id": "u-zhangsan",
+        "name": "张三",
+        "department": "销售部"
+      },
+      "revision": 2,
+      "slots": {
+        "origin": "北京",
+        "destination": "上海",
+        "start_date": "2026-10-28",
+        "end_date": "2026-10-30",
+        "purpose": "供应商大会",
+        "declared_budget_fen": 400000,
+        "meeting_address": null,
+        "preferences": null
+      },
+      "policy_version": "v1.3",
+      "cost_breakdown": {
+        "nights": 2,
+        "days": 3,
+        "destination_tier": "A",
+        "transport_fen": 350000,
+        "outbound_fen": 180000,
+        "return_fen": 170000,
+        "hotel_per_night_fen": 48000,
+        "hotel_fen": 96000,
+        "meal_per_day_fen": 10000,
+        "meal_fen": 30000,
+        "total_fen": 476000,
+        "known_subtotal_fen": 476000,
+        "declared_budget_fen": 400000,
+        "budget_delta_fen": 76000,
+        "missing_components": []
+      },
+      "budget_delta_fen": 76000,
+      "violations": [
+        {
+          "code": "HOTEL_OVER_CAP",
+          "rule_id": "RULE-HOTEL-001",
+          "policy_version": "v1.3",
+          "clause": "POL-2",
+          "quote": "员工住宿上限：A 类城市每晚上限 450 元；B 类城市每晚上限 400 元；C 类城市每晚上限 300 元。",
+          "locator": "line:13",
+          "actual_value": 48000,
+          "limit_value": 45000,
+          "unit": "fen_per_night",
+          "subject": "H-SHA-CONTRACT-01",
+          "source": "policy",
+          "message": "星衡协议酒店·外滩店 每晚 480.00 元，超过 A 类城市上限 450.00 元（超 30.00 元/晚）"
+        }
+      ],
+      "approval_reasons": [
+        {
+          "code": "BUDGET_EXCEEDED",
+          "actual_value": 476000,
+          "limit_value": 400000,
+          "unit": "fen",
+          "lower_bound": false,
+          "missing": [],
+          "basis": null,
+          "message": "总额 4,760.00 元 超过申报预算 4,000.00 元（超 760.00 元）"
+        },
+        {
+          "code": "OVER_AUTO_APPROVAL_LIMIT",
+          "actual_value": 476000,
+          "limit_value": 300000,
+          "unit": "fen",
+          "lower_bound": false,
+          "missing": [],
+          "basis": {
+            "rule_id": "RULE-AUTO-001",
+            "policy_version": "v1.3",
+            "clause_ref": "POL-6"
+          },
+          "message": "总额 4,760.00 元 超过自动通过阈值 3,000.00 元"
+        }
+      ],
+      "sources": [
+        "demo_fixture",
+        "model",
+        "policy"
+      ],
+      "plan_summary": {
+        "incomplete": false,
+        "missing": [],
+        "outbound": {
+          "id": "T-BJS-SHA-1028-A",
+          "service_no": "XC1028",
+          "mode": "air",
+          "cabin": "economy",
+          "origin": "北京",
+          "destination": "上海",
+          "depart_at": "2026-10-28T01:30:00Z",
+          "arrive_at": "2026-10-28T04:45:00Z",
+          "price_fen": 180000,
+          "source": "demo_fixture"
+        },
+        "return": {
+          "id": "T-SHA-BJS-1030-A",
+          "service_no": "XC1030",
+          "mode": "air",
+          "cabin": "economy",
+          "origin": "上海",
+          "destination": "北京",
+          "depart_at": "2026-10-30T11:00:00Z",
+          "arrive_at": "2026-10-30T13:30:00Z",
+          "price_fen": 170000,
+          "source": "demo_fixture"
+        },
+        "exception_legs": [],
+        "transport_note": null,
+        "hotel_status": "selected",
+        "nights": 2,
+        "hotel": {
+          "id": "H-SHA-CONTRACT-01",
+          "name": "星衡协议酒店·外滩店",
+          "city": "上海",
+          "price_fen": 48000,
+          "kind": "contract",
+          "source": "demo_fixture"
+        },
+        "hotel_exception": false,
+        "hotel_note": null,
+        "summary": "2026-10-28至2026-10-30赴上海，事由：供应商大会。去程乘 XC1028 于 09:30 出发、12:45 抵达。入住星衡协议酒店·外滩店，共 2 晚。行程期间有雨，请携带雨具。返程乘 XC1030 于 19:00 出发。",
+        "summary_generator": "fake"
+      }
+    }
+  },
+  "policy_change_notice": null,
+  "delivery": {
+    "error": null,
+    "attempts": 0,
+    "itinerary_url": null
+  },
+  "thread_id": "e39a1126-269d-428c-8ca8-a6581d447b30:rev-2:revalidate-2df21de7",
+  "created_at": "2026-10-19T16:19:25.039Z",
+  "updated_at": "2026-10-19T16:19:25.116Z"
+}

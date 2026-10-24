@@ -1,0 +1,59 @@
+============================= test session starts =============================
+platform win32 -- Python 3.11.0, pytest-9.1.1, pluggy-1.7.0 -- C:\Users\22316\Desktop\1\lc-course\travel-compliance-desk\.venv\Scripts\python.exe
+rootdir: C:\Users\22316\Desktop\1\lc-course\travel-compliance-desk
+configfile: pyproject.toml
+plugins: anyio-4.15.1, langsmith-0.14.11, asyncio-1.4.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 48 items
+
+tests/test_api.py::test_ac002_s05_asks_only_for_missing_fields_then_updates_without_repeating PASSED [  2%]
+tests/test_api.py::test_create_with_text_runs_the_first_turn PASSED      [  4%]
+tests/test_api.py::test_invalid_extracted_value_is_not_written_and_is_asked_again PASSED [  6%]
+tests/test_api.py::test_message_idempotency_replays_without_a_second_write PASSED [  8%]
+tests/test_api.py::test_message_preflight_errors_are_plain_json PASSED   [ 10%]
+tests/test_api.py::test_message_model_failure_ends_the_stream_with_one_error_and_no_write PASSED [ 12%]
+tests/test_api.py::test_message_in_policy_blocked_returns_to_collecting PASSED [ 14%]
+tests/test_api.py::test_messages_are_rejected_after_submit PASSED        [ 16%]
+tests/test_api.py::test_ac003_image_extraction_is_a_proposal_until_confirmed PASSED [ 18%]
+tests/test_api.py::test_upload_type_and_size_are_checked_by_content PASSED [ 20%]
+tests/test_api.py::test_extraction_needs_own_upload_and_collecting_state PASSED [ 22%]
+tests/test_api.py::test_s01_over_http_submit_stream_then_approve_delivers_once PASSED [ 25%]
+tests/test_api.py::test_ac009_decision_errors_follow_the_documented_order PASSED [ 27%]
+tests/test_api.py::test_submit_preflight_errors PASSED                   [ 29%]
+tests/test_api.py::test_delivery_retry_is_admin_only_and_state_checked PASSED [ 31%]
+tests/test_api.py::test_identity_is_required_and_must_be_known PASSED    [ 33%]
+tests/test_api.py::test_trip_visibility_and_ownership PASSED             [ 35%]
+tests/test_api.py::test_trip_list_scopes PASSED                          [ 37%]
+tests/test_api.py::test_role_gated_endpoints PASSED                      [ 39%]
+tests/test_api.py::test_faults_toggle_and_show_in_provider_health PASSED [ 41%]
+tests/test_api.py::test_demo_reset_requires_confirmation_and_clears_trips PASSED [ 43%]
+tests/test_api.py::test_error_envelope_and_trace_id PASSED               [ 45%]
+tests/test_llm.py::test_parser_full_sentence PASSED                      [ 47%]
+tests/test_llm.py::test_parser_does_not_invent_vague_fields PASSED       [ 50%]
+tests/test_llm.py::test_parser_budget[\u9884\u7b97\u6539\u62105000\u5143-500000] PASSED [ 52%]
+tests/test_llm.py::test_parser_budget[\u9884\u7b97\u4e24\u5343\u4e94-250000] PASSED [ 54%]
+tests/test_llm.py::test_parser_budget[\u9884\u7b971.2\u4e07-1200000] PASSED [ 56%]
+tests/test_llm.py::test_parser_budget[\u9884\u7b97\u56db\u5343\u5757-400000] PASSED [ 58%]
+tests/test_llm.py::test_chinese_number[\u56db\u5343-4000] PASSED         [ 60%]
+tests/test_llm.py::test_chinese_number[\u4e24\u5343\u4e94-2500] PASSED   [ 62%]
+tests/test_llm.py::test_chinese_number[\u4e00\u4e07\u4e8c-12000] PASSED  [ 64%]
+tests/test_llm.py::test_chinese_number[\u4e09\u5343\u4e94\u767e-3500] PASSED [ 66%]
+tests/test_llm.py::test_chinese_number[\u4e00\u5343\u96f6\u4e94-1005] PASSED [ 68%]
+tests/test_llm.py::test_chinese_number[\u5341\u4e8c-12] PASSED           [ 70%]
+tests/test_llm.py::test_chinese_number[\u4e8c\u5341-20] PASSED           [ 72%]
+tests/test_llm.py::test_parser_preferences_and_same_day PASSED           [ 75%]
+tests/test_llm.py::test_fake_extractor_is_labelled_fake PASSED           [ 77%]
+tests/test_llm.py::test_model_output_conversion PASSED                   [ 79%]
+tests/test_llm.py::test_recorded_slots_lookup_and_missing PASSED         [ 81%]
+tests/test_llm.py::test_recorded_invitation PASSED                       [ 83%]
+tests/test_llm.py::test_meter_sums_manual_and_runtime PASSED             [ 85%]
+tests/test_llm.py::test_guard_pauses_at_line PASSED                      [ 87%]
+tests/test_llm.py::test_guard_fails_closed_without_ledger PASSED         [ 89%]
+tests/test_llm.py::test_repo_ledger_marker_is_readable PASSED            [ 91%]
+tests/test_llm.py::test_structured_call_records_usage PASSED             [ 93%]
+tests/test_llm.py::test_structured_call_hides_exception_text PASSED      [ 95%]
+tests/test_llm.py::test_guard_blocks_before_client_is_built PASSED       [ 97%]
+tests/test_llm.py::test_missing_key_is_not_retryable PASSED              [100%]
+
+- generated xml file: C:\Users\22316\Desktop\1\lc-course\travel-compliance-desk\artifacts\acceptance\TASK-006\junit.xml -
+============================= 48 passed in 2.97s ==============================

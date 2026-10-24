@@ -1,0 +1,354 @@
+{
+  "S-01": {
+    "decision": {
+      "request": {
+        "user": "u-lisi",
+        "key": "S-01-d",
+        "revision": 1,
+        "decision": "approve"
+      },
+      "status_code": 200,
+      "trip_status": "DELIVERED",
+      "revision": 1,
+      "approval_decision": "approve"
+    },
+    "outbox": [
+      {
+        "id": "d4a76ca5-6d49-414d-aeee-a9ac0192c39b",
+        "trip_id": "1c12a471-79d2-4bf2-8309-731bb39d41cf",
+        "revision": 1,
+        "kind": "trip_delivery",
+        "to": [
+          "u-zhangsan"
+        ],
+        "cc": [
+          "u-lisi"
+        ],
+        "subject": "[差旅行程单] 北京→上海 2026-10-28～2026-10-30（revision 1）",
+        "body": "张三，您好：\n\n您的差旅申请（北京→上海，2026-10-28～2026-10-30，事由：供应商大会）已批准。revision 1，制度版本 v1.2。\n\n行程单：/api/trips/1c12a471-79d2-4bf2-8309-731bb39d41cf/itinerary?revision=1\n\n交通：\n  去程：XC1028 北京→上海，10-28 09:30 出发，1,800.00 元（来源 demo_fixture）\n  返程：XC1030 上海→北京，10-30 19:00 出发，1,700.00 元（来源 demo_fixture）\n  住宿：星衡协议酒店·外滩店，2 晚 × 480.00 元 = 960.00 元（来源 demo_fixture）\n  伙食补贴：3 天 × 100.00 元 = 300.00 元\n合计：4,760.00 元；申报预算：4,000.00 元\n\n审批：李四 批准\n\n行程摘要（Fake 模型生成（确定性测试替身），仅供参考，安排与金额以上文为准）：\n2026-10-28至2026-10-30赴上海，事由：供应商大会。去程乘 XC1028 于 09:30 出发、12:45 抵达。入住星衡协议酒店·外滩店，共 2 晚。行程期间有雨，请携带雨具。返程乘 XC1030 于 19:00 出发。",
+        "created_at": "2026-10-19T15:51:33.879Z",
+        "unique_key": "1c12a471-79d2-4bf2-8309-731bb39d41cf:1:trip_delivery"
+      }
+    ],
+    "status_timeline": [
+      {
+        "seq": 36,
+        "ts": "2026-10-19T15:51:33.830Z",
+        "revision": 1,
+        "from": "COLLECTING",
+        "to": "VALIDATING",
+        "event": "submit",
+        "previous_revision": 1
+      },
+      {
+        "seq": 40,
+        "ts": "2026-10-19T15:51:33.838Z",
+        "revision": 1,
+        "from": "VALIDATING",
+        "to": "PLANNING",
+        "event": "validated",
+        "previous_revision": 1
+      },
+      {
+        "seq": 48,
+        "ts": "2026-10-19T15:51:33.851Z",
+        "revision": 1,
+        "from": "PLANNING",
+        "to": "PENDING_APPROVAL",
+        "event": "require_approval",
+        "previous_revision": 1
+      },
+      {
+        "seq": 51,
+        "ts": "2026-10-19T15:51:33.870Z",
+        "revision": 1,
+        "from": "PENDING_APPROVAL",
+        "to": "APPROVED",
+        "event": "approve",
+        "previous_revision": 1
+      },
+      {
+        "seq": 52,
+        "ts": "2026-10-19T15:51:33.876Z",
+        "revision": 1,
+        "from": "APPROVED",
+        "to": "DELIVERY_PENDING",
+        "event": "start_delivery",
+        "previous_revision": 1
+      },
+      {
+        "seq": 53,
+        "ts": "2026-10-19T15:51:33.879Z",
+        "revision": 1,
+        "from": "DELIVERY_PENDING",
+        "to": "DELIVERED",
+        "event": "delivered",
+        "previous_revision": 1
+      }
+    ]
+  },
+  "S-07": {
+    "decision": {
+      "request": {
+        "user": "u-lisi",
+        "key": "S-07-d",
+        "revision": 1,
+        "decision": "reject",
+        "comment": "本次会议改为线上参加"
+      },
+      "status_code": 200,
+      "trip_status": "REJECTED",
+      "revision": 1,
+      "approval_decision": "reject"
+    },
+    "outbox": [
+      {
+        "id": "0f97ce7e-80ba-4abe-bd8e-c6b7a7ae1f06",
+        "trip_id": "4460a6d2-3fad-4728-9c34-b72ac2eeac43",
+        "revision": 1,
+        "kind": "workflow_notification",
+        "to": [
+          "u-zhangsan"
+        ],
+        "cc": [
+          "u-lisi"
+        ],
+        "subject": "[差旅审批] 您的申请被驳回（revision 1）",
+        "body": "张三，您好：\n\n您的差旅申请（北京→上海，2026-10-28～2026-10-30，事由：供应商大会）审批结果：驳回。\n审批人：李四\n审批意见：本次会议改为线上参加\n对应 revision：1，制度版本：v1.2\n\n申请已终止，如需出行请重新发起。\n\n本邮件为审批流程通知，不是出行确认，不包含可用的行程单。",
+        "created_at": "2026-10-19T15:51:33.961Z",
+        "unique_key": "4460a6d2-3fad-4728-9c34-b72ac2eeac43:1:workflow_notification"
+      }
+    ],
+    "status_timeline": [
+      {
+        "seq": 57,
+        "ts": "2026-10-19T15:51:33.921Z",
+        "revision": 1,
+        "from": "COLLECTING",
+        "to": "VALIDATING",
+        "event": "submit",
+        "previous_revision": 1
+      },
+      {
+        "seq": 61,
+        "ts": "2026-10-19T15:51:33.929Z",
+        "revision": 1,
+        "from": "VALIDATING",
+        "to": "PLANNING",
+        "event": "validated",
+        "previous_revision": 1
+      },
+      {
+        "seq": 69,
+        "ts": "2026-10-19T15:51:33.942Z",
+        "revision": 1,
+        "from": "PLANNING",
+        "to": "PENDING_APPROVAL",
+        "event": "require_approval",
+        "previous_revision": 1
+      },
+      {
+        "seq": 73,
+        "ts": "2026-10-19T15:51:33.961Z",
+        "revision": 1,
+        "from": "PENDING_APPROVAL",
+        "to": "REJECTED",
+        "event": "reject",
+        "previous_revision": 1
+      }
+    ]
+  },
+  "S-08": {
+    "decision": {
+      "request": {
+        "user": "u-lisi",
+        "key": "S-08-d",
+        "revision": 1,
+        "decision": "request_changes",
+        "comment": "请把预算调整为 5000 元后重提"
+      },
+      "status_code": 200,
+      "trip_status": "COLLECTING",
+      "revision": 2,
+      "approval_decision": "request_changes"
+    },
+    "outbox": [
+      {
+        "id": "702b6111-2078-4ba9-b3a4-733076d2246e",
+        "trip_id": "1f3d3cde-461e-4509-a374-0e0caff50bcf",
+        "revision": 1,
+        "kind": "workflow_notification",
+        "to": [
+          "u-zhangsan"
+        ],
+        "cc": [
+          "u-lisi"
+        ],
+        "subject": "[差旅审批] 您的申请被要求修改（revision 1）",
+        "body": "张三，您好：\n\n您的差旅申请（北京→上海，2026-10-28～2026-10-30，事由：供应商大会）审批结果：要求修改。\n审批人：李四\n审批意见：请把预算调整为 5000 元后重提\n对应 revision：1，制度版本：v1.2\n\n请按意见修改后重新提交（新 revision 为 2）。\n\n本邮件为审批流程通知，不是出行确认，不包含可用的行程单。",
+        "created_at": "2026-10-19T15:51:34.042Z",
+        "unique_key": "1f3d3cde-461e-4509-a374-0e0caff50bcf:1:workflow_notification"
+      }
+    ],
+    "status_timeline": [
+      {
+        "seq": 76,
+        "ts": "2026-10-19T15:51:34.001Z",
+        "revision": 1,
+        "from": "COLLECTING",
+        "to": "VALIDATING",
+        "event": "submit",
+        "previous_revision": 1
+      },
+      {
+        "seq": 80,
+        "ts": "2026-10-19T15:51:34.008Z",
+        "revision": 1,
+        "from": "VALIDATING",
+        "to": "PLANNING",
+        "event": "validated",
+        "previous_revision": 1
+      },
+      {
+        "seq": 88,
+        "ts": "2026-10-19T15:51:34.022Z",
+        "revision": 1,
+        "from": "PLANNING",
+        "to": "PENDING_APPROVAL",
+        "event": "require_approval",
+        "previous_revision": 1
+      },
+      {
+        "seq": 92,
+        "ts": "2026-10-19T15:51:34.043Z",
+        "revision": 2,
+        "from": "PENDING_APPROVAL",
+        "to": "COLLECTING",
+        "event": "request_changes",
+        "previous_revision": 1
+      }
+    ]
+  },
+  "delivery-failure-retry": {
+    "decision": {
+      "request": {
+        "user": "u-lisi",
+        "key": "fail-d",
+        "revision": 1,
+        "decision": "approve"
+      },
+      "status_code": 200,
+      "trip_status": "DELIVERY_PENDING",
+      "revision": 1,
+      "approval_decision": "approve"
+    },
+    "after_failure": {
+      "status": "DELIVERY_PENDING",
+      "delivery": {
+        "error": "OSError：交付写入失败，可由管理员重试",
+        "attempts": 1,
+        "itinerary_url": null
+      }
+    },
+    "retry": {
+      "status_code": 200,
+      "status": "DELIVERED"
+    },
+    "retry_again": {
+      "status_code": 409,
+      "error": {
+        "code": "INVALID_STATE",
+        "message": "当前状态不允许该操作",
+        "details": {
+          "status": "DELIVERED",
+          "allowed_states": [
+            "DELIVERY_PENDING"
+          ]
+        },
+        "trace_id": "f3663781e7734a5985c4b489fe61e2d0"
+      }
+    },
+    "outbox": [
+      {
+        "id": "86e55ede-8f17-433d-909d-ee62d9e6d5b8",
+        "trip_id": "6fd819b3-5e63-4cc2-8fca-9bcb883130a6",
+        "revision": 1,
+        "kind": "trip_delivery",
+        "to": [
+          "u-zhangsan"
+        ],
+        "cc": [
+          "u-lisi"
+        ],
+        "subject": "[差旅行程单] 北京→上海 2026-10-28～2026-10-30（revision 1）",
+        "body": "张三，您好：\n\n您的差旅申请（北京→上海，2026-10-28～2026-10-30，事由：供应商大会）已批准。revision 1，制度版本 v1.2。\n\n行程单：/api/trips/6fd819b3-5e63-4cc2-8fca-9bcb883130a6/itinerary?revision=1\n\n交通：\n  去程：XC1028 北京→上海，10-28 09:30 出发，1,800.00 元（来源 demo_fixture）\n  返程：XC1030 上海→北京，10-30 19:00 出发，1,700.00 元（来源 demo_fixture）\n  住宿：星衡协议酒店·外滩店，2 晚 × 480.00 元 = 960.00 元（来源 demo_fixture）\n  伙食补贴：3 天 × 100.00 元 = 300.00 元\n合计：4,760.00 元；申报预算：4,000.00 元\n\n审批：李四 批准\n\n行程摘要（Fake 模型生成（确定性测试替身），仅供参考，安排与金额以上文为准）：\n2026-10-28至2026-10-30赴上海，事由：供应商大会。去程乘 XC1028 于 09:30 出发、12:45 抵达。入住星衡协议酒店·外滩店，共 2 晚。行程期间有雨，请携带雨具。返程乘 XC1030 于 19:00 出发。",
+        "created_at": "2026-10-19T15:51:34.158Z",
+        "unique_key": "6fd819b3-5e63-4cc2-8fca-9bcb883130a6:1:trip_delivery"
+      }
+    ],
+    "db_counts": {
+      "approvals": 1,
+      "decided_approvals": 1,
+      "outbox_trip_delivery": 1,
+      "outbox_workflow_notification": 0,
+      "itineraries": 1,
+      "decision_recorded_events": 1
+    },
+    "status_timeline": [
+      {
+        "seq": 95,
+        "ts": "2026-10-19T15:51:34.084Z",
+        "revision": 1,
+        "from": "COLLECTING",
+        "to": "VALIDATING",
+        "event": "submit",
+        "previous_revision": 1
+      },
+      {
+        "seq": 99,
+        "ts": "2026-10-19T15:51:34.090Z",
+        "revision": 1,
+        "from": "VALIDATING",
+        "to": "PLANNING",
+        "event": "validated",
+        "previous_revision": 1
+      },
+      {
+        "seq": 107,
+        "ts": "2026-10-19T15:51:34.104Z",
+        "revision": 1,
+        "from": "PLANNING",
+        "to": "PENDING_APPROVAL",
+        "event": "require_approval",
+        "previous_revision": 1
+      },
+      {
+        "seq": 110,
+        "ts": "2026-10-19T15:51:34.124Z",
+        "revision": 1,
+        "from": "PENDING_APPROVAL",
+        "to": "APPROVED",
+        "event": "approve",
+        "previous_revision": 1
+      },
+      {
+        "seq": 111,
+        "ts": "2026-10-19T15:51:34.129Z",
+        "revision": 1,
+        "from": "APPROVED",
+        "to": "DELIVERY_PENDING",
+        "event": "start_delivery",
+        "previous_revision": 1
+      },
+      {
+        "seq": 113,
+        "ts": "2026-10-19T15:51:34.158Z",
+        "revision": 1,
+        "from": "DELIVERY_PENDING",
+        "to": "DELIVERED",
+        "event": "delivered",
+        "previous_revision": 1
+      }
+    ]
+  }
+}

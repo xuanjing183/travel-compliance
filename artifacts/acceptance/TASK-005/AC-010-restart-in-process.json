@@ -1,0 +1,133 @@
+{
+  "note": "同进程关闭并重新打开 Workflow（新的 aiosqlite 连接与图实例）；真实进程终止在 TASK-006 补证",
+  "recover_report": {
+    "aborted": [],
+    "delivered": [],
+    "still_pending": []
+  },
+  "decision": {
+    "request": {
+      "approver": "u-lisi",
+      "key": "decide-1",
+      "revision": 1,
+      "decision": "approve"
+    },
+    "status_code": 200,
+    "trip_status": "DELIVERED",
+    "revision": 1
+  },
+  "replay": {
+    "request": {
+      "approver": "u-lisi",
+      "key": "decide-1",
+      "revision": 1,
+      "decision": "approve"
+    },
+    "status_code": 200,
+    "trip_status": "DELIVERED",
+    "revision": 1
+  },
+  "decision_via": [
+    "graph"
+  ],
+  "sse_event_types": null,
+  "status_timeline": [
+    {
+      "seq": 105,
+      "revision": 1,
+      "from": "COLLECTING",
+      "to": "VALIDATING",
+      "event": "submit",
+      "previous_revision": 1
+    },
+    {
+      "seq": 109,
+      "revision": 1,
+      "from": "VALIDATING",
+      "to": "PLANNING",
+      "event": "validated",
+      "previous_revision": 1
+    },
+    {
+      "seq": 117,
+      "revision": 1,
+      "from": "PLANNING",
+      "to": "PENDING_APPROVAL",
+      "event": "require_approval",
+      "previous_revision": 1
+    },
+    {
+      "seq": 120,
+      "revision": 1,
+      "from": "PENDING_APPROVAL",
+      "to": "APPROVED",
+      "event": "approve",
+      "previous_revision": 1
+    },
+    {
+      "seq": 121,
+      "revision": 1,
+      "from": "APPROVED",
+      "to": "DELIVERY_PENDING",
+      "event": "start_delivery",
+      "previous_revision": 1
+    },
+    {
+      "seq": 122,
+      "revision": 1,
+      "from": "DELIVERY_PENDING",
+      "to": "DELIVERED",
+      "event": "delivered",
+      "previous_revision": 1
+    }
+  ],
+  "counts": {
+    "approvals": 1,
+    "decided_approvals": 1,
+    "outbox_trip_delivery": 1,
+    "outbox_workflow_notification": 0,
+    "itineraries": 1,
+    "decision_recorded_events": 1
+  },
+  "outbox": [
+    {
+      "id": "c3768162-2455-472b-a7d2-f385d9e7e843",
+      "trip_id": "ce9539ea-dffd-44cd-8f8a-240756546252",
+      "revision": 1,
+      "kind": "trip_delivery",
+      "to": [
+        "u-zhangsan"
+      ],
+      "cc": [
+        "u-lisi"
+      ],
+      "subject": "[差旅行程单] 北京→上海 2026-10-28～2026-10-30（revision 1）",
+      "body": "张三，您好：\n\n您的差旅申请（北京→上海，2026-10-28～2026-10-30，事由：供应商大会）已批准。revision 1，制度版本 v1.2。\n\n行程单：/api/trips/ce9539ea-dffd-44cd-8f8a-240756546252/itinerary?revision=1\n\n交通：\n  去程：XC1028 北京→上海，10-28 09:30 出发，1,800.00 元（来源 demo_fixture）\n  返程：XC1030 上海→北京，10-30 19:00 出发，1,700.00 元（来源 demo_fixture）\n  住宿：星衡协议酒店·外滩店，2 晚 × 480.00 元 = 960.00 元（来源 demo_fixture）\n  伙食补贴：3 天 × 100.00 元 = 300.00 元\n合计：4,760.00 元；申报预算：4,000.00 元\n\n审批：李四 批准\n\n行程摘要（Fake 模型生成（确定性测试替身），仅供参考，安排与金额以上文为准）：\n2026-10-28至2026-10-30赴上海，事由：供应商大会。去程乘 XC1028 于 09:30 出发、12:45 抵达。入住星衡协议酒店·外滩店，共 2 晚。行程期间有雨，请携带雨具。返程乘 XC1030 于 19:00 出发。",
+      "created_at": "2026-10-19T15:17:01.946Z",
+      "unique_key": "ce9539ea-dffd-44cd-8f8a-240756546252:1:trip_delivery"
+    }
+  ],
+  "audit_event_types": [
+    "trip_created",
+    "slots_changed",
+    "status_changed",
+    "submitted",
+    "preference_snapshot",
+    "policy_bound",
+    "status_changed",
+    "provider_call",
+    "provider_call",
+    "provider_call",
+    "provider_call",
+    "candidates_selected",
+    "plan_created",
+    "rules_evaluated",
+    "status_changed",
+    "approval_requested",
+    "decision_recorded",
+    "status_changed",
+    "status_changed",
+    "status_changed",
+    "delivery_written"
+  ]
+}

@@ -1,0 +1,36 @@
+INFO:     Started server process [19588]
+INFO:     Waiting for application startup.
+2026-10-20 09:15:39,675 INFO travel_desk: startup recovery aborted=0 delivered=0 still_pending=0
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:56301 (Press CTRL+C to quit)
+INFO:     127.0.0.1:56308 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56309 - "POST /api/demo/reset HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56309 - "POST /api/demo/faults HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56309 - "POST /api/trips HTTP/1.1" 201 Created
+INFO:     127.0.0.1:56309 - "PATCH /api/trips/505d3972-07fc-44c2-be59-713d300d3b00/slots HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56309 - "POST /api/trips/505d3972-07fc-44c2-be59-713d300d3b00/submit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56309 - "GET /api/trips/505d3972-07fc-44c2-be59-713d300d3b00 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56309 - "GET /api/trips/505d3972-07fc-44c2-be59-713d300d3b00/audit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56309 - "GET /api/trips/505d3972-07fc-44c2-be59-713d300d3b00/audit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56309 - "GET /api/trips/505d3972-07fc-44c2-be59-713d300d3b00/audit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56309 - "POST /api/demo/faults HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56309 - "POST /api/demo/reset HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56309 - "POST /api/demo/faults HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56309 - "POST /api/trips HTTP/1.1" 201 Created
+INFO:     127.0.0.1:56309 - "PATCH /api/trips/0fedc080-7885-4679-b671-f968c8dd12a6/slots HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56309 - "POST /api/trips/0fedc080-7885-4679-b671-f968c8dd12a6/submit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56309 - "GET /api/trips/0fedc080-7885-4679-b671-f968c8dd12a6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56309 - "GET /api/trips/0fedc080-7885-4679-b671-f968c8dd12a6/audit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56309 - "GET /api/trips/0fedc080-7885-4679-b671-f968c8dd12a6/audit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56309 - "GET /api/trips/0fedc080-7885-4679-b671-f968c8dd12a6/audit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56309 - "POST /api/demo/faults HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56309 - "POST /api/demo/reset HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56309 - "POST /api/demo/faults HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56309 - "POST /api/trips HTTP/1.1" 201 Created
+INFO:     127.0.0.1:56309 - "PATCH /api/trips/cb245bbf-3c35-4245-8e22-557fb54ad206/slots HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56309 - "POST /api/trips/cb245bbf-3c35-4245-8e22-557fb54ad206/submit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56309 - "GET /api/trips/cb245bbf-3c35-4245-8e22-557fb54ad206 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56309 - "GET /api/trips/cb245bbf-3c35-4245-8e22-557fb54ad206/audit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56309 - "GET /api/trips/cb245bbf-3c35-4245-8e22-557fb54ad206/audit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56309 - "GET /api/trips/cb245bbf-3c35-4245-8e22-557fb54ad206/audit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56309 - "POST /api/demo/faults HTTP/1.1" 200 OK

@@ -1,0 +1,39 @@
+# Docker build context exclusions
+# Only matters when building the Docker image; does not affect local development.
+
+# Version control
+.git
+.gitignore
+
+# Python caches
+__pycache__
+*.pyc
+*.pyo
+.pytest_cache
+.ruff_cache
+*.egg-info
+
+# Virtual environments
+.venv
+
+# IDE
+.idea
+.vscode
+
+# Environment secrets (injected via env_file at runtime, never baked into image)
+.env
+.env.*
+!.env.example
+
+# Local runtime logs / uploads (data volume handles these at runtime)
+var/*.log
+var/uploads/*
+artifacts/*.log
+artifacts/*.jsonl
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# HF deployment (separate platform)
+deploy/hf-space

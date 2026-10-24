@@ -1,0 +1,46 @@
+============================= test session starts =============================
+platform win32 -- Python 3.11.0, pytest-9.1.1, pluggy-1.7.0 -- C:\Users\22316\Desktop\1\lc-course\travel-compliance-desk\.venv\Scripts\python.exe
+rootdir: C:\Users\22316\Desktop\1\lc-course\travel-compliance-desk
+configfile: pyproject.toml
+plugins: anyio-4.15.1, langsmith-0.14.11, asyncio-1.4.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 35 items
+
+tests/test_planning.py::test_s01_full_hotel_is_filtered_and_cheapest_bookable_contract_is_chosen PASSED [  2%]
+tests/test_planning.py::test_s02_lowest_compliant_contract_hotel_auto_approves PASSED [  5%]
+tests/test_planning.py::test_s03_backup_hotel_over_cap_is_the_marked_exception PASSED [  8%]
+tests/test_planning.py::test_s04_only_candidate_violates_advance_booking_and_is_marked PASSED [ 11%]
+tests/test_planning.py::test_ac023_avoid_early_departure_changes_the_choice PASSED [ 14%]
+tests/test_planning.py::test_s09_transport_timeout_leaves_transport_for_manual_entry PASSED [ 17%]
+tests/test_planning.py::test_ac013_no_protocol_hotel_without_backup_requires_manual_hotel PASSED [ 20%]
+tests/test_planning.py::test_no_protocol_hotel_falls_back_to_backup_catalogue PASSED [ 22%]
+tests/test_planning.py::test_weather_unavailable_is_omitted_and_noted PASSED [ 25%]
+tests/test_planning.py::test_all_faults_together_never_invent_data PASSED [ 28%]
+tests/test_planning.py::test_fault_flags_round_trip_through_the_database PASSED [ 31%]
+tests/test_planning.py::test_invalid_fixture_degrades_instead_of_trusting_partial_data PASSED [ 34%]
+tests/test_planning.py::test_unknown_field_and_duplicate_ids_are_rejected PASSED [ 37%]
+tests/test_planning.py::test_transport_search_filters_route_and_local_date PASSED [ 40%]
+tests/test_planning.py::test_fixed_clock_is_demo_today PASSED            [ 42%]
+tests/test_planning.py::test_forged_candidate_id_is_rejected PASSED      [ 45%]
+tests/test_planning.py::test_real_id_with_altered_price_is_rejected PASSED [ 48%]
+tests/test_planning.py::test_candidate_from_another_run_is_rejected PASSED [ 51%]
+tests/test_planning.py::test_empty_responses_reject_any_selection PASSED [ 54%]
+tests/test_planning.py::test_compliance_ranks_before_price PASSED        [ 57%]
+tests/test_planning.py::test_price_ranks_before_preference PASSED        [ 60%]
+tests/test_planning.py::test_preference_breaks_a_price_tie_and_08_00_is_not_early PASSED [ 62%]
+tests/test_planning.py::test_stable_secondary_key_is_departure_time_then_id PASSED [ 65%]
+tests/test_planning.py::test_rail_is_exempt_from_advance_booking PASSED  [ 68%]
+tests/test_planning.py::test_no_compliant_transport_takes_cheapest_and_marks_exception PASSED [ 71%]
+tests/test_planning.py::test_contract_hotel_beats_cheaper_compliant_backup PASSED [ 74%]
+tests/test_planning.py::test_compliant_backup_beats_over_cap_contract PASSED [ 77%]
+tests/test_planning.py::test_hotel_tie_breaks_by_rating_then_id PASSED   [ 80%]
+tests/test_planning.py::test_no_compliant_hotel_takes_least_over_cap PASSED [ 82%]
+tests/test_planning.py::test_value_equal_to_cap_is_compliant PASSED      [ 85%]
+tests/test_planning.py::test_unbookable_hotels_are_filtered_before_ranking PASSED [ 88%]
+tests/test_planning.py::test_same_day_trip_needs_no_hotel PASSED         [ 91%]
+tests/test_planning.py::test_itinerary_uses_local_times_weather_and_notes PASSED [ 94%]
+tests/test_planning.py::test_manager_uses_manager_hotel_cap PASSED       [ 97%]
+tests/test_planning.py::test_planning_is_deterministic PASSED            [100%]
+
+- generated xml file: C:\Users\22316\Desktop\1\lc-course\travel-compliance-desk\artifacts\acceptance\AC-007\junit.xml -
+============================= 35 passed in 0.65s ==============================

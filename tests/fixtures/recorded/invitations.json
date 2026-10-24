@@ -1,0 +1,18 @@
+{
+  "description": "Recorded multimodal extraction outputs (contract §7.1.1), keyed by the image's SHA-256. Field mapping: model `city` -> `destination`.",
+  "entries": {
+    "e88ef3b9c44b45849869dfab5ac570e1a0c5aaf44565992aff6615250705bf84": {
+      "image": "tests/fixtures/invitations/shanghai_supplier_conference.png",
+      "source": "model",
+      "model": "qwen3.5-plus",
+      "provenance": "artifacts/spikes/model-spike.json vision_base64.runs[0] (TASK-001 real call, 2026-10-19T11:03:51Z; all 3 runs returned identical fields)",
+      "fields": {
+        "destination": "上海",
+        "start_date": "2026-10-28",
+        "end_date": "2026-10-30",
+        "purpose": "供应商大会：年度合作评审与新品对接",
+        "meeting_address": "上海市浦东新区滨江大道 2727 号星衡国际会议中心 3 号厅"
+      }
+    }
+  }
+}

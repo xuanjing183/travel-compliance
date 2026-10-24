@@ -1,0 +1,19 @@
+{
+  "scenario": "S-01（北京→上海，2026-10-28~30，供应商大会，申报预算 400000 分）",
+  "slots": {
+    "origin": "北京",
+    "destination": "上海",
+    "start_date": "2026-10-28",
+    "end_date": "2026-10-30",
+    "purpose": "供应商大会",
+    "declared_budget_fen": 400000
+  },
+  "utterances": [
+    "下周去上海参加供应商大会，预算四千",
+    "从北京出发，10月28日到10月30日",
+    "出发地北京，出发日期2026-10-28，返回日期2026-10-30，事由供应商大会，预算4000元"
+  ],
+  "expected_total_fen": 476000,
+  "expected_status": "PENDING_APPROVAL",
+  "demo_today": "2026-10-20"
+}

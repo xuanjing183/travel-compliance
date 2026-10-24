@@ -1,0 +1,271 @@
+{
+  "scenario": "S-09-transport-timeout",
+  "demo_today": "2026-10-20",
+  "policy_version": "v1.2",
+  "faults": [
+    "transport_timeout"
+  ],
+  "preferences": null,
+  "slots": {
+    "origin": "北京",
+    "destination": "上海",
+    "start_date": "2026-10-25",
+    "end_date": "2026-10-26",
+    "purpose": "客户拜访",
+    "declared_budget_fen": 250000,
+    "meeting_address": null,
+    "preferences": null
+  },
+  "provider_calls": [
+    {
+      "provider": "transport",
+      "implementation": "demo_transport",
+      "request": {
+        "origin": "北京",
+        "destination": "上海",
+        "date": "2026-10-25"
+      },
+      "status": "timeout",
+      "candidate_ids": [],
+      "error": "交通 Provider 超时（故障注入 transport_timeout）"
+    },
+    {
+      "provider": "transport",
+      "implementation": "demo_transport",
+      "request": {
+        "origin": "上海",
+        "destination": "北京",
+        "date": "2026-10-26"
+      },
+      "status": "timeout",
+      "candidate_ids": [],
+      "error": "交通 Provider 超时（故障注入 transport_timeout）"
+    },
+    {
+      "provider": "hotel_contract",
+      "implementation": "demo_hotel",
+      "request": {
+        "city": "上海"
+      },
+      "status": "ok",
+      "candidate_ids": [
+        "H-SHA-CONTRACT-01",
+        "H-SHA-CONTRACT-02"
+      ],
+      "error": null
+    },
+    {
+      "provider": "weather",
+      "implementation": "demo_weather",
+      "request": {
+        "city": "上海",
+        "dates": [
+          "2026-10-25",
+          "2026-10-26"
+        ]
+      },
+      "status": "ok",
+      "candidate_ids": [],
+      "error": null
+    }
+  ],
+  "plan": {
+    "revision": 1,
+    "policy_version": "v1.2",
+    "incomplete": true,
+    "missing": [
+      "transport"
+    ],
+    "transport": {
+      "status": "manual_required",
+      "outbound": null,
+      "return": null,
+      "exception_legs": [],
+      "note": "去程：交通 Provider 超时，待人工补录；返程：交通 Provider 超时，待人工补录"
+    },
+    "hotel": {
+      "status": "selected",
+      "candidate": {
+        "id": "H-SHA-CONTRACT-02",
+        "city": "上海",
+        "name": "星衡协议酒店·滨江店",
+        "price_fen": 40000,
+        "rating": 4.5,
+        "distance_note": "距会议中心约 1.2 公里",
+        "valid_until": "2026-12-31",
+        "available_date_ranges": [
+          [
+            "2026-01-01",
+            "2026-10-27"
+          ],
+          [
+            "2026-10-30",
+            "2026-12-31"
+          ]
+        ],
+        "source": "demo_fixture",
+        "kind": "contract"
+      },
+      "nights": 1,
+      "exception": false,
+      "note": null
+    },
+    "weather": {
+      "status": "ok",
+      "days": [
+        {
+          "date": "2026-10-25",
+          "summary": "晴",
+          "temp_low_c": 17,
+          "temp_high_c": 24,
+          "source": "demo_fixture"
+        },
+        {
+          "date": "2026-10-26",
+          "summary": "多云",
+          "temp_low_c": 17,
+          "temp_high_c": 23,
+          "source": "demo_fixture"
+        }
+      ],
+      "note": null
+    },
+    "itinerary": [
+      {
+        "date": "2026-10-25",
+        "items": [
+          {
+            "time": null,
+            "title": "去程交通待人工补录",
+            "source": null
+          },
+          {
+            "time": null,
+            "title": "入住 星衡协议酒店·滨江店",
+            "source": "demo_fixture"
+          },
+          {
+            "time": null,
+            "title": "客户拜访",
+            "source": null
+          }
+        ]
+      },
+      {
+        "date": "2026-10-26",
+        "items": [
+          {
+            "time": null,
+            "title": "客户拜访",
+            "source": null
+          },
+          {
+            "time": null,
+            "title": "返程交通待人工补录",
+            "source": null
+          }
+        ]
+      }
+    ],
+    "ranking": {
+      "preference_applied": false,
+      "preference_affected": false,
+      "considered": {
+        "outbound": [],
+        "return": [],
+        "hotel": [
+          "H-SHA-CONTRACT-02",
+          "H-SHA-CONTRACT-01"
+        ]
+      },
+      "filtered_out": []
+    }
+  },
+  "evaluation": {
+    "policy_version": "v1.2",
+    "outcome": "PENDING_APPROVAL",
+    "blocks": [],
+    "cost_breakdown": {
+      "nights": 1,
+      "days": 2,
+      "destination_tier": "A",
+      "transport_fen": null,
+      "outbound_fen": null,
+      "return_fen": null,
+      "hotel_per_night_fen": 40000,
+      "hotel_fen": 40000,
+      "meal_per_day_fen": 10000,
+      "meal_fen": 20000,
+      "total_fen": null,
+      "known_subtotal_fen": 60000,
+      "declared_budget_fen": 250000,
+      "budget_delta_fen": null,
+      "missing_components": [
+        "transport"
+      ]
+    },
+    "violations": [],
+    "approval_reasons": [
+      {
+        "code": "PLAN_INCOMPLETE",
+        "actual_value": null,
+        "limit_value": null,
+        "unit": "fen",
+        "lower_bound": false,
+        "missing": [
+          "transport"
+        ],
+        "basis": null,
+        "message": "方案不完整：交通待人工补录，不能自动通过"
+      }
+    ],
+    "refs": [
+      {
+        "kind": "rule",
+        "id": "RULE-CITY-001",
+        "version": "v1.2",
+        "clause": "POL-1"
+      },
+      {
+        "kind": "rule",
+        "id": "RULE-MEAL-001",
+        "version": "v1.2",
+        "clause": "POL-3"
+      },
+      {
+        "kind": "rule",
+        "id": "RULE-HOTEL-001",
+        "version": "v1.2",
+        "clause": "POL-2"
+      },
+      {
+        "kind": "rule",
+        "id": "RULE-CLASS-001",
+        "version": "v1.2",
+        "clause": "POL-4"
+      },
+      {
+        "kind": "rule",
+        "id": "RULE-ADVANCE-001",
+        "version": "v1.2",
+        "clause": "POL-5"
+      },
+      {
+        "kind": "rule",
+        "id": "RULE-AUTO-001",
+        "version": "v1.2",
+        "clause": "POL-6"
+      },
+      {
+        "kind": "rule",
+        "id": "RULE-DURATION-001",
+        "version": "v1.2",
+        "clause": "POL-7"
+      }
+    ]
+  },
+  "selected_ids": [
+    "H-SHA-CONTRACT-02"
+  ],
+  "all_selected_ids_in_responses": true
+}

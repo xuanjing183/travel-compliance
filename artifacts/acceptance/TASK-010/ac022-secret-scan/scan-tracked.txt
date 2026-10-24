@@ -1,0 +1,5 @@
+# AC-022 secret scan (git-tracked files)
+# command: git grep -nI -E '<patterns>' (tracked files only)
+# patterns target secret VALUES, not variable names
+
+exit=1

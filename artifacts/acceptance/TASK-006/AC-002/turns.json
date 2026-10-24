@@ -1,0 +1,118 @@
+[
+  {
+    "text": "下周去杭州",
+    "event_types": [
+      "status",
+      "slots",
+      "token",
+      "done"
+    ],
+    "slots": {
+      "origin": null,
+      "destination": "杭州",
+      "start_date": null,
+      "end_date": null,
+      "purpose": null,
+      "declared_budget_fen": null,
+      "meeting_address": null,
+      "preferences": null
+    },
+    "missing_fields": [
+      "origin",
+      "start_date",
+      "end_date",
+      "purpose",
+      "declared_budget_fen"
+    ],
+    "invalid_fields": [],
+    "changes": [
+      {
+        "field": "destination",
+        "before": null,
+        "after": "杭州"
+      }
+    ],
+    "generator": "fake",
+    "ask": "已记录：目的城市 杭州。还需要：出发城市、出发日期（具体到日，如 10月28日）、返回日期（具体到日）、出差事由、申报预算（元）。"
+  },
+  {
+    "text": "从北京出发，10月28日到10月30日，参加供应商大会，预算四千元",
+    "event_types": [
+      "status",
+      "slots",
+      "token",
+      "done"
+    ],
+    "slots": {
+      "origin": "北京",
+      "destination": "杭州",
+      "start_date": "2026-10-28",
+      "end_date": "2026-10-30",
+      "purpose": "供应商大会",
+      "declared_budget_fen": 400000,
+      "meeting_address": null,
+      "preferences": null
+    },
+    "missing_fields": [],
+    "invalid_fields": [],
+    "changes": [
+      {
+        "field": "origin",
+        "before": null,
+        "after": "北京"
+      },
+      {
+        "field": "start_date",
+        "before": null,
+        "after": "2026-10-28"
+      },
+      {
+        "field": "end_date",
+        "before": null,
+        "after": "2026-10-30"
+      },
+      {
+        "field": "purpose",
+        "before": null,
+        "after": "供应商大会"
+      },
+      {
+        "field": "declared_budget_fen",
+        "before": null,
+        "after": 400000
+      }
+    ],
+    "generator": "fake",
+    "ask": "已记录：出发城市 北京，出发日期 2026-10-28，返回日期 2026-10-30，出差事由 供应商大会，申报预算 4,000.00 元。信息已齐全：出发城市 北京，目的城市 杭州，出发日期 2026-10-28，返回日期 2026-10-30，出差事由 供应商大会，申报预算 4,000.00 元。请核对，确认无误后点击“提交”。"
+  },
+  {
+    "text": "预算改成五千",
+    "event_types": [
+      "status",
+      "slots",
+      "token",
+      "done"
+    ],
+    "slots": {
+      "origin": "北京",
+      "destination": "杭州",
+      "start_date": "2026-10-28",
+      "end_date": "2026-10-30",
+      "purpose": "供应商大会",
+      "declared_budget_fen": 500000,
+      "meeting_address": null,
+      "preferences": null
+    },
+    "missing_fields": [],
+    "invalid_fields": [],
+    "changes": [
+      {
+        "field": "declared_budget_fen",
+        "before": 400000,
+        "after": 500000
+      }
+    ],
+    "generator": "fake",
+    "ask": "已记录：申报预算 5,000.00 元。信息已齐全：出发城市 北京，目的城市 杭州，出发日期 2026-10-28，返回日期 2026-10-30，出差事由 供应商大会，申报预算 5,000.00 元。请核对，确认无误后点击“提交”。"
+  }
+]

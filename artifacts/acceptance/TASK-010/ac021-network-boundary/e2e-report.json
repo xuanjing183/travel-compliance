@@ -1,0 +1,2559 @@
+{
+  "generated_at": "2026-10-20T00:47:33.245413Z",
+  "mode": "fake",
+  "runs_requested": 1,
+  "scenarios": [
+    "S-01",
+    "S-02",
+    "S-03",
+    "S-04",
+    "S-05",
+    "S-06",
+    "S-07",
+    "S-08",
+    "S-09",
+    "S-10",
+    "S-11",
+    "S-12"
+  ],
+  "start_command": "python -m travel_desk (= uv run travel-desk)",
+  "data_dir": "<tempdir>/var",
+  "demo_today": "2026-10-20（固定时钟）",
+  "results": [
+    {
+      "scenario": "S-01",
+      "run": 1,
+      "passed": true,
+      "error": null,
+      "duration_s": 0.16,
+      "trajectory": [
+        "VALIDATING",
+        "PLANNING",
+        "PENDING_APPROVAL",
+        "APPROVED",
+        "DELIVERY_PENDING",
+        "DELIVERED"
+      ],
+      "detail": {
+        "trip_id": "9d3de163-439d-45e8-bad0-2f6735e6a2e6",
+        "sse": [
+          "trip_status",
+          "status",
+          "plan",
+          "violations",
+          "approval_required",
+          "trip_status",
+          "done"
+        ],
+        "trajectory": [
+          "VALIDATING",
+          "PLANNING",
+          "PENDING_APPROVAL",
+          "APPROVED",
+          "DELIVERY_PENDING",
+          "DELIVERED"
+        ]
+      },
+      "checks": [
+        {
+          "check": "状态 PENDING_APPROVAL",
+          "passed": true,
+          "observed": "PENDING_APPROVAL"
+        },
+        {
+          "check": "选中交通与酒店（02 满房被过滤）",
+          "passed": true,
+          "observed": {
+            "outbound": "T-BJS-SHA-1028-A",
+            "return": "T-SHA-BJS-1030-A",
+            "hotel": "H-SHA-CONTRACT-01"
+          }
+        },
+        {
+          "check": "晚数2、天数3",
+          "passed": true,
+          "observed": {
+            "nights": 2,
+            "days": 3,
+            "destination_tier": "A",
+            "transport_fen": 350000,
+            "outbound_fen": 180000,
+            "return_fen": 170000,
+            "hotel_per_night_fen": 48000,
+            "hotel_fen": 96000,
+            "meal_per_day_fen": 10000,
+            "meal_fen": 30000,
+            "total_fen": 476000,
+            "known_subtotal_fen": 476000,
+            "declared_budget_fen": 400000,
+            "budget_delta_fen": 76000,
+            "missing_components": []
+          }
+        },
+        {
+          "check": "交通350000、酒店96000、补贴30000、总额476000",
+          "passed": true,
+          "observed": {
+            "nights": 2,
+            "days": 3,
+            "destination_tier": "A",
+            "transport_fen": 350000,
+            "outbound_fen": 180000,
+            "return_fen": 170000,
+            "hotel_per_night_fen": 48000,
+            "hotel_fen": 96000,
+            "meal_per_day_fen": 10000,
+            "meal_fen": 30000,
+            "total_fen": 476000,
+            "known_subtotal_fen": 476000,
+            "declared_budget_fen": 400000,
+            "budget_delta_fen": 76000,
+            "missing_components": []
+          }
+        },
+        {
+          "check": "无制度违规",
+          "passed": true,
+          "observed": []
+        },
+        {
+          "check": "审批理由含 BUDGET_EXCEEDED 与 OVER_AUTO_APPROVAL_LIMIT",
+          "passed": true,
+          "observed": [
+            "BUDGET_EXCEEDED",
+            "OVER_AUTO_APPROVAL_LIMIT"
+          ]
+        },
+        {
+          "check": "超预算 76000 分",
+          "passed": true,
+          "observed": 76000
+        },
+        {
+          "check": "审批卡在经理待办中且字段齐全",
+          "passed": true,
+          "observed": [
+            "employee",
+            "revision",
+            "slots",
+            "policy_version",
+            "cost_breakdown",
+            "budget_delta_fen"
+          ]
+        },
+        {
+          "check": "审计中的规则结果带条款引用与来源",
+          "passed": true,
+          "observed": [
+            {
+              "kind": "rule",
+              "id": "RULE-CITY-001",
+              "version": "v1.2",
+              "clause": "POL-1"
+            },
+            {
+              "kind": "rule",
+              "id": "RULE-MEAL-001",
+              "version": "v1.2",
+              "clause": "POL-3"
+            },
+            {
+              "kind": "rule",
+              "id": "RULE-HOTEL-001",
+              "version": "v1.2",
+              "clause": "POL-2"
+            },
+            {
+              "kind": "rule",
+              "id": "RULE-CLASS-001",
+              "version": "v1.2",
+              "clause": "POL-4"
+            },
+            {
+              "kind": "rule",
+              "id": "RULE-ADVANCE-001",
+              "version": "v1.2",
+              "clause": "POL-5"
+            },
+            {
+              "kind": "rule",
+              "id": "RULE-AUTO-001",
+              "version": "v1.2",
+              "clause": "POL-6"
+            },
+            {
+              "kind": "rule",
+              "id": "RULE-DURATION-001",
+              "version": "v1.2",
+              "clause": "POL-7"
+            }
+          ]
+        },
+        {
+          "check": "李四批准后 DELIVERED",
+          "passed": true,
+          "observed": 200
+        },
+        {
+          "check": "恰好 1 封 trip_delivery",
+          "passed": true,
+          "observed": [
+            "trip_delivery"
+          ]
+        },
+        {
+          "check": "行程单已生成",
+          "passed": true,
+          "observed": 200
+        }
+      ],
+      "egress_attempts": 0,
+      "egress_external": []
+    },
+    {
+      "scenario": "S-02",
+      "run": 1,
+      "passed": true,
+      "error": null,
+      "duration_s": 0.13,
+      "trajectory": [
+        "VALIDATING",
+        "PLANNING",
+        "AUTO_APPROVED",
+        "DELIVERY_PENDING",
+        "DELIVERED"
+      ],
+      "detail": {
+        "trip_id": "3ae5ec40-8c89-40d5-b535-f85b9649acc7",
+        "trajectory": [
+          "VALIDATING",
+          "PLANNING",
+          "AUTO_APPROVED",
+          "DELIVERY_PENDING",
+          "DELIVERED"
+        ]
+      },
+      "checks": [
+        {
+          "check": "选中 B 组交通与 H-SHA-CONTRACT-02",
+          "passed": true,
+          "observed": {
+            "outbound": "T-BJS-SHA-1025-B",
+            "return": "T-SHA-BJS-1026-B",
+            "hotel": "H-SHA-CONTRACT-02"
+          }
+        },
+        {
+          "check": "晚数1、天数2、总额190000",
+          "passed": true,
+          "observed": {
+            "nights": 1,
+            "days": 2,
+            "destination_tier": "A",
+            "transport_fen": 130000,
+            "outbound_fen": 65000,
+            "return_fen": 65000,
+            "hotel_per_night_fen": 40000,
+            "hotel_fen": 40000,
+            "meal_per_day_fen": 10000,
+            "meal_fen": 20000,
+            "total_fen": 190000,
+            "known_subtotal_fen": 190000,
+            "declared_budget_fen": 250000,
+            "budget_delta_fen": -60000,
+            "missing_components": []
+          }
+        },
+        {
+          "check": "无违规、无审批理由",
+          "passed": true,
+          "observed": []
+        },
+        {
+          "check": "AUTO_APPROVED→DELIVERED",
+          "passed": true,
+          "observed": "DELIVERED"
+        },
+        {
+          "check": "没有审批卡",
+          "passed": true,
+          "observed": []
+        },
+        {
+          "check": "恰好 1 封 trip_delivery",
+          "passed": true,
+          "observed": [
+            "trip_delivery"
+          ]
+        }
+      ],
+      "egress_attempts": 0,
+      "egress_external": []
+    },
+    {
+      "scenario": "S-03",
+      "run": 1,
+      "passed": true,
+      "error": null,
+      "duration_s": 0.14,
+      "trajectory": [
+        "VALIDATING",
+        "PLANNING",
+        "PENDING_APPROVAL",
+        "APPROVED",
+        "DELIVERY_PENDING",
+        "DELIVERED"
+      ],
+      "detail": {
+        "trip_id": "9592a9fb-92f9-46cf-b53b-2268fbc09e96",
+        "trajectory": [
+          "VALIDATING",
+          "PLANNING",
+          "PENDING_APPROVAL",
+          "APPROVED",
+          "DELIVERY_PENDING",
+          "DELIVERED"
+        ]
+      },
+      "checks": [
+        {
+          "check": "成都无协议候选，使用备用酒店 H-CTU-BACKUP-01",
+          "passed": true,
+          "observed": {
+            "outbound": "T-BJS-CTU-1027-A",
+            "return": "T-CTU-BJS-1029-A",
+            "hotel": "H-CTU-BACKUP-01"
+          }
+        },
+        {
+          "check": "备用酒店来源 backup_fixture",
+          "passed": true,
+          "observed": "backup_fixture"
+        },
+        {
+          "check": "HOTEL_OVER_CAP 45000>40000（RULE-HOTEL-001 / POL-2 / policy）",
+          "passed": true,
+          "observed": {
+            "code": "HOTEL_OVER_CAP",
+            "rule_id": "RULE-HOTEL-001",
+            "policy_version": "v1.2",
+            "clause": "POL-2",
+            "quote": "员工住宿上限：A 类城市每晚上限 500 元；B 类城市每晚上限 400 元；C 类城市每晚上限 300 元。",
+            "locator": "line:13",
+            "actual_value": 45000,
+            "limit_value": 40000,
+            "unit": "fen_per_night",
+            "subject": "H-CTU-BACKUP-01",
+            "source": "policy",
+            "message": "锦城商务酒店（已验证备用） 每晚 450.00 元，超过 B 类城市上限 400.00 元（超 50.00 元/晚）"
+          }
+        },
+        {
+          "check": "总额274000",
+          "passed": true,
+          "observed": {
+            "nights": 2,
+            "days": 3,
+            "destination_tier": "B",
+            "transport_fen": 160000,
+            "outbound_fen": 80000,
+            "return_fen": 80000,
+            "hotel_per_night_fen": 45000,
+            "hotel_fen": 90000,
+            "meal_per_day_fen": 8000,
+            "meal_fen": 24000,
+            "total_fen": 274000,
+            "known_subtotal_fen": 274000,
+            "declared_budget_fen": 400000,
+            "budget_delta_fen": -126000,
+            "missing_components": []
+          }
+        },
+        {
+          "check": "PENDING_APPROVAL",
+          "passed": true,
+          "observed": "PENDING_APPROVAL"
+        },
+        {
+          "check": "批准后 DELIVERED",
+          "passed": true,
+          "observed": 200
+        }
+      ],
+      "egress_attempts": 0,
+      "egress_external": []
+    },
+    {
+      "scenario": "S-04",
+      "run": 1,
+      "passed": true,
+      "error": null,
+      "duration_s": 0.1,
+      "trajectory": [
+        "VALIDATING",
+        "PLANNING",
+        "PENDING_APPROVAL"
+      ],
+      "detail": {
+        "trip_id": "b326add4-0d48-40d0-b9e5-289af1971644",
+        "trajectory": [
+          "VALIDATING",
+          "PLANNING",
+          "PENDING_APPROVAL"
+        ]
+      },
+      "checks": [
+        {
+          "check": "ADVANCE_BOOKING_VIOLATION（提前2天<3天）",
+          "passed": true,
+          "observed": {
+            "code": "ADVANCE_BOOKING_VIOLATION",
+            "rule_id": "RULE-ADVANCE-001",
+            "policy_version": "v1.2",
+            "clause": "POL-5",
+            "quote": "机票出发日距申请日不少于 3 个自然日。",
+            "locator": "line:29",
+            "actual_value": 2,
+            "limit_value": 3,
+            "unit": "days",
+            "subject": "T-BJS-SHA-1022-E",
+            "source": "policy",
+            "message": "去程 T-BJS-SHA-1022-E 提前 2 天预订，少于制度要求的 3 天"
+          }
+        },
+        {
+          "check": "总额180000",
+          "passed": true,
+          "observed": {
+            "nights": 1,
+            "days": 2,
+            "destination_tier": "A",
+            "transport_fen": 120000,
+            "outbound_fen": 60000,
+            "return_fen": 60000,
+            "hotel_per_night_fen": 40000,
+            "hotel_fen": 40000,
+            "meal_per_day_fen": 10000,
+            "meal_fen": 20000,
+            "total_fen": 180000,
+            "known_subtotal_fen": 180000,
+            "declared_budget_fen": 300000,
+            "budget_delta_fen": -120000,
+            "missing_components": []
+          }
+        },
+        {
+          "check": "进入审批而非硬阻断",
+          "passed": true,
+          "observed": "PENDING_APPROVAL"
+        }
+      ],
+      "egress_attempts": 0,
+      "egress_external": []
+    },
+    {
+      "scenario": "S-05",
+      "run": 1,
+      "passed": true,
+      "error": null,
+      "duration_s": 0.08,
+      "trajectory": [],
+      "detail": {
+        "trip_id": "e61aeb84-5d27-4ea8-8416-2b3caf377519",
+        "sse": [
+          "status",
+          "slots",
+          "token",
+          "done"
+        ],
+        "ask": "已记录：目的城市 杭州。还需要：出发城市、出发日期（具体到日，如 10月28日）、返回日期（具体到日）、出差事由、申报预算（元）。",
+        "trajectory": []
+      },
+      "checks": [
+        {
+          "check": "识别 destination=杭州",
+          "passed": true,
+          "observed": {
+            "origin": null,
+            "destination": "杭州",
+            "start_date": null,
+            "end_date": null,
+            "purpose": null,
+            "declared_budget_fen": null,
+            "meeting_address": null,
+            "preferences": null
+          }
+        },
+        {
+          "check": "不把“下周”猜成具体日期",
+          "passed": true,
+          "observed": {
+            "origin": null,
+            "destination": "杭州",
+            "start_date": null,
+            "end_date": null,
+            "purpose": null,
+            "declared_budget_fen": null,
+            "meeting_address": null,
+            "preferences": null
+          }
+        },
+        {
+          "check": "只追问缺失的 5 项",
+          "passed": true,
+          "observed": [
+            "origin",
+            "start_date",
+            "end_date",
+            "purpose",
+            "declared_budget_fen"
+          ]
+        },
+        {
+          "check": "追问覆盖 5 个缺失项",
+          "passed": true,
+          "observed": "已记录：目的城市 杭州。还需要：出发城市、出发日期（具体到日，如 10月28日）、返回日期（具体到日）、出差事由、申报预算（元）。"
+        },
+        {
+          "check": "一次回复不重复询问杭州",
+          "passed": true,
+          "observed": "：出发城市、出发日期（具体到日，如 10月28日）、返回日期（具体到日）、出差事由、申报预算（元）。"
+        },
+        {
+          "check": "补齐后不再追问",
+          "passed": true,
+          "observed": [
+            [],
+            []
+          ]
+        },
+        {
+          "check": "两轮追问已审计",
+          "passed": true,
+          "observed": [
+            [
+              "origin",
+              "start_date",
+              "end_date",
+              "purpose",
+              "declared_budget_fen"
+            ],
+            []
+          ]
+        }
+      ],
+      "egress_attempts": 0,
+      "egress_external": []
+    },
+    {
+      "scenario": "S-06",
+      "run": 1,
+      "passed": true,
+      "error": null,
+      "duration_s": 0.14,
+      "trajectory": [
+        "VALIDATING",
+        "POLICY_BLOCKED",
+        "COLLECTING",
+        "VALIDATING",
+        "PLANNING",
+        "AUTO_APPROVED",
+        "DELIVERY_PENDING",
+        "DELIVERED"
+      ],
+      "detail": {
+        "trip_id": "9fe62034-8609-4630-a1e8-90dd2c4177c8",
+        "sse": [
+          "trip_status",
+          "violations",
+          "trip_status",
+          "done"
+        ],
+        "trajectory": [
+          "VALIDATING",
+          "POLICY_BLOCKED",
+          "COLLECTING",
+          "VALIDATING",
+          "PLANNING",
+          "AUTO_APPROVED",
+          "DELIVERY_PENDING",
+          "DELIVERED"
+        ]
+      },
+      "checks": [
+        {
+          "check": "POLICY_BLOCKED",
+          "passed": true,
+          "observed": "POLICY_BLOCKED"
+        },
+        {
+          "check": "审计记录阻断原因",
+          "passed": true,
+          "observed": [
+            {
+              "code": "START_DATE_IN_PAST",
+              "actual_value": "2026-10-19",
+              "limit_value": "2026-10-20",
+              "rule_id": null,
+              "policy_version": null,
+              "clause": null,
+              "message": "出发日期 2026-10-19 早于今天 2026-10-20"
+            }
+          ]
+        },
+        {
+          "check": "未调用交通/酒店/天气 Provider",
+          "passed": true,
+          "observed": []
+        },
+        {
+          "check": "员工修改后回到 COLLECTING 且 revision 不变",
+          "passed": true,
+          "observed": [
+            "COLLECTING",
+            1
+          ]
+        },
+        {
+          "check": "修改后的日期可以走完规划（与 S-02 同额）",
+          "passed": true,
+          "observed": "DELIVERED"
+        }
+      ],
+      "egress_attempts": 0,
+      "egress_external": []
+    },
+    {
+      "scenario": "S-07",
+      "run": 1,
+      "passed": true,
+      "error": null,
+      "duration_s": 0.12,
+      "trajectory": [
+        "VALIDATING",
+        "PLANNING",
+        "PENDING_APPROVAL",
+        "REJECTED"
+      ],
+      "detail": {
+        "trip_id": "46ac545f-558c-4f3d-8071-5d1a594976c4",
+        "second_decision_code": "ALREADY_DECIDED",
+        "trajectory": [
+          "VALIDATING",
+          "PLANNING",
+          "PENDING_APPROVAL",
+          "REJECTED"
+        ]
+      },
+      "checks": [
+        {
+          "check": "驳回成功",
+          "passed": true,
+          "observed": 200
+        },
+        {
+          "check": "REJECTED（终态）",
+          "passed": true,
+          "observed": "REJECTED"
+        },
+        {
+          "check": "无 trip_delivery，恰好 1 封 workflow_notification",
+          "passed": true,
+          "observed": [
+            "workflow_notification"
+          ]
+        },
+        {
+          "check": "再次审批返回 409",
+          "passed": true,
+          "observed": 409
+        }
+      ],
+      "egress_attempts": 0,
+      "egress_external": []
+    },
+    {
+      "scenario": "S-08",
+      "run": 1,
+      "passed": true,
+      "error": null,
+      "duration_s": 0.23,
+      "trajectory": [
+        "VALIDATING",
+        "PLANNING",
+        "PENDING_APPROVAL",
+        "COLLECTING",
+        "VALIDATING",
+        "PLANNING",
+        "PENDING_APPROVAL",
+        "APPROVED",
+        "DELIVERY_PENDING",
+        "DELIVERED"
+      ],
+      "detail": {
+        "trip_id": "ae2393aa-342a-451a-a67c-1a3c1e1e52d9",
+        "trajectory": [
+          "VALIDATING",
+          "PLANNING",
+          "PENDING_APPROVAL",
+          "COLLECTING",
+          "VALIDATING",
+          "PLANNING",
+          "PENDING_APPROVAL",
+          "APPROVED",
+          "DELIVERY_PENDING",
+          "DELIVERED"
+        ]
+      },
+      "checks": [
+        {
+          "check": "要求修改成功",
+          "passed": true,
+          "observed": 200
+        },
+        {
+          "check": "revision=2 且回到 COLLECTING",
+          "passed": true,
+          "observed": [
+            2,
+            "COLLECTING"
+          ]
+        },
+        {
+          "check": "旧审批失效",
+          "passed": true,
+          "observed": [
+            [
+              2,
+              null
+            ]
+          ]
+        },
+        {
+          "check": "重新提交后再次 PENDING_APPROVAL",
+          "passed": true,
+          "observed": "PENDING_APPROVAL"
+        },
+        {
+          "check": "总额仍 476000 且超过自动阈值",
+          "passed": true,
+          "observed": [
+            {
+              "code": "OVER_AUTO_APPROVAL_LIMIT",
+              "actual_value": 476000,
+              "limit_value": 300000,
+              "unit": "fen",
+              "lower_bound": false,
+              "missing": [],
+              "basis": {
+                "rule_id": "RULE-AUTO-001",
+                "policy_version": "v1.2",
+                "clause_ref": "POL-6"
+              },
+              "message": "总额 4,760.00 元 超过自动通过阈值 3,000.00 元"
+            }
+          ]
+        },
+        {
+          "check": "新预算已生效（不再超预算）",
+          "passed": true,
+          "observed": {
+            "nights": 2,
+            "days": 3,
+            "destination_tier": "A",
+            "transport_fen": 350000,
+            "outbound_fen": 180000,
+            "return_fen": 170000,
+            "hotel_per_night_fen": 48000,
+            "hotel_fen": 96000,
+            "meal_per_day_fen": 10000,
+            "meal_fen": 30000,
+            "total_fen": 476000,
+            "known_subtotal_fen": 476000,
+            "declared_budget_fen": 500000,
+            "budget_delta_fen": -24000,
+            "missing_components": []
+          }
+        },
+        {
+          "check": "第二次批准后交付",
+          "passed": true,
+          "observed": 200
+        },
+        {
+          "check": "两次决定均可审计",
+          "passed": true,
+          "observed": [
+            [
+              1,
+              {
+                "approval_id": "c1f32fff-52c0-44de-ab51-be8332e3f41a",
+                "decision": "request_changes",
+                "comment": "请补充会议议程后再提交",
+                "via": "graph"
+              }
+            ],
+            [
+              2,
+              {
+                "approval_id": "666577f0-2c5b-4b75-88c3-5809770f6bb4",
+                "decision": "approve",
+                "comment": null,
+                "via": "graph"
+              }
+            ]
+          ]
+        },
+        {
+          "check": "旧方案与旧审批卡保留在审计中",
+          "passed": true,
+          "observed": {
+            "superseded": [
+              {
+                "approval_id": "c1f32fff-52c0-44de-ab51-be8332e3f41a",
+                "superseded_revision": 1,
+                "reason": "request_changes"
+              }
+            ],
+            "plan_revisions": [
+              1,
+              2
+            ],
+            "card_revisions": [
+              1,
+              2
+            ]
+          }
+        },
+        {
+          "check": "1 封流程通知 + 1 封交付邮件",
+          "passed": true,
+          "observed": [
+            "workflow_notification",
+            "trip_delivery"
+          ]
+        }
+      ],
+      "egress_attempts": 0,
+      "egress_external": []
+    },
+    {
+      "scenario": "S-09",
+      "run": 1,
+      "passed": true,
+      "error": null,
+      "duration_s": 0.13,
+      "trajectory": [
+        "VALIDATING",
+        "PLANNING",
+        "PENDING_APPROVAL"
+      ],
+      "detail": {
+        "trip_id": "8a55eebf-4d23-4782-8402-24f09b1682b9",
+        "provider_calls": {
+          "transport": "timeout",
+          "hotel_contract": "ok",
+          "weather": "ok"
+        },
+        "trajectory": [
+          "VALIDATING",
+          "PLANNING",
+          "PENDING_APPROVAL"
+        ]
+      },
+      "checks": [
+        {
+          "check": "管理员可注入交通超时",
+          "passed": true,
+          "observed": {
+            "no_protocol_hotel": false,
+            "transport_timeout": true,
+            "weather_unavailable": false
+          }
+        },
+        {
+          "check": "不崩溃，交通待人工补录",
+          "passed": true,
+          "observed": {
+            "status": "manual_required",
+            "outbound": null,
+            "return": null,
+            "exception_legs": [],
+            "note": "去程：交通 Provider 超时，待人工补录；返程：交通 Provider 超时，待人工补录"
+          }
+        },
+        {
+          "check": "total_fen=null，known_subtotal_fen=60000（酒店40000+补贴20000）",
+          "passed": true,
+          "observed": {
+            "nights": 1,
+            "days": 2,
+            "destination_tier": "A",
+            "transport_fen": null,
+            "outbound_fen": null,
+            "return_fen": null,
+            "hotel_per_night_fen": 40000,
+            "hotel_fen": 40000,
+            "meal_per_day_fen": 10000,
+            "meal_fen": 20000,
+            "total_fen": null,
+            "known_subtotal_fen": 60000,
+            "declared_budget_fen": 250000,
+            "budget_delta_fen": null,
+            "missing_components": [
+              "transport"
+            ]
+          }
+        },
+        {
+          "check": "审批理由含 PLAN_INCOMPLETE",
+          "passed": true,
+          "observed": [
+            "PLAN_INCOMPLETE"
+          ]
+        },
+        {
+          "check": "进入 PENDING_APPROVAL（S-02 同输入本应自动通过）",
+          "passed": true,
+          "observed": "PENDING_APPROVAL"
+        },
+        {
+          "check": "交通超时、酒店与天气照常",
+          "passed": true,
+          "observed": {
+            "transport": "timeout",
+            "hotel_contract": "ok",
+            "weather": "ok"
+          }
+        },
+        {
+          "check": "天气与酒店未降级",
+          "passed": true,
+          "observed": [
+            "ok",
+            "selected"
+          ]
+        },
+        {
+          "check": "没有伪造交通 ID/价格",
+          "passed": true,
+          "observed": []
+        }
+      ],
+      "egress_attempts": 0,
+      "egress_external": []
+    },
+    {
+      "scenario": "S-10",
+      "run": 1,
+      "passed": true,
+      "error": null,
+      "duration_s": 2.98,
+      "trajectory": [
+        "VALIDATING",
+        "PLANNING",
+        "PENDING_APPROVAL",
+        "APPROVED",
+        "DELIVERY_PENDING",
+        "DELIVERED"
+      ],
+      "detail": {
+        "trip_id": "97541272-59a8-425c-b868-410cc7a8e06f",
+        "kill": {
+          "pid": 23924,
+          "method": "taskkill /F /T /PID",
+          "killed_at": "2026-10-20T00:47:35.980264Z",
+          "tool_returncode": 0,
+          "process_exit_code": 1,
+          "port_closed_after_kill": true
+        },
+        "boot": {
+          "boot": 2,
+          "pid": 22740,
+          "started_at": "2026-10-20T00:47:37.439177Z",
+          "ready_at": "2026-10-20T00:47:38.747559Z"
+        },
+        "trajectory": [
+          "VALIDATING",
+          "PLANNING",
+          "PENDING_APPROVAL",
+          "APPROVED",
+          "DELIVERY_PENDING",
+          "DELIVERED"
+        ]
+      },
+      "checks": [
+        {
+          "check": "重启前 PENDING_APPROVAL",
+          "passed": true,
+          "observed": "PENDING_APPROVAL"
+        },
+        {
+          "check": "进程被真实终止",
+          "passed": true,
+          "observed": {
+            "pid": 23924,
+            "method": "taskkill /F /T /PID",
+            "killed_at": "2026-10-20T00:47:35.980264Z",
+            "tool_returncode": 0,
+            "process_exit_code": 1,
+            "port_closed_after_kill": true
+          }
+        },
+        {
+          "check": "重启日志显示启动恢复",
+          "passed": true,
+          "observed": {
+            "boot": 2,
+            "pid": 22740,
+            "started_at": "2026-10-20T00:47:37.439177Z",
+            "ready_at": "2026-10-20T00:47:38.747559Z"
+          }
+        },
+        {
+          "check": "Trip/revision 未丢失",
+          "passed": true,
+          "observed": [
+            "PENDING_APPROVAL",
+            "97541272-59a8-425c-b868-410cc7a8e06f:rev-1:run-8db26aab"
+          ]
+        },
+        {
+          "check": "审批待办未丢失",
+          "passed": true,
+          "observed": [
+            {
+              "id": "6f0c039e-a636-47ab-aa8d-0d067180a143",
+              "trip_id": "97541272-59a8-425c-b868-410cc7a8e06f",
+              "revision": 1,
+              "approver_id": "u-lisi",
+              "status": "pending",
+              "decision": null,
+              "comment": null,
+              "created_at": "2026-10-20T00:47:35.961Z",
+              "decided_at": null,
+              "idempotency_key": null,
+              "card": {
+                "employee": {
+                  "id": "u-zhangsan",
+                  "name": "张三",
+                  "department": "销售部"
+                },
+                "revision": 1,
+                "slots": {
+                  "origin": "北京",
+                  "destination": "上海",
+                  "start_date": "2026-10-28",
+                  "end_date": "2026-10-30",
+                  "purpose": "供应商大会",
+                  "declared_budget_fen": 400000,
+                  "meeting_address": null,
+                  "preferences": null
+                },
+                "policy_version": "v1.2",
+                "cost_breakdown": {
+                  "nights": 2,
+                  "days": 3,
+                  "destination_tier": "A",
+                  "transport_fen": 350000,
+                  "outbound_fen": 180000,
+                  "return_fen": 170000,
+                  "hotel_per_night_fen": 48000,
+                  "hotel_fen": 96000,
+                  "meal_per_day_fen": 10000,
+                  "meal_fen": 30000,
+                  "total_fen": 476000,
+                  "known_subtotal_fen": 476000,
+                  "declared_budget_fen": 400000,
+                  "budget_delta_fen": 76000,
+                  "missing_components": []
+                },
+                "budget_delta_fen": 76000,
+                "violations": [],
+                "approval_reasons": [
+                  {
+                    "code": "BUDGET_EXCEEDED",
+                    "actual_value": 476000,
+                    "limit_value": 400000,
+                    "unit": "fen",
+                    "lower_bound": false,
+                    "missing": [],
+                    "basis": null,
+                    "message": "总额 4,760.00 元 超过申报预算 4,000.00 元（超 760.00 元）"
+                  },
+                  {
+                    "code": "OVER_AUTO_APPROVAL_LIMIT",
+                    "actual_value": 476000,
+                    "limit_value": 300000,
+                    "unit": "fen",
+                    "lower_bound": false,
+                    "missing": [],
+                    "basis": {
+                      "rule_id": "RULE-AUTO-001",
+                      "policy_version": "v1.2",
+                      "clause_ref": "POL-6"
+                    },
+                    "message": "总额 4,760.00 元 超过自动通过阈值 3,000.00 元"
+                  }
+                ],
+                "sources": [
+                  "demo_fixture",
+                  "model",
+                  "policy"
+                ],
+                "plan_summary": {
+                  "incomplete": false,
+                  "missing": [],
+                  "outbound": {
+                    "id": "T-BJS-SHA-1028-A",
+                    "service_no": "XC1028",
+                    "mode": "air",
+                    "cabin": "economy",
+                    "origin": "北京",
+                    "destination": "上海",
+                    "depart_at": "2026-10-28T01:30:00Z",
+                    "arrive_at": "2026-10-28T04:45:00Z",
+                    "price_fen": 180000,
+                    "source": "demo_fixture"
+                  },
+                  "return": {
+                    "id": "T-SHA-BJS-1030-A",
+                    "service_no": "XC1030",
+                    "mode": "air",
+                    "cabin": "economy",
+                    "origin": "上海",
+                    "destination": "北京",
+                    "depart_at": "2026-10-30T11:00:00Z",
+                    "arrive_at": "2026-10-30T13:30:00Z",
+                    "price_fen": 170000,
+                    "source": "demo_fixture"
+                  },
+                  "exception_legs": [],
+                  "transport_note": null,
+                  "hotel_status": "selected",
+                  "nights": 2,
+                  "hotel": {
+                    "id": "H-SHA-CONTRACT-01",
+                    "name": "星衡协议酒店·外滩店",
+                    "city": "上海",
+                    "price_fen": 48000,
+                    "kind": "contract",
+                    "source": "demo_fixture"
+                  },
+                  "hotel_exception": false,
+                  "hotel_note": null,
+                  "summary": "2026-10-28至2026-10-30赴上海，事由：供应商大会。去程乘 XC1028 于 09:30 出发、12:45 抵达。入住星衡协议酒店·外滩店，共 2 晚。行程期间有雨，请携带雨具。返程乘 XC1030 于 19:00 出发。",
+                  "summary_generator": "fake"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "check": "重启后批准成功",
+          "passed": true,
+          "observed": 200
+        },
+        {
+          "check": "从审批后节点恢复（via=graph）",
+          "passed": true,
+          "observed": [
+            {
+              "id": "3f6096f7-67d4-49d9-8813-c534b8ac2d69",
+              "seq": 216,
+              "trip_id": "97541272-59a8-425c-b868-410cc7a8e06f",
+              "revision": 1,
+              "ts": "2026-10-20T00:47:38.799Z",
+              "actor": "u-lisi",
+              "type": "decision_recorded",
+              "payload": {
+                "approval_id": "6f0c039e-a636-47ab-aa8d-0d067180a143",
+                "decision": "approve",
+                "comment": null,
+                "via": "graph"
+              },
+              "refs": [],
+              "trace_id": "993c5df1c9bd4f21af72b7f624786395"
+            }
+          ]
+        },
+        {
+          "check": "只交付一次",
+          "passed": true,
+          "observed": [
+            "trip_delivery"
+          ]
+        },
+        {
+          "check": "最终 DELIVERED",
+          "passed": true,
+          "observed": "DELIVERED"
+        }
+      ],
+      "egress_attempts": 0,
+      "egress_external": []
+    },
+    {
+      "scenario": "S-11",
+      "run": 1,
+      "passed": true,
+      "error": null,
+      "duration_s": 0.1,
+      "trajectory": [],
+      "detail": {
+        "trip_id": "f6be9054-3a8b-4ff3-ad83-878d1e12c7ab",
+        "upload_sha256": "e88ef3b9c44b45849869dfab5ac570e1a0c5aaf44565992aff6615250705bf84",
+        "fields": {
+          "destination": "上海",
+          "start_date": "2026-10-28",
+          "end_date": "2026-10-30",
+          "purpose": "供应商大会：年度合作评审与新品对接",
+          "meeting_address": "上海市浦东新区滨江大道 2727 号星衡国际会议中心 3 号厅"
+        },
+        "trajectory": []
+      },
+      "checks": [
+        {
+          "check": "抽取成功且标记为模型来源",
+          "passed": true,
+          "observed": 201
+        },
+        {
+          "check": "抽取上海、2026-10-28～10-30、供应商大会与会议地址",
+          "passed": true,
+          "observed": {
+            "destination": "上海",
+            "start_date": "2026-10-28",
+            "end_date": "2026-10-30",
+            "purpose": "供应商大会：年度合作评审与新品对接",
+            "meeting_address": "上海市浦东新区滨江大道 2727 号星衡国际会议中心 3 号厅"
+          }
+        },
+        {
+          "check": "确认前不修改 Trip",
+          "passed": true,
+          "observed": {
+            "origin": null,
+            "destination": null,
+            "start_date": null,
+            "end_date": null,
+            "purpose": null,
+            "declared_budget_fen": null,
+            "meeting_address": null,
+            "preferences": null
+          }
+        },
+        {
+          "check": "确认后写入槽位",
+          "passed": true,
+          "observed": 200
+        },
+        {
+          "check": "写入已审计且来源为 image",
+          "passed": true,
+          "observed": {
+            "changes": [
+              {
+                "field": "destination",
+                "before": null,
+                "after": "上海"
+              },
+              {
+                "field": "start_date",
+                "before": null,
+                "after": "2026-10-28"
+              },
+              {
+                "field": "end_date",
+                "before": null,
+                "after": "2026-10-30"
+              },
+              {
+                "field": "purpose",
+                "before": null,
+                "after": "供应商大会：年度合作评审与新品对接"
+              },
+              {
+                "field": "meeting_address",
+                "before": null,
+                "after": "上海市浦东新区滨江大道 2727 号星衡国际会议中心 3 号厅"
+              }
+            ],
+            "origin": "image",
+            "extraction_id": "e5705d6e-03fc-4d70-9b34-717fd403212e"
+          }
+        },
+        {
+          "check": "重复确认返回 409",
+          "passed": true,
+          "observed": 409
+        }
+      ],
+      "egress_attempts": 0,
+      "egress_external": []
+    },
+    {
+      "scenario": "S-12",
+      "run": 1,
+      "passed": true,
+      "error": null,
+      "duration_s": 0.22,
+      "trajectory": [
+        "VALIDATING",
+        "PLANNING",
+        "PENDING_APPROVAL",
+        "VALIDATING",
+        "PLANNING",
+        "PENDING_APPROVAL"
+      ],
+      "detail": {
+        "trip_id": "be9138cb-649e-44da-bfae-cb5c240dcf76",
+        "trajectory": [
+          "VALIDATING",
+          "PLANNING",
+          "PENDING_APPROVAL",
+          "VALIDATING",
+          "PLANNING",
+          "PENDING_APPROVAL"
+        ]
+      },
+      "checks": [
+        {
+          "check": "待审批且绑定 v1.2",
+          "passed": true,
+          "observed": [
+            "PENDING_APPROVAL",
+            "v1.2"
+          ]
+        },
+        {
+          "check": "尚无酒店违规",
+          "passed": true,
+          "observed": []
+        },
+        {
+          "check": "上传 v1.3",
+          "passed": true,
+          "observed": 201
+        },
+        {
+          "check": "抽取出的住宿上限为 45000",
+          "passed": true,
+          "observed": {
+            "caps_fen": {
+              "A": 45000,
+              "B": 40000,
+              "C": 30000
+            }
+          }
+        },
+        {
+          "check": "无效引用与不支持类型已被标记",
+          "passed": true,
+          "observed": [
+            "invalid_quote",
+            "unsupported"
+          ]
+        },
+        {
+          "check": "候选全部处理完成",
+          "passed": true,
+          "observed": [
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200,
+            200
+          ]
+        },
+        {
+          "check": "发布 v1.3 并归档 v1.2",
+          "passed": true,
+          "observed": 200
+        },
+        {
+          "check": "提示制度已更新",
+          "passed": true,
+          "observed": {
+            "bound_version": "v1.2",
+            "published_version": "v1.3"
+          }
+        },
+        {
+          "check": "重新校验成功",
+          "passed": true,
+          "observed": 200
+        },
+        {
+          "check": "revision+1 且绑定 v1.3",
+          "passed": true,
+          "observed": [
+            2,
+            "v1.3",
+            "PENDING_APPROVAL"
+          ]
+        },
+        {
+          "check": "新增 HOTEL_OVER_CAP 48000>45000",
+          "passed": true,
+          "observed": {
+            "code": "HOTEL_OVER_CAP",
+            "rule_id": "RULE-HOTEL-001",
+            "policy_version": "v1.3",
+            "clause": "POL-2",
+            "quote": "员工住宿上限：A 类城市每晚上限 450 元；B 类城市每晚上限 400 元；C 类城市每晚上限 300 元。",
+            "locator": "line:13",
+            "actual_value": 48000,
+            "limit_value": 45000,
+            "unit": "fen_per_night",
+            "subject": "H-SHA-CONTRACT-01",
+            "source": "policy",
+            "message": "星衡协议酒店·外滩店 每晚 480.00 元，超过 A 类城市上限 450.00 元（超 30.00 元/晚）"
+          }
+        },
+        {
+          "check": "旧审批失效",
+          "passed": true,
+          "observed": 2
+        },
+        {
+          "check": "审计保留 v1.2 与 v1.3 两次结果",
+          "passed": true,
+          "observed": [
+            "v1.2",
+            "v1.3"
+          ]
+        },
+        {
+          "check": "重新校验复用候选，未再次调用 Provider（D-12）",
+          "passed": true,
+          "observed": [
+            4,
+            4
+          ]
+        }
+      ],
+      "egress_attempts": 0,
+      "egress_external": []
+    }
+  ],
+  "passed": true,
+  "boot": {
+    "boot": 1,
+    "pid": 23924,
+    "started_at": "2026-10-20T00:47:33.245413Z",
+    "ready_at": "2026-10-20T00:47:34.623322Z"
+  },
+  "egress": {
+    "log": "C:\\Users\\22316\\AppData\\Local\\Temp\\e2e-mi67j92x\\var\\network-guard.jsonl",
+    "attempts": []
+  },
+  "provider_health": {
+    "llm_mode": "fake",
+    "llm": {
+      "mode": "fake",
+      "text_model": "qwen3.8-max",
+      "vision_model": "qwen3.5-plus",
+      "api_key_configured": null
+    },
+    "providers": [
+      {
+        "name": "transport",
+        "implementation": "demo_transport",
+        "mode": "demo",
+        "status": "ok",
+        "fault": "transport_timeout",
+        "last_error": null
+      },
+      {
+        "name": "hotel_contract",
+        "implementation": "demo_hotel",
+        "mode": "demo",
+        "status": "ok",
+        "fault": "no_protocol_hotel",
+        "last_error": null
+      },
+      {
+        "name": "hotel_backup",
+        "implementation": "demo_hotel",
+        "mode": "demo",
+        "status": "ok",
+        "fault": null,
+        "last_error": null
+      },
+      {
+        "name": "weather",
+        "implementation": "demo_weather",
+        "mode": "demo",
+        "status": "ok",
+        "fault": "weather_unavailable",
+        "last_error": null
+      }
+    ],
+    "network": {
+      "installed": true,
+      "allowed_hosts": [],
+      "attempts": 0,
+      "external_attempts": 0,
+      "blocked": 0,
+      "allowed": 0,
+      "local": 0,
+      "external_hosts": {},
+      "blocked_by_caller": []
+    }
+  },
+  "boot_logs": {
+    "boot-1": "1:63705 - \"GET /api/trips/9fe62034-8609-4630-a1e8-90dd2c4177c8/audit HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:63707 - \"POST /api/demo/reset HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:63707 - \"POST /api/trips HTTP/1.1\" 201 Created\nINFO:     127.0.0.1:63707 - \"PATCH /api/trips/46ac545f-558c-4f3d-8071-5d1a594976c4/slots HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:63707 - \"POST /api/trips/46ac545f-558c-4f3d-8071-5d1a594976c4/submit HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:63707 - \"POST /api/trips/46ac545f-558c-4f3d-8071-5d1a594976c4/decision HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:63707 - \"GET /api/trips/46ac545f-558c-4f3d-8071-5d1a594976c4 HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:63707 - \"GET /api/outbox?trip_id=46ac545f-558c-4f3d-8071-5d1a594976c4 HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:63707 - \"POST /api/trips/46ac545f-558c-4f3d-8071-5d1a594976c4/decision HTTP/1.1\" 409 Conflict\nINFO:     127.0.0.1:63707 - \"GET /api/trips/46ac545f-558c-4f3d-8071-5d1a594976c4/audit HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:63708 - \"POST /api/demo/reset HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:63708 - \"POST /api/trips HTTP/1.1\" 201 Created\nINFO:     127.0.0.1:63708 - \"PATCH /api/trips/ae2393aa-342a-451a-a67c-1a3c1e1e52d9/slots HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:63708 - \"POST /api/trips/ae2393aa-342a-451a-a67c-1a3c1e1e52d9/submit HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:63708 - \"POST /api/trips/ae2393aa-342a-451a-a67c-1a3c1e1e52d9/decision HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:63708 - \"GET /api/trips/ae2393aa-342a-451a-a67c-1a3c1e1e52d9 HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:63708 - \"GET /api/trips/ae2393aa-342a-451a-a67c-1a3c1e1e52d9/audit HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:63708 - \"GET /api/trips/ae2393aa-342a-451a-a67c-1a3c1e1e52d9/audit HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:63708 - \"PATCH /api/trips/ae2393aa-342a-451a-a67c-1a3c1e1e52d9/slots HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:63708 - \"POST /api/trips/ae2393aa-342a-451a-a67c-1a3c1e1e52d9/submit HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:63708 - \"GET /api/trips/ae2393aa-342a-451a-a67c-1a3c1e1e52d9 HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:63708 - \"POST /api/trips/ae2393aa-342a-451a-a67c-1a3c1e1e52d9/decision HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:63708 - \"GET /api/trips/ae2393aa-342a-451a-a67c-1a3c1e1e52d9/audit HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:63708 - \"GET /api/trips/ae2393aa-342a-451a-a67c-1a3c1e1e52d9/audit HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:63708 - \"GET /api/trips/ae2393aa-342a-451a-a67c-1a3c1e1e52d9/audit HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:63708 - \"GET /api/trips/ae2393aa-342a-451a-a67c-1a3c1e1e52d9/audit HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:63708 - \"GET /api/outbox?trip_id=ae2393aa-342a-451a-a67c-1a3c1e1e52d9 HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:63708 - \"GET /api/trips/ae2393aa-342a-451a-a67c-1a3c1e1e52d9/audit HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:49670 - \"POST /api/demo/reset HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:49670 - \"POST /api/demo/faults HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:49670 - \"POST /api/trips HTTP/1.1\" 201 Created\nINFO:     127.0.0.1:49670 - \"PATCH /api/trips/8a55eebf-4d23-4782-8402-24f09b1682b9/slots HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:49670 - \"POST /api/trips/8a55eebf-4d23-4782-8402-24f09b1682b9/submit HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:49670 - \"GET /api/trips/8a55eebf-4d23-4782-8402-24f09b1682b9 HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:49670 - \"GET /api/trips/8a55eebf-4d23-4782-8402-24f09b1682b9/audit HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:49670 - \"POST /api/demo/faults HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:49670 - \"GET /api/trips/8a55eebf-4d23-4782-8402-24f09b1682b9/audit HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:49671 - \"POST /api/demo/reset HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:49671 - \"POST /api/trips HTTP/1.1\" 201 Created\nINFO:     127.0.0.1:49671 - \"PATCH /api/trips/97541272-59a8-425c-b868-410cc7a8e06f/slots HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:49671 - \"POST /api/trips/97541272-59a8-425c-b868-410cc7a8e06f/submit HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:49671 - \"GET /api/trips/97541272-59a8-425c-b868-410cc7a8e06f HTTP/1.1\" 200 OK\n",
+    "boot-2": "P/1.1\" 200 OK\nINFO:     127.0.0.1:56750 - \"GET /api/outbox?trip_id=97541272-59a8-425c-b868-410cc7a8e06f HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56750 - \"GET /api/outbox?trip_id=97541272-59a8-425c-b868-410cc7a8e06f HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56750 - \"GET /api/trips/97541272-59a8-425c-b868-410cc7a8e06f HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56750 - \"GET /api/trips/97541272-59a8-425c-b868-410cc7a8e06f HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56751 - \"GET /api/trips/97541272-59a8-425c-b868-410cc7a8e06f/audit HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56752 - \"POST /api/demo/reset HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56752 - \"POST /api/trips HTTP/1.1\" 201 Created\nINFO:     127.0.0.1:56752 - \"POST /api/uploads HTTP/1.1\" 201 Created\nINFO:     127.0.0.1:56752 - \"POST /api/trips/f6be9054-3a8b-4ff3-ad83-878d1e12c7ab/image-extractions HTTP/1.1\" 201 Created\nINFO:     127.0.0.1:56752 - \"GET /api/trips/f6be9054-3a8b-4ff3-ad83-878d1e12c7ab HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56752 - \"GET /api/trips/f6be9054-3a8b-4ff3-ad83-878d1e12c7ab/audit HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56752 - \"POST /api/trips/f6be9054-3a8b-4ff3-ad83-878d1e12c7ab/image-extractions/e5705d6e-03fc-4d70-9b34-717fd403212e/confirm HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56752 - \"GET /api/trips/f6be9054-3a8b-4ff3-ad83-878d1e12c7ab/audit HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56752 - \"GET /api/trips/f6be9054-3a8b-4ff3-ad83-878d1e12c7ab/audit HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56752 - \"POST /api/trips/f6be9054-3a8b-4ff3-ad83-878d1e12c7ab/image-extractions/e5705d6e-03fc-4d70-9b34-717fd403212e/confirm HTTP/1.1\" 409 Conflict\nINFO:     127.0.0.1:56752 - \"GET /api/trips/f6be9054-3a8b-4ff3-ad83-878d1e12c7ab/audit HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56753 - \"POST /api/demo/reset HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56753 - \"POST /api/trips HTTP/1.1\" 201 Created\nINFO:     127.0.0.1:56753 - \"PATCH /api/trips/be9138cb-649e-44da-bfae-cb5c240dcf76/slots HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56753 - \"POST /api/trips/be9138cb-649e-44da-bfae-cb5c240dcf76/submit HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56753 - \"GET /api/trips/be9138cb-649e-44da-bfae-cb5c240dcf76 HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56753 - \"POST /api/policies HTTP/1.1\" 201 Created\nINFO:     127.0.0.1:56753 - \"POST /api/policies/v1.3/extract HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56753 - \"PATCH /api/policies/v1.3/rules/RULE-CITY-001 HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56753 - \"PATCH /api/policies/v1.3/rules/RULE-HOTEL-001 HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56753 - \"PATCH /api/policies/v1.3/rules/RULE-HOTEL-002 HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56753 - \"PATCH /api/policies/v1.3/rules/RULE-MEAL-001 HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56753 - \"PATCH /api/policies/v1.3/rules/RULE-CLASS-001 HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56753 - \"PATCH /api/policies/v1.3/rules/RULE-ADVANCE-001 HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56753 - \"PATCH /api/policies/v1.3/rules/RULE-AUTO-001 HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56753 - \"PATCH /api/policies/v1.3/rules/RULE-DURATION-001 HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56753 - \"PATCH /api/policies/v1.3/rules/RULE-DURATION-002 HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56753 - \"POST /api/policies/v1.3/publish HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56753 - \"GET /api/trips/be9138cb-649e-44da-bfae-cb5c240dcf76 HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56753 - \"GET /api/trips/be9138cb-649e-44da-bfae-cb5c240dcf76/audit HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56753 - \"POST /api/trips/be9138cb-649e-44da-bfae-cb5c240dcf76/revalidate HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56753 - \"GET /api/trips/be9138cb-649e-44da-bfae-cb5c240dcf76/audit HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56753 - \"GET /api/trips/be9138cb-649e-44da-bfae-cb5c240dcf76/audit HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56753 - \"GET /api/trips/be9138cb-649e-44da-bfae-cb5c240dcf76/audit HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56753 - \"GET /api/trips/be9138cb-649e-44da-bfae-cb5c240dcf76/audit HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:56754 - \"GET /api/health/providers HTTP/1.1\" 200 OK\n"
+  },
+  "checks": [
+    {
+      "check": "S-01 #1 状态 PENDING_APPROVAL",
+      "passed": true,
+      "observed": "PENDING_APPROVAL"
+    },
+    {
+      "check": "S-01 #1 选中交通与酒店（02 满房被过滤）",
+      "passed": true,
+      "observed": {
+        "outbound": "T-BJS-SHA-1028-A",
+        "return": "T-SHA-BJS-1030-A",
+        "hotel": "H-SHA-CONTRACT-01"
+      }
+    },
+    {
+      "check": "S-01 #1 晚数2、天数3",
+      "passed": true,
+      "observed": {
+        "nights": 2,
+        "days": 3,
+        "destination_tier": "A",
+        "transport_fen": 350000,
+        "outbound_fen": 180000,
+        "return_fen": 170000,
+        "hotel_per_night_fen": 48000,
+        "hotel_fen": 96000,
+        "meal_per_day_fen": 10000,
+        "meal_fen": 30000,
+        "total_fen": 476000,
+        "known_subtotal_fen": 476000,
+        "declared_budget_fen": 400000,
+        "budget_delta_fen": 76000,
+        "missing_components": []
+      }
+    },
+    {
+      "check": "S-01 #1 交通350000、酒店96000、补贴30000、总额476000",
+      "passed": true,
+      "observed": {
+        "nights": 2,
+        "days": 3,
+        "destination_tier": "A",
+        "transport_fen": 350000,
+        "outbound_fen": 180000,
+        "return_fen": 170000,
+        "hotel_per_night_fen": 48000,
+        "hotel_fen": 96000,
+        "meal_per_day_fen": 10000,
+        "meal_fen": 30000,
+        "total_fen": 476000,
+        "known_subtotal_fen": 476000,
+        "declared_budget_fen": 400000,
+        "budget_delta_fen": 76000,
+        "missing_components": []
+      }
+    },
+    {
+      "check": "S-01 #1 无制度违规",
+      "passed": true,
+      "observed": []
+    },
+    {
+      "check": "S-01 #1 审批理由含 BUDGET_EXCEEDED 与 OVER_AUTO_APPROVAL_LIMIT",
+      "passed": true,
+      "observed": [
+        "BUDGET_EXCEEDED",
+        "OVER_AUTO_APPROVAL_LIMIT"
+      ]
+    },
+    {
+      "check": "S-01 #1 超预算 76000 分",
+      "passed": true,
+      "observed": 76000
+    },
+    {
+      "check": "S-01 #1 审批卡在经理待办中且字段齐全",
+      "passed": true,
+      "observed": [
+        "employee",
+        "revision",
+        "slots",
+        "policy_version",
+        "cost_breakdown",
+        "budget_delta_fen"
+      ]
+    },
+    {
+      "check": "S-01 #1 审计中的规则结果带条款引用与来源",
+      "passed": true,
+      "observed": [
+        {
+          "kind": "rule",
+          "id": "RULE-CITY-001",
+          "version": "v1.2",
+          "clause": "POL-1"
+        },
+        {
+          "kind": "rule",
+          "id": "RULE-MEAL-001",
+          "version": "v1.2",
+          "clause": "POL-3"
+        },
+        {
+          "kind": "rule",
+          "id": "RULE-HOTEL-001",
+          "version": "v1.2",
+          "clause": "POL-2"
+        },
+        {
+          "kind": "rule",
+          "id": "RULE-CLASS-001",
+          "version": "v1.2",
+          "clause": "POL-4"
+        },
+        {
+          "kind": "rule",
+          "id": "RULE-ADVANCE-001",
+          "version": "v1.2",
+          "clause": "POL-5"
+        },
+        {
+          "kind": "rule",
+          "id": "RULE-AUTO-001",
+          "version": "v1.2",
+          "clause": "POL-6"
+        },
+        {
+          "kind": "rule",
+          "id": "RULE-DURATION-001",
+          "version": "v1.2",
+          "clause": "POL-7"
+        }
+      ]
+    },
+    {
+      "check": "S-01 #1 李四批准后 DELIVERED",
+      "passed": true,
+      "observed": 200
+    },
+    {
+      "check": "S-01 #1 恰好 1 封 trip_delivery",
+      "passed": true,
+      "observed": [
+        "trip_delivery"
+      ]
+    },
+    {
+      "check": "S-01 #1 行程单已生成",
+      "passed": true,
+      "observed": 200
+    },
+    {
+      "check": "S-02 #1 选中 B 组交通与 H-SHA-CONTRACT-02",
+      "passed": true,
+      "observed": {
+        "outbound": "T-BJS-SHA-1025-B",
+        "return": "T-SHA-BJS-1026-B",
+        "hotel": "H-SHA-CONTRACT-02"
+      }
+    },
+    {
+      "check": "S-02 #1 晚数1、天数2、总额190000",
+      "passed": true,
+      "observed": {
+        "nights": 1,
+        "days": 2,
+        "destination_tier": "A",
+        "transport_fen": 130000,
+        "outbound_fen": 65000,
+        "return_fen": 65000,
+        "hotel_per_night_fen": 40000,
+        "hotel_fen": 40000,
+        "meal_per_day_fen": 10000,
+        "meal_fen": 20000,
+        "total_fen": 190000,
+        "known_subtotal_fen": 190000,
+        "declared_budget_fen": 250000,
+        "budget_delta_fen": -60000,
+        "missing_components": []
+      }
+    },
+    {
+      "check": "S-02 #1 无违规、无审批理由",
+      "passed": true,
+      "observed": []
+    },
+    {
+      "check": "S-02 #1 AUTO_APPROVED→DELIVERED",
+      "passed": true,
+      "observed": "DELIVERED"
+    },
+    {
+      "check": "S-02 #1 没有审批卡",
+      "passed": true,
+      "observed": []
+    },
+    {
+      "check": "S-02 #1 恰好 1 封 trip_delivery",
+      "passed": true,
+      "observed": [
+        "trip_delivery"
+      ]
+    },
+    {
+      "check": "S-03 #1 成都无协议候选，使用备用酒店 H-CTU-BACKUP-01",
+      "passed": true,
+      "observed": {
+        "outbound": "T-BJS-CTU-1027-A",
+        "return": "T-CTU-BJS-1029-A",
+        "hotel": "H-CTU-BACKUP-01"
+      }
+    },
+    {
+      "check": "S-03 #1 备用酒店来源 backup_fixture",
+      "passed": true,
+      "observed": "backup_fixture"
+    },
+    {
+      "check": "S-03 #1 HOTEL_OVER_CAP 45000>40000（RULE-HOTEL-001 / POL-2 / policy）",
+      "passed": true,
+      "observed": {
+        "code": "HOTEL_OVER_CAP",
+        "rule_id": "RULE-HOTEL-001",
+        "policy_version": "v1.2",
+        "clause": "POL-2",
+        "quote": "员工住宿上限：A 类城市每晚上限 500 元；B 类城市每晚上限 400 元；C 类城市每晚上限 300 元。",
+        "locator": "line:13",
+        "actual_value": 45000,
+        "limit_value": 40000,
+        "unit": "fen_per_night",
+        "subject": "H-CTU-BACKUP-01",
+        "source": "policy",
+        "message": "锦城商务酒店（已验证备用） 每晚 450.00 元，超过 B 类城市上限 400.00 元（超 50.00 元/晚）"
+      }
+    },
+    {
+      "check": "S-03 #1 总额274000",
+      "passed": true,
+      "observed": {
+        "nights": 2,
+        "days": 3,
+        "destination_tier": "B",
+        "transport_fen": 160000,
+        "outbound_fen": 80000,
+        "return_fen": 80000,
+        "hotel_per_night_fen": 45000,
+        "hotel_fen": 90000,
+        "meal_per_day_fen": 8000,
+        "meal_fen": 24000,
+        "total_fen": 274000,
+        "known_subtotal_fen": 274000,
+        "declared_budget_fen": 400000,
+        "budget_delta_fen": -126000,
+        "missing_components": []
+      }
+    },
+    {
+      "check": "S-03 #1 PENDING_APPROVAL",
+      "passed": true,
+      "observed": "PENDING_APPROVAL"
+    },
+    {
+      "check": "S-03 #1 批准后 DELIVERED",
+      "passed": true,
+      "observed": 200
+    },
+    {
+      "check": "S-04 #1 ADVANCE_BOOKING_VIOLATION（提前2天<3天）",
+      "passed": true,
+      "observed": {
+        "code": "ADVANCE_BOOKING_VIOLATION",
+        "rule_id": "RULE-ADVANCE-001",
+        "policy_version": "v1.2",
+        "clause": "POL-5",
+        "quote": "机票出发日距申请日不少于 3 个自然日。",
+        "locator": "line:29",
+        "actual_value": 2,
+        "limit_value": 3,
+        "unit": "days",
+        "subject": "T-BJS-SHA-1022-E",
+        "source": "policy",
+        "message": "去程 T-BJS-SHA-1022-E 提前 2 天预订，少于制度要求的 3 天"
+      }
+    },
+    {
+      "check": "S-04 #1 总额180000",
+      "passed": true,
+      "observed": {
+        "nights": 1,
+        "days": 2,
+        "destination_tier": "A",
+        "transport_fen": 120000,
+        "outbound_fen": 60000,
+        "return_fen": 60000,
+        "hotel_per_night_fen": 40000,
+        "hotel_fen": 40000,
+        "meal_per_day_fen": 10000,
+        "meal_fen": 20000,
+        "total_fen": 180000,
+        "known_subtotal_fen": 180000,
+        "declared_budget_fen": 300000,
+        "budget_delta_fen": -120000,
+        "missing_components": []
+      }
+    },
+    {
+      "check": "S-04 #1 进入审批而非硬阻断",
+      "passed": true,
+      "observed": "PENDING_APPROVAL"
+    },
+    {
+      "check": "S-05 #1 识别 destination=杭州",
+      "passed": true,
+      "observed": {
+        "origin": null,
+        "destination": "杭州",
+        "start_date": null,
+        "end_date": null,
+        "purpose": null,
+        "declared_budget_fen": null,
+        "meeting_address": null,
+        "preferences": null
+      }
+    },
+    {
+      "check": "S-05 #1 不把“下周”猜成具体日期",
+      "passed": true,
+      "observed": {
+        "origin": null,
+        "destination": "杭州",
+        "start_date": null,
+        "end_date": null,
+        "purpose": null,
+        "declared_budget_fen": null,
+        "meeting_address": null,
+        "preferences": null
+      }
+    },
+    {
+      "check": "S-05 #1 只追问缺失的 5 项",
+      "passed": true,
+      "observed": [
+        "origin",
+        "start_date",
+        "end_date",
+        "purpose",
+        "declared_budget_fen"
+      ]
+    },
+    {
+      "check": "S-05 #1 追问覆盖 5 个缺失项",
+      "passed": true,
+      "observed": "已记录：目的城市 杭州。还需要：出发城市、出发日期（具体到日，如 10月28日）、返回日期（具体到日）、出差事由、申报预算（元）。"
+    },
+    {
+      "check": "S-05 #1 一次回复不重复询问杭州",
+      "passed": true,
+      "observed": "：出发城市、出发日期（具体到日，如 10月28日）、返回日期（具体到日）、出差事由、申报预算（元）。"
+    },
+    {
+      "check": "S-05 #1 补齐后不再追问",
+      "passed": true,
+      "observed": [
+        [],
+        []
+      ]
+    },
+    {
+      "check": "S-05 #1 两轮追问已审计",
+      "passed": true,
+      "observed": [
+        [
+          "origin",
+          "start_date",
+          "end_date",
+          "purpose",
+          "declared_budget_fen"
+        ],
+        []
+      ]
+    },
+    {
+      "check": "S-06 #1 POLICY_BLOCKED",
+      "passed": true,
+      "observed": "POLICY_BLOCKED"
+    },
+    {
+      "check": "S-06 #1 审计记录阻断原因",
+      "passed": true,
+      "observed": [
+        {
+          "code": "START_DATE_IN_PAST",
+          "actual_value": "2026-10-19",
+          "limit_value": "2026-10-20",
+          "rule_id": null,
+          "policy_version": null,
+          "clause": null,
+          "message": "出发日期 2026-10-19 早于今天 2026-10-20"
+        }
+      ]
+    },
+    {
+      "check": "S-06 #1 未调用交通/酒店/天气 Provider",
+      "passed": true,
+      "observed": []
+    },
+    {
+      "check": "S-06 #1 员工修改后回到 COLLECTING 且 revision 不变",
+      "passed": true,
+      "observed": [
+        "COLLECTING",
+        1
+      ]
+    },
+    {
+      "check": "S-06 #1 修改后的日期可以走完规划（与 S-02 同额）",
+      "passed": true,
+      "observed": "DELIVERED"
+    },
+    {
+      "check": "S-07 #1 驳回成功",
+      "passed": true,
+      "observed": 200
+    },
+    {
+      "check": "S-07 #1 REJECTED（终态）",
+      "passed": true,
+      "observed": "REJECTED"
+    },
+    {
+      "check": "S-07 #1 无 trip_delivery，恰好 1 封 workflow_notification",
+      "passed": true,
+      "observed": [
+        "workflow_notification"
+      ]
+    },
+    {
+      "check": "S-07 #1 再次审批返回 409",
+      "passed": true,
+      "observed": 409
+    },
+    {
+      "check": "S-08 #1 要求修改成功",
+      "passed": true,
+      "observed": 200
+    },
+    {
+      "check": "S-08 #1 revision=2 且回到 COLLECTING",
+      "passed": true,
+      "observed": [
+        2,
+        "COLLECTING"
+      ]
+    },
+    {
+      "check": "S-08 #1 旧审批失效",
+      "passed": true,
+      "observed": [
+        [
+          2,
+          null
+        ]
+      ]
+    },
+    {
+      "check": "S-08 #1 重新提交后再次 PENDING_APPROVAL",
+      "passed": true,
+      "observed": "PENDING_APPROVAL"
+    },
+    {
+      "check": "S-08 #1 总额仍 476000 且超过自动阈值",
+      "passed": true,
+      "observed": [
+        {
+          "code": "OVER_AUTO_APPROVAL_LIMIT",
+          "actual_value": 476000,
+          "limit_value": 300000,
+          "unit": "fen",
+          "lower_bound": false,
+          "missing": [],
+          "basis": {
+            "rule_id": "RULE-AUTO-001",
+            "policy_version": "v1.2",
+            "clause_ref": "POL-6"
+          },
+          "message": "总额 4,760.00 元 超过自动通过阈值 3,000.00 元"
+        }
+      ]
+    },
+    {
+      "check": "S-08 #1 新预算已生效（不再超预算）",
+      "passed": true,
+      "observed": {
+        "nights": 2,
+        "days": 3,
+        "destination_tier": "A",
+        "transport_fen": 350000,
+        "outbound_fen": 180000,
+        "return_fen": 170000,
+        "hotel_per_night_fen": 48000,
+        "hotel_fen": 96000,
+        "meal_per_day_fen": 10000,
+        "meal_fen": 30000,
+        "total_fen": 476000,
+        "known_subtotal_fen": 476000,
+        "declared_budget_fen": 500000,
+        "budget_delta_fen": -24000,
+        "missing_components": []
+      }
+    },
+    {
+      "check": "S-08 #1 第二次批准后交付",
+      "passed": true,
+      "observed": 200
+    },
+    {
+      "check": "S-08 #1 两次决定均可审计",
+      "passed": true,
+      "observed": [
+        [
+          1,
+          {
+            "approval_id": "c1f32fff-52c0-44de-ab51-be8332e3f41a",
+            "decision": "request_changes",
+            "comment": "请补充会议议程后再提交",
+            "via": "graph"
+          }
+        ],
+        [
+          2,
+          {
+            "approval_id": "666577f0-2c5b-4b75-88c3-5809770f6bb4",
+            "decision": "approve",
+            "comment": null,
+            "via": "graph"
+          }
+        ]
+      ]
+    },
+    {
+      "check": "S-08 #1 旧方案与旧审批卡保留在审计中",
+      "passed": true,
+      "observed": {
+        "superseded": [
+          {
+            "approval_id": "c1f32fff-52c0-44de-ab51-be8332e3f41a",
+            "superseded_revision": 1,
+            "reason": "request_changes"
+          }
+        ],
+        "plan_revisions": [
+          1,
+          2
+        ],
+        "card_revisions": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "check": "S-08 #1 1 封流程通知 + 1 封交付邮件",
+      "passed": true,
+      "observed": [
+        "workflow_notification",
+        "trip_delivery"
+      ]
+    },
+    {
+      "check": "S-09 #1 管理员可注入交通超时",
+      "passed": true,
+      "observed": {
+        "no_protocol_hotel": false,
+        "transport_timeout": true,
+        "weather_unavailable": false
+      }
+    },
+    {
+      "check": "S-09 #1 不崩溃，交通待人工补录",
+      "passed": true,
+      "observed": {
+        "status": "manual_required",
+        "outbound": null,
+        "return": null,
+        "exception_legs": [],
+        "note": "去程：交通 Provider 超时，待人工补录；返程：交通 Provider 超时，待人工补录"
+      }
+    },
+    {
+      "check": "S-09 #1 total_fen=null，known_subtotal_fen=60000（酒店40000+补贴20000）",
+      "passed": true,
+      "observed": {
+        "nights": 1,
+        "days": 2,
+        "destination_tier": "A",
+        "transport_fen": null,
+        "outbound_fen": null,
+        "return_fen": null,
+        "hotel_per_night_fen": 40000,
+        "hotel_fen": 40000,
+        "meal_per_day_fen": 10000,
+        "meal_fen": 20000,
+        "total_fen": null,
+        "known_subtotal_fen": 60000,
+        "declared_budget_fen": 250000,
+        "budget_delta_fen": null,
+        "missing_components": [
+          "transport"
+        ]
+      }
+    },
+    {
+      "check": "S-09 #1 审批理由含 PLAN_INCOMPLETE",
+      "passed": true,
+      "observed": [
+        "PLAN_INCOMPLETE"
+      ]
+    },
+    {
+      "check": "S-09 #1 进入 PENDING_APPROVAL（S-02 同输入本应自动通过）",
+      "passed": true,
+      "observed": "PENDING_APPROVAL"
+    },
+    {
+      "check": "S-09 #1 交通超时、酒店与天气照常",
+      "passed": true,
+      "observed": {
+        "transport": "timeout",
+        "hotel_contract": "ok",
+        "weather": "ok"
+      }
+    },
+    {
+      "check": "S-09 #1 天气与酒店未降级",
+      "passed": true,
+      "observed": [
+        "ok",
+        "selected"
+      ]
+    },
+    {
+      "check": "S-09 #1 没有伪造交通 ID/价格",
+      "passed": true,
+      "observed": []
+    },
+    {
+      "check": "S-10 #1 重启前 PENDING_APPROVAL",
+      "passed": true,
+      "observed": "PENDING_APPROVAL"
+    },
+    {
+      "check": "S-10 #1 进程被真实终止",
+      "passed": true,
+      "observed": {
+        "pid": 23924,
+        "method": "taskkill /F /T /PID",
+        "killed_at": "2026-10-20T00:47:35.980264Z",
+        "tool_returncode": 0,
+        "process_exit_code": 1,
+        "port_closed_after_kill": true
+      }
+    },
+    {
+      "check": "S-10 #1 重启日志显示启动恢复",
+      "passed": true,
+      "observed": {
+        "boot": 2,
+        "pid": 22740,
+        "started_at": "2026-10-20T00:47:37.439177Z",
+        "ready_at": "2026-10-20T00:47:38.747559Z"
+      }
+    },
+    {
+      "check": "S-10 #1 Trip/revision 未丢失",
+      "passed": true,
+      "observed": [
+        "PENDING_APPROVAL",
+        "97541272-59a8-425c-b868-410cc7a8e06f:rev-1:run-8db26aab"
+      ]
+    },
+    {
+      "check": "S-10 #1 审批待办未丢失",
+      "passed": true,
+      "observed": [
+        {
+          "id": "6f0c039e-a636-47ab-aa8d-0d067180a143",
+          "trip_id": "97541272-59a8-425c-b868-410cc7a8e06f",
+          "revision": 1,
+          "approver_id": "u-lisi",
+          "status": "pending",
+          "decision": null,
+          "comment": null,
+          "created_at": "2026-10-20T00:47:35.961Z",
+          "decided_at": null,
+          "idempotency_key": null,
+          "card": {
+            "employee": {
+              "id": "u-zhangsan",
+              "name": "张三",
+              "department": "销售部"
+            },
+            "revision": 1,
+            "slots": {
+              "origin": "北京",
+              "destination": "上海",
+              "start_date": "2026-10-28",
+              "end_date": "2026-10-30",
+              "purpose": "供应商大会",
+              "declared_budget_fen": 400000,
+              "meeting_address": null,
+              "preferences": null
+            },
+            "policy_version": "v1.2",
+            "cost_breakdown": {
+              "nights": 2,
+              "days": 3,
+              "destination_tier": "A",
+              "transport_fen": 350000,
+              "outbound_fen": 180000,
+              "return_fen": 170000,
+              "hotel_per_night_fen": 48000,
+              "hotel_fen": 96000,
+              "meal_per_day_fen": 10000,
+              "meal_fen": 30000,
+              "total_fen": 476000,
+              "known_subtotal_fen": 476000,
+              "declared_budget_fen": 400000,
+              "budget_delta_fen": 76000,
+              "missing_components": []
+            },
+            "budget_delta_fen": 76000,
+            "violations": [],
+            "approval_reasons": [
+              {
+                "code": "BUDGET_EXCEEDED",
+                "actual_value": 476000,
+                "limit_value": 400000,
+                "unit": "fen",
+                "lower_bound": false,
+                "missing": [],
+                "basis": null,
+                "message": "总额 4,760.00 元 超过申报预算 4,000.00 元（超 760.00 元）"
+              },
+              {
+                "code": "OVER_AUTO_APPROVAL_LIMIT",
+                "actual_value": 476000,
+                "limit_value": 300000,
+                "unit": "fen",
+                "lower_bound": false,
+                "missing": [],
+                "basis": {
+                  "rule_id": "RULE-AUTO-001",
+                  "policy_version": "v1.2",
+                  "clause_ref": "POL-6"
+                },
+                "message": "总额 4,760.00 元 超过自动通过阈值 3,000.00 元"
+              }
+            ],
+            "sources": [
+              "demo_fixture",
+              "model",
+              "policy"
+            ],
+            "plan_summary": {
+              "incomplete": false,
+              "missing": [],
+              "outbound": {
+                "id": "T-BJS-SHA-1028-A",
+                "service_no": "XC1028",
+                "mode": "air",
+                "cabin": "economy",
+                "origin": "北京",
+                "destination": "上海",
+                "depart_at": "2026-10-28T01:30:00Z",
+                "arrive_at": "2026-10-28T04:45:00Z",
+                "price_fen": 180000,
+                "source": "demo_fixture"
+              },
+              "return": {
+                "id": "T-SHA-BJS-1030-A",
+                "service_no": "XC1030",
+                "mode": "air",
+                "cabin": "economy",
+                "origin": "上海",
+                "destination": "北京",
+                "depart_at": "2026-10-30T11:00:00Z",
+                "arrive_at": "2026-10-30T13:30:00Z",
+                "price_fen": 170000,
+                "source": "demo_fixture"
+              },
+              "exception_legs": [],
+              "transport_note": null,
+              "hotel_status": "selected",
+              "nights": 2,
+              "hotel": {
+                "id": "H-SHA-CONTRACT-01",
+                "name": "星衡协议酒店·外滩店",
+                "city": "上海",
+                "price_fen": 48000,
+                "kind": "contract",
+                "source": "demo_fixture"
+              },
+              "hotel_exception": false,
+              "hotel_note": null,
+              "summary": "2026-10-28至2026-10-30赴上海，事由：供应商大会。去程乘 XC1028 于 09:30 出发、12:45 抵达。入住星衡协议酒店·外滩店，共 2 晚。行程期间有雨，请携带雨具。返程乘 XC1030 于 19:00 出发。",
+              "summary_generator": "fake"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "check": "S-10 #1 重启后批准成功",
+      "passed": true,
+      "observed": 200
+    },
+    {
+      "check": "S-10 #1 从审批后节点恢复（via=graph）",
+      "passed": true,
+      "observed": [
+        {
+          "id": "3f6096f7-67d4-49d9-8813-c534b8ac2d69",
+          "seq": 216,
+          "trip_id": "97541272-59a8-425c-b868-410cc7a8e06f",
+          "revision": 1,
+          "ts": "2026-10-20T00:47:38.799Z",
+          "actor": "u-lisi",
+          "type": "decision_recorded",
+          "payload": {
+            "approval_id": "6f0c039e-a636-47ab-aa8d-0d067180a143",
+            "decision": "approve",
+            "comment": null,
+            "via": "graph"
+          },
+          "refs": [],
+          "trace_id": "993c5df1c9bd4f21af72b7f624786395"
+        }
+      ]
+    },
+    {
+      "check": "S-10 #1 只交付一次",
+      "passed": true,
+      "observed": [
+        "trip_delivery"
+      ]
+    },
+    {
+      "check": "S-10 #1 最终 DELIVERED",
+      "passed": true,
+      "observed": "DELIVERED"
+    },
+    {
+      "check": "S-11 #1 抽取成功且标记为模型来源",
+      "passed": true,
+      "observed": 201
+    },
+    {
+      "check": "S-11 #1 抽取上海、2026-10-28～10-30、供应商大会与会议地址",
+      "passed": true,
+      "observed": {
+        "destination": "上海",
+        "start_date": "2026-10-28",
+        "end_date": "2026-10-30",
+        "purpose": "供应商大会：年度合作评审与新品对接",
+        "meeting_address": "上海市浦东新区滨江大道 2727 号星衡国际会议中心 3 号厅"
+      }
+    },
+    {
+      "check": "S-11 #1 确认前不修改 Trip",
+      "passed": true,
+      "observed": {
+        "origin": null,
+        "destination": null,
+        "start_date": null,
+        "end_date": null,
+        "purpose": null,
+        "declared_budget_fen": null,
+        "meeting_address": null,
+        "preferences": null
+      }
+    },
+    {
+      "check": "S-11 #1 确认后写入槽位",
+      "passed": true,
+      "observed": 200
+    },
+    {
+      "check": "S-11 #1 写入已审计且来源为 image",
+      "passed": true,
+      "observed": {
+        "changes": [
+          {
+            "field": "destination",
+            "before": null,
+            "after": "上海"
+          },
+          {
+            "field": "start_date",
+            "before": null,
+            "after": "2026-10-28"
+          },
+          {
+            "field": "end_date",
+            "before": null,
+            "after": "2026-10-30"
+          },
+          {
+            "field": "purpose",
+            "before": null,
+            "after": "供应商大会：年度合作评审与新品对接"
+          },
+          {
+            "field": "meeting_address",
+            "before": null,
+            "after": "上海市浦东新区滨江大道 2727 号星衡国际会议中心 3 号厅"
+          }
+        ],
+        "origin": "image",
+        "extraction_id": "e5705d6e-03fc-4d70-9b34-717fd403212e"
+      }
+    },
+    {
+      "check": "S-11 #1 重复确认返回 409",
+      "passed": true,
+      "observed": 409
+    },
+    {
+      "check": "S-12 #1 待审批且绑定 v1.2",
+      "passed": true,
+      "observed": [
+        "PENDING_APPROVAL",
+        "v1.2"
+      ]
+    },
+    {
+      "check": "S-12 #1 尚无酒店违规",
+      "passed": true,
+      "observed": []
+    },
+    {
+      "check": "S-12 #1 上传 v1.3",
+      "passed": true,
+      "observed": 201
+    },
+    {
+      "check": "S-12 #1 抽取出的住宿上限为 45000",
+      "passed": true,
+      "observed": {
+        "caps_fen": {
+          "A": 45000,
+          "B": 40000,
+          "C": 30000
+        }
+      }
+    },
+    {
+      "check": "S-12 #1 无效引用与不支持类型已被标记",
+      "passed": true,
+      "observed": [
+        "invalid_quote",
+        "unsupported"
+      ]
+    },
+    {
+      "check": "S-12 #1 候选全部处理完成",
+      "passed": true,
+      "observed": [
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200
+      ]
+    },
+    {
+      "check": "S-12 #1 发布 v1.3 并归档 v1.2",
+      "passed": true,
+      "observed": 200
+    },
+    {
+      "check": "S-12 #1 提示制度已更新",
+      "passed": true,
+      "observed": {
+        "bound_version": "v1.2",
+        "published_version": "v1.3"
+      }
+    },
+    {
+      "check": "S-12 #1 重新校验成功",
+      "passed": true,
+      "observed": 200
+    },
+    {
+      "check": "S-12 #1 revision+1 且绑定 v1.3",
+      "passed": true,
+      "observed": [
+        2,
+        "v1.3",
+        "PENDING_APPROVAL"
+      ]
+    },
+    {
+      "check": "S-12 #1 新增 HOTEL_OVER_CAP 48000>45000",
+      "passed": true,
+      "observed": {
+        "code": "HOTEL_OVER_CAP",
+        "rule_id": "RULE-HOTEL-001",
+        "policy_version": "v1.3",
+        "clause": "POL-2",
+        "quote": "员工住宿上限：A 类城市每晚上限 450 元；B 类城市每晚上限 400 元；C 类城市每晚上限 300 元。",
+        "locator": "line:13",
+        "actual_value": 48000,
+        "limit_value": 45000,
+        "unit": "fen_per_night",
+        "subject": "H-SHA-CONTRACT-01",
+        "source": "policy",
+        "message": "星衡协议酒店·外滩店 每晚 480.00 元，超过 A 类城市上限 450.00 元（超 30.00 元/晚）"
+      }
+    },
+    {
+      "check": "S-12 #1 旧审批失效",
+      "passed": true,
+      "observed": 2
+    },
+    {
+      "check": "S-12 #1 审计保留 v1.2 与 v1.3 两次结果",
+      "passed": true,
+      "observed": [
+        "v1.2",
+        "v1.3"
+      ]
+    },
+    {
+      "check": "S-12 #1 重新校验复用候选，未再次调用 Provider（D-12）",
+      "passed": true,
+      "observed": [
+        4,
+        4
+      ]
+    }
+  ]
+}

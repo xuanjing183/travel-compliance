@@ -1,0 +1,23 @@
+{
+  "status_code": 409,
+  "body": {
+    "error": {
+      "code": "UNPROCESSED_CANDIDATES",
+      "message": "还有未处理的候选规则，不能发布",
+      "details": {
+        "rule_ids": [
+          "RULE-CITY-001",
+          "RULE-HOTEL-001",
+          "RULE-HOTEL-002",
+          "RULE-MEAL-001",
+          "RULE-CLASS-001",
+          "RULE-ADVANCE-001",
+          "RULE-AUTO-001",
+          "RULE-DURATION-001",
+          "RULE-DURATION-002"
+        ]
+      },
+      "trace_id": "553331ce507743099a231d02eb185588"
+    }
+  }
+}

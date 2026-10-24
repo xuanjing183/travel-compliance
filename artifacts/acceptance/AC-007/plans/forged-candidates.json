@@ -1,0 +1,10 @@
+{
+  "forged_outbound_id": {
+    "rejected": true,
+    "error": "outbound T-BJS-SHA-1025-FAKE is not in this run's provider response"
+  },
+  "altered_hotel_price": {
+    "rejected": true,
+    "error": "hotel H-SHA-CONTRACT-02 differs from the provider response"
+  }
+}

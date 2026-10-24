@@ -1,0 +1,624 @@
+{
+  "policy_versions": [
+    {
+      "version": "v1.0",
+      "status": "archived",
+      "effective_date": "2025-01-01",
+      "document_path": "tests\\fixtures\\policies\\v1.0.md",
+      "document_hash": "1b2d05668c9bee60d4ac17e1bd834b32e2fc34fa1aa596294fc2f2b1660d9686",
+      "published_at": null
+    },
+    {
+      "version": "v1.2",
+      "status": "archived",
+      "effective_date": "2026-01-01",
+      "document_path": "tests\\fixtures\\policies\\v1.2.md",
+      "document_hash": "72f941b6449e5d9519b2270c6f38bf0726428119f7b05fabe84e44502306367b",
+      "published_at": "2026-10-19T16:36:08+00:00"
+    },
+    {
+      "version": "v1.3",
+      "status": "published",
+      "effective_date": "2026-11-01",
+      "document_path": "<data_dir>\\uploads\\policies\\v1.3-f6f1153fbd05.md",
+      "document_hash": "3e3b8c1edb46fed8164962d24078f132d81f40fe27431b21a2415a84a9492024",
+      "published_at": "2026-10-19T16:36:08.657Z"
+    }
+  ],
+  "policy_rules": [
+    {
+      "version": "v1.0",
+      "id": "RULE-CITY-001",
+      "type": "city_tier",
+      "unit": "city_tier",
+      "clause": "POL-1",
+      "quote": "A 类城市：北京、上海、广州、深圳。B 类城市：杭州、南京、成都、武汉、西安、重庆、苏州、天津。C 类城市：上述以外的其他城市。",
+      "locator": "line:9",
+      "quote_status": "valid",
+      "status": "confirmed",
+      "confirmed_by": "u-wangwu",
+      "modification_reason": null,
+      "condition": {
+        "scope": "all"
+      },
+      "value": {
+        "tiers": {
+          "A": [
+            "北京",
+            "上海",
+            "广州",
+            "深圳"
+          ],
+          "B": [
+            "杭州",
+            "南京",
+            "成都",
+            "武汉",
+            "西安",
+            "重庆",
+            "苏州",
+            "天津"
+          ]
+        },
+        "fallback_tier": "C"
+      }
+    },
+    {
+      "version": "v1.0",
+      "id": "RULE-HOTEL-001",
+      "type": "hotel_cap",
+      "unit": "fen_per_night",
+      "clause": "POL-2",
+      "quote": "员工住宿上限：A 类城市每晚上限 500 元；B 类城市每晚上限 400 元；C 类城市每晚上限 300 元。",
+      "locator": "line:13",
+      "quote_status": "valid",
+      "status": "confirmed",
+      "confirmed_by": "u-wangwu",
+      "modification_reason": null,
+      "condition": {
+        "level": "employee"
+      },
+      "value": {
+        "caps_fen": {
+          "A": 50000,
+          "B": 40000,
+          "C": 30000
+        }
+      }
+    },
+    {
+      "version": "v1.0",
+      "id": "RULE-HOTEL-002",
+      "type": "hotel_cap",
+      "unit": "fen_per_night",
+      "clause": "POL-2",
+      "quote": "经理及以上人员住宿上限：A 类城市每晚上限 650 元；B 类城市每晚上限 500 元；C 类城市每晚上限 400 元。",
+      "locator": "line:15",
+      "quote_status": "valid",
+      "status": "confirmed",
+      "confirmed_by": "u-wangwu",
+      "modification_reason": null,
+      "condition": {
+        "level": "manager"
+      },
+      "value": {
+        "caps_fen": {
+          "A": 65000,
+          "B": 50000,
+          "C": 40000
+        }
+      }
+    },
+    {
+      "version": "v1.0",
+      "id": "RULE-MEAL-001",
+      "type": "meal_allowance",
+      "unit": "fen_per_day",
+      "clause": "POL-3",
+      "quote": "伙食补贴按出差自然日计发：A 类城市每天 100 元；B 类城市每天 80 元；C 类城市每天 60 元。",
+      "locator": "line:21",
+      "quote_status": "valid",
+      "status": "confirmed",
+      "confirmed_by": "u-wangwu",
+      "modification_reason": null,
+      "condition": {
+        "scope": "all"
+      },
+      "value": {
+        "caps_fen": {
+          "A": 10000,
+          "B": 8000,
+          "C": 6000
+        }
+      }
+    },
+    {
+      "version": "v1.0",
+      "id": "RULE-CLASS-001",
+      "type": "cabin_class",
+      "unit": "cabin",
+      "clause": "POL-4",
+      "quote": "全体员工乘坐经济舱或高铁二等座，不得乘坐公务舱、头等舱或高铁一等座。",
+      "locator": "line:25",
+      "quote_status": "valid",
+      "status": "confirmed",
+      "confirmed_by": "u-wangwu",
+      "modification_reason": null,
+      "condition": {
+        "scope": "all"
+      },
+      "value": {
+        "allowed": [
+          "economy",
+          "second_class"
+        ]
+      }
+    },
+    {
+      "version": "v1.0",
+      "id": "RULE-ADVANCE-001",
+      "type": "advance_booking_days",
+      "unit": "days",
+      "clause": "POL-5",
+      "quote": "机票出发日距申请日不少于 5 个自然日。",
+      "locator": "line:29",
+      "quote_status": "valid",
+      "status": "confirmed",
+      "confirmed_by": "u-wangwu",
+      "modification_reason": null,
+      "condition": {
+        "mode": "air"
+      },
+      "value": {
+        "days": 5
+      }
+    },
+    {
+      "version": "v1.0",
+      "id": "RULE-AUTO-001",
+      "type": "auto_approve_limit",
+      "unit": "fen",
+      "clause": "POL-6",
+      "quote": "单次差旅总额不超过 2000 元、无制度违规且不超过申报预算的，可自动通过；否则由直属经理审批。",
+      "locator": "line:33",
+      "quote_status": "valid",
+      "status": "confirmed",
+      "confirmed_by": "u-wangwu",
+      "modification_reason": null,
+      "condition": {
+        "scope": "all"
+      },
+      "value": {
+        "value_fen": 200000
+      }
+    },
+    {
+      "version": "v1.0",
+      "id": "RULE-DURATION-001",
+      "type": "trip_duration_limit",
+      "unit": "days",
+      "clause": "POL-7",
+      "quote": "单次出差不超过 15 个自然日。",
+      "locator": "line:37",
+      "quote_status": "valid",
+      "status": "confirmed",
+      "confirmed_by": "u-wangwu",
+      "modification_reason": null,
+      "condition": {
+        "scope": "all"
+      },
+      "value": {
+        "days": 15
+      }
+    },
+    {
+      "version": "v1.2",
+      "id": "RULE-CITY-001",
+      "type": "city_tier",
+      "unit": "city_tier",
+      "clause": "POL-1",
+      "quote": "A 类城市：北京、上海、广州、深圳。B 类城市：杭州、南京、成都、武汉、西安、重庆、苏州、天津。C 类城市：上述以外的其他城市。",
+      "locator": "line:9",
+      "quote_status": "valid",
+      "status": "confirmed",
+      "confirmed_by": "u-wangwu",
+      "modification_reason": null,
+      "condition": {
+        "scope": "all"
+      },
+      "value": {
+        "tiers": {
+          "A": [
+            "北京",
+            "上海",
+            "广州",
+            "深圳"
+          ],
+          "B": [
+            "杭州",
+            "南京",
+            "成都",
+            "武汉",
+            "西安",
+            "重庆",
+            "苏州",
+            "天津"
+          ]
+        },
+        "fallback_tier": "C"
+      }
+    },
+    {
+      "version": "v1.2",
+      "id": "RULE-HOTEL-001",
+      "type": "hotel_cap",
+      "unit": "fen_per_night",
+      "clause": "POL-2",
+      "quote": "员工住宿上限：A 类城市每晚上限 500 元；B 类城市每晚上限 400 元；C 类城市每晚上限 300 元。",
+      "locator": "line:13",
+      "quote_status": "valid",
+      "status": "confirmed",
+      "confirmed_by": "u-wangwu",
+      "modification_reason": null,
+      "condition": {
+        "level": "employee"
+      },
+      "value": {
+        "caps_fen": {
+          "A": 50000,
+          "B": 40000,
+          "C": 30000
+        }
+      }
+    },
+    {
+      "version": "v1.2",
+      "id": "RULE-HOTEL-002",
+      "type": "hotel_cap",
+      "unit": "fen_per_night",
+      "clause": "POL-2",
+      "quote": "经理及以上人员住宿上限：A 类城市每晚上限 650 元；B 类城市每晚上限 500 元；C 类城市每晚上限 400 元。",
+      "locator": "line:15",
+      "quote_status": "valid",
+      "status": "confirmed",
+      "confirmed_by": "u-wangwu",
+      "modification_reason": null,
+      "condition": {
+        "level": "manager"
+      },
+      "value": {
+        "caps_fen": {
+          "A": 65000,
+          "B": 50000,
+          "C": 40000
+        }
+      }
+    },
+    {
+      "version": "v1.2",
+      "id": "RULE-MEAL-001",
+      "type": "meal_allowance",
+      "unit": "fen_per_day",
+      "clause": "POL-3",
+      "quote": "伙食补贴按出差自然日计发：A 类城市每天 100 元；B 类城市每天 80 元；C 类城市每天 60 元。",
+      "locator": "line:21",
+      "quote_status": "valid",
+      "status": "confirmed",
+      "confirmed_by": "u-wangwu",
+      "modification_reason": null,
+      "condition": {
+        "scope": "all"
+      },
+      "value": {
+        "caps_fen": {
+          "A": 10000,
+          "B": 8000,
+          "C": 6000
+        }
+      }
+    },
+    {
+      "version": "v1.2",
+      "id": "RULE-CLASS-001",
+      "type": "cabin_class",
+      "unit": "cabin",
+      "clause": "POL-4",
+      "quote": "全体员工乘坐经济舱或高铁二等座，不得乘坐公务舱、头等舱或高铁一等座。",
+      "locator": "line:25",
+      "quote_status": "valid",
+      "status": "confirmed",
+      "confirmed_by": "u-wangwu",
+      "modification_reason": null,
+      "condition": {
+        "scope": "all"
+      },
+      "value": {
+        "allowed": [
+          "economy",
+          "second_class"
+        ]
+      }
+    },
+    {
+      "version": "v1.2",
+      "id": "RULE-ADVANCE-001",
+      "type": "advance_booking_days",
+      "unit": "days",
+      "clause": "POL-5",
+      "quote": "机票出发日距申请日不少于 3 个自然日。",
+      "locator": "line:29",
+      "quote_status": "valid",
+      "status": "confirmed",
+      "confirmed_by": "u-wangwu",
+      "modification_reason": null,
+      "condition": {
+        "mode": "air"
+      },
+      "value": {
+        "days": 3
+      }
+    },
+    {
+      "version": "v1.2",
+      "id": "RULE-AUTO-001",
+      "type": "auto_approve_limit",
+      "unit": "fen",
+      "clause": "POL-6",
+      "quote": "单次差旅总额不超过 3000 元、无制度违规且不超过申报预算的，可自动通过；否则由直属经理审批。",
+      "locator": "line:33",
+      "quote_status": "valid",
+      "status": "confirmed",
+      "confirmed_by": "u-wangwu",
+      "modification_reason": null,
+      "condition": {
+        "scope": "all"
+      },
+      "value": {
+        "value_fen": 300000
+      }
+    },
+    {
+      "version": "v1.2",
+      "id": "RULE-DURATION-001",
+      "type": "trip_duration_limit",
+      "unit": "days",
+      "clause": "POL-7",
+      "quote": "单次出差不超过 15 个自然日。",
+      "locator": "line:37",
+      "quote_status": "valid",
+      "status": "confirmed",
+      "confirmed_by": "u-wangwu",
+      "modification_reason": null,
+      "condition": {
+        "scope": "all"
+      },
+      "value": {
+        "days": 15
+      }
+    },
+    {
+      "version": "v1.3",
+      "id": "RULE-CITY-001",
+      "type": "city_tier",
+      "unit": "city_tier",
+      "clause": "POL-1",
+      "quote": "A 类城市：北京、上海、广州、深圳。B 类城市：杭州、南京、成都、武汉、西安、重庆、苏州、天津。C 类城市：上述以外的其他城市。",
+      "locator": "line:9",
+      "quote_status": "valid",
+      "status": "confirmed",
+      "confirmed_by": "u-wangwu",
+      "modification_reason": null,
+      "condition": {
+        "scope": "all"
+      },
+      "value": {
+        "tiers": {
+          "A": [
+            "北京",
+            "上海",
+            "广州",
+            "深圳"
+          ],
+          "B": [
+            "杭州",
+            "南京",
+            "成都",
+            "武汉",
+            "西安",
+            "重庆",
+            "苏州",
+            "天津"
+          ]
+        },
+        "fallback_tier": "C"
+      }
+    },
+    {
+      "version": "v1.3",
+      "id": "RULE-HOTEL-001",
+      "type": "hotel_cap",
+      "unit": "fen_per_night",
+      "clause": "POL-2",
+      "quote": "员工住宿上限：A 类城市每晚上限 450 元；B 类城市每晚上限 400 元；C 类城市每晚上限 300 元。",
+      "locator": "line:13",
+      "quote_status": "valid",
+      "status": "confirmed",
+      "confirmed_by": "u-wangwu",
+      "modification_reason": null,
+      "condition": {
+        "level": "employee"
+      },
+      "value": {
+        "caps_fen": {
+          "A": 45000,
+          "B": 40000,
+          "C": 30000
+        }
+      }
+    },
+    {
+      "version": "v1.3",
+      "id": "RULE-HOTEL-002",
+      "type": "hotel_cap",
+      "unit": "fen_per_night",
+      "clause": "POL-2",
+      "quote": "经理及以上人员住宿上限：A 类城市每晚上限 650 元；B 类城市每晚上限 500 元；C 类城市每晚上限 400 元。",
+      "locator": "line:15",
+      "quote_status": "valid",
+      "status": "confirmed",
+      "confirmed_by": "u-wangwu",
+      "modification_reason": null,
+      "condition": {
+        "level": "manager"
+      },
+      "value": {
+        "caps_fen": {
+          "A": 65000,
+          "B": 50000,
+          "C": 40000
+        }
+      }
+    },
+    {
+      "version": "v1.3",
+      "id": "RULE-MEAL-001",
+      "type": "meal_allowance",
+      "unit": "fen_per_day",
+      "clause": "POL-3",
+      "quote": "伙食补贴按出差自然日计发：A 类城市每天 100 元；B 类城市每天 80 元；C 类城市每天 60 元。",
+      "locator": "line:21",
+      "quote_status": "valid",
+      "status": "confirmed",
+      "confirmed_by": "u-wangwu",
+      "modification_reason": null,
+      "condition": {
+        "scope": "all"
+      },
+      "value": {
+        "caps_fen": {
+          "A": 10000,
+          "B": 8000,
+          "C": 6000
+        }
+      }
+    },
+    {
+      "version": "v1.3",
+      "id": "RULE-CLASS-001",
+      "type": "cabin_class",
+      "unit": "cabin",
+      "clause": "POL-4",
+      "quote": "全体员工乘坐经济舱或高铁二等座，不得乘坐公务舱、头等舱或高铁一等座。",
+      "locator": "line:25",
+      "quote_status": "valid",
+      "status": "confirmed",
+      "confirmed_by": "u-wangwu",
+      "modification_reason": null,
+      "condition": {
+        "scope": "all"
+      },
+      "value": {
+        "allowed": [
+          "economy",
+          "second_class"
+        ]
+      }
+    },
+    {
+      "version": "v1.3",
+      "id": "RULE-ADVANCE-001",
+      "type": "advance_booking_days",
+      "unit": "days",
+      "clause": "POL-5",
+      "quote": "机票出发日距申请日不少于 3 个自然日。",
+      "locator": "line:29",
+      "quote_status": "valid",
+      "status": "confirmed",
+      "confirmed_by": "u-wangwu",
+      "modification_reason": null,
+      "condition": {
+        "mode": "air"
+      },
+      "value": {
+        "days": 3
+      }
+    },
+    {
+      "version": "v1.3",
+      "id": "RULE-AUTO-001",
+      "type": "auto_approve_limit",
+      "unit": "fen",
+      "clause": "POL-6",
+      "quote": "单次差旅总额不超过 3000 元、无制度违规且不超过申报预算的，可自动通过；否则由直属经理审批。",
+      "locator": "line:33",
+      "quote_status": "valid",
+      "status": "confirmed",
+      "confirmed_by": "u-wangwu",
+      "modification_reason": null,
+      "condition": {
+        "scope": "all"
+      },
+      "value": {
+        "value_fen": 300000
+      }
+    },
+    {
+      "version": "v1.3",
+      "id": "RULE-DURATION-001",
+      "type": "trip_duration_limit",
+      "unit": "days",
+      "clause": "POL-7",
+      "quote": "单次出差不超过 15 个自然日。",
+      "locator": "line:37",
+      "quote_status": "valid",
+      "status": "confirmed",
+      "confirmed_by": "u-wangwu",
+      "modification_reason": null,
+      "condition": {
+        "scope": "all"
+      },
+      "value": {
+        "days": 15
+      }
+    },
+    {
+      "version": "v1.3",
+      "id": "RULE-DURATION-002",
+      "type": "trip_duration_limit",
+      "unit": "days",
+      "clause": "POL-7",
+      "quote": "出差时间最长不得超过 15 天。",
+      "locator": "",
+      "quote_status": "invalid_quote",
+      "status": "rejected",
+      "confirmed_by": null,
+      "modification_reason": null,
+      "condition": {
+        "scope": "all"
+      },
+      "value": {
+        "days": 15
+      }
+    },
+    {
+      "version": "v1.3",
+      "id": "RULE-OTHER-001",
+      "type": "taxi_expense",
+      "unit": "policy_flag",
+      "clause": "POL-8",
+      "quote": "出租车费用实报实销，不计入差旅总额。",
+      "locator": "line:41",
+      "quote_status": "valid",
+      "status": "unsupported",
+      "confirmed_by": null,
+      "modification_reason": null,
+      "condition": {
+        "scope": "all"
+      },
+      "value": {
+        "reimbursement": "actual",
+        "counts_toward_total": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "answer": "上海属于A类城市，住宿标准为：经理及以上人员每晚上限650元，员工每晚上限500元。",
+  "answerable": true,
+  "citations": [
+    {
+      "version": "v1.2",
+      "clause": "POL-2",
+      "quote": "经理及以上人员住宿上限：A 类城市每晚上限 650 元；B 类城市每晚上限 500 元；C 类城市每晚上限 400 元。",
+      "locator": "line:15",
+      "source": "policy"
+    },
+    {
+      "version": "v1.2",
+      "clause": "POL-2",
+      "quote": "员工住宿上限：A 类城市每晚上限 500 元；B 类城市每晚上限 400 元；C 类城市每晚上限 300 元。",
+      "locator": "line:13",
+      "source": "policy"
+    },
+    {
+      "version": "v1.2",
+      "clause": "POL-1",
+      "quote": "A 类城市：北京、上海、广州、深圳。B 类城市：杭州、南京、成都、武汉、西安、重庆、苏州、天津。C 类城市：上述以外的其他城市。",
+      "locator": "line:9",
+      "source": "policy"
+    }
+  ],
+  "version": "v1.2",
+  "source": "model",
+  "generator": "qwen3.8-max",
+  "retrieval": {
+    "mode": "vector",
+    "chunks": [
+      {
+        "rank": 1,
+        "clause": "POL-2",
+        "locator": "line:15",
+        "score": 0.672098
+      },
+      {
+        "rank": 2,
+        "clause": "POL-2",
+        "locator": "line:13",
+        "score": 0.664376
+      },
+      {
+        "rank": 3,
+        "clause": "POL-2",
+        "locator": "line:17",
+        "score": 0.595232
+      },
+      {
+        "rank": 4,
+        "clause": "POL-3",
+        "locator": "line:21",
+        "score": 0.507853
+      },
+      {
+        "rank": 5,
+        "clause": "POL-1",
+        "locator": "line:9",
+        "score": 0.474959
+      }
+    ],
+    "supplements": []
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "status_code": 422,
+  "body": {
+    "error": {
+      "code": "MISSING_RULE_TYPES",
+      "message": "封闭规则类型缺少已确认规则，不能发布",
+      "details": {
+        "missing_types": [
+          "meal_allowance"
+        ],
+        "problems": [
+          {
+            "code": "MISSING_RULE_TYPE",
+            "type": "meal_allowance",
+            "message": "no confirmed meal_allowance rule"
+          }
+        ]
+      },
+      "trace_id": "33a61237117d434999fd7092549be69b"
+    }
+  }
+}

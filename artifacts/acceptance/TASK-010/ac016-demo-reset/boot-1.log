@@ -1,0 +1,26 @@
+INFO:     Started server process [42368]
+INFO:     Waiting for application startup.
+2026-10-20 08:55:57,605 INFO travel_desk: startup recovery aborted=0 delivered=0 still_pending=0
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:56062 (Press CTRL+C to quit)
+INFO:     127.0.0.1:56069 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56070 - "POST /api/trips HTTP/1.1" 201 Created
+INFO:     127.0.0.1:56070 - "PATCH /api/trips/10ba420e-e8f9-475a-a7e9-f5ba846a3964/slots HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56070 - "POST /api/trips/10ba420e-e8f9-475a-a7e9-f5ba846a3964/submit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56070 - "POST /api/trips/10ba420e-e8f9-475a-a7e9-f5ba846a3964/decision HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56070 - "POST /api/trips HTTP/1.1" 201 Created
+INFO:     127.0.0.1:56070 - "PATCH /api/trips/2ab77da2-fba9-4c85-ab30-54459c137398/slots HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56070 - "POST /api/trips/2ab77da2-fba9-4c85-ab30-54459c137398/submit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56070 - "PUT /api/users/u-zhangsan/preferences HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56070 - "POST /api/demo/faults HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56070 - "GET /api/health/providers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56070 - "POST /api/demo/reset HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:56070 - "POST /api/demo/reset HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:56070 - "POST /api/demo/reset HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:56070 - "POST /api/demo/reset HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:56070 - "POST /api/demo/reset HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56070 - "GET /api/health/providers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56070 - "GET /api/trips HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56070 - "GET /api/trips/10ba420e-e8f9-475a-a7e9-f5ba846a3964 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56070 - "GET /api/approvals?status=pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56070 - "GET /api/outbox HTTP/1.1" 200 OK

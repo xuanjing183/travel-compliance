@@ -1,0 +1,32 @@
+[
+  {
+    "seq": 20,
+    "ts": "2026-10-19T16:19:24.868Z",
+    "actor": "u-zhangsan",
+    "type": "preferences_changed",
+    "payload": {
+      "user_id": "u-zhangsan",
+      "action": "put",
+      "before": {},
+      "after": {
+        "avoid_early_departure": true
+      },
+      "changed": true
+    }
+  },
+  {
+    "seq": 40,
+    "ts": "2026-10-19T16:19:24.952Z",
+    "actor": "u-zhangsan",
+    "type": "preferences_changed",
+    "payload": {
+      "user_id": "u-zhangsan",
+      "action": "delete",
+      "before": {
+        "avoid_early_departure": true
+      },
+      "after": {},
+      "changed": true
+    }
+  }
+]

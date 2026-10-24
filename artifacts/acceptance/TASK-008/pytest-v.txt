@@ -1,0 +1,51 @@
+============================= test session starts =============================
+platform win32 -- Python 3.11.0, pytest-9.1.1, pluggy-1.7.0 -- <repo>\.venv\Scripts\python.exe
+rootdir: <repo>
+configfile: pyproject.toml
+plugins: anyio-4.15.1, langsmith-0.14.11, asyncio-1.4.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 40 items
+
+tests/test_policies.py::test_ac005_upload_markdown_and_text_pdf_create_drafts_scanned_pdf_is_415 PASSED [  2%]
+tests/test_policies.py::test_ac005_extraction_marks_invalid_quotes_and_unsupported_types PASSED [  5%]
+tests/test_policies.py::test_extraction_of_an_unrecorded_document_is_unavailable_not_guessed PASSED [  7%]
+tests/test_policies.py::test_ac005_review_rules_invalid_quote_unsupported_and_modification_reason PASSED [ 10%]
+tests/test_policies.py::test_ac005_publish_preconditions_then_atomic_publish PASSED [ 12%]
+tests/test_policies.py::test_policy_reads_hide_drafts_and_candidates_from_non_admins PASSED [ 15%]
+tests/test_policies.py::test_reset_removes_uploaded_policies_and_their_files PASSED [ 17%]
+tests/test_policies.py::test_ac024_s12_publish_v13_through_the_api_then_revalidate PASSED [ 20%]
+tests/test_policy_qa.py::test_markdown_chunks_carry_clause_quote_and_locator PASSED [ 22%]
+tests/test_policy_qa.py::test_pdf_headings_without_hash_are_detected PASSED [ 25%]
+tests/test_policy_qa.py::test_bm25_and_rrf_are_deterministic PASSED      [ 27%]
+tests/test_policy_qa.py::test_answer_defaults_to_published_version_with_located_citation PASSED [ 30%]
+tests/test_policy_qa.py::test_no_basis_is_refused_without_citations PASSED [ 32%]
+tests/test_policy_qa.py::test_explicit_archived_version_answers_from_that_document PASSED [ 35%]
+tests/test_policy_qa.py::test_any_role_can_ask_but_identity_is_required PASSED [ 37%]
+tests/test_policy_qa.py::test_malformed_requests_are_422[body0] PASSED   [ 40%]
+tests/test_policy_qa.py::test_malformed_requests_are_422[body1] PASSED   [ 42%]
+tests/test_policy_qa.py::test_malformed_requests_are_422[body2] PASSED   [ 45%]
+tests/test_policy_qa.py::test_malformed_requests_are_422[body3] PASSED   [ 47%]
+tests/test_policy_qa.py::test_malformed_requests_are_422[body4] PASSED   [ 50%]
+tests/test_policy_qa.py::test_malformed_requests_are_422[body5] PASSED   [ 52%]
+tests/test_policy_qa.py::test_malformed_requests_are_422[body6] PASSED   [ 55%]
+tests/test_policy_qa.py::test_malformed_requests_are_422[body7] PASSED   [ 57%]
+tests/test_policy_qa.py::test_malformed_requests_are_422[body8] PASSED   [ 60%]
+tests/test_policy_qa.py::test_unknown_and_draft_versions PASSED          [ 62%]
+tests/test_policy_qa.py::test_no_published_version_is_404 PASSED         [ 65%]
+tests/test_policy_qa.py::test_every_question_is_audited PASSED           [ 67%]
+tests/test_policy_qa.py::test_fake_mode_never_builds_an_embedder PASSED  [ 70%]
+tests/test_policy_qa.py::test_citations_outside_the_retrieved_set_are_dropped PASSED [ 72%]
+tests/test_policy_qa.py::test_answerable_draft_without_valid_citation_is_downgraded PASSED [ 75%]
+tests/test_policy_qa.py::test_refusal_draft_never_keeps_citations PASSED [ 77%]
+tests/test_policy_qa.py::test_model_unavailable_is_503_and_audited PASSED [ 80%]
+tests/test_policy_qa.py::test_vector_and_hybrid_retrieval_with_stub_embedder PASSED [ 82%]
+tests/test_policy_qa.py::test_rrf_scores_in_hybrid_hits PASSED           [ 85%]
+tests/test_policy_qa.py::test_embedder_cache_and_missing_key PASSED      [ 87%]
+tests/test_policy_qa.py::test_cosine PASSED                              [ 90%]
+tests/test_policy_qa.py::test_clause_links_come_from_confirmed_rules PASSED [ 92%]
+tests/test_policy_qa.py::test_linked_clause_is_supplied_after_the_ranked_hits PASSED [ 95%]
+tests/test_policy_qa.py::test_no_supplement_when_the_linked_clause_was_retrieved PASSED [ 97%]
+tests/test_policy_qa.py::test_draft_without_confirmed_rules_has_no_supplements PASSED [100%]
+
+- generated xml file: <repo>\artifacts\acceptance\TASK-008\junit.xml -
+============================= 40 passed in 4.37s ==============================

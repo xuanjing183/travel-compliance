@@ -1,0 +1,84 @@
+{
+  "generated_at": "2026-10-19T17:46:57+00:00",
+  "llm_mode": "real",
+  "text_model": "qwen3.8-max",
+  "embedding_model": "qwen3.7-text-embedding",
+  "question": "上海住宿标准是多少",
+  "documents": {
+    "approvals-pending": {
+      "sources": [
+        "backup_fixture",
+        "demo_fixture",
+        "model",
+        "policy"
+      ],
+      "problems": []
+    },
+    "S01-trip": {
+      "sources": [
+        "demo_fixture",
+        "model",
+        "policy"
+      ],
+      "problems": []
+    },
+    "S01-itinerary": {
+      "sources": [
+        "demo_fixture",
+        "model"
+      ],
+      "problems": []
+    },
+    "S01-audit": {
+      "sources": [
+        "demo_fixture",
+        "model",
+        "policy"
+      ],
+      "problems": []
+    },
+    "S03-trip": {
+      "sources": [
+        "backup_fixture",
+        "demo_fixture",
+        "model",
+        "policy"
+      ],
+      "problems": []
+    },
+    "S03-audit": {
+      "sources": [
+        "backup_fixture",
+        "demo_fixture",
+        "model",
+        "policy"
+      ],
+      "problems": []
+    },
+    "policy-answer": {
+      "sources": [
+        "model",
+        "policy"
+      ],
+      "problems": []
+    }
+  },
+  "S01": {
+    "status": "DELIVERED",
+    "summary_generator": "qwen3.8-max",
+    "summary_source": "model"
+  },
+  "S03": {
+    "status": "PENDING_APPROVAL",
+    "hotel_source": "backup_fixture"
+  },
+  "policy_answer": {
+    "answerable": true,
+    "source": "model",
+    "generator": "qwen3.8-max",
+    "citation_sources": [
+      "policy"
+    ]
+  },
+  "result": "pass"
+}

@@ -1,0 +1,4 @@
+# AC-022 log scan (sampled logs under artifacts/)
+# patterns target secret VALUES
+
+exit=1

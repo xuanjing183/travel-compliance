@@ -1,0 +1,19 @@
+POST /api/trips/{id}/messages  text=从北京出发，10月28日到10月30日，参加供应商大会，预算四千元
+HTTP 200  X-Trace-Id: 20ef7eddaf1e49f5ba877bd51c63f129
+
+id: 70f9ff4c-497d-4d85-b742-361ee5f3a3b0
+event: status
+data: {"event_id": "70f9ff4c-497d-4d85-b742-361ee5f3a3b0", "trip_id": "b0d836bf-a4fc-4adf-afb6-abdbd709f49f", "revision": 1, "type": "status", "ts": "2026-10-19T15:51:33.565Z", "trace_id": "20ef7eddaf1e49f5ba877bd51c63f129", "payload": {"stage": "extracting", "message": "正在识别差旅信息…"}}
+
+id: 84a2b1cf-467e-458b-9db6-43cb2945a373
+event: slots
+data: {"event_id": "84a2b1cf-467e-458b-9db6-43cb2945a373", "trip_id": "b0d836bf-a4fc-4adf-afb6-abdbd709f49f", "revision": 1, "type": "slots", "ts": "2026-10-19T15:51:33.569Z", "trace_id": "20ef7eddaf1e49f5ba877bd51c63f129", "payload": {"slots": {"origin": "北京", "destination": "杭州", "start_date": "2026-10-28", "end_date": "2026-10-30", "purpose": "供应商大会", "declared_budget_fen": 400000, "meeting_address": null, "preferences": null}, "missing_fields": [], "invalid_fields": [], "changes": [{"field": "origin", "before": null, "after": "北京"}, {"field": "start_date", "before": null, "after": "2026-10-28"}, {"field": "end_date", "before": null, "after": "2026-10-30"}, {"field": "purpose", "before": null, "after": "供应商大会"}, {"field": "declared_budget_fen", "before": null, "after": 400000}], "ask": "已记录：出发城市 北京，出发日期 2026-10-28，返回日期 2026-10-30，出差事由 供应商大会，申报预算 4,000.00 元。信息已齐全：出发城市 北京，目的城市 杭州，出发日期 2026-10-28，返回日期 2026-10-30，出差事由 供应商大会，申报预算 4,000.00 元。请核对，确认无误后点击“提交”。", "generator": "fake", "source": "model"}}
+
+id: 39a8924f-4aee-4563-b65b-af13a281bcfc
+event: token
+data: {"event_id": "39a8924f-4aee-4563-b65b-af13a281bcfc", "trip_id": "b0d836bf-a4fc-4adf-afb6-abdbd709f49f", "revision": 1, "type": "token", "ts": "2026-10-19T15:51:33.569Z", "trace_id": "20ef7eddaf1e49f5ba877bd51c63f129", "payload": {"text": "已记录：出发城市 北京，出发日期 2026-10-28，返回日期 2026-10-30，出差事由 供应商大会，申报预算 4,000.00 元。信息已齐全：出发城市 北京，目的城市 杭州，出发日期 2026-10-28，返回日期 2026-10-30，出差事由 供应商大会，申报预算 4,000.00 元。请核对，确认无误后点击“提交”。", "generator": "template"}}
+
+id: 3ff56c62-26cd-48fd-a153-d9be0d6ac568
+event: done
+data: {"event_id": "3ff56c62-26cd-48fd-a153-d9be0d6ac568", "trip_id": "b0d836bf-a4fc-4adf-afb6-abdbd709f49f", "revision": 1, "type": "done", "ts": "2026-10-19T15:51:33.569Z", "trace_id": "20ef7eddaf1e49f5ba877bd51c63f129", "payload": {"status": "COLLECTING", "revision": 1}}
+

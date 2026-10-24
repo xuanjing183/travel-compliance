@@ -1,0 +1,5 @@
+platform: MINGW64_NT-10.0-26200 3.4.10-87d57229.x86_64 x86_64
+uv: uv 0.12.2 (46ead6098 2026-08-05 x86_64-pc-windows-msvc)
+python (venv): Python 3.11.0
+clone: C:/Users/22316/AppData/Local/Temp/ac001-clone (git clone of repo, no .venv)
+date: 2026-10-20T03:43:13Z

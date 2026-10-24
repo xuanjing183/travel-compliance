@@ -1,0 +1,103 @@
+{
+  "trip_id": "0fedc080-7885-4679-b671-f968c8dd12a6",
+  "status": "PENDING_APPROVAL",
+  "revision": 1,
+  "plan_incomplete": true,
+  "plan_missing": [
+    "hotel"
+  ],
+  "transport": {
+    "status": "selected",
+    "note": null,
+    "outbound_id": "T-BJS-SHA-1025-B",
+    "return_id": "T-SHA-BJS-1026-B"
+  },
+  "hotel": {
+    "status": "manual_required",
+    "note": "协议酒店库不可用；无可订酒店候选，待人工补录",
+    "candidate_id": null,
+    "candidate_source": null
+  },
+  "weather": {
+    "status": "ok",
+    "note": null,
+    "days": [
+      {
+        "date": "2026-10-25",
+        "summary": "晴",
+        "temp_low_c": 17,
+        "temp_high_c": 24,
+        "source": "demo_fixture"
+      },
+      {
+        "date": "2026-10-26",
+        "summary": "多云",
+        "temp_low_c": 17,
+        "temp_high_c": 23,
+        "source": "demo_fixture"
+      }
+    ]
+  },
+  "cost_breakdown": {
+    "nights": 1,
+    "days": 2,
+    "destination_tier": "A",
+    "transport_fen": 130000,
+    "outbound_fen": 65000,
+    "return_fen": 65000,
+    "hotel_per_night_fen": null,
+    "hotel_fen": null,
+    "meal_per_day_fen": 10000,
+    "meal_fen": 20000,
+    "total_fen": null,
+    "known_subtotal_fen": 150000,
+    "declared_budget_fen": 250000,
+    "budget_delta_fen": null,
+    "missing_components": [
+      "hotel"
+    ]
+  },
+  "approval_reasons": [
+    "PLAN_INCOMPLETE"
+  ],
+  "violations": [],
+  "provider_calls": {
+    "transport": "ok",
+    "hotel_contract": "unavailable",
+    "hotel_backup": "ok",
+    "weather": "ok"
+  },
+  "provider_call_log": [
+    {
+      "provider": "transport",
+      "status": "ok"
+    },
+    {
+      "provider": "transport",
+      "status": "ok"
+    },
+    {
+      "provider": "hotel_contract",
+      "status": "unavailable"
+    },
+    {
+      "provider": "hotel_backup",
+      "status": "ok"
+    },
+    {
+      "provider": "weather",
+      "status": "ok"
+    }
+  ],
+  "trajectory": [
+    "VALIDATING",
+    "PLANNING",
+    "PENDING_APPROVAL"
+  ],
+  "fault": "no_protocol_hotel",
+  "fault_injected": {
+    "no_protocol_hotel": true,
+    "transport_timeout": false,
+    "weather_unavailable": false
+  }
+}

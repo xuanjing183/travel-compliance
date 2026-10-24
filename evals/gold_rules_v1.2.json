@@ -1,0 +1,73 @@
+{
+  "version": "1.0",
+  "policy_version": "v1.2",
+  "description": "Frozen gold rule set for AC-018 rule-extraction evaluation (REQ-027). The unit of gold is the 8 rules of contract §4.2. A model candidate matches a gold rule when type, condition, tier values (normalized to fen), unit and clause ALL agree (D-17); one gold may be matched by several candidates (one-to-many). recall = matched gold / 8. This file must not change after the first gated run.",
+  "corpus": "tests/fixtures/policies/v1.2.md",
+  "match_fields": ["type", "condition", "value", "unit", "clause"],
+  "rules": [
+    {
+      "gold_id": "RULE-CITY-001",
+      "type": "city_tier",
+      "condition": { "scope": "all" },
+      "value": { "tiers": { "A": ["北京", "上海", "广州", "深圳"], "B": ["杭州", "南京", "成都", "武汉", "西安", "重庆", "苏州", "天津"] }, "fallback_tier": "C" },
+      "unit": "city_tier",
+      "clause": "POL-1"
+    },
+    {
+      "gold_id": "RULE-HOTEL-001",
+      "type": "hotel_cap",
+      "condition": { "level": "employee" },
+      "value": { "caps_fen": { "A": 50000, "B": 40000, "C": 30000 } },
+      "unit": "fen_per_night",
+      "clause": "POL-2"
+    },
+    {
+      "gold_id": "RULE-HOTEL-002",
+      "type": "hotel_cap",
+      "condition": { "level": "manager" },
+      "value": { "caps_fen": { "A": 65000, "B": 50000, "C": 40000 } },
+      "unit": "fen_per_night",
+      "clause": "POL-2"
+    },
+    {
+      "gold_id": "RULE-MEAL-001",
+      "type": "meal_allowance",
+      "condition": { "scope": "all" },
+      "value": { "caps_fen": { "A": 10000, "B": 8000, "C": 6000 } },
+      "unit": "fen_per_day",
+      "clause": "POL-3"
+    },
+    {
+      "gold_id": "RULE-CLASS-001",
+      "type": "cabin_class",
+      "condition": { "scope": "all" },
+      "value": { "allowed": ["economy", "second_class"] },
+      "unit": "cabin",
+      "clause": "POL-4"
+    },
+    {
+      "gold_id": "RULE-ADVANCE-001",
+      "type": "advance_booking_days",
+      "condition": { "mode": "air" },
+      "value": { "days": 3 },
+      "unit": "days",
+      "clause": "POL-5"
+    },
+    {
+      "gold_id": "RULE-AUTO-001",
+      "type": "auto_approve_limit",
+      "condition": { "scope": "all" },
+      "value": { "value_fen": 300000 },
+      "unit": "fen",
+      "clause": "POL-6"
+    },
+    {
+      "gold_id": "RULE-DURATION-001",
+      "type": "trip_duration_limit",
+      "condition": { "scope": "all" },
+      "value": { "days": 15 },
+      "unit": "days",
+      "clause": "POL-7"
+    }
+  ]
+}

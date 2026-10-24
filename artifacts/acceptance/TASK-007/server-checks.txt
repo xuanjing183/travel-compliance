@@ -1,0 +1,22 @@
+# TASK-007 server-side checks against the running workbench (fake mode, data dir /tmp/tcd-ui)
+# generated 2026-10-19T17:23:11Z
+## role checks (X-Demo-User -> method path -> HTTP code, error.code, error.details)
+u-zhangsan  GET   /api/demo/faults                   -> 403 FORBIDDEN {"required_role": "admin"}
+u-zhangsan  GET   /api/outbox                        -> 403 FORBIDDEN {"required_role": "admin"}
+u-zhangsan  GET   /api/health/providers              -> 403 FORBIDDEN {"required_role": "admin"}
+u-zhangsan  GET   /api/approvals?status=pending      -> 403 FORBIDDEN {"required_role": "manager"}
+u-zhangsan  POST  /api/policies/v1.3/extract         -> 403 FORBIDDEN {"required_role": "admin"}
+u-lisi      POST  /api/demo/reset                    -> 403 FORBIDDEN {"required_role": "admin"}
+u-lisi      GET   /api/outbox                        -> 403 FORBIDDEN {"required_role": "admin"}
+u-wangwu    GET   /api/approvals?status=pending      -> 403 FORBIDDEN {"required_role": "manager"}
+
+## stale decision: 李四 tries to decide on revision 1 after the trip moved to revision 3 (DELIVERED)
+{"error":{"code":"STALE_REVISION","message":"请求的 revision 不是当前版本","details":{"requested_revision":1,"current_revision":3},"trace_id":"c9334211c2f74e5a8aa9252920887481"}} HTTP 409
+
+## no identity header
+{"error":{"code":"UNAUTHENTICATED","message":"缺少 X-Demo-User 请求头","details":{},"trace_id":"c58bf8c09ed9470ea12340e129ab46bf"}} HTTP 401
+
+## static assets (HTTP code, content-type, path)
+200 text/html; charset=utf-8  /
+200 text/javascript; charset=utf-8  /static/js/app.js
+200 text/css; charset=utf-8  /static/css/app.css

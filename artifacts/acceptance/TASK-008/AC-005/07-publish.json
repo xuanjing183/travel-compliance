@@ -1,0 +1,70 @@
+{
+  "publish": {
+    "status_code": 200,
+    "body": {
+      "policy": {
+        "version": "v9.1-test",
+        "status": "published",
+        "effective_date": "2026-11-01",
+        "document": {
+          "kind": "markdown",
+          "sha256": "72f941b6449e5d9519b2270c6f38bf0726428119f7b05fabe84e44502306367b"
+        },
+        "created_at": "2026-10-19T16:36:08.219Z",
+        "published_at": "2026-10-19T16:36:08.436Z",
+        "rule_counts": {
+          "candidate": 0,
+          "confirmed": 8,
+          "rejected": 1,
+          "unsupported": 1,
+          "invalid_quote": 1
+        }
+      },
+      "archived_version": "v1.2",
+      "confirmed_rule_ids": [
+        "RULE-CITY-001",
+        "RULE-HOTEL-001",
+        "RULE-HOTEL-002",
+        "RULE-MEAL-001",
+        "RULE-CLASS-001",
+        "RULE-ADVANCE-001",
+        "RULE-AUTO-001",
+        "RULE-DURATION-001"
+      ]
+    }
+  },
+  "replay_same_key": {
+    "status_code": 200,
+    "body": {
+      "policy": {
+        "version": "v9.1-test",
+        "status": "published",
+        "effective_date": "2026-11-01",
+        "document": {
+          "kind": "markdown",
+          "sha256": "72f941b6449e5d9519b2270c6f38bf0726428119f7b05fabe84e44502306367b"
+        },
+        "created_at": "2026-10-19T16:36:08.219Z",
+        "published_at": "2026-10-19T16:36:08.436Z",
+        "rule_counts": {
+          "candidate": 0,
+          "confirmed": 8,
+          "rejected": 1,
+          "unsupported": 1,
+          "invalid_quote": 1
+        }
+      },
+      "archived_version": "v1.2",
+      "confirmed_rule_ids": [
+        "RULE-CITY-001",
+        "RULE-HOTEL-001",
+        "RULE-HOTEL-002",
+        "RULE-MEAL-001",
+        "RULE-CLASS-001",
+        "RULE-ADVANCE-001",
+        "RULE-AUTO-001",
+        "RULE-DURATION-001"
+      ]
+    }
+  }
+}

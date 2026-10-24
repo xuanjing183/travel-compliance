@@ -1,0 +1,41 @@
+# RISK-003 spike run 2026-10-19T11:00:10Z
+# command prefix: uv run --no-project --python 3.11 --with langgraph==1.2.10 --with langgraph-checkpoint-sqlite==3.1.1 --with aiosqlite==0.22.1 python risk003_interrupt_restart.py
+## phase 1: start
+{"pid": 22312, "interrupts": [{"trip_id": "trip-1", "revision": 1, "total_fen": 476000}], "next": ["approval"]}
+WAITING_FOR_KILL
+## hard kill: taskkill /F /PID 22312
+killed
+## phase 2: resume (new process)
+{"pid": 36120, "next_before_resume": ["approval"], "pending_interrupt_before_resume": [{"trip_id": "trip-1", "revision": 1, "total_fen": 476000}], "status_after": "DELIVERED", "next_after": []}
+## phase 3: duplicate resume (new process)
+{"pid": 23936, "next": [], "status": "DELIVERED"}
+GRAPH_ALREADY_COMPLETE: duplicate decision must be rejected at API layer (409)
+## report
+{
+  "node_runs": {
+    "approval_after_resume": {
+      "count": 1,
+      "distinct_pids": 1
+    },
+    "approval_enter": {
+      "count": 2,
+      "distinct_pids": 2
+    },
+    "deliver": {
+      "count": 1,
+      "distinct_pids": 1
+    },
+    "plan": {
+      "count": 1,
+      "distinct_pids": 1
+    }
+  },
+  "outbox_rows": [
+    [
+      "trip-1",
+      1,
+      "trip_delivery",
+      36120
+    ]
+  ]
+}

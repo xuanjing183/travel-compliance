@@ -1,0 +1,24 @@
+{
+  "note": "Demo weather fixture. Dates not listed fall back to default. Weather never blocks planning.",
+  "default": {
+    "condition": "多云",
+    "high_c": 22,
+    "low_c": 16
+  },
+  "cities": {
+    "上海": {
+      "2026-10-25": {"condition": "晴", "high_c": 24, "low_c": 17},
+      "2026-10-26": {"condition": "多云", "high_c": 23, "low_c": 17},
+      "2026-10-28": {"condition": "小雨", "high_c": 21, "low_c": 17},
+      "2026-10-29": {"condition": "阴", "high_c": 20, "low_c": 16},
+      "2026-10-30": {"condition": "多云", "high_c": 22, "low_c": 16},
+      "2026-11-05": {"condition": "晴", "high_c": 23, "low_c": 15},
+      "2026-11-06": {"condition": "晴", "high_c": 24, "low_c": 16}
+    },
+    "成都": {
+      "2026-10-27": {"condition": "阴", "high_c": 20, "low_c": 15},
+      "2026-10-28": {"condition": "小雨", "high_c": 19, "low_c": 15},
+      "2026-10-29": {"condition": "多云", "high_c": 21, "low_c": 15}
+    }
+  }
+}

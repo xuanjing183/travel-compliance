@@ -1,0 +1,14 @@
+{
+  "status_code": 422,
+  "body": {
+    "error": {
+      "code": "QUOTE_INVALID",
+      "message": "原文引用无效的候选不能确认，只能拒绝或标记不支持",
+      "details": {
+        "rule_id": "RULE-DURATION-002",
+        "quote": "出差时间最长不得超过 15 天。"
+      },
+      "trace_id": "e14e6ce1e9ae40f8a97d8bd7b032793c"
+    }
+  }
+}

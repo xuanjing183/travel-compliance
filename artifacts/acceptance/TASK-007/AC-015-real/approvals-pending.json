@@ -1,0 +1,245 @@
+{
+  "approvals": [
+    {
+      "id": "e226a1af-6398-4b93-815f-043c350e1137",
+      "trip_id": "faf35095-1a25-4d1c-a5e0-33aa3cba2557",
+      "revision": 1,
+      "approver_id": "u-lisi",
+      "status": "pending",
+      "decision": null,
+      "comment": null,
+      "created_at": "2026-10-19T17:46:52.220Z",
+      "decided_at": null,
+      "idempotency_key": null,
+      "card": {
+        "employee": {
+          "id": "u-zhangsan",
+          "name": "张三",
+          "department": "销售部"
+        },
+        "revision": 1,
+        "slots": {
+          "origin": "北京",
+          "destination": "上海",
+          "start_date": "2026-10-28",
+          "end_date": "2026-10-30",
+          "purpose": "供应商大会",
+          "declared_budget_fen": 400000,
+          "meeting_address": "上海市浦东新区滨江大道2727号",
+          "preferences": null
+        },
+        "policy_version": "v1.2",
+        "cost_breakdown": {
+          "nights": 2,
+          "days": 3,
+          "destination_tier": "A",
+          "transport_fen": 350000,
+          "outbound_fen": 180000,
+          "return_fen": 170000,
+          "hotel_per_night_fen": 48000,
+          "hotel_fen": 96000,
+          "meal_per_day_fen": 10000,
+          "meal_fen": 30000,
+          "total_fen": 476000,
+          "known_subtotal_fen": 476000,
+          "declared_budget_fen": 400000,
+          "budget_delta_fen": 76000,
+          "missing_components": []
+        },
+        "budget_delta_fen": 76000,
+        "violations": [],
+        "approval_reasons": [
+          {
+            "code": "BUDGET_EXCEEDED",
+            "actual_value": 476000,
+            "limit_value": 400000,
+            "unit": "fen",
+            "lower_bound": false,
+            "missing": [],
+            "basis": null,
+            "message": "总额 4,760.00 元 超过申报预算 4,000.00 元（超 760.00 元）"
+          },
+          {
+            "code": "OVER_AUTO_APPROVAL_LIMIT",
+            "actual_value": 476000,
+            "limit_value": 300000,
+            "unit": "fen",
+            "lower_bound": false,
+            "missing": [],
+            "basis": {
+              "rule_id": "RULE-AUTO-001",
+              "policy_version": "v1.2",
+              "clause_ref": "POL-6"
+            },
+            "message": "总额 4,760.00 元 超过自动通过阈值 3,000.00 元"
+          }
+        ],
+        "sources": [
+          "demo_fixture",
+          "model",
+          "policy"
+        ],
+        "plan_summary": {
+          "incomplete": false,
+          "missing": [],
+          "outbound": {
+            "id": "T-BJS-SHA-1028-A",
+            "service_no": "XC1028",
+            "mode": "air",
+            "cabin": "economy",
+            "origin": "北京",
+            "destination": "上海",
+            "depart_at": "2026-10-28T01:30:00Z",
+            "arrive_at": "2026-10-28T04:45:00Z",
+            "price_fen": 180000,
+            "source": "demo_fixture"
+          },
+          "return": {
+            "id": "T-SHA-BJS-1030-A",
+            "service_no": "XC1030",
+            "mode": "air",
+            "cabin": "economy",
+            "origin": "上海",
+            "destination": "北京",
+            "depart_at": "2026-10-30T11:00:00Z",
+            "arrive_at": "2026-10-30T13:30:00Z",
+            "price_fen": 170000,
+            "source": "demo_fixture"
+          },
+          "exception_legs": [],
+          "transport_note": null,
+          "hotel_status": "selected",
+          "nights": 2,
+          "hotel": {
+            "id": "H-SHA-CONTRACT-01",
+            "name": "星衡协议酒店·外滩店",
+            "city": "上海",
+            "price_fen": 48000,
+            "kind": "contract",
+            "source": "demo_fixture"
+          },
+          "hotel_exception": false,
+          "hotel_note": null,
+          "summary": "本次出差前往上海参加供应商大会，时间为2026年10月28日至30日。去程乘XC1028于09:30出发、12:45抵达；返程乘XC1030于19:00出发、21:30抵达。入住星衡协议酒店·外滩店共2晚。会议地址：上海市浦东新区滨江大道2727号。期间天气依次为小雨、阴、多云，请备好雨具。",
+          "summary_generator": "qwen3.8-max"
+        }
+      }
+    },
+    {
+      "id": "1e4389e8-9d7a-446e-8440-32d848f68278",
+      "trip_id": "69f3d61d-f7f1-4878-b5c3-c2ab6620aa4b",
+      "revision": 1,
+      "approver_id": "u-lisi",
+      "status": "pending",
+      "decision": null,
+      "comment": null,
+      "created_at": "2026-10-19T17:46:54.637Z",
+      "decided_at": null,
+      "idempotency_key": null,
+      "card": {
+        "employee": {
+          "id": "u-zhangsan",
+          "name": "张三",
+          "department": "销售部"
+        },
+        "revision": 1,
+        "slots": {
+          "origin": "北京",
+          "destination": "成都",
+          "start_date": "2026-10-27",
+          "end_date": "2026-10-29",
+          "purpose": "培训",
+          "declared_budget_fen": 400000,
+          "meeting_address": "成都市高新区天府大道1000号",
+          "preferences": null
+        },
+        "policy_version": "v1.2",
+        "cost_breakdown": {
+          "nights": 2,
+          "days": 3,
+          "destination_tier": "B",
+          "transport_fen": 160000,
+          "outbound_fen": 80000,
+          "return_fen": 80000,
+          "hotel_per_night_fen": 45000,
+          "hotel_fen": 90000,
+          "meal_per_day_fen": 8000,
+          "meal_fen": 24000,
+          "total_fen": 274000,
+          "known_subtotal_fen": 274000,
+          "declared_budget_fen": 400000,
+          "budget_delta_fen": -126000,
+          "missing_components": []
+        },
+        "budget_delta_fen": -126000,
+        "violations": [
+          {
+            "code": "HOTEL_OVER_CAP",
+            "rule_id": "RULE-HOTEL-001",
+            "policy_version": "v1.2",
+            "clause": "POL-2",
+            "quote": "员工住宿上限：A 类城市每晚上限 500 元；B 类城市每晚上限 400 元；C 类城市每晚上限 300 元。",
+            "locator": "line:13",
+            "actual_value": 45000,
+            "limit_value": 40000,
+            "unit": "fen_per_night",
+            "subject": "H-CTU-BACKUP-01",
+            "source": "policy",
+            "message": "锦城商务酒店（已验证备用） 每晚 450.00 元，超过 B 类城市上限 400.00 元（超 50.00 元/晚）"
+          }
+        ],
+        "approval_reasons": [],
+        "sources": [
+          "backup_fixture",
+          "demo_fixture",
+          "model",
+          "policy"
+        ],
+        "plan_summary": {
+          "incomplete": false,
+          "missing": [],
+          "outbound": {
+            "id": "T-BJS-CTU-1027-A",
+            "service_no": "XC1027",
+            "mode": "air",
+            "cabin": "economy",
+            "origin": "北京",
+            "destination": "成都",
+            "depart_at": "2026-10-27T01:30:00Z",
+            "arrive_at": "2026-10-27T04:30:00Z",
+            "price_fen": 80000,
+            "source": "demo_fixture"
+          },
+          "return": {
+            "id": "T-CTU-BJS-1029-A",
+            "service_no": "XC1029",
+            "mode": "air",
+            "cabin": "economy",
+            "origin": "成都",
+            "destination": "北京",
+            "depart_at": "2026-10-29T09:00:00Z",
+            "arrive_at": "2026-10-29T12:00:00Z",
+            "price_fen": 80000,
+            "source": "demo_fixture"
+          },
+          "exception_legs": [],
+          "transport_note": null,
+          "hotel_status": "selected",
+          "nights": 2,
+          "hotel": {
+            "id": "H-CTU-BACKUP-01",
+            "name": "锦城商务酒店（已验证备用）",
+            "city": "成都",
+            "price_fen": 45000,
+            "kind": "backup",
+            "source": "backup_fixture"
+          },
+          "hotel_exception": true,
+          "hotel_note": "无合规可订协议酒店，选用已验证备用目录候选（backup_fixture）；无住宿上限内的可订候选，选用超标最少的候选（上限 400.00 元/晚）",
+          "summary": "本次差旅为赴成都培训，10月27日至29日。去程乘XC1027于09:30自北京出发，12:30抵达成都；返程乘XC1029于17:00出发，20:00抵京。入住锦城商务酒店（已验证备用）共2晚。会议地址：成都市高新区天府大道1000号。期间天气依次为阴、小雨、多云，请备好雨具。",
+          "summary_generator": "qwen3.8-max"
+        }
+      }
+    }
+  ]
+}

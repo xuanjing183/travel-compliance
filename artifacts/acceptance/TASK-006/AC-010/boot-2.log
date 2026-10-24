@@ -1,0 +1,11 @@
+INFO:     Started server process [2444]
+INFO:     Waiting for application startup.
+2026-10-19 23:41:24,664 INFO travel_desk: startup recovery aborted=0 delivered=0 still_pending=0
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:59116 (Press CTRL+C to quit)
+INFO:     127.0.0.1:57114 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57115 - "GET /api/trips/f846eaf2-4814-4625-880d-10e56f23ccd3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57115 - "GET /api/approvals?status=pending HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57115 - "POST /api/trips/f846eaf2-4814-4625-880d-10e56f23ccd3/decision HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57115 - "POST /api/trips/f846eaf2-4814-4625-880d-10e56f23ccd3/decision HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57115 - "GET /api/trips/f846eaf2-4814-4625-880d-10e56f23ccd3/audit HTTP/1.1" 200 OK

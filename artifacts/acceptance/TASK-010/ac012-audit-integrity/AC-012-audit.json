@@ -1,0 +1,435 @@
+{
+  "scenario": "AC-012 / REQ-020 audit integrity",
+  "mode": "fake",
+  "start_command": "python -m travel_desk (= uv run travel-desk)",
+  "data_dir": "<tempdir>/var",
+  "scenarios": {
+    "S-01": {
+      "trip_id": "6d841bf3-d394-42ce-b5b7-76bfa056ebe5",
+      "event_count": 21,
+      "event_types": [
+        "trip_created",
+        "slots_changed",
+        "status_changed",
+        "submitted",
+        "preference_snapshot",
+        "policy_bound",
+        "status_changed",
+        "provider_call",
+        "provider_call",
+        "provider_call",
+        "provider_call",
+        "candidates_selected",
+        "plan_created",
+        "rules_evaluated",
+        "status_changed",
+        "approval_requested",
+        "decision_recorded",
+        "status_changed",
+        "status_changed",
+        "status_changed",
+        "delivery_written"
+      ],
+      "provider_faults": [],
+      "scenario_checks_passed": true,
+      "trajectory": [
+        "VALIDATING",
+        "PLANNING",
+        "PENDING_APPROVAL",
+        "APPROVED",
+        "DELIVERY_PENDING",
+        "DELIVERED"
+      ]
+    },
+    "S-08": {
+      "trip_id": "c61ec765-8145-4f75-84e0-9e611101da95",
+      "event_count": 40,
+      "event_types": [
+        "trip_created",
+        "slots_changed",
+        "status_changed",
+        "submitted",
+        "preference_snapshot",
+        "policy_bound",
+        "status_changed",
+        "provider_call",
+        "provider_call",
+        "provider_call",
+        "provider_call",
+        "candidates_selected",
+        "plan_created",
+        "rules_evaluated",
+        "status_changed",
+        "approval_requested",
+        "decision_recorded",
+        "notification_written",
+        "status_changed",
+        "approval_superseded",
+        "slots_changed",
+        "status_changed",
+        "submitted",
+        "preference_snapshot",
+        "policy_bound",
+        "status_changed",
+        "provider_call",
+        "provider_call",
+        "provider_call",
+        "provider_call",
+        "candidates_selected",
+        "plan_created",
+        "rules_evaluated",
+        "status_changed",
+        "approval_requested",
+        "decision_recorded",
+        "status_changed",
+        "status_changed",
+        "status_changed",
+        "delivery_written"
+      ],
+      "provider_faults": [],
+      "scenario_checks_passed": true,
+      "trajectory": [
+        "VALIDATING",
+        "PLANNING",
+        "PENDING_APPROVAL",
+        "COLLECTING",
+        "VALIDATING",
+        "PLANNING",
+        "PENDING_APPROVAL",
+        "APPROVED",
+        "DELIVERY_PENDING",
+        "DELIVERED"
+      ]
+    },
+    "S-09": {
+      "trip_id": "00a0e2e6-e740-4797-bed7-bf7268982ce4",
+      "event_count": 16,
+      "event_types": [
+        "trip_created",
+        "slots_changed",
+        "status_changed",
+        "submitted",
+        "preference_snapshot",
+        "policy_bound",
+        "status_changed",
+        "provider_call",
+        "provider_call",
+        "provider_call",
+        "provider_call",
+        "candidates_selected",
+        "plan_created",
+        "rules_evaluated",
+        "status_changed",
+        "approval_requested"
+      ],
+      "provider_faults": [
+        {
+          "provider": "transport",
+          "status": "timeout"
+        },
+        {
+          "provider": "transport",
+          "status": "timeout"
+        }
+      ],
+      "scenario_checks_passed": true,
+      "trajectory": [
+        "VALIDATING",
+        "PLANNING",
+        "PENDING_APPROVAL"
+      ]
+    },
+    "S-12": {
+      "trip_id": "50bbc913-b462-48e2-9a27-dce9b51a2228",
+      "event_count": 24,
+      "event_types": [
+        "trip_created",
+        "slots_changed",
+        "status_changed",
+        "submitted",
+        "preference_snapshot",
+        "policy_bound",
+        "status_changed",
+        "provider_call",
+        "provider_call",
+        "provider_call",
+        "provider_call",
+        "candidates_selected",
+        "plan_created",
+        "rules_evaluated",
+        "status_changed",
+        "approval_requested",
+        "status_changed",
+        "approval_superseded",
+        "policy_bound",
+        "rules_evaluated",
+        "status_changed",
+        "revalidated",
+        "status_changed",
+        "approval_requested"
+      ],
+      "provider_faults": [],
+      "scenario_checks_passed": true,
+      "trajectory": [
+        "VALIDATING",
+        "PLANNING",
+        "PENDING_APPROVAL",
+        "VALIDATING",
+        "PLANNING",
+        "PENDING_APPROVAL"
+      ]
+    }
+  },
+  "coverage": {
+    "槽位变化": {
+      "matched_event_types": [
+        "slots_changed",
+        "trip_created"
+      ],
+      "covered": true
+    },
+    "检索条款与引用": {
+      "matched_event_types": [
+        "policy_bound",
+        "rules_evaluated"
+      ],
+      "covered": true
+    },
+    "规则结果": {
+      "matched_event_types": [
+        "revalidated",
+        "rules_evaluated"
+      ],
+      "covered": true
+    },
+    "Provider 调用摘要与来源": {
+      "matched_event_types": [
+        "candidates_selected",
+        "provider_call"
+      ],
+      "covered": true
+    },
+    "方案版本": {
+      "matched_event_types": [
+        "plan_created"
+      ],
+      "covered": true
+    },
+    "审批决定": {
+      "matched_event_types": [
+        "approval_requested",
+        "approval_superseded",
+        "decision_recorded"
+      ],
+      "covered": true
+    },
+    "通知与交付": {
+      "matched_event_types": [
+        "delivery_written",
+        "notification_written"
+      ],
+      "covered": true
+    },
+    "错误": {
+      "matched_event_types": [],
+      "covered": true,
+      "via_provider_fault": [
+        {
+          "provider": "transport",
+          "status": "timeout"
+        },
+        {
+          "provider": "transport",
+          "status": "timeout"
+        }
+      ]
+    }
+  },
+  "immutability": {
+    "triggers": [
+      "audit_events_no_delete",
+      "audit_events_no_update"
+    ],
+    "trigger_sql": {
+      "audit_events_no_update": "CREATE TRIGGER audit_events_no_update BEFORE UPDATE ON audit_events\nBEGIN\n    SELECT RAISE(ABORT, 'audit_events is append-only');\nEND",
+      "audit_events_no_delete": "CREATE TRIGGER audit_events_no_delete BEFORE DELETE ON audit_events\nWHEN (SELECT value FROM meta WHERE key = 'reset_in_progress') IS NOT '1'\nBEGIN\n    SELECT RAISE(ABORT, 'audit_events can only be cleared by demo reset');\nEND"
+    },
+    "probe_event": {
+      "seq": 83,
+      "id": "5f63cea9-dc37-4e03-943d-47ca2d9febc6"
+    },
+    "update_refused": "audit_events is append-only",
+    "delete_refused": "audit_events can only be cleared by demo reset",
+    "probe_actor_after": "u-wangwu",
+    "probe_still_present": true,
+    "audit_http_routes": {
+      "/api/trips/{trip_id}/audit": [
+        "GET"
+      ]
+    },
+    "mutating_audit_routes": []
+  },
+  "union_event_types": [
+    "approval_requested",
+    "approval_superseded",
+    "candidates_selected",
+    "decision_recorded",
+    "delivery_written",
+    "notification_written",
+    "plan_created",
+    "policy_bound",
+    "preference_snapshot",
+    "provider_call",
+    "revalidated",
+    "rules_evaluated",
+    "slots_changed",
+    "status_changed",
+    "submitted",
+    "trip_created"
+  ],
+  "checks": [
+    {
+      "check": "S-01 场景自身断言通过",
+      "passed": true,
+      "observed": []
+    },
+    {
+      "check": "S-01 审计非空且已导出",
+      "passed": true,
+      "observed": 21
+    },
+    {
+      "check": "S-08 场景自身断言通过",
+      "passed": true,
+      "observed": []
+    },
+    {
+      "check": "S-08 审计非空且已导出",
+      "passed": true,
+      "observed": 40
+    },
+    {
+      "check": "S-09 场景自身断言通过",
+      "passed": true,
+      "observed": []
+    },
+    {
+      "check": "S-09 审计非空且已导出",
+      "passed": true,
+      "observed": 16
+    },
+    {
+      "check": "S-12 场景自身断言通过",
+      "passed": true,
+      "observed": []
+    },
+    {
+      "check": "S-12 审计非空且已导出",
+      "passed": true,
+      "observed": 24
+    },
+    {
+      "check": "审计覆盖 REQ-020 类别「槽位变化」",
+      "passed": true,
+      "observed": [
+        "slots_changed",
+        "trip_created"
+      ]
+    },
+    {
+      "check": "审计覆盖 REQ-020 类别「检索条款与引用」",
+      "passed": true,
+      "observed": [
+        "policy_bound",
+        "rules_evaluated"
+      ]
+    },
+    {
+      "check": "审计覆盖 REQ-020 类别「规则结果」",
+      "passed": true,
+      "observed": [
+        "revalidated",
+        "rules_evaluated"
+      ]
+    },
+    {
+      "check": "审计覆盖 REQ-020 类别「Provider 调用摘要与来源」",
+      "passed": true,
+      "observed": [
+        "candidates_selected",
+        "provider_call"
+      ]
+    },
+    {
+      "check": "审计覆盖 REQ-020 类别「方案版本」",
+      "passed": true,
+      "observed": [
+        "plan_created"
+      ]
+    },
+    {
+      "check": "审计覆盖 REQ-020 类别「审批决定」",
+      "passed": true,
+      "observed": [
+        "approval_requested",
+        "approval_superseded",
+        "decision_recorded"
+      ]
+    },
+    {
+      "check": "审计覆盖 REQ-020 类别「通知与交付」",
+      "passed": true,
+      "observed": [
+        "delivery_written",
+        "notification_written"
+      ]
+    },
+    {
+      "check": "审计覆盖 REQ-020 类别「错误」",
+      "passed": true,
+      "observed": [
+        {
+          "provider": "transport",
+          "status": "timeout"
+        },
+        {
+          "provider": "transport",
+          "status": "timeout"
+        }
+      ]
+    },
+    {
+      "check": "audit_events 存在追加式触发器（no_update / no_delete）",
+      "passed": true,
+      "observed": [
+        "audit_events_no_delete",
+        "audit_events_no_update"
+      ]
+    },
+    {
+      "check": "直接 SQL UPDATE 既有审计事件被拒绝",
+      "passed": true,
+      "observed": "audit_events is append-only"
+    },
+    {
+      "check": "直接 SQL DELETE 既有审计事件被拒绝（非重置路径）",
+      "passed": true,
+      "observed": "audit_events can only be cleared by demo reset"
+    },
+    {
+      "check": "被探测事件在尝试后仍原样存在（actor 未被篡改）",
+      "passed": true,
+      "observed": "u-wangwu"
+    },
+    {
+      "check": "HTTP 层审计只读（无任何改写审计的路由）",
+      "passed": true,
+      "observed": {
+        "/api/trips/{trip_id}/audit": [
+          "GET"
+        ]
+      }
+    }
+  ],
+  "passed": true
+}

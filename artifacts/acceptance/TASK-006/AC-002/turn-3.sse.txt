@@ -1,0 +1,19 @@
+POST /api/trips/{id}/messages  text=预算改成五千
+HTTP 200  X-Trace-Id: 209b087731f74ea3b27b8b55dd32a3e6
+
+id: b8b7fb84-ed09-489e-a7d2-9fe5e579ad64
+event: status
+data: {"event_id": "b8b7fb84-ed09-489e-a7d2-9fe5e579ad64", "trip_id": "b0d836bf-a4fc-4adf-afb6-abdbd709f49f", "revision": 1, "type": "status", "ts": "2026-10-19T15:51:33.577Z", "trace_id": "209b087731f74ea3b27b8b55dd32a3e6", "payload": {"stage": "extracting", "message": "正在识别差旅信息…"}}
+
+id: 49ad7962-8eaf-4bef-9264-5ea2b75ad455
+event: slots
+data: {"event_id": "49ad7962-8eaf-4bef-9264-5ea2b75ad455", "trip_id": "b0d836bf-a4fc-4adf-afb6-abdbd709f49f", "revision": 1, "type": "slots", "ts": "2026-10-19T15:51:33.580Z", "trace_id": "209b087731f74ea3b27b8b55dd32a3e6", "payload": {"slots": {"origin": "北京", "destination": "杭州", "start_date": "2026-10-28", "end_date": "2026-10-30", "purpose": "供应商大会", "declared_budget_fen": 500000, "meeting_address": null, "preferences": null}, "missing_fields": [], "invalid_fields": [], "changes": [{"field": "declared_budget_fen", "before": 400000, "after": 500000}], "ask": "已记录：申报预算 5,000.00 元。信息已齐全：出发城市 北京，目的城市 杭州，出发日期 2026-10-28，返回日期 2026-10-30，出差事由 供应商大会，申报预算 5,000.00 元。请核对，确认无误后点击“提交”。", "generator": "fake", "source": "model"}}
+
+id: 23f4d059-70c6-4b95-857f-6ebeb64aead0
+event: token
+data: {"event_id": "23f4d059-70c6-4b95-857f-6ebeb64aead0", "trip_id": "b0d836bf-a4fc-4adf-afb6-abdbd709f49f", "revision": 1, "type": "token", "ts": "2026-10-19T15:51:33.580Z", "trace_id": "209b087731f74ea3b27b8b55dd32a3e6", "payload": {"text": "已记录：申报预算 5,000.00 元。信息已齐全：出发城市 北京，目的城市 杭州，出发日期 2026-10-28，返回日期 2026-10-30，出差事由 供应商大会，申报预算 5,000.00 元。请核对，确认无误后点击“提交”。", "generator": "template"}}
+
+id: 9c654675-21c2-46bc-bf8d-b3822dd5030e
+event: done
+data: {"event_id": "9c654675-21c2-46bc-bf8d-b3822dd5030e", "trip_id": "b0d836bf-a4fc-4adf-afb6-abdbd709f49f", "revision": 1, "type": "done", "ts": "2026-10-19T15:51:33.580Z", "trace_id": "209b087731f74ea3b27b8b55dd32a3e6", "payload": {"status": "COLLECTING", "revision": 1}}
+

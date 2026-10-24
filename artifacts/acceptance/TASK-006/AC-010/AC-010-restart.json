@@ -1,0 +1,253 @@
+{
+  "scenario": "S-10 / AC-010",
+  "generated_at": "2026-10-19T15:41:20.247951Z",
+  "mode": "fake",
+  "start_command": "python -m travel_desk (= uv run travel-desk)",
+  "data_dir": "<tempdir>/var",
+  "steps": [
+    {
+      "boot": {
+        "boot": 1,
+        "pid": 29264,
+        "started_at": "2026-10-19T15:41:20.806241Z",
+        "ready_at": "2026-10-19T15:41:22.128137Z"
+      }
+    },
+    {
+      "submit_events": [
+        "trip_status",
+        "status",
+        "plan",
+        "violations",
+        "approval_required",
+        "trip_status",
+        "done"
+      ],
+      "terminal": {
+        "status": "PENDING_APPROVAL",
+        "revision": 1
+      }
+    },
+    {
+      "db_before_kill": {
+        "trip": {
+          "status": "PENDING_APPROVAL",
+          "revision": 1,
+          "thread_id": "f846eaf2-4814-4625-880d-10e56f23ccd3:rev-1:run-f97a5cda"
+        },
+        "approvals": [
+          {
+            "revision": 1,
+            "status": "pending",
+            "decision": null,
+            "approver_id": "u-lisi"
+          }
+        ],
+        "outbox_by_kind": {},
+        "itineraries": 0,
+        "checkpoint_rows_for_thread": 5
+      }
+    },
+    {
+      "kill_1": {
+        "pid": 29264,
+        "method": "taskkill /F /T /PID",
+        "killed_at": "2026-10-19T15:41:22.223572Z",
+        "tool_returncode": 0,
+        "process_exit_code": 1,
+        "port_closed_after_kill": true
+      }
+    },
+    {
+      "db_after_kill": {
+        "trip": {
+          "status": "PENDING_APPROVAL",
+          "revision": 1,
+          "thread_id": "f846eaf2-4814-4625-880d-10e56f23ccd3:rev-1:run-f97a5cda"
+        },
+        "approvals": [
+          {
+            "revision": 1,
+            "status": "pending",
+            "decision": null,
+            "approver_id": "u-lisi"
+          }
+        ],
+        "outbox_by_kind": {},
+        "itineraries": 0,
+        "checkpoint_rows_for_thread": 5
+      }
+    },
+    {
+      "boot": {
+        "boot": 2,
+        "pid": 11980,
+        "started_at": "2026-10-19T15:41:23.555329Z",
+        "ready_at": "2026-10-19T15:41:24.875725Z"
+      }
+    },
+    {
+      "decision": {
+        "status_code": 200,
+        "trip_status": "DELIVERED"
+      }
+    },
+    {
+      "db_after_approve": {
+        "trip": {
+          "status": "DELIVERED",
+          "revision": 1,
+          "thread_id": "f846eaf2-4814-4625-880d-10e56f23ccd3:rev-1:run-f97a5cda"
+        },
+        "approvals": [
+          {
+            "revision": 1,
+            "status": "decided",
+            "decision": "approve",
+            "approver_id": "u-lisi"
+          }
+        ],
+        "outbox_by_kind": {
+          "trip_delivery": 1
+        },
+        "itineraries": 1,
+        "checkpoint_rows_for_thread": 8
+      }
+    },
+    {
+      "kill_2": {
+        "pid": 11980,
+        "method": "taskkill /F /T /PID",
+        "killed_at": "2026-10-19T15:41:24.969915Z",
+        "tool_returncode": 0,
+        "process_exit_code": 1,
+        "port_closed_after_kill": true
+      }
+    },
+    {
+      "boot": {
+        "boot": 3,
+        "pid": 46008,
+        "started_at": "2026-10-19T15:41:26.275391Z",
+        "ready_at": "2026-10-19T15:41:27.568426Z"
+      }
+    },
+    {
+      "db_after_second_restart": {
+        "trip": {
+          "status": "DELIVERED",
+          "revision": 1,
+          "thread_id": "f846eaf2-4814-4625-880d-10e56f23ccd3:rev-1:run-f97a5cda"
+        },
+        "approvals": [
+          {
+            "revision": 1,
+            "status": "decided",
+            "decision": "approve",
+            "approver_id": "u-lisi"
+          }
+        ],
+        "outbox_by_kind": {
+          "trip_delivery": 1
+        },
+        "itineraries": 1,
+        "checkpoint_rows_for_thread": 8
+      }
+    }
+  ],
+  "checks": [
+    {
+      "check": "slots filled",
+      "passed": true,
+      "observed": 200
+    },
+    {
+      "check": "submit stream ends PENDING_APPROVAL",
+      "passed": true,
+      "observed": {
+        "status": "PENDING_APPROVAL",
+        "revision": 1
+      }
+    },
+    {
+      "check": "checkpoint persisted before kill",
+      "passed": true,
+      "observed": 5
+    },
+    {
+      "check": "process really terminated",
+      "passed": true,
+      "observed": {
+        "pid": 29264,
+        "method": "taskkill /F /T /PID",
+        "killed_at": "2026-10-19T15:41:22.223572Z",
+        "tool_returncode": 0,
+        "process_exit_code": 1,
+        "port_closed_after_kill": true
+      }
+    },
+    {
+      "check": "pending approval survives the kill",
+      "passed": true,
+      "observed": {
+        "status": "PENDING_APPROVAL",
+        "revision": 1,
+        "thread_id": "f846eaf2-4814-4625-880d-10e56f23ccd3:rev-1:run-f97a5cda"
+      }
+    },
+    {
+      "check": "startup recovery ran",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "trip still PENDING_APPROVAL after restart",
+      "passed": true,
+      "observed": "PENDING_APPROVAL"
+    },
+    {
+      "check": "manager's to-do list not lost",
+      "passed": true,
+      "observed": 1
+    },
+    {
+      "check": "approve after restart delivers",
+      "passed": true,
+      "observed": 200
+    },
+    {
+      "check": "same-key replay returns the stored response",
+      "passed": true,
+      "observed": null
+    },
+    {
+      "check": "decision resumed the checkpoint interrupt (via=graph)",
+      "passed": true,
+      "observed": [
+        "graph"
+      ]
+    },
+    {
+      "check": "exactly one trip_delivery",
+      "passed": true,
+      "observed": {
+        "trip_delivery": 1
+      }
+    },
+    {
+      "check": "no second delivery after another restart",
+      "passed": true,
+      "observed": {
+        "trip_delivery": 1
+      }
+    },
+    {
+      "check": "outbox API agrees",
+      "passed": true,
+      "observed": [
+        "trip_delivery"
+      ]
+    }
+  ],
+  "passed": true
+}

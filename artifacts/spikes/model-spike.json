@@ -1,0 +1,427 @@
+{
+  "run_at": "2026-10-19T11:03:51.328498+00:00",
+  "price_assumption_cny_per_m_tokens": 36.0,
+  "structured_output": {
+    "model": "qwen3.8-max",
+    "passed": 10,
+    "total": 10,
+    "target": 9,
+    "rows": [
+      {
+        "input": "我10月28日到30日从北京去上海参加供应商大会，预算4000元",
+        "expected": {
+          "origin": "北京",
+          "destination": "上海",
+          "start_date": "2026-10-28",
+          "end_date": "2026-10-30",
+          "purpose": "供应商大会",
+          "declared_budget_yuan": 4000
+        },
+        "got": {
+          "origin": "北京",
+          "destination": "上海",
+          "start_date": "2026-10-28",
+          "end_date": "2026-10-30",
+          "purpose": "供应商大会",
+          "declared_budget_yuan": 4000
+        },
+        "mismatched_fields": [],
+        "error": null,
+        "passed": true,
+        "latency_s": 2.05
+      },
+      {
+        "input": "下周去杭州",
+        "expected": {
+          "origin": null,
+          "destination": "杭州",
+          "start_date": null,
+          "end_date": null,
+          "purpose": null,
+          "declared_budget_yuan": null
+        },
+        "got": {
+          "origin": null,
+          "destination": "杭州",
+          "start_date": null,
+          "end_date": null,
+          "purpose": null,
+          "declared_budget_yuan": null
+        },
+        "mismatched_fields": [],
+        "error": null,
+        "passed": true,
+        "latency_s": 1.69
+      },
+      {
+        "input": "要去成都培训，10/27出发10/29回来，北京出发，预算四千",
+        "expected": {
+          "origin": "北京",
+          "destination": "成都",
+          "start_date": "2026-10-27",
+          "end_date": "2026-10-29",
+          "purpose": "培训",
+          "declared_budget_yuan": 4000
+        },
+        "got": {
+          "origin": "北京",
+          "destination": "成都",
+          "start_date": "2026-10-27",
+          "end_date": "2026-10-29",
+          "purpose": "培训",
+          "declared_budget_yuan": 4000
+        },
+        "mismatched_fields": [],
+        "error": null,
+        "passed": true,
+        "latency_s": 2.04
+      },
+      {
+        "input": "帮我安排去深圳出差，客户拜访，11月3号到11月5号",
+        "expected": {
+          "origin": null,
+          "destination": "深圳",
+          "start_date": "2026-11-03",
+          "end_date": "2026-11-05",
+          "purpose": "客户拜访",
+          "declared_budget_yuan": null
+        },
+        "got": {
+          "origin": null,
+          "destination": "深圳",
+          "start_date": "2026-11-03",
+          "end_date": "2026-11-05",
+          "purpose": "客户拜访",
+          "declared_budget_yuan": null
+        },
+        "mismatched_fields": [],
+        "error": null,
+        "passed": true,
+        "latency_s": 3.79
+      },
+      {
+        "input": "预算3000，从上海去南京开会",
+        "expected": {
+          "origin": "上海",
+          "destination": "南京",
+          "start_date": null,
+          "end_date": null,
+          "purpose": "会",
+          "declared_budget_yuan": 3000
+        },
+        "got": {
+          "origin": "上海",
+          "destination": "南京",
+          "start_date": null,
+          "end_date": null,
+          "purpose": "开会",
+          "declared_budget_yuan": 3000
+        },
+        "mismatched_fields": [],
+        "error": null,
+        "passed": true,
+        "latency_s": 1.48
+      },
+      {
+        "input": "10月25日到26日北京到上海客户拜访，预算两千五",
+        "expected": {
+          "origin": "北京",
+          "destination": "上海",
+          "start_date": "2026-10-25",
+          "end_date": "2026-10-26",
+          "purpose": "客户拜访",
+          "declared_budget_yuan": 2500
+        },
+        "got": {
+          "origin": "北京",
+          "destination": "上海",
+          "start_date": "2026-10-25",
+          "end_date": "2026-10-26",
+          "purpose": "客户拜访",
+          "declared_budget_yuan": 2500
+        },
+        "mismatched_fields": [],
+        "error": null,
+        "passed": true,
+        "latency_s": 1.9
+      },
+      {
+        "input": "我想月底去广州",
+        "expected": {
+          "origin": null,
+          "destination": "广州",
+          "start_date": null,
+          "end_date": null,
+          "purpose": null,
+          "declared_budget_yuan": null
+        },
+        "got": {
+          "origin": null,
+          "destination": "广州",
+          "start_date": null,
+          "end_date": null,
+          "purpose": null,
+          "declared_budget_yuan": null
+        },
+        "mismatched_fields": [],
+        "error": null,
+        "passed": true,
+        "latency_s": 1.59
+      },
+      {
+        "input": "从北京去西安参加技术交流会，11月10日去，11月12日回，预算5000元",
+        "expected": {
+          "origin": "北京",
+          "destination": "西安",
+          "start_date": "2026-11-10",
+          "end_date": "2026-11-12",
+          "purpose": "技术交流",
+          "declared_budget_yuan": 5000
+        },
+        "got": {
+          "origin": "北京",
+          "destination": "西安",
+          "start_date": "2026-11-10",
+          "end_date": "2026-11-12",
+          "purpose": "技术交流会",
+          "declared_budget_yuan": 5000
+        },
+        "mismatched_fields": [],
+        "error": null,
+        "passed": true,
+        "latency_s": 1.92
+      },
+      {
+        "input": "预算改成5000",
+        "expected": {
+          "origin": null,
+          "destination": null,
+          "start_date": null,
+          "end_date": null,
+          "purpose": null,
+          "declared_budget_yuan": 5000
+        },
+        "got": {
+          "origin": null,
+          "destination": null,
+          "start_date": null,
+          "end_date": null,
+          "purpose": null,
+          "declared_budget_yuan": 5000
+        },
+        "mismatched_fields": [],
+        "error": null,
+        "passed": true,
+        "latency_s": 1.67
+      },
+      {
+        "input": "出差去武汉，2026-11-15至2026-11-18，事由：项目验收，出发地天津，预算6000元",
+        "expected": {
+          "origin": "天津",
+          "destination": "武汉",
+          "start_date": "2026-11-15",
+          "end_date": "2026-11-18",
+          "purpose": "项目验收",
+          "declared_budget_yuan": 6000
+        },
+        "got": {
+          "origin": "天津",
+          "destination": "武汉",
+          "start_date": "2026-11-15",
+          "end_date": "2026-11-18",
+          "purpose": "项目验收",
+          "declared_budget_yuan": 6000
+        },
+        "mismatched_fields": [],
+        "error": null,
+        "passed": true,
+        "latency_s": 1.67
+      }
+    ]
+  },
+  "vision_base64": {
+    "model": "qwen3.5-plus",
+    "transport": "local file -> base64 data URL (no OSS)",
+    "passed": 3,
+    "total": 3,
+    "runs": [
+      {
+        "got": {
+          "city": "上海",
+          "start_date": "2026-10-28",
+          "end_date": "2026-10-30",
+          "purpose": "供应商大会：年度合作评审与新品对接",
+          "meeting_address": "上海市浦东新区滨江大道 2727 号星衡国际会议中心 3 号厅"
+        },
+        "mismatched_fields": [],
+        "address_ok": true,
+        "error": null,
+        "passed": true,
+        "latency_s": 3.33
+      },
+      {
+        "got": {
+          "city": "上海",
+          "start_date": "2026-10-28",
+          "end_date": "2026-10-30",
+          "purpose": "供应商大会：年度合作评审与新品对接",
+          "meeting_address": "上海市浦东新区滨江大道 2727 号星衡国际会议中心 3 号厅"
+        },
+        "mismatched_fields": [],
+        "address_ok": true,
+        "error": null,
+        "passed": true,
+        "latency_s": 2.56
+      },
+      {
+        "got": {
+          "city": "上海",
+          "start_date": "2026-10-28",
+          "end_date": "2026-10-30",
+          "purpose": "供应商大会：年度合作评审与新品对接",
+          "meeting_address": "上海市浦东新区滨江大道 2727 号星衡国际会议中心 3 号厅"
+        },
+        "mismatched_fields": [],
+        "address_ok": true,
+        "error": null,
+        "passed": true,
+        "latency_s": 2.72
+      }
+    ]
+  },
+  "embedding": {
+    "model": "qwen3.7-text-embedding",
+    "ok": true,
+    "count": 2,
+    "dim": 1024
+  },
+  "ledger_total_est_cny": 0.411912,
+  "ledger": [
+    {
+      "ts": "2026-10-19T11:03:54.041929+00:00",
+      "kind": "slots",
+      "model": "qwen3.8-max",
+      "input_tokens": 580,
+      "output_tokens": 105,
+      "total_tokens": 685,
+      "est_cost_cny": 0.02466
+    },
+    {
+      "ts": "2026-10-19T11:03:55.730902+00:00",
+      "kind": "slots",
+      "model": "qwen3.8-max",
+      "input_tokens": 560,
+      "output_tokens": 83,
+      "total_tokens": 643,
+      "est_cost_cny": 0.023148
+    },
+    {
+      "ts": "2026-10-19T11:03:57.775359+00:00",
+      "kind": "slots",
+      "model": "qwen3.8-max",
+      "input_tokens": 579,
+      "output_tokens": 104,
+      "total_tokens": 683,
+      "est_cost_cny": 0.024588
+    },
+    {
+      "ts": "2026-10-19T11:04:01.564901+00:00",
+      "kind": "slots",
+      "model": "qwen3.8-max",
+      "input_tokens": 577,
+      "output_tokens": 102,
+      "total_tokens": 679,
+      "est_cost_cny": 0.024444
+    },
+    {
+      "ts": "2026-10-19T11:04:03.043079+00:00",
+      "kind": "slots",
+      "model": "qwen3.8-max",
+      "input_tokens": 568,
+      "output_tokens": 86,
+      "total_tokens": 654,
+      "est_cost_cny": 0.023544
+    },
+    {
+      "ts": "2026-10-19T11:04:04.944438+00:00",
+      "kind": "slots",
+      "model": "qwen3.8-max",
+      "input_tokens": 575,
+      "output_tokens": 105,
+      "total_tokens": 680,
+      "est_cost_cny": 0.02448
+    },
+    {
+      "ts": "2026-10-19T11:04:06.531100+00:00",
+      "kind": "slots",
+      "model": "qwen3.8-max",
+      "input_tokens": 561,
+      "output_tokens": 83,
+      "total_tokens": 644,
+      "est_cost_cny": 0.023184
+    },
+    {
+      "ts": "2026-10-19T11:04:08.449045+00:00",
+      "kind": "slots",
+      "model": "qwen3.8-max",
+      "input_tokens": 587,
+      "output_tokens": 105,
+      "total_tokens": 692,
+      "est_cost_cny": 0.024912
+    },
+    {
+      "ts": "2026-10-19T11:04:10.118227+00:00",
+      "kind": "slots",
+      "model": "qwen3.8-max",
+      "input_tokens": 563,
+      "output_tokens": 86,
+      "total_tokens": 649,
+      "est_cost_cny": 0.023364
+    },
+    {
+      "ts": "2026-10-19T11:04:11.783958+00:00",
+      "kind": "slots",
+      "model": "qwen3.8-max",
+      "input_tokens": 598,
+      "output_tokens": 105,
+      "total_tokens": 703,
+      "est_cost_cny": 0.025308
+    },
+    {
+      "ts": "2026-10-19T11:04:15.125304+00:00",
+      "kind": "vision",
+      "model": "qwen3.5-plus",
+      "input_tokens": 1431,
+      "output_tokens": 121,
+      "total_tokens": 1552,
+      "est_cost_cny": 0.055872
+    },
+    {
+      "ts": "2026-10-19T11:04:17.686528+00:00",
+      "kind": "vision",
+      "model": "qwen3.5-plus",
+      "input_tokens": 1431,
+      "output_tokens": 121,
+      "total_tokens": 1552,
+      "est_cost_cny": 0.055872
+    },
+    {
+      "ts": "2026-10-19T11:04:20.405149+00:00",
+      "kind": "vision",
+      "model": "qwen3.5-plus",
+      "input_tokens": 1431,
+      "output_tokens": 121,
+      "total_tokens": 1552,
+      "est_cost_cny": 0.055872
+    },
+    {
+      "ts": "2026-10-19T11:04:20.714327+00:00",
+      "kind": "embedding",
+      "model": "qwen3.7-text-embedding",
+      "input_tokens": null,
+      "output_tokens": null,
+      "total_tokens": 74,
+      "est_cost_cny": 0.002664
+    }
+  ]
+}

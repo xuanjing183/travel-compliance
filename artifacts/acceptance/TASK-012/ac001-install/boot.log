@@ -1,0 +1,8 @@
+INFO:     Started server process [43908]
+INFO:     Waiting for application startup.
+2026-10-20 11:43:01,021 INFO travel_desk: startup recovery aborted=0 delivered=0 still_pending=0
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:59819 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59821 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59822 - "GET / HTTP/1.1" 200 OK

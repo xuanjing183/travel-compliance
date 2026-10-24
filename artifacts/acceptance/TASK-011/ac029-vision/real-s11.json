@@ -1,0 +1,102 @@
+{
+  "generated_at": "2026-10-20T03:01:31+00:00",
+  "llm_mode": "real",
+  "extractor": "real",
+  "generator": "qwen3.5-plus",
+  "vision_model": "qwen3.5-plus",
+  "fixture": "tests\\fixtures\\invitations\\shanghai_supplier_conference.png",
+  "image_sha256": "e88ef3b9c44b45849869dfab5ac570e1a0c5aaf44565992aff6615250705bf84",
+  "image_bytes": 121325,
+  "metric_spec": "evals/METRICS.md#4",
+  "request_summary": {
+    "model": "qwen3.5-plus",
+    "purpose": "image_extraction",
+    "endpoint": "DashScope OpenAI-compatible chat/completions (function-calling structured output)",
+    "transport": "local file sent as base64 data URL; no OSS upload (RISK-002)",
+    "image": {
+      "content_type": "image/png",
+      "sha256": "e88ef3b9c44b45849869dfab5ac570e1a0c5aaf44565992aff6615250705bf84",
+      "bytes": 121325,
+      "raw_bytes_included": false
+    },
+    "messages": [
+      {
+        "role": "system",
+        "text": "从会议邀请函图片中抽取差旅信息。只抽取图片中明确出现的内容，不要猜测。"
+      },
+      {
+        "role": "user",
+        "text": "请抽取会议城市、起止日期、事由和详细地址。",
+        "image_url": "<base64 data URL omitted>"
+      }
+    ],
+    "schema_fields": [
+      "destination",
+      "start_date",
+      "end_date",
+      "purpose",
+      "meeting_address"
+    ],
+    "api_key": "DASHSCOPE_API_KEY (name checked present; value never read/logged/committed)"
+  },
+  "extraction": {
+    "destination": "上海市",
+    "start_date": "2026-10-28",
+    "end_date": "2026-10-30",
+    "purpose": "2026 年度华东区供应商大会",
+    "meeting_address": "上海市浦东新区滨江大道 2727 号星衡国际会议中心 3 号厅"
+  },
+  "verdict": {
+    "checks": {
+      "city": {
+        "pass": true,
+        "expect_contains": "上海",
+        "actual": "上海市"
+      },
+      "start_date": {
+        "pass": true,
+        "expect": "2026-10-28",
+        "actual": "2026-10-28"
+      },
+      "end_date": {
+        "pass": true,
+        "expect": "2026-10-30",
+        "actual": "2026-10-30"
+      },
+      "purpose": {
+        "pass": true,
+        "expect_contains": "供应商大会",
+        "actual": "2026 年度华东区供应商大会"
+      },
+      "meeting_address": {
+        "pass": true,
+        "expect_contains_all": [
+          "滨江大道2727号",
+          "星衡国际会议中心"
+        ],
+        "actual": "上海市浦东新区滨江大道 2727 号星衡国际会议中心 3 号厅",
+        "actual_whitespace_stripped": "上海市浦东新区滨江大道2727号星衡国际会议中心3号厅",
+        "missing": []
+      },
+      "dates": {
+        "pass": true
+      }
+    },
+    "all_pass": true
+  },
+  "passed": true,
+  "usage": {
+    "calls": [
+      {
+        "purpose": "image_extraction",
+        "model": "qwen3.5-plus",
+        "total_tokens": 1577,
+        "est_cost_cny": 0.056772,
+        "latency_ms": 3948
+      }
+    ],
+    "n": 1,
+    "total_tokens": 1577,
+    "est_cost_cny": 0.056772
+  }
+}

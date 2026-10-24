@@ -1,0 +1,156 @@
+{
+  "generated_at": "2026-10-20T03:10:04+00:00",
+  "llm_mode": "real",
+  "threshold_s": 90.0,
+  "start_command": "python -m travel_desk (= uv run travel-desk), real-mode subprocess",
+  "timing_boundary": "员工显式提交（必填槽位已齐，D-13）→ 审批卡事件 approval_requested（审批卡可获取）",
+  "machine": {
+    "platform": "Windows-10-10.0.26100-SP0",
+    "machine": "AMD64",
+    "processor": "Intel64 Family 6 Model 183 Stepping 1, GenuineIntel",
+    "python": "3.11.0",
+    "cpu_count": 24
+  },
+  "scenario": "S-01（北京→上海，2026-10-28~30，供应商大会，预算 400000 分；总额 476000 需审批）",
+  "runs": [
+    {
+      "run": 1,
+      "trip_id": "ae946534-dcec-4f92-a21f-982f41c21206",
+      "elapsed_s": 4.204,
+      "status": "PENDING_APPROVAL",
+      "approval_requested_events": 1,
+      "card_total_fen": 476000,
+      "card_policy_version": "v1.2",
+      "sse_event_types": [
+        "trip_status",
+        "status",
+        "plan",
+        "violations",
+        "approval_required",
+        "trip_status",
+        "done"
+      ],
+      "valid": true
+    },
+    {
+      "run": 2,
+      "trip_id": "eae60329-0c30-420d-836d-dbd6cf78746b",
+      "elapsed_s": 10.915,
+      "status": "PENDING_APPROVAL",
+      "approval_requested_events": 1,
+      "card_total_fen": 476000,
+      "card_policy_version": "v1.2",
+      "sse_event_types": [
+        "trip_status",
+        "status",
+        "plan",
+        "violations",
+        "approval_required",
+        "trip_status",
+        "done"
+      ],
+      "valid": true
+    },
+    {
+      "run": 3,
+      "trip_id": "2cb2dc67-58cf-4608-bcdd-19c66ff4dbfe",
+      "elapsed_s": 2.785,
+      "status": "PENDING_APPROVAL",
+      "approval_requested_events": 1,
+      "card_total_fen": 476000,
+      "card_policy_version": "v1.2",
+      "sse_event_types": [
+        "trip_status",
+        "status",
+        "plan",
+        "violations",
+        "approval_required",
+        "trip_status",
+        "done"
+      ],
+      "valid": true
+    }
+  ],
+  "passed": true,
+  "boot": {
+    "boot": 1,
+    "pid": 39704,
+    "started_at": "2026-10-20T03:10:04.968362Z",
+    "ready_at": "2026-10-20T03:10:06.833667Z"
+  },
+  "provider_health": {
+    "llm_mode": "real",
+    "llm": {
+      "mode": "real",
+      "text_model": "qwen3.8-max",
+      "vision_model": "qwen3.5-plus",
+      "api_key_configured": true
+    },
+    "providers": [
+      {
+        "name": "transport",
+        "implementation": "demo_transport",
+        "mode": "demo",
+        "status": "ok",
+        "fault": "transport_timeout",
+        "last_error": null
+      },
+      {
+        "name": "hotel_contract",
+        "implementation": "demo_hotel",
+        "mode": "demo",
+        "status": "ok",
+        "fault": "no_protocol_hotel",
+        "last_error": null
+      },
+      {
+        "name": "hotel_backup",
+        "implementation": "demo_hotel",
+        "mode": "demo",
+        "status": "ok",
+        "fault": null,
+        "last_error": null
+      },
+      {
+        "name": "weather",
+        "implementation": "demo_weather",
+        "mode": "demo",
+        "status": "ok",
+        "fault": "weather_unavailable",
+        "last_error": null
+      }
+    ],
+    "network": {
+      "installed": true,
+      "allowed_hosts": [
+        "dashscope.aliyuncs.com"
+      ],
+      "attempts": 1,
+      "external_attempts": 0,
+      "blocked": 0,
+      "allowed": 0,
+      "local": 1,
+      "external_hosts": {},
+      "blocked_by_caller": []
+    }
+  },
+  "text_model": "qwen3.8-max",
+  "boot_log_tail": "INFO:     Started server process [41736]\nINFO:     Waiting for application startup.\n2026-10-20 11:10:06,450 INFO travel_desk: startup recovery aborted=0 delivered=0 still_pending=0\nINFO:     Application startup complete.\nINFO:     Uvicorn running on http://127.0.0.1:52774 (Press CTRL+C to quit)\nINFO:     127.0.0.1:52777 - \"GET /api/health HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:52780 - \"POST /api/trips HTTP/1.1\" 201 Created\nINFO:     127.0.0.1:52780 - \"PATCH /api/trips/ae946534-dcec-4f92-a21f-982f41c21206/slots HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:52780 - \"POST /api/trips/ae946534-dcec-4f92-a21f-982f41c21206/submit HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:52780 - \"GET /api/trips/ae946534-dcec-4f92-a21f-982f41c21206 HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:52780 - \"GET /api/approvals?status=pending HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:52780 - \"GET /api/trips/ae946534-dcec-4f92-a21f-982f41c21206/audit HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:52780 - \"POST /api/trips HTTP/1.1\" 201 Created\nINFO:     127.0.0.1:52780 - \"PATCH /api/trips/eae60329-0c30-420d-836d-dbd6cf78746b/slots HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:52780 - \"POST /api/trips/eae60329-0c30-420d-836d-dbd6cf78746b/submit HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:52780 - \"GET /api/trips/eae60329-0c30-420d-836d-dbd6cf78746b HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:52780 - \"GET /api/approvals?status=pending HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:52780 - \"GET /api/trips/eae60329-0c30-420d-836d-dbd6cf78746b/audit HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:52780 - \"POST /api/trips HTTP/1.1\" 201 Created\nINFO:     127.0.0.1:52780 - \"PATCH /api/trips/2cb2dc67-58cf-4608-bcdd-19c66ff4dbfe/slots HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:52780 - \"POST /api/trips/2cb2dc67-58cf-4608-bcdd-19c66ff4dbfe/submit HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:52780 - \"GET /api/trips/2cb2dc67-58cf-4608-bcdd-19c66ff4dbfe HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:52780 - \"GET /api/approvals?status=pending HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:52780 - \"GET /api/trips/2cb2dc67-58cf-4608-bcdd-19c66ff4dbfe/audit HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:52529 - \"GET /api/health/providers HTTP/1.1\" 200 OK\n",
+  "usage": {
+    "n": 3,
+    "total_tokens": 1280,
+    "est_cost_cny": 0.04608,
+    "by_purpose": [
+      "itinerary_summary"
+    ],
+    "models": [
+      "qwen3.8-max"
+    ]
+  },
+  "median_s": 4.204,
+  "max_s": 10.915,
+  "min_s": 2.785,
+  "all_runs_valid": true,
+  "vision_model": "qwen3.5-plus",
+  "api_key_configured": true
+}

@@ -1,0 +1,100 @@
+{
+  "generated_at": "2026-10-19T15:42:43+00:00",
+  "llm_mode": "real",
+  "text_model": "qwen3.8-max",
+  "vision_model": "qwen3.5-plus",
+  "steps": {
+    "create_with_text": {
+      "status_code": 201,
+      "generator": "qwen3.8-max",
+      "error": null,
+      "slots": {
+        "origin": null,
+        "destination": "杭州",
+        "start_date": null,
+        "end_date": null,
+        "purpose": "出差",
+        "declared_budget_fen": 400000,
+        "meeting_address": null,
+        "preferences": null
+      },
+      "missing_fields": [
+        "origin",
+        "start_date",
+        "end_date"
+      ],
+      "ask": "已记录：目的城市 杭州，出差事由 出差，申报预算 4,000.00 元。还需要：出发城市、出发日期（具体到日，如 10月28日）、返回日期（具体到日）。"
+    },
+    "message_turn": {
+      "event_types": [
+        "status",
+        "slots",
+        "token",
+        "done"
+      ],
+      "terminal": {
+        "status": "COLLECTING",
+        "revision": 1
+      },
+      "generator": "qwen3.8-max",
+      "changes": [
+        {
+          "field": "origin",
+          "before": null,
+          "after": "北京"
+        },
+        {
+          "field": "start_date",
+          "before": null,
+          "after": "2026-10-28"
+        },
+        {
+          "field": "end_date",
+          "before": null,
+          "after": "2026-10-30"
+        },
+        {
+          "field": "purpose",
+          "before": "出差",
+          "after": "供应商大会"
+        }
+      ],
+      "missing_fields": []
+    },
+    "image_extraction": {
+      "status_code": 201,
+      "generator": "qwen3.5-plus",
+      "fields": {
+        "destination": "上海市",
+        "start_date": "2026-10-28",
+        "end_date": "2026-10-30",
+        "purpose": "2026 年度华东区供应商大会",
+        "meeting_address": "上海市浦东新区滨江大道 2727 号星衡国际会议中心 3 号厅"
+      },
+      "status": "pending"
+    },
+    "submit_summary": {
+      "patch_status": 200,
+      "event_types": [
+        "trip_status",
+        "status",
+        "plan",
+        "violations",
+        "approval_required",
+        "trip_status",
+        "done"
+      ],
+      "terminal": {
+        "status": "PENDING_APPROVAL",
+        "revision": 1
+      },
+      "summary": {
+        "status": "ok",
+        "text": "本次差旅前往上海参加供应商大会，行程为2026年10月28日至30日。去程乘XC1028于09:30从北京出发，12:45抵沪；返程乘XC1030于19:00离沪，21:30抵京。入住星衡协议酒店·外滩店共2晚。期间天气依次为小雨、阴、多云，请备好雨具。",
+        "source": "model",
+        "generator": "qwen3.8-max",
+        "note": null
+      }
+    }
+  }
+}

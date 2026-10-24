@@ -1,0 +1,277 @@
+{
+  "mode": "fake (deterministic parser) + recorded image extraction; no network",
+  "checks": [
+    {
+      "ac": "AC-002",
+      "check": "S-05: destination=杭州 recognised",
+      "result": "PASS",
+      "observed": "杭州"
+    },
+    {
+      "ac": "AC-002",
+      "check": "S-05: '下周' not guessed into dates",
+      "result": "PASS",
+      "observed": [
+        null,
+        null
+      ]
+    },
+    {
+      "ac": "AC-002",
+      "check": "S-05: one reply asks exactly the 5 missing fields",
+      "result": "PASS",
+      "observed": [
+        "origin",
+        "start_date",
+        "end_date",
+        "purpose",
+        "declared_budget_fen"
+      ]
+    },
+    {
+      "ac": "AC-002",
+      "check": "S-05: 杭州/目的城市 not asked again",
+      "result": "PASS",
+      "observed": "已记录：目的城市 杭州。还需要：出发城市、出发日期（具体到日，如 10月28日）、返回日期（具体到日）、出差事由、申报预算（元）。"
+    },
+    {
+      "ac": "AC-002",
+      "check": "completed turn asks nothing",
+      "result": "PASS",
+      "observed": "已记录：出发城市 北京，出发日期 2026-10-28，返回日期 2026-10-30，出差事由 供应商大会，申报预算 4,000.00 元。信息已齐全：出发城市 北京，目的城市 杭州，出发日期 2026-10-28，返回日期 2026-10-30，出差事由 供应商大会，申报预算 4,000.00 元。请核对，确认无误后点击“提交”。"
+    },
+    {
+      "ac": "AC-002",
+      "check": "budget change recorded before/after",
+      "result": "PASS",
+      "observed": [
+        {
+          "field": "declared_budget_fen",
+          "before": 400000,
+          "after": 500000
+        }
+      ]
+    },
+    {
+      "ac": "AC-002",
+      "check": "no re-ask after change",
+      "result": "PASS",
+      "observed": "已记录：申报预算 5,000.00 元。信息已齐全：出发城市 北京，目的城市 杭州，出发日期 2026-10-28，返回日期 2026-10-30，出差事由 供应商大会，申报预算 5,000.00 元。请核对，确认无误后点击“提交”。"
+    },
+    {
+      "ac": "AC-002",
+      "check": "audit slots_changed has before/after for the budget edit",
+      "result": "PASS",
+      "observed": {
+        "changes": [
+          {
+            "field": "declared_budget_fen",
+            "before": 400000,
+            "after": 500000
+          }
+        ],
+        "origin": "message",
+        "generator": "fake"
+      }
+    },
+    {
+      "ac": "AC-002",
+      "check": "audit message_processed asks: 5 fields, then none, then none",
+      "result": "PASS",
+      "observed": [
+        [
+          "origin",
+          "start_date",
+          "end_date",
+          "purpose",
+          "declared_budget_fen"
+        ],
+        [],
+        []
+      ]
+    },
+    {
+      "ac": "AC-003",
+      "check": "extraction comes from recorded output (source=model)",
+      "result": "PASS",
+      "observed": "recorded:model"
+    },
+    {
+      "ac": "AC-003",
+      "check": "Trip unchanged before confirm",
+      "result": "PASS",
+      "observed": [
+        "trip_created",
+        "image_extracted"
+      ]
+    },
+    {
+      "ac": "AC-003",
+      "check": "after confirm fields match S-11",
+      "result": "PASS",
+      "observed": {
+        "slots": {
+          "origin": null,
+          "destination": "上海",
+          "start_date": "2026-10-28",
+          "end_date": "2026-10-30",
+          "purpose": "供应商大会：年度合作评审与新品对接",
+          "declared_budget_fen": null,
+          "meeting_address": "上海市浦东新区滨江大道 2727 号星衡国际会议中心 3 号厅",
+          "preferences": null
+        },
+        "criteria": {
+          "destination": true,
+          "start_date": true,
+          "end_date": true,
+          "purpose": true,
+          "meeting_address": true
+        }
+      }
+    },
+    {
+      "ac": "AC-003",
+      "check": "audited: image_extracted→slots_changed(origin=image)→image_confirmed",
+      "result": "PASS",
+      "observed": [
+        "trip_created",
+        "image_extracted",
+        "slots_changed",
+        "image_confirmed"
+      ]
+    },
+    {
+      "ac": "AC-003",
+      "check": "wrong type → 415",
+      "result": "PASS",
+      "observed": "UNSUPPORTED_MEDIA_TYPE"
+    },
+    {
+      "ac": "AC-003",
+      "check": "over 10 MiB → 413",
+      "result": "PASS",
+      "observed": "PAYLOAD_TOO_LARGE"
+    },
+    {
+      "ac": "AC-009",
+      "check": "张三 approve → 403",
+      "result": "PASS",
+      "observed": "FORBIDDEN"
+    },
+    {
+      "ac": "AC-009",
+      "check": "non-direct manager → 403",
+      "result": "PASS",
+      "observed": "NOT_DIRECT_MANAGER"
+    },
+    {
+      "ac": "AC-009",
+      "check": "old revision → 409",
+      "result": "PASS",
+      "observed": "STALE_REVISION"
+    },
+    {
+      "ac": "AC-009",
+      "check": "rejected attempts had no side effects",
+      "result": "PASS",
+      "observed": {
+        "approvals": 1,
+        "decided_approvals": 0,
+        "outbox_trip_delivery": 0,
+        "outbox_workflow_notification": 0,
+        "itineraries": 0,
+        "decision_recorded_events": 0
+      }
+    },
+    {
+      "ac": "AC-009",
+      "check": "same key returns the same result",
+      "result": "PASS",
+      "observed": {
+        "request": {
+          "user": "u-lisi",
+          "key": "a-4",
+          "revision": 1,
+          "decision": "approve"
+        },
+        "status_code": 200,
+        "trip_status": "DELIVERED",
+        "revision": 1,
+        "approval_decision": "approve"
+      }
+    },
+    {
+      "ac": "AC-009",
+      "check": "second different key → 409",
+      "result": "PASS",
+      "observed": "ALREADY_DECIDED"
+    },
+    {
+      "ac": "AC-009",
+      "check": "DB: one decision, one delivery, one itinerary",
+      "result": "PASS",
+      "observed": {
+        "approvals": 1,
+        "decided_approvals": 1,
+        "outbox_trip_delivery": 1,
+        "outbox_workflow_notification": 0,
+        "itineraries": 1,
+        "decision_recorded_events": 1
+      }
+    },
+    {
+      "ac": "AC-011",
+      "check": "S-01: outbox kinds/counts",
+      "result": "PASS",
+      "observed": {
+        "trip_delivery": 1,
+        "workflow_notification": 0
+      }
+    },
+    {
+      "ac": "AC-011",
+      "check": "S-07: outbox kinds/counts",
+      "result": "PASS",
+      "observed": {
+        "trip_delivery": 0,
+        "workflow_notification": 1
+      }
+    },
+    {
+      "ac": "AC-011",
+      "check": "S-08: outbox kinds/counts",
+      "result": "PASS",
+      "observed": {
+        "trip_delivery": 0,
+        "workflow_notification": 1
+      }
+    },
+    {
+      "ac": "AC-011",
+      "check": "write failure stops at DELIVERY_PENDING",
+      "result": "PASS",
+      "observed": "DELIVERY_PENDING"
+    },
+    {
+      "ac": "AC-011",
+      "check": "admin retry over HTTP → DELIVERED",
+      "result": "PASS",
+      "observed": 200
+    },
+    {
+      "ac": "AC-011",
+      "check": "second retry does not duplicate (409, one trip_delivery)",
+      "result": "PASS",
+      "observed": {
+        "approvals": 1,
+        "decided_approvals": 1,
+        "outbox_trip_delivery": 1,
+        "outbox_workflow_notification": 0,
+        "itineraries": 1,
+        "decision_recorded_events": 1
+      }
+    }
+  ],
+  "passed": 28,
+  "failed": 0
+}

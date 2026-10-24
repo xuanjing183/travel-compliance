@@ -1,0 +1,98 @@
+{
+  "trip_id": "505d3972-07fc-44c2-be59-713d300d3b00",
+  "status": "PENDING_APPROVAL",
+  "revision": 1,
+  "plan_incomplete": true,
+  "plan_missing": [
+    "transport"
+  ],
+  "transport": {
+    "status": "manual_required",
+    "note": "去程：交通 Provider 超时，待人工补录；返程：交通 Provider 超时，待人工补录",
+    "outbound_id": null,
+    "return_id": null
+  },
+  "hotel": {
+    "status": "selected",
+    "note": null,
+    "candidate_id": "H-SHA-CONTRACT-02",
+    "candidate_source": "demo_fixture"
+  },
+  "weather": {
+    "status": "ok",
+    "note": null,
+    "days": [
+      {
+        "date": "2026-10-25",
+        "summary": "晴",
+        "temp_low_c": 17,
+        "temp_high_c": 24,
+        "source": "demo_fixture"
+      },
+      {
+        "date": "2026-10-26",
+        "summary": "多云",
+        "temp_low_c": 17,
+        "temp_high_c": 23,
+        "source": "demo_fixture"
+      }
+    ]
+  },
+  "cost_breakdown": {
+    "nights": 1,
+    "days": 2,
+    "destination_tier": "A",
+    "transport_fen": null,
+    "outbound_fen": null,
+    "return_fen": null,
+    "hotel_per_night_fen": 40000,
+    "hotel_fen": 40000,
+    "meal_per_day_fen": 10000,
+    "meal_fen": 20000,
+    "total_fen": null,
+    "known_subtotal_fen": 60000,
+    "declared_budget_fen": 250000,
+    "budget_delta_fen": null,
+    "missing_components": [
+      "transport"
+    ]
+  },
+  "approval_reasons": [
+    "PLAN_INCOMPLETE"
+  ],
+  "violations": [],
+  "provider_calls": {
+    "transport": "timeout",
+    "hotel_contract": "ok",
+    "weather": "ok"
+  },
+  "provider_call_log": [
+    {
+      "provider": "transport",
+      "status": "timeout"
+    },
+    {
+      "provider": "transport",
+      "status": "timeout"
+    },
+    {
+      "provider": "hotel_contract",
+      "status": "ok"
+    },
+    {
+      "provider": "weather",
+      "status": "ok"
+    }
+  ],
+  "trajectory": [
+    "VALIDATING",
+    "PLANNING",
+    "PENDING_APPROVAL"
+  ],
+  "fault": "transport_timeout",
+  "fault_injected": {
+    "no_protocol_hotel": false,
+    "transport_timeout": true,
+    "weather_unavailable": false
+  }
+}

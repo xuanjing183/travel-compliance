@@ -1,0 +1,470 @@
+{
+  "scenario": "AC-013 / §6.6 Provider degradation under fault injection",
+  "mode": "fake",
+  "input": "S-02 (北京→上海 2026-10-25~26 客户拜访 budget 250000)",
+  "start_command": "python -m travel_desk (= uv run travel-desk)",
+  "data_dir": "<tempdir>/var",
+  "faults": {
+    "transport_timeout": {
+      "trip_id": "505d3972-07fc-44c2-be59-713d300d3b00",
+      "status": "PENDING_APPROVAL",
+      "revision": 1,
+      "plan_incomplete": true,
+      "plan_missing": [
+        "transport"
+      ],
+      "transport": {
+        "status": "manual_required",
+        "note": "去程：交通 Provider 超时，待人工补录；返程：交通 Provider 超时，待人工补录",
+        "outbound_id": null,
+        "return_id": null
+      },
+      "hotel": {
+        "status": "selected",
+        "note": null,
+        "candidate_id": "H-SHA-CONTRACT-02",
+        "candidate_source": "demo_fixture"
+      },
+      "weather": {
+        "status": "ok",
+        "note": null,
+        "days": [
+          {
+            "date": "2026-10-25",
+            "summary": "晴",
+            "temp_low_c": 17,
+            "temp_high_c": 24,
+            "source": "demo_fixture"
+          },
+          {
+            "date": "2026-10-26",
+            "summary": "多云",
+            "temp_low_c": 17,
+            "temp_high_c": 23,
+            "source": "demo_fixture"
+          }
+        ]
+      },
+      "cost_breakdown": {
+        "nights": 1,
+        "days": 2,
+        "destination_tier": "A",
+        "transport_fen": null,
+        "outbound_fen": null,
+        "return_fen": null,
+        "hotel_per_night_fen": 40000,
+        "hotel_fen": 40000,
+        "meal_per_day_fen": 10000,
+        "meal_fen": 20000,
+        "total_fen": null,
+        "known_subtotal_fen": 60000,
+        "declared_budget_fen": 250000,
+        "budget_delta_fen": null,
+        "missing_components": [
+          "transport"
+        ]
+      },
+      "approval_reasons": [
+        "PLAN_INCOMPLETE"
+      ],
+      "violations": [],
+      "provider_calls": {
+        "transport": "timeout",
+        "hotel_contract": "ok",
+        "weather": "ok"
+      },
+      "provider_call_log": [
+        {
+          "provider": "transport",
+          "status": "timeout"
+        },
+        {
+          "provider": "transport",
+          "status": "timeout"
+        },
+        {
+          "provider": "hotel_contract",
+          "status": "ok"
+        },
+        {
+          "provider": "weather",
+          "status": "ok"
+        }
+      ],
+      "trajectory": [
+        "VALIDATING",
+        "PLANNING",
+        "PENDING_APPROVAL"
+      ],
+      "fault": "transport_timeout",
+      "fault_injected": {
+        "no_protocol_hotel": false,
+        "transport_timeout": true,
+        "weather_unavailable": false
+      }
+    },
+    "no_protocol_hotel": {
+      "trip_id": "0fedc080-7885-4679-b671-f968c8dd12a6",
+      "status": "PENDING_APPROVAL",
+      "revision": 1,
+      "plan_incomplete": true,
+      "plan_missing": [
+        "hotel"
+      ],
+      "transport": {
+        "status": "selected",
+        "note": null,
+        "outbound_id": "T-BJS-SHA-1025-B",
+        "return_id": "T-SHA-BJS-1026-B"
+      },
+      "hotel": {
+        "status": "manual_required",
+        "note": "协议酒店库不可用；无可订酒店候选，待人工补录",
+        "candidate_id": null,
+        "candidate_source": null
+      },
+      "weather": {
+        "status": "ok",
+        "note": null,
+        "days": [
+          {
+            "date": "2026-10-25",
+            "summary": "晴",
+            "temp_low_c": 17,
+            "temp_high_c": 24,
+            "source": "demo_fixture"
+          },
+          {
+            "date": "2026-10-26",
+            "summary": "多云",
+            "temp_low_c": 17,
+            "temp_high_c": 23,
+            "source": "demo_fixture"
+          }
+        ]
+      },
+      "cost_breakdown": {
+        "nights": 1,
+        "days": 2,
+        "destination_tier": "A",
+        "transport_fen": 130000,
+        "outbound_fen": 65000,
+        "return_fen": 65000,
+        "hotel_per_night_fen": null,
+        "hotel_fen": null,
+        "meal_per_day_fen": 10000,
+        "meal_fen": 20000,
+        "total_fen": null,
+        "known_subtotal_fen": 150000,
+        "declared_budget_fen": 250000,
+        "budget_delta_fen": null,
+        "missing_components": [
+          "hotel"
+        ]
+      },
+      "approval_reasons": [
+        "PLAN_INCOMPLETE"
+      ],
+      "violations": [],
+      "provider_calls": {
+        "transport": "ok",
+        "hotel_contract": "unavailable",
+        "hotel_backup": "ok",
+        "weather": "ok"
+      },
+      "provider_call_log": [
+        {
+          "provider": "transport",
+          "status": "ok"
+        },
+        {
+          "provider": "transport",
+          "status": "ok"
+        },
+        {
+          "provider": "hotel_contract",
+          "status": "unavailable"
+        },
+        {
+          "provider": "hotel_backup",
+          "status": "ok"
+        },
+        {
+          "provider": "weather",
+          "status": "ok"
+        }
+      ],
+      "trajectory": [
+        "VALIDATING",
+        "PLANNING",
+        "PENDING_APPROVAL"
+      ],
+      "fault": "no_protocol_hotel",
+      "fault_injected": {
+        "no_protocol_hotel": true,
+        "transport_timeout": false,
+        "weather_unavailable": false
+      }
+    },
+    "weather_unavailable": {
+      "trip_id": "cb245bbf-3c35-4245-8e22-557fb54ad206",
+      "status": "DELIVERED",
+      "revision": 1,
+      "plan_incomplete": false,
+      "plan_missing": [],
+      "transport": {
+        "status": "selected",
+        "note": null,
+        "outbound_id": "T-BJS-SHA-1025-B",
+        "return_id": "T-SHA-BJS-1026-B"
+      },
+      "hotel": {
+        "status": "selected",
+        "note": null,
+        "candidate_id": "H-SHA-CONTRACT-02",
+        "candidate_source": "demo_fixture"
+      },
+      "weather": {
+        "status": "unavailable",
+        "note": "天气 Provider 不可用，已省略天气信息",
+        "days": []
+      },
+      "cost_breakdown": {
+        "nights": 1,
+        "days": 2,
+        "destination_tier": "A",
+        "transport_fen": 130000,
+        "outbound_fen": 65000,
+        "return_fen": 65000,
+        "hotel_per_night_fen": 40000,
+        "hotel_fen": 40000,
+        "meal_per_day_fen": 10000,
+        "meal_fen": 20000,
+        "total_fen": 190000,
+        "known_subtotal_fen": 190000,
+        "declared_budget_fen": 250000,
+        "budget_delta_fen": -60000,
+        "missing_components": []
+      },
+      "approval_reasons": [],
+      "violations": [],
+      "provider_calls": {
+        "transport": "ok",
+        "hotel_contract": "ok",
+        "weather": "unavailable"
+      },
+      "provider_call_log": [
+        {
+          "provider": "transport",
+          "status": "ok"
+        },
+        {
+          "provider": "transport",
+          "status": "ok"
+        },
+        {
+          "provider": "hotel_contract",
+          "status": "ok"
+        },
+        {
+          "provider": "weather",
+          "status": "unavailable"
+        }
+      ],
+      "trajectory": [
+        "VALIDATING",
+        "PLANNING",
+        "AUTO_APPROVED",
+        "DELIVERY_PENDING",
+        "DELIVERED"
+      ],
+      "fault": "weather_unavailable",
+      "fault_injected": {
+        "no_protocol_hotel": false,
+        "transport_timeout": false,
+        "weather_unavailable": true
+      }
+    }
+  },
+  "checks": [
+    {
+      "check": "交通超时：交通待人工补录、方案不完整、缺 transport",
+      "passed": true,
+      "observed": {
+        "status": "manual_required",
+        "note": "去程：交通 Provider 超时，待人工补录；返程：交通 Provider 超时，待人工补录",
+        "outbound_id": null,
+        "return_id": null
+      }
+    },
+    {
+      "check": "交通超时：total_fen=null、known_subtotal_fen=60000（酒店40000+补贴20000）",
+      "passed": true,
+      "observed": {
+        "nights": 1,
+        "days": 2,
+        "destination_tier": "A",
+        "transport_fen": null,
+        "outbound_fen": null,
+        "return_fen": null,
+        "hotel_per_night_fen": 40000,
+        "hotel_fen": 40000,
+        "meal_per_day_fen": 10000,
+        "meal_fen": 20000,
+        "total_fen": null,
+        "known_subtotal_fen": 60000,
+        "declared_budget_fen": 250000,
+        "budget_delta_fen": null,
+        "missing_components": [
+          "transport"
+        ]
+      }
+    },
+    {
+      "check": "交通超时：审批理由含 PLAN_INCOMPLETE 且进入 PENDING_APPROVAL",
+      "passed": true,
+      "observed": [
+        [
+          "PLAN_INCOMPLETE"
+        ],
+        "PENDING_APPROVAL"
+      ]
+    },
+    {
+      "check": "交通超时：酒店与天气照常（hotel_contract ok / weather ok）",
+      "passed": true,
+      "observed": {
+        "transport": "timeout",
+        "hotel_contract": "ok",
+        "weather": "ok"
+      }
+    },
+    {
+      "check": "交通超时：未伪造交通 ID（outbound/return 均为空）",
+      "passed": true,
+      "observed": {
+        "status": "manual_required",
+        "note": "去程：交通 Provider 超时，待人工补录；返程：交通 Provider 超时，待人工补录",
+        "outbound_id": null,
+        "return_id": null
+      }
+    },
+    {
+      "check": "无协议酒店：酒店待人工补录、候选为空、方案不完整、缺 hotel",
+      "passed": true,
+      "observed": {
+        "status": "manual_required",
+        "note": "协议酒店库不可用；无可订酒店候选，待人工补录",
+        "candidate_id": null,
+        "candidate_source": null
+      }
+    },
+    {
+      "check": "无协议酒店：note 说明协议酒店库不可用",
+      "passed": true,
+      "observed": "协议酒店库不可用；无可订酒店候选，待人工补录"
+    },
+    {
+      "check": "无协议酒店：total_fen=null、known_subtotal_fen=150000（交通130000+补贴20000）",
+      "passed": true,
+      "observed": {
+        "nights": 1,
+        "days": 2,
+        "destination_tier": "A",
+        "transport_fen": 130000,
+        "outbound_fen": 65000,
+        "return_fen": 65000,
+        "hotel_per_night_fen": null,
+        "hotel_fen": null,
+        "meal_per_day_fen": 10000,
+        "meal_fen": 20000,
+        "total_fen": null,
+        "known_subtotal_fen": 150000,
+        "declared_budget_fen": 250000,
+        "budget_delta_fen": null,
+        "missing_components": [
+          "hotel"
+        ]
+      }
+    },
+    {
+      "check": "无协议酒店：审批理由含 PLAN_INCOMPLETE 且进入 PENDING_APPROVAL",
+      "passed": true,
+      "observed": [
+        [
+          "PLAN_INCOMPLETE"
+        ],
+        "PENDING_APPROVAL"
+      ]
+    },
+    {
+      "check": "无协议酒店：Provider 状态 transport ok / hotel_contract unavailable / hotel_backup ok / weather ok",
+      "passed": true,
+      "observed": {
+        "transport": "ok",
+        "hotel_contract": "unavailable",
+        "hotel_backup": "ok",
+        "weather": "ok"
+      }
+    },
+    {
+      "check": "无协议酒店：交通照常选中 B 组、天气照常",
+      "passed": true,
+      "observed": {
+        "status": "selected",
+        "note": null,
+        "outbound_id": "T-BJS-SHA-1025-B",
+        "return_id": "T-SHA-BJS-1026-B"
+      }
+    },
+    {
+      "check": "天气不可用：weather 状态 unavailable、days 为空、note 注明已省略",
+      "passed": true,
+      "observed": {
+        "status": "unavailable",
+        "note": "天气 Provider 不可用，已省略天气信息",
+        "days": []
+      }
+    },
+    {
+      "check": "天气不可用：不阻断规划（方案完整、交通与酒店照常选中）",
+      "passed": true,
+      "observed": [
+        false,
+        []
+      ]
+    },
+    {
+      "check": "天气不可用：S-02 同输入仍自动通过并交付（total_fen=190000、DELIVERED）",
+      "passed": true,
+      "observed": [
+        190000,
+        "DELIVERED"
+      ]
+    },
+    {
+      "check": "天气不可用：Provider 状态 weather unavailable，交通与酒店照常",
+      "passed": true,
+      "observed": {
+        "transport": "ok",
+        "hotel_contract": "ok",
+        "weather": "unavailable"
+      }
+    },
+    {
+      "check": "三种降级均未伪造交通 ID（选中 ID 都存在于 fixture）",
+      "passed": true,
+      "observed": []
+    },
+    {
+      "check": "三种降级均未崩溃（全部产出可读的 API 结果）",
+      "passed": true,
+      "observed": [
+        "PENDING_APPROVAL",
+        "PENDING_APPROVAL",
+        "DELIVERED"
+      ]
+    }
+  ],
+  "passed": true
+}

@@ -1,0 +1,101 @@
+{
+  "AC-008": {
+    "revision": 1,
+    "total_fen": 476000,
+    "budget_delta_fen": 76000,
+    "approval_reasons": [
+      "BUDGET_EXCEEDED",
+      "OVER_AUTO_APPROVAL_LIMIT"
+    ],
+    "sources": [
+      "demo_fixture",
+      "model",
+      "policy"
+    ]
+  },
+  "S-01": {
+    "approvals": 1,
+    "decided_approvals": 1,
+    "outbox_trip_delivery": 1,
+    "outbox_workflow_notification": 0,
+    "itineraries": 1,
+    "decision_recorded_events": 1
+  },
+  "AC-009": {
+    "employee_self": [
+      403,
+      "FORBIDDEN"
+    ],
+    "non_direct_manager": [
+      403,
+      "NOT_DIRECT_MANAGER"
+    ],
+    "old_revision": [
+      409,
+      "STALE_REVISION"
+    ],
+    "first": [
+      200,
+      null
+    ],
+    "same_key_replay": [
+      200,
+      null
+    ],
+    "different_key": [
+      409,
+      "ALREADY_DECIDED"
+    ],
+    "counts_after": {
+      "approvals": 1,
+      "decided_approvals": 1,
+      "outbox_trip_delivery": 1,
+      "outbox_workflow_notification": 0,
+      "itineraries": 1,
+      "decision_recorded_events": 1
+    }
+  },
+  "S-07": {
+    "approvals": 1,
+    "decided_approvals": 1,
+    "outbox_trip_delivery": 0,
+    "outbox_workflow_notification": 1,
+    "itineraries": 0,
+    "decision_recorded_events": 1
+  },
+  "S-08": {
+    "approvals": 1,
+    "decided_approvals": 1,
+    "outbox_trip_delivery": 0,
+    "outbox_workflow_notification": 1,
+    "itineraries": 0,
+    "decision_recorded_events": 1
+  },
+  "AC-011-retry": {
+    "after_failure": "DELIVERY_PENDING",
+    "error": "OSError：交付写入失败，可由管理员重试",
+    "after_retry": "DELIVERED",
+    "second_retry": {
+      "status_code": 409,
+      "code": "INVALID_STATE"
+    },
+    "approvals": 1,
+    "decided_approvals": 1,
+    "outbox_trip_delivery": 1,
+    "outbox_workflow_notification": 0,
+    "itineraries": 1,
+    "decision_recorded_events": 1
+  },
+  "AC-010-in-process": {
+    "decision": "DELIVERED",
+    "via": [
+      "graph"
+    ],
+    "approvals": 1,
+    "decided_approvals": 1,
+    "outbox_trip_delivery": 1,
+    "outbox_workflow_notification": 0,
+    "itineraries": 1,
+    "decision_recorded_events": 1
+  }
+}

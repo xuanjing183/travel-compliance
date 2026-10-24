@@ -1,0 +1,281 @@
+{
+  "generated_at": "2026-10-19T16:52:56+00:00",
+  "llm_mode": "real",
+  "kind": "smoke (not an evaluation; AC-004/017/025 use the frozen set in TASK-011)",
+  "text_model": "qwen3.8-max",
+  "embedding_model": "qwen3.7-text-embedding",
+  "retrieval_mode": "vector",
+  "questions": [
+    {
+      "question": "员工去上海出差，住宿每晚最多能报多少？",
+      "expect": "answerable",
+      "clauses": [
+        "POL-2"
+      ],
+      "status_code": 200,
+      "answerable": true,
+      "answer": "员工去上海出差，住宿每晚最多能报500元。",
+      "generator": "qwen3.8-max",
+      "citations": [
+        {
+          "version": "v1.2",
+          "clause": "POL-2",
+          "quote": "员工住宿上限：A 类城市每晚上限 500 元；B 类城市每晚上限 400 元；C 类城市每晚上限 300 元。",
+          "locator": "line:13",
+          "source": "policy"
+        },
+        {
+          "version": "v1.2",
+          "clause": "POL-1",
+          "quote": "A 类城市：北京、上海、广州、深圳。B 类城市：杭州、南京、成都、武汉、西安、重庆、苏州、天津。C 类城市：上述以外的其他城市。",
+          "locator": "line:9",
+          "source": "policy"
+        }
+      ],
+      "retrieval": {
+        "mode": "vector",
+        "chunks": [
+          {
+            "rank": 1,
+            "clause": "POL-2",
+            "locator": "line:13",
+            "score": 0.750276
+          },
+          {
+            "rank": 2,
+            "clause": "POL-2",
+            "locator": "line:15",
+            "score": 0.732938
+          },
+          {
+            "rank": 3,
+            "clause": "POL-3",
+            "locator": "line:21",
+            "score": 0.667808
+          },
+          {
+            "rank": 4,
+            "clause": "POL-2",
+            "locator": "line:17",
+            "score": 0.606406
+          },
+          {
+            "rank": 5,
+            "clause": "制度信息",
+            "locator": "line:3-5",
+            "score": 0.60483
+          }
+        ],
+        "supplements": [
+          {
+            "clause": "POL-1",
+            "locator": "line:9",
+            "reason": "rule_dependency"
+          }
+        ]
+      },
+      "check": {
+        "expectation_met": true,
+        "cited_clauses": [
+          "POL-1",
+          "POL-2"
+        ]
+      }
+    },
+    {
+      "question": "经理去成都出差，酒店每晚上限是多少？",
+      "expect": "answerable",
+      "clauses": [
+        "POL-1",
+        "POL-2"
+      ],
+      "status_code": 200,
+      "answerable": true,
+      "answer": "经理去成都出差，酒店每晚上限为500元。",
+      "generator": "qwen3.8-max",
+      "citations": [
+        {
+          "version": "v1.2",
+          "clause": "POL-2",
+          "quote": "经理及以上人员住宿上限：A 类城市每晚上限 650 元；B 类城市每晚上限 500 元；C 类城市每晚上限 400 元。",
+          "locator": "line:15",
+          "source": "policy"
+        },
+        {
+          "version": "v1.2",
+          "clause": "POL-1",
+          "quote": "A 类城市：北京、上海、广州、深圳。B 类城市：杭州、南京、成都、武汉、西安、重庆、苏州、天津。C 类城市：上述以外的其他城市。",
+          "locator": "line:9",
+          "source": "policy"
+        }
+      ],
+      "retrieval": {
+        "mode": "vector",
+        "chunks": [
+          {
+            "rank": 1,
+            "clause": "POL-2",
+            "locator": "line:15",
+            "score": 0.7581
+          },
+          {
+            "rank": 2,
+            "clause": "POL-2",
+            "locator": "line:13",
+            "score": 0.704021
+          },
+          {
+            "rank": 3,
+            "clause": "POL-2",
+            "locator": "line:17",
+            "score": 0.631469
+          },
+          {
+            "rank": 4,
+            "clause": "制度信息",
+            "locator": "line:3-5",
+            "score": 0.59242
+          },
+          {
+            "rank": 5,
+            "clause": "POL-6",
+            "locator": "line:33",
+            "score": 0.585322
+          }
+        ],
+        "supplements": [
+          {
+            "clause": "POL-1",
+            "locator": "line:9",
+            "reason": "rule_dependency"
+          }
+        ]
+      },
+      "check": {
+        "expectation_met": true,
+        "cited_clauses": [
+          "POL-1",
+          "POL-2"
+        ]
+      }
+    },
+    {
+      "question": "公司每年有几天年假？",
+      "expect": "refusal",
+      "clauses": [],
+      "status_code": 200,
+      "answerable": false,
+      "answer": "不知道：当前制度（v1.2）中没有找到能回答这个问题的条款。",
+      "generator": "qwen3.8-max",
+      "citations": [],
+      "retrieval": {
+        "mode": "vector",
+        "chunks": [
+          {
+            "rank": 1,
+            "clause": "POL-7",
+            "locator": "line:37",
+            "score": 0.466224
+          },
+          {
+            "rank": 2,
+            "clause": "制度信息",
+            "locator": "line:3-5",
+            "score": 0.423235
+          },
+          {
+            "rank": 3,
+            "clause": "POL-3",
+            "locator": "line:21",
+            "score": 0.410969
+          },
+          {
+            "rank": 4,
+            "clause": "POL-2",
+            "locator": "line:13",
+            "score": 0.403839
+          },
+          {
+            "rank": 5,
+            "clause": "POL-2",
+            "locator": "line:15",
+            "score": 0.372238
+          }
+        ],
+        "supplements": [
+          {
+            "clause": "POL-1",
+            "locator": "line:9",
+            "reason": "rule_dependency"
+          }
+        ]
+      },
+      "check": {
+        "expectation_met": true,
+        "cited_clauses": []
+      }
+    }
+  ],
+  "usage": {
+    "calls": [
+      {
+        "purpose": "policy_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 562,
+        "est_cost_cny": 0.020232,
+        "latency_ms": 1283
+      },
+      {
+        "purpose": "policy_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 38,
+        "est_cost_cny": 0.001368,
+        "latency_ms": 217
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 28,
+        "est_cost_cny": 0.001008,
+        "latency_ms": 485
+      },
+      {
+        "purpose": "policy_answer",
+        "model": "qwen3.8-max",
+        "total_tokens": 913,
+        "est_cost_cny": 0.032868,
+        "latency_ms": 1356
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 27,
+        "est_cost_cny": 0.000972,
+        "latency_ms": 232
+      },
+      {
+        "purpose": "policy_answer",
+        "model": "qwen3.8-max",
+        "total_tokens": 902,
+        "est_cost_cny": 0.032472,
+        "latency_ms": 1247
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 22,
+        "est_cost_cny": 0.000792,
+        "latency_ms": 293
+      },
+      {
+        "purpose": "policy_answer",
+        "model": "qwen3.8-max",
+        "total_tokens": 883,
+        "est_cost_cny": 0.031788,
+        "latency_ms": 1037
+      }
+    ],
+    "total_tokens": 3375,
+    "est_cost_cny": 0.1215
+  }
+}

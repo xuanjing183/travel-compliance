@@ -1,0 +1,758 @@
+{
+  "scenario": "S-01",
+  "trip_id": "6d841bf3-d394-42ce-b5b7-76bfa056ebe5",
+  "event_count": 21,
+  "event_types": [
+    "trip_created",
+    "slots_changed",
+    "status_changed",
+    "submitted",
+    "preference_snapshot",
+    "policy_bound",
+    "status_changed",
+    "provider_call",
+    "provider_call",
+    "provider_call",
+    "provider_call",
+    "candidates_selected",
+    "plan_created",
+    "rules_evaluated",
+    "status_changed",
+    "approval_requested",
+    "decision_recorded",
+    "status_changed",
+    "status_changed",
+    "status_changed",
+    "delivery_written"
+  ],
+  "events": [
+    {
+      "id": "84810583-ca85-48f7-8241-f14dc3025f54",
+      "seq": 2,
+      "trip_id": "6d841bf3-d394-42ce-b5b7-76bfa056ebe5",
+      "revision": 1,
+      "ts": "2026-10-20T01:04:54.803Z",
+      "actor": "u-zhangsan",
+      "type": "trip_created",
+      "payload": {
+        "employee_id": "u-zhangsan"
+      },
+      "refs": [],
+      "trace_id": "46923f0d118b4f3dbe12aa44096d2e3e"
+    },
+    {
+      "id": "58cf2e0b-7dc4-4446-9bac-d7c4ff8f6201",
+      "seq": 3,
+      "trip_id": "6d841bf3-d394-42ce-b5b7-76bfa056ebe5",
+      "revision": 1,
+      "ts": "2026-10-20T01:04:54.810Z",
+      "actor": "u-zhangsan",
+      "type": "slots_changed",
+      "payload": {
+        "changes": [
+          {
+            "field": "origin",
+            "before": null,
+            "after": "北京"
+          },
+          {
+            "field": "destination",
+            "before": null,
+            "after": "上海"
+          },
+          {
+            "field": "start_date",
+            "before": null,
+            "after": "2026-10-28"
+          },
+          {
+            "field": "end_date",
+            "before": null,
+            "after": "2026-10-30"
+          },
+          {
+            "field": "purpose",
+            "before": null,
+            "after": "供应商大会"
+          },
+          {
+            "field": "declared_budget_fen",
+            "before": null,
+            "after": 400000
+          }
+        ],
+        "origin": "patch"
+      },
+      "refs": [],
+      "trace_id": "b8503c31f37046829c40338b93d0a4c0"
+    },
+    {
+      "id": "2cf7c079-0dac-4a6c-b289-3e9f6408a173",
+      "seq": 4,
+      "trip_id": "6d841bf3-d394-42ce-b5b7-76bfa056ebe5",
+      "revision": 1,
+      "ts": "2026-10-20T01:04:54.817Z",
+      "actor": "u-zhangsan",
+      "type": "status_changed",
+      "payload": {
+        "from": "COLLECTING",
+        "to": "VALIDATING",
+        "event": "submit",
+        "previous_revision": 1,
+        "revision": 1
+      },
+      "refs": [],
+      "trace_id": "609215bc9aaa4462926b92c7dd18f796"
+    },
+    {
+      "id": "f3ceaa72-c673-428e-a7ad-e25dd69144a1",
+      "seq": 5,
+      "trip_id": "6d841bf3-d394-42ce-b5b7-76bfa056ebe5",
+      "revision": 1,
+      "ts": "2026-10-20T01:04:54.817Z",
+      "actor": "u-zhangsan",
+      "type": "submitted",
+      "payload": {
+        "slots": {
+          "origin": "北京",
+          "destination": "上海",
+          "start_date": "2026-10-28",
+          "end_date": "2026-10-30",
+          "purpose": "供应商大会",
+          "declared_budget_fen": 400000,
+          "meeting_address": null,
+          "preferences": null
+        },
+        "thread_id": "6d841bf3-d394-42ce-b5b7-76bfa056ebe5:rev-1:run-acd887cf"
+      },
+      "refs": [],
+      "trace_id": "609215bc9aaa4462926b92c7dd18f796"
+    },
+    {
+      "id": "e8106d76-429e-4021-b567-cafae6632f5d",
+      "seq": 6,
+      "trip_id": "6d841bf3-d394-42ce-b5b7-76bfa056ebe5",
+      "revision": 1,
+      "ts": "2026-10-20T01:04:54.817Z",
+      "actor": "u-zhangsan",
+      "type": "preference_snapshot",
+      "payload": {
+        "preference_source": "none",
+        "preferences": {}
+      },
+      "refs": [],
+      "trace_id": "609215bc9aaa4462926b92c7dd18f796"
+    },
+    {
+      "id": "67cb9c58-37c1-4ac4-b888-4f2e779903b8",
+      "seq": 7,
+      "trip_id": "6d841bf3-d394-42ce-b5b7-76bfa056ebe5",
+      "revision": 1,
+      "ts": "2026-10-20T01:04:54.826Z",
+      "actor": "system",
+      "type": "policy_bound",
+      "payload": {
+        "version": "v1.2",
+        "previous": null,
+        "changed": false
+      },
+      "refs": [
+        {
+          "kind": "policy",
+          "id": "v1.2"
+        }
+      ],
+      "trace_id": "609215bc9aaa4462926b92c7dd18f796"
+    },
+    {
+      "id": "b18d17c4-877b-4980-ad9e-43e5f20a004d",
+      "seq": 8,
+      "trip_id": "6d841bf3-d394-42ce-b5b7-76bfa056ebe5",
+      "revision": 1,
+      "ts": "2026-10-20T01:04:54.826Z",
+      "actor": "system",
+      "type": "status_changed",
+      "payload": {
+        "from": "VALIDATING",
+        "to": "PLANNING",
+        "event": "validated",
+        "previous_revision": 1,
+        "revision": 1
+      },
+      "refs": [],
+      "trace_id": "609215bc9aaa4462926b92c7dd18f796"
+    },
+    {
+      "id": "bcb847f0-024c-4460-a836-523e0076dfe4",
+      "seq": 9,
+      "trip_id": "6d841bf3-d394-42ce-b5b7-76bfa056ebe5",
+      "revision": 1,
+      "ts": "2026-10-20T01:04:54.834Z",
+      "actor": "system",
+      "type": "provider_call",
+      "payload": {
+        "provider": "transport",
+        "implementation": "demo_transport",
+        "request": {
+          "origin": "北京",
+          "destination": "上海",
+          "date": "2026-10-28"
+        },
+        "status": "ok",
+        "candidate_ids": [
+          "T-BJS-SHA-1028-A"
+        ],
+        "error": null,
+        "duration_ms": 0
+      },
+      "refs": [],
+      "trace_id": "609215bc9aaa4462926b92c7dd18f796"
+    },
+    {
+      "id": "398eb9b2-60ba-430f-9da7-a0235b1d5f4e",
+      "seq": 10,
+      "trip_id": "6d841bf3-d394-42ce-b5b7-76bfa056ebe5",
+      "revision": 1,
+      "ts": "2026-10-20T01:04:54.834Z",
+      "actor": "system",
+      "type": "provider_call",
+      "payload": {
+        "provider": "transport",
+        "implementation": "demo_transport",
+        "request": {
+          "origin": "上海",
+          "destination": "北京",
+          "date": "2026-10-30"
+        },
+        "status": "ok",
+        "candidate_ids": [
+          "T-SHA-BJS-1030-A"
+        ],
+        "error": null,
+        "duration_ms": 0
+      },
+      "refs": [],
+      "trace_id": "609215bc9aaa4462926b92c7dd18f796"
+    },
+    {
+      "id": "26850304-93d2-46fa-a327-9b51283df05e",
+      "seq": 11,
+      "trip_id": "6d841bf3-d394-42ce-b5b7-76bfa056ebe5",
+      "revision": 1,
+      "ts": "2026-10-20T01:04:54.834Z",
+      "actor": "system",
+      "type": "provider_call",
+      "payload": {
+        "provider": "hotel_contract",
+        "implementation": "demo_hotel",
+        "request": {
+          "city": "上海"
+        },
+        "status": "ok",
+        "candidate_ids": [
+          "H-SHA-CONTRACT-01",
+          "H-SHA-CONTRACT-02"
+        ],
+        "error": null,
+        "duration_ms": 0
+      },
+      "refs": [],
+      "trace_id": "609215bc9aaa4462926b92c7dd18f796"
+    },
+    {
+      "id": "715cbf74-12ff-4592-b4d5-5d50b905839b",
+      "seq": 12,
+      "trip_id": "6d841bf3-d394-42ce-b5b7-76bfa056ebe5",
+      "revision": 1,
+      "ts": "2026-10-20T01:04:54.834Z",
+      "actor": "system",
+      "type": "provider_call",
+      "payload": {
+        "provider": "weather",
+        "implementation": "demo_weather",
+        "request": {
+          "city": "上海",
+          "dates": [
+            "2026-10-28",
+            "2026-10-29",
+            "2026-10-30"
+          ]
+        },
+        "status": "ok",
+        "candidate_ids": [],
+        "error": null,
+        "duration_ms": 0
+      },
+      "refs": [],
+      "trace_id": "609215bc9aaa4462926b92c7dd18f796"
+    },
+    {
+      "id": "80fc53d2-5a91-4f97-af24-47bcd5f4cc35",
+      "seq": 13,
+      "trip_id": "6d841bf3-d394-42ce-b5b7-76bfa056ebe5",
+      "revision": 1,
+      "ts": "2026-10-20T01:04:54.834Z",
+      "actor": "system",
+      "type": "candidates_selected",
+      "payload": {
+        "outbound": "T-BJS-SHA-1028-A",
+        "return": "T-SHA-BJS-1030-A",
+        "hotel": "H-SHA-CONTRACT-01",
+        "exception_legs": [],
+        "hotel_exception": false,
+        "ranking": {
+          "preference_applied": false,
+          "preference_affected": false,
+          "considered": {
+            "outbound": [
+              "T-BJS-SHA-1028-A"
+            ],
+            "return": [
+              "T-SHA-BJS-1030-A"
+            ],
+            "hotel": [
+              "H-SHA-CONTRACT-01"
+            ]
+          },
+          "filtered_out": [
+            {
+              "id": "H-SHA-CONTRACT-02",
+              "reason": "NOT_AVAILABLE_ON_NIGHTS",
+              "nights": [
+                "2026-10-28",
+                "2026-10-29"
+              ]
+            }
+          ]
+        }
+      },
+      "refs": [],
+      "trace_id": "609215bc9aaa4462926b92c7dd18f796"
+    },
+    {
+      "id": "ac5d250d-3170-4ab5-bbd4-fe31f5a6d38d",
+      "seq": 14,
+      "trip_id": "6d841bf3-d394-42ce-b5b7-76bfa056ebe5",
+      "revision": 1,
+      "ts": "2026-10-20T01:04:54.834Z",
+      "actor": "system",
+      "type": "plan_created",
+      "payload": {
+        "plan": {
+          "revision": 1,
+          "policy_version": "v1.2",
+          "incomplete": false,
+          "missing": [],
+          "transport": {
+            "status": "selected",
+            "outbound": {
+              "id": "T-BJS-SHA-1028-A",
+              "origin": "北京",
+              "destination": "上海",
+              "mode": "air",
+              "carrier": "星衡航空",
+              "service_no": "XC1028",
+              "depart_at": "2026-10-28T01:30:00Z",
+              "arrive_at": "2026-10-28T04:45:00Z",
+              "cabin": "economy",
+              "price_fen": 180000,
+              "source": "demo_fixture"
+            },
+            "return": {
+              "id": "T-SHA-BJS-1030-A",
+              "origin": "上海",
+              "destination": "北京",
+              "mode": "air",
+              "carrier": "星衡航空",
+              "service_no": "XC1030",
+              "depart_at": "2026-10-30T11:00:00Z",
+              "arrive_at": "2026-10-30T13:30:00Z",
+              "cabin": "economy",
+              "price_fen": 170000,
+              "source": "demo_fixture"
+            },
+            "exception_legs": [],
+            "note": null
+          },
+          "hotel": {
+            "status": "selected",
+            "candidate": {
+              "id": "H-SHA-CONTRACT-01",
+              "city": "上海",
+              "name": "星衡协议酒店·外滩店",
+              "price_fen": 48000,
+              "rating": 4.7,
+              "distance_note": "距会议中心约 2 公里",
+              "valid_until": "2026-12-31",
+              "available_date_ranges": null,
+              "source": "demo_fixture",
+              "kind": "contract"
+            },
+            "nights": 2,
+            "exception": false,
+            "note": null
+          },
+          "weather": {
+            "status": "ok",
+            "days": [
+              {
+                "date": "2026-10-28",
+                "summary": "小雨",
+                "temp_low_c": 17,
+                "temp_high_c": 21,
+                "source": "demo_fixture"
+              },
+              {
+                "date": "2026-10-29",
+                "summary": "阴",
+                "temp_low_c": 16,
+                "temp_high_c": 20,
+                "source": "demo_fixture"
+              },
+              {
+                "date": "2026-10-30",
+                "summary": "多云",
+                "temp_low_c": 16,
+                "temp_high_c": 22,
+                "source": "demo_fixture"
+              }
+            ],
+            "note": null
+          },
+          "itinerary": [
+            {
+              "date": "2026-10-28",
+              "items": [
+                {
+                  "time": "09:30",
+                  "title": "XC1028 北京→上海 出发",
+                  "source": "demo_fixture"
+                },
+                {
+                  "time": "12:45",
+                  "title": "抵达上海",
+                  "source": "demo_fixture"
+                },
+                {
+                  "time": null,
+                  "title": "入住 星衡协议酒店·外滩店",
+                  "source": "demo_fixture"
+                },
+                {
+                  "time": null,
+                  "title": "供应商大会",
+                  "source": null
+                },
+                {
+                  "time": null,
+                  "title": "天气小雨，建议携带雨具",
+                  "source": "demo_fixture"
+                }
+              ]
+            },
+            {
+              "date": "2026-10-29",
+              "items": [
+                {
+                  "time": null,
+                  "title": "供应商大会",
+                  "source": null
+                }
+              ]
+            },
+            {
+              "date": "2026-10-30",
+              "items": [
+                {
+                  "time": null,
+                  "title": "供应商大会",
+                  "source": null
+                },
+                {
+                  "time": "19:00",
+                  "title": "XC1030 上海→北京 出发",
+                  "source": "demo_fixture"
+                }
+              ]
+            }
+          ],
+          "ranking": {
+            "preference_applied": false,
+            "preference_affected": false,
+            "considered": {
+              "outbound": [
+                "T-BJS-SHA-1028-A"
+              ],
+              "return": [
+                "T-SHA-BJS-1030-A"
+              ],
+              "hotel": [
+                "H-SHA-CONTRACT-01"
+              ]
+            },
+            "filtered_out": [
+              {
+                "id": "H-SHA-CONTRACT-02",
+                "reason": "NOT_AVAILABLE_ON_NIGHTS",
+                "nights": [
+                  "2026-10-28",
+                  "2026-10-29"
+                ]
+              }
+            ]
+          },
+          "summary": {
+            "status": "ok",
+            "text": "2026-10-28至2026-10-30赴上海，事由：供应商大会。去程乘 XC1028 于 09:30 出发、12:45 抵达。入住星衡协议酒店·外滩店，共 2 晚。行程期间有雨，请携带雨具。返程乘 XC1030 于 19:00 出发。",
+            "source": "model",
+            "generator": "fake",
+            "note": null
+          }
+        },
+        "cost_breakdown": {
+          "nights": 2,
+          "days": 3,
+          "destination_tier": "A",
+          "transport_fen": 350000,
+          "outbound_fen": 180000,
+          "return_fen": 170000,
+          "hotel_per_night_fen": 48000,
+          "hotel_fen": 96000,
+          "meal_per_day_fen": 10000,
+          "meal_fen": 30000,
+          "total_fen": 476000,
+          "known_subtotal_fen": 476000,
+          "declared_budget_fen": 400000,
+          "budget_delta_fen": 76000,
+          "missing_components": []
+        }
+      },
+      "refs": [],
+      "trace_id": "609215bc9aaa4462926b92c7dd18f796"
+    },
+    {
+      "id": "4ad37d7a-e431-4a10-86e1-76ec80f1debe",
+      "seq": 15,
+      "trip_id": "6d841bf3-d394-42ce-b5b7-76bfa056ebe5",
+      "revision": 1,
+      "ts": "2026-10-20T01:04:54.834Z",
+      "actor": "system",
+      "type": "rules_evaluated",
+      "payload": {
+        "policy_version": "v1.2",
+        "source": "policy",
+        "outcome": "PENDING_APPROVAL",
+        "violations": [],
+        "approval_reasons": [
+          {
+            "code": "BUDGET_EXCEEDED",
+            "actual_value": 476000,
+            "limit_value": 400000,
+            "unit": "fen",
+            "lower_bound": false,
+            "missing": [],
+            "basis": null,
+            "message": "总额 4,760.00 元 超过申报预算 4,000.00 元（超 760.00 元）"
+          },
+          {
+            "code": "OVER_AUTO_APPROVAL_LIMIT",
+            "actual_value": 476000,
+            "limit_value": 300000,
+            "unit": "fen",
+            "lower_bound": false,
+            "missing": [],
+            "basis": {
+              "rule_id": "RULE-AUTO-001",
+              "policy_version": "v1.2",
+              "clause_ref": "POL-6"
+            },
+            "message": "总额 4,760.00 元 超过自动通过阈值 3,000.00 元"
+          }
+        ]
+      },
+      "refs": [
+        {
+          "kind": "rule",
+          "id": "RULE-CITY-001",
+          "version": "v1.2",
+          "clause": "POL-1"
+        },
+        {
+          "kind": "rule",
+          "id": "RULE-MEAL-001",
+          "version": "v1.2",
+          "clause": "POL-3"
+        },
+        {
+          "kind": "rule",
+          "id": "RULE-HOTEL-001",
+          "version": "v1.2",
+          "clause": "POL-2"
+        },
+        {
+          "kind": "rule",
+          "id": "RULE-CLASS-001",
+          "version": "v1.2",
+          "clause": "POL-4"
+        },
+        {
+          "kind": "rule",
+          "id": "RULE-ADVANCE-001",
+          "version": "v1.2",
+          "clause": "POL-5"
+        },
+        {
+          "kind": "rule",
+          "id": "RULE-AUTO-001",
+          "version": "v1.2",
+          "clause": "POL-6"
+        },
+        {
+          "kind": "rule",
+          "id": "RULE-DURATION-001",
+          "version": "v1.2",
+          "clause": "POL-7"
+        }
+      ],
+      "trace_id": "609215bc9aaa4462926b92c7dd18f796"
+    },
+    {
+      "id": "91b35621-392b-4d25-ab29-75777badc963",
+      "seq": 16,
+      "trip_id": "6d841bf3-d394-42ce-b5b7-76bfa056ebe5",
+      "revision": 1,
+      "ts": "2026-10-20T01:04:54.840Z",
+      "actor": "system",
+      "type": "status_changed",
+      "payload": {
+        "from": "PLANNING",
+        "to": "PENDING_APPROVAL",
+        "event": "require_approval",
+        "previous_revision": 1,
+        "revision": 1
+      },
+      "refs": [],
+      "trace_id": "609215bc9aaa4462926b92c7dd18f796"
+    },
+    {
+      "id": "0696f9d1-6ad1-48b5-b93b-c0a9926159e6",
+      "seq": 17,
+      "trip_id": "6d841bf3-d394-42ce-b5b7-76bfa056ebe5",
+      "revision": 1,
+      "ts": "2026-10-20T01:04:54.840Z",
+      "actor": "system",
+      "type": "approval_requested",
+      "payload": {
+        "approval_id": "5e07d04d-66a4-472a-9fc5-2d20c452fac1",
+        "approver_id": "u-lisi",
+        "approval_reasons": [
+          "BUDGET_EXCEEDED",
+          "OVER_AUTO_APPROVAL_LIMIT"
+        ],
+        "violations": [],
+        "sources": [
+          "demo_fixture",
+          "model",
+          "policy"
+        ]
+      },
+      "refs": [],
+      "trace_id": "609215bc9aaa4462926b92c7dd18f796"
+    },
+    {
+      "id": "1a01064f-b5bd-483a-a13d-aab11a1ee61f",
+      "seq": 18,
+      "trip_id": "6d841bf3-d394-42ce-b5b7-76bfa056ebe5",
+      "revision": 1,
+      "ts": "2026-10-20T01:04:54.875Z",
+      "actor": "u-lisi",
+      "type": "decision_recorded",
+      "payload": {
+        "approval_id": "5e07d04d-66a4-472a-9fc5-2d20c452fac1",
+        "decision": "approve",
+        "comment": null,
+        "via": "graph"
+      },
+      "refs": [],
+      "trace_id": "2c5dc0551b5d47749a22038f428c3dbc"
+    },
+    {
+      "id": "b5f9fdb3-31db-4e04-8d1c-ab658ba0282f",
+      "seq": 19,
+      "trip_id": "6d841bf3-d394-42ce-b5b7-76bfa056ebe5",
+      "revision": 1,
+      "ts": "2026-10-20T01:04:54.875Z",
+      "actor": "u-lisi",
+      "type": "status_changed",
+      "payload": {
+        "from": "PENDING_APPROVAL",
+        "to": "APPROVED",
+        "event": "approve",
+        "previous_revision": 1,
+        "revision": 1
+      },
+      "refs": [],
+      "trace_id": "2c5dc0551b5d47749a22038f428c3dbc"
+    },
+    {
+      "id": "4008aaff-6cc9-4db6-9a46-dedb314b0dcc",
+      "seq": 20,
+      "trip_id": "6d841bf3-d394-42ce-b5b7-76bfa056ebe5",
+      "revision": 1,
+      "ts": "2026-10-20T01:04:54.880Z",
+      "actor": "system",
+      "type": "status_changed",
+      "payload": {
+        "from": "APPROVED",
+        "to": "DELIVERY_PENDING",
+        "event": "start_delivery",
+        "previous_revision": 1,
+        "revision": 1
+      },
+      "refs": [],
+      "trace_id": "2c5dc0551b5d47749a22038f428c3dbc"
+    },
+    {
+      "id": "52da5c02-5d60-4f8a-a475-f847f12303dd",
+      "seq": 21,
+      "trip_id": "6d841bf3-d394-42ce-b5b7-76bfa056ebe5",
+      "revision": 1,
+      "ts": "2026-10-20T01:04:54.883Z",
+      "actor": "system",
+      "type": "status_changed",
+      "payload": {
+        "from": "DELIVERY_PENDING",
+        "to": "DELIVERED",
+        "event": "delivered",
+        "previous_revision": 1,
+        "revision": 1
+      },
+      "refs": [],
+      "trace_id": "2c5dc0551b5d47749a22038f428c3dbc"
+    },
+    {
+      "id": "96f5e3d2-b31c-40bf-b603-67555985f9be",
+      "seq": 22,
+      "trip_id": "6d841bf3-d394-42ce-b5b7-76bfa056ebe5",
+      "revision": 1,
+      "ts": "2026-10-20T01:04:54.883Z",
+      "actor": "system",
+      "type": "delivery_written",
+      "payload": {
+        "email_id": "fac90307-ff99-4fbb-b994-ca7eb7bb9241",
+        "unique_key": "6d841bf3-d394-42ce-b5b7-76bfa056ebe5:1:trip_delivery",
+        "email_inserted": true,
+        "to": [
+          "u-zhangsan"
+        ],
+        "cc": [
+          "u-lisi"
+        ],
+        "itinerary_url": "/api/trips/6d841bf3-d394-42ce-b5b7-76bfa056ebe5/itinerary?revision=1",
+        "attempt": 1
+      },
+      "refs": [],
+      "trace_id": "2c5dc0551b5d47749a22038f428c3dbc"
+    }
+  ]
+}

@@ -1,0 +1,142 @@
+{
+  "mode": "fake (deterministic parser); no network; v1.3 published by test-only direct insert",
+  "checks": [
+    {
+      "ac": "AC-023",
+      "check": "no preference → stable secondary key (EARLY)",
+      "result": "PASS",
+      "observed": "T-BJS-SHA-1105-EARLY"
+    },
+    {
+      "ac": "AC-023",
+      "check": "avoid early (personal, PUT #24) → LATE, ranking says the preference decided it",
+      "result": "PASS",
+      "observed": [
+        "T-BJS-SHA-1105-LATE",
+        true
+      ]
+    },
+    {
+      "ac": "AC-023",
+      "check": "cleared (DELETE #24) → back to EARLY, preference not applied",
+      "result": "PASS",
+      "observed": "T-BJS-SHA-1105-EARLY"
+    },
+    {
+      "ac": "AC-023",
+      "check": "all three: total 190000 and AUTO_APPROVED→DELIVERED",
+      "result": "PASS",
+      "observed": [
+        [
+          190000,
+          "DELIVERED"
+        ],
+        [
+          190000,
+          "DELIVERED"
+        ],
+        [
+          190000,
+          "DELIVERED"
+        ]
+      ]
+    },
+    {
+      "ac": "AC-023",
+      "check": "D-20: earlier trip keeps its snapshot after the change",
+      "result": "PASS",
+      "observed": {}
+    },
+    {
+      "ac": "AC-023",
+      "check": "preferences_changed audited (put, delete)",
+      "result": "PASS",
+      "observed": [
+        "put",
+        "delete"
+      ]
+    },
+    {
+      "ac": "AC-024",
+      "check": "notice shown while bound v1.2 ≠ published v1.3",
+      "result": "PASS",
+      "observed": {
+        "bound_version": "v1.2",
+        "published_version": "v1.3"
+      }
+    },
+    {
+      "ac": "AC-024",
+      "check": "revision 1→2, policy_version v1.3, still PENDING_APPROVAL",
+      "result": "PASS",
+      "observed": [
+        2,
+        "v1.3",
+        "PENDING_APPROVAL"
+      ]
+    },
+    {
+      "ac": "AC-024",
+      "check": "old card superseded, new pending card at revision 2",
+      "result": "PASS",
+      "observed": [
+        [
+          1,
+          "superseded"
+        ],
+        [
+          2,
+          "pending"
+        ]
+      ]
+    },
+    {
+      "ac": "AC-024",
+      "check": "new violation HOTEL_OVER_CAP 48000 > 45000 (RULE-HOTEL-001 v1.3)",
+      "result": "PASS",
+      "observed": [
+        {
+          "code": "HOTEL_OVER_CAP",
+          "rule_id": "RULE-HOTEL-001",
+          "policy_version": "v1.3",
+          "clause": "POL-2",
+          "quote": "员工住宿上限：A 类城市每晚上限 450 元；B 类城市每晚上限 400 元；C 类城市每晚上限 300 元。",
+          "locator": "line:13",
+          "actual_value": 48000,
+          "limit_value": 45000,
+          "unit": "fen_per_night",
+          "subject": "H-SHA-CONTRACT-01",
+          "source": "policy",
+          "message": "星衡协议酒店·外滩店 每晚 480.00 元，超过 A 类城市上限 450.00 元（超 30.00 元/晚）"
+        }
+      ]
+    },
+    {
+      "ac": "AC-024",
+      "check": "same candidates reused, no provider call",
+      "result": "PASS",
+      "observed": {
+        "outbound": "T-BJS-SHA-1028-A",
+        "return": "T-SHA-BJS-1030-A",
+        "hotel": "H-SHA-CONTRACT-01"
+      }
+    },
+    {
+      "ac": "AC-024",
+      "check": "audit keeps both judgements (v1.2 before, v1.3 after)",
+      "result": "PASS",
+      "observed": [
+        "v1.2",
+        "v1.3"
+      ]
+    },
+    {
+      "ac": "AC-024",
+      "check": "same Idempotency-Key replays; old revision decision → 409 STALE_REVISION",
+      "result": "PASS",
+      "observed": 409
+    }
+  ],
+  "passed": 13,
+  "failed": 0
+}

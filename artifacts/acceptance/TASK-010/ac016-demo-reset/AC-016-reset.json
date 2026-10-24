@@ -1,0 +1,602 @@
+{
+  "scenario": "AC-016 / REQ-025 Demo reset",
+  "generated_at": "2026-10-20T00:55:56.460734Z",
+  "mode": "fake",
+  "start_command": "python -m travel_desk (= uv run travel-desk)",
+  "data_dir": "<tempdir>/var",
+  "steps": [
+    {
+      "boot": {
+        "boot": 1,
+        "pid": 18632,
+        "started_at": "2026-10-20T00:55:56.505260Z",
+        "ready_at": "2026-10-20T00:55:57.802997Z"
+      }
+    },
+    {
+      "provider_health_before": [
+        {
+          "name": "transport",
+          "implementation": "demo_transport",
+          "mode": "demo",
+          "status": "fault_injected",
+          "fault": "transport_timeout",
+          "last_error": null
+        },
+        {
+          "name": "hotel_contract",
+          "implementation": "demo_hotel",
+          "mode": "demo",
+          "status": "ok",
+          "fault": "no_protocol_hotel",
+          "last_error": null
+        },
+        {
+          "name": "hotel_backup",
+          "implementation": "demo_hotel",
+          "mode": "demo",
+          "status": "ok",
+          "fault": null,
+          "last_error": null
+        },
+        {
+          "name": "weather",
+          "implementation": "demo_weather",
+          "mode": "demo",
+          "status": "ok",
+          "fault": "weather_unavailable",
+          "last_error": null
+        }
+      ]
+    },
+    {
+      "db_before_counts": {
+        "trips": 2,
+        "approvals": 2,
+        "outbox_emails": 1,
+        "idempotency_keys": 3,
+        "itineraries": 1,
+        "uploads": 0,
+        "image_extractions": 0,
+        "audit_events": 39,
+        "faults": 3,
+        "employees": 4,
+        "policy_versions": 2,
+        "policy_rules": 16
+      },
+      "checkpoint_threads": [
+        "10ba420e-e8f9-475a-a7e9-f5ba846a3964:rev-1:run-b1d00bbf",
+        "2ab77da2-fba9-4c85-ab30-54459c137398:rev-1:run-cd1dd7c7"
+      ]
+    },
+    {
+      "reset_403_employee": {
+        "error": {
+          "code": "FORBIDDEN",
+          "message": "该操作仅限管理员",
+          "details": {
+            "required_role": "admin"
+          },
+          "trace_id": "6955e3d515c742c492d3e7dec56e0df1"
+        }
+      },
+      "reset_403_manager": {
+        "error": {
+          "code": "FORBIDDEN",
+          "message": "该操作仅限管理员",
+          "details": {
+            "required_role": "admin"
+          },
+          "trace_id": "f5731894ed754086b0f7b1d3852738a3"
+        }
+      }
+    },
+    {
+      "db_after_counts": {
+        "trips": 0,
+        "approvals": 0,
+        "outbox_emails": 0,
+        "idempotency_keys": 0,
+        "itineraries": 0,
+        "uploads": 0,
+        "image_extractions": 0,
+        "audit_events": 1,
+        "faults": 3,
+        "employees": 4,
+        "policy_versions": 2,
+        "policy_rules": 16
+      },
+      "checkpoint_threads": []
+    },
+    {
+      "provider_health_after": [
+        {
+          "name": "transport",
+          "implementation": "demo_transport",
+          "mode": "demo",
+          "status": "ok",
+          "fault": "transport_timeout",
+          "last_error": null
+        },
+        {
+          "name": "hotel_contract",
+          "implementation": "demo_hotel",
+          "mode": "demo",
+          "status": "ok",
+          "fault": "no_protocol_hotel",
+          "last_error": null
+        },
+        {
+          "name": "hotel_backup",
+          "implementation": "demo_hotel",
+          "mode": "demo",
+          "status": "ok",
+          "fault": null,
+          "last_error": null
+        },
+        {
+          "name": "weather",
+          "implementation": "demo_weather",
+          "mode": "demo",
+          "status": "ok",
+          "fault": "weather_unavailable",
+          "last_error": null
+        }
+      ]
+    }
+  ],
+  "db_before": {
+    "counts": {
+      "trips": 2,
+      "approvals": 2,
+      "outbox_emails": 1,
+      "idempotency_keys": 3,
+      "itineraries": 1,
+      "uploads": 0,
+      "image_extractions": 0,
+      "audit_events": 39,
+      "faults": 3,
+      "employees": 4,
+      "policy_versions": 2,
+      "policy_rules": 16
+    },
+    "employees": [
+      {
+        "id": "u-lisi",
+        "name": "李四",
+        "role": "manager",
+        "department": "销售部",
+        "manager_id": null,
+        "preferences_json": "{}"
+      },
+      {
+        "id": "u-wangwu",
+        "name": "王五",
+        "role": "admin",
+        "department": "行政财务部",
+        "manager_id": null,
+        "preferences_json": "{}"
+      },
+      {
+        "id": "u-zhangsan",
+        "name": "张三",
+        "role": "employee",
+        "department": "销售部",
+        "manager_id": "u-lisi",
+        "preferences_json": "{\"avoid_early_departure\": true, \"notes\": \"靠窗\"}"
+      },
+      {
+        "id": "u-zhaoliu",
+        "name": "赵六",
+        "role": "manager",
+        "department": "采购部",
+        "manager_id": null,
+        "preferences_json": "{}"
+      }
+    ],
+    "policy_versions": [
+      {
+        "version": "v1.0",
+        "status": "archived",
+        "effective_date": "2025-01-01"
+      },
+      {
+        "version": "v1.2",
+        "status": "published",
+        "effective_date": "2026-01-01"
+      }
+    ],
+    "rules_by_version": {
+      "v1.0": 8,
+      "v1.2": 8
+    },
+    "faults": {
+      "no_protocol_hotel": false,
+      "transport_timeout": true,
+      "weather_unavailable": false
+    },
+    "audit_event_types": [
+      "trip_created",
+      "slots_changed",
+      "status_changed",
+      "submitted",
+      "preference_snapshot",
+      "policy_bound",
+      "status_changed",
+      "provider_call",
+      "provider_call",
+      "provider_call",
+      "provider_call",
+      "candidates_selected",
+      "plan_created",
+      "rules_evaluated",
+      "status_changed",
+      "approval_requested",
+      "decision_recorded",
+      "status_changed",
+      "status_changed",
+      "status_changed",
+      "delivery_written",
+      "trip_created",
+      "slots_changed",
+      "status_changed",
+      "submitted",
+      "preference_snapshot",
+      "policy_bound",
+      "status_changed",
+      "provider_call",
+      "provider_call",
+      "provider_call",
+      "provider_call",
+      "candidates_selected",
+      "plan_created",
+      "rules_evaluated",
+      "status_changed",
+      "approval_requested",
+      "preferences_changed",
+      "fault_changed"
+    ],
+    "employees_with_preferences": [
+      "u-zhangsan"
+    ],
+    "checkpoint_rows": 13,
+    "checkpoint_threads": [
+      "10ba420e-e8f9-475a-a7e9-f5ba846a3964:rev-1:run-b1d00bbf",
+      "2ab77da2-fba9-4c85-ab30-54459c137398:rev-1:run-cd1dd7c7"
+    ]
+  },
+  "db_after": {
+    "counts": {
+      "trips": 0,
+      "approvals": 0,
+      "outbox_emails": 0,
+      "idempotency_keys": 0,
+      "itineraries": 0,
+      "uploads": 0,
+      "image_extractions": 0,
+      "audit_events": 1,
+      "faults": 3,
+      "employees": 4,
+      "policy_versions": 2,
+      "policy_rules": 16
+    },
+    "employees": [
+      {
+        "id": "u-lisi",
+        "name": "李四",
+        "role": "manager",
+        "department": "销售部",
+        "manager_id": null,
+        "preferences_json": "{}"
+      },
+      {
+        "id": "u-wangwu",
+        "name": "王五",
+        "role": "admin",
+        "department": "行政财务部",
+        "manager_id": null,
+        "preferences_json": "{}"
+      },
+      {
+        "id": "u-zhangsan",
+        "name": "张三",
+        "role": "employee",
+        "department": "销售部",
+        "manager_id": "u-lisi",
+        "preferences_json": "{}"
+      },
+      {
+        "id": "u-zhaoliu",
+        "name": "赵六",
+        "role": "manager",
+        "department": "采购部",
+        "manager_id": null,
+        "preferences_json": "{}"
+      }
+    ],
+    "policy_versions": [
+      {
+        "version": "v1.0",
+        "status": "archived",
+        "effective_date": "2025-01-01"
+      },
+      {
+        "version": "v1.2",
+        "status": "published",
+        "effective_date": "2026-01-01"
+      }
+    ],
+    "rules_by_version": {
+      "v1.0": 8,
+      "v1.2": 8
+    },
+    "faults": {
+      "no_protocol_hotel": false,
+      "transport_timeout": false,
+      "weather_unavailable": false
+    },
+    "audit_event_types": [
+      "demo_reset"
+    ],
+    "employees_with_preferences": [],
+    "checkpoint_rows": 0,
+    "checkpoint_threads": []
+  },
+  "checks": [
+    {
+      "check": "Trip A 提交后 PENDING_APPROVAL",
+      "passed": true,
+      "observed": "PENDING_APPROVAL"
+    },
+    {
+      "check": "Trip A 批准后 DELIVERED（生成交付邮件与行程单）",
+      "passed": true,
+      "observed": "DELIVERED"
+    },
+    {
+      "check": "Trip B 停在 PENDING_APPROVAL（活动 checkpoint 线程）",
+      "passed": true,
+      "observed": "PENDING_APPROVAL"
+    },
+    {
+      "check": "写入员工偏好",
+      "passed": true,
+      "observed": {
+        "user_id": "u-zhangsan",
+        "preferences": {
+          "avoid_early_departure": true,
+          "notes": "靠窗"
+        }
+      }
+    },
+    {
+      "check": "注入交通超时故障",
+      "passed": true,
+      "observed": {
+        "transport": "fault_injected",
+        "hotel_contract": "ok",
+        "hotel_backup": "ok",
+        "weather": "ok"
+      }
+    },
+    {
+      "check": "重置前存在动态数据（Trip/审批/Outbox/幂等键/行程单）",
+      "passed": true,
+      "observed": {
+        "trips": 2,
+        "approvals": 2,
+        "outbox_emails": 1,
+        "idempotency_keys": 3,
+        "itineraries": 1,
+        "uploads": 0,
+        "image_extractions": 0,
+        "audit_events": 39,
+        "faults": 3,
+        "employees": 4,
+        "policy_versions": 2,
+        "policy_rules": 16
+      }
+    },
+    {
+      "check": "重置前审计已累积多条事件",
+      "passed": true,
+      "observed": 39
+    },
+    {
+      "check": "重置前偏好已写入张三",
+      "passed": true,
+      "observed": [
+        "u-zhangsan"
+      ]
+    },
+    {
+      "check": "重置前故障开关为 transport_timeout=True",
+      "passed": true,
+      "observed": {
+        "no_protocol_hotel": false,
+        "transport_timeout": true,
+        "weather_unavailable": false
+      }
+    },
+    {
+      "check": "重置前存在活动 checkpoint 线程",
+      "passed": true,
+      "observed": [
+        "10ba420e-e8f9-475a-a7e9-f5ba846a3964:rev-1:run-b1d00bbf",
+        "2ab77da2-fba9-4c85-ab30-54459c137398:rev-1:run-cd1dd7c7"
+      ]
+    },
+    {
+      "check": "重置前种子完整（4 员工、v1.0+v1.2）",
+      "passed": true,
+      "observed": [
+        {
+          "version": "v1.0",
+          "status": "archived",
+          "effective_date": "2025-01-01"
+        },
+        {
+          "version": "v1.2",
+          "status": "published",
+          "effective_date": "2026-01-01"
+        }
+      ]
+    },
+    {
+      "check": "员工重置被拒 403",
+      "passed": true,
+      "observed": 403
+    },
+    {
+      "check": "经理重置被拒 403（仅 admin）",
+      "passed": true,
+      "observed": 403
+    },
+    {
+      "check": "缺确认串 422 CONFIRMATION_REQUIRED",
+      "passed": true,
+      "observed": "CONFIRMATION_REQUIRED"
+    },
+    {
+      "check": "错误确认串 422",
+      "passed": true,
+      "observed": "CONFIRMATION_REQUIRED"
+    },
+    {
+      "check": "被拒/无效重置没有副作用（Trip 仍在）",
+      "passed": true,
+      "observed": 2
+    },
+    {
+      "check": "管理员正确确认 → 200 {status: reset}",
+      "passed": true,
+      "observed": {
+        "status": "reset"
+      }
+    },
+    {
+      "check": "动态数据全部清空（Trip/审批/Outbox/幂等键/行程单/上传/图片抽取）",
+      "passed": true,
+      "observed": {
+        "trips": 0,
+        "approvals": 0,
+        "outbox_emails": 0,
+        "idempotency_keys": 0,
+        "itineraries": 0,
+        "uploads": 0,
+        "image_extractions": 0
+      }
+    },
+    {
+      "check": "故障开关清空（transport_timeout 关闭）",
+      "passed": true,
+      "observed": {
+        "no_protocol_hotel": false,
+        "transport_timeout": false,
+        "weather_unavailable": false
+      }
+    },
+    {
+      "check": "偏好清空（无员工保留偏好）",
+      "passed": true,
+      "observed": []
+    },
+    {
+      "check": "checkpoint 线程全部删除",
+      "passed": true,
+      "observed": {
+        "threads": [],
+        "rows": 0
+      }
+    },
+    {
+      "check": "种子员工恢复（4 人，角色/部门/经理关系一致）",
+      "passed": true,
+      "observed": [
+        [
+          "u-lisi",
+          "manager"
+        ],
+        [
+          "u-wangwu",
+          "admin"
+        ],
+        [
+          "u-zhangsan",
+          "employee"
+        ],
+        [
+          "u-zhaoliu",
+          "manager"
+        ]
+      ]
+    },
+    {
+      "check": "政策版本恢复（v1.0 archived + v1.2 published）",
+      "passed": true,
+      "observed": [
+        {
+          "version": "v1.0",
+          "status": "archived",
+          "effective_date": "2025-01-01"
+        },
+        {
+          "version": "v1.2",
+          "status": "published",
+          "effective_date": "2026-01-01"
+        }
+      ]
+    },
+    {
+      "check": "种子规则按版本恢复（与重置前同版本同数量）",
+      "passed": true,
+      "observed": {
+        "v1.0": 8,
+        "v1.2": 8
+      }
+    },
+    {
+      "check": "重置后审计只剩 1 条 demo_reset（既有事件按 REQ-025 清除）",
+      "passed": true,
+      "observed": [
+        "demo_reset"
+      ]
+    },
+    {
+      "check": "Provider 恢复 ok（故障清除，fixture 为只读源，重置不改素材）",
+      "passed": true,
+      "observed": {
+        "transport": "ok",
+        "hotel_contract": "ok",
+        "hotel_backup": "ok",
+        "weather": "ok"
+      }
+    },
+    {
+      "check": "API 层确认 Trip 已消失（列表空、详情 404）",
+      "passed": true,
+      "observed": {
+        "list": [],
+        "detail": 404
+      }
+    },
+    {
+      "check": "API 层确认审批待办已清空",
+      "passed": true,
+      "observed": []
+    },
+    {
+      "check": "API 层确认 Outbox 已清空",
+      "passed": true,
+      "observed": []
+    },
+    {
+      "check": "管理员只读接口未新增审计（仍为 1 条 demo_reset）",
+      "passed": true,
+      "observed": [
+        "demo_reset"
+      ]
+    }
+  ],
+  "passed": true
+}

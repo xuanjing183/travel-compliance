@@ -1,0 +1,21 @@
+============================= test session starts =============================
+platform win32 -- Python 3.11.0, pytest-9.1.1, pluggy-1.7.0 -- C:\Users\22316\Desktop\1\lc-course\travel-compliance-desk\.venv\Scripts\python.exe
+rootdir: C:\Users\22316\Desktop\1\lc-course\travel-compliance-desk
+configfile: pyproject.toml
+plugins: anyio-4.15.1, langsmith-0.14.11, asyncio-1.4.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 10 items
+
+tests/test_preferences_revalidate.py::test_ac024_s12_revalidate_against_v13 PASSED [ 10%]
+tests/test_preferences_revalidate.py::test_revalidate_by_the_direct_manager PASSED [ 20%]
+tests/test_preferences_revalidate.py::test_revalidate_errors_follow_the_documented_order PASSED [ 30%]
+tests/test_preferences_revalidate.py::test_imp04_revalidate_without_approval_need_auto_approves_and_delivers PASSED [ 40%]
+tests/test_preferences_revalidate.py::test_imp04_delivery_failure_after_revalidate_stays_retryable PASSED [ 50%]
+tests/test_preferences_revalidate.py::test_d21_on_revalidate_returns_to_collecting_without_a_card PASSED [ 60%]
+tests/test_preferences_revalidate.py::test_imp05_revalidate_hitting_a_hard_block_is_policy_blocked_at_the_new_revision PASSED [ 70%]
+tests/test_preferences_revalidate.py::test_preferences_get_put_delete_with_audit PASSED [ 80%]
+tests/test_preferences_revalidate.py::test_preferences_are_only_for_oneself_and_validated PASSED [ 90%]
+tests/test_preferences_revalidate.py::test_ac023_three_phases_over_http PASSED [100%]
+
+- generated xml file: C:\Users\22316\Desktop\1\lc-course\travel-compliance-desk\artifacts\acceptance\TASK-009\junit.xml -
+============================= 10 passed in 1.71s ==============================

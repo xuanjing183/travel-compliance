@@ -1,0 +1,73 @@
+{
+  "version": "1.0",
+  "policy_version": "v1.2",
+  "corpus": "tests/fixtures/policies/v1.2.md",
+  "description": "Frozen injection samples for AC-018 (D-17). invalid_quote: candidates whose quote is a tampered paraphrase that is NOT a contiguous slice of the normalized document; compile_candidates must mark every one quote_status=invalid_quote (interception rate must be 100%, independent of what the model spontaneously produces). unsupported: candidates whose type is outside the 7 closed rule types; compile_candidates must mark every one status=unsupported (100%). The eval builds raw candidates from the `candidate` objects and runs them through compile_candidates against the v1.2 document. This file must not change after the first gated run.",
+  "invalid_quote": [
+    {
+      "id": "INJ-Q1",
+      "base_gold": "RULE-DURATION-001",
+      "tamper": "paraphrase of '单次出差不超过 15 个自然日。' (drops '单次'/'自然', rewords)",
+      "candidate": { "type": "trip_duration_limit", "condition": { "scope": "all" }, "value": { "days": 15 }, "unit": "days", "clause": "POL-7", "quote": "出差时间最长不得超过 15 天。" },
+      "expect_quote_status": "invalid_quote"
+    },
+    {
+      "id": "INJ-Q2",
+      "base_gold": "RULE-HOTEL-001",
+      "tamper": "paraphrase of '员工住宿上限：A 类城市每晚上限 500 元；…' (collapses tiers into one number)",
+      "candidate": { "type": "hotel_cap", "condition": { "level": "employee" }, "value": { "caps_fen": { "A": 50000, "B": 40000, "C": 30000 } }, "unit": "fen_per_night", "clause": "POL-2", "quote": "员工住宿上限为每晚 500 元。" },
+      "expect_quote_status": "invalid_quote"
+    },
+    {
+      "id": "INJ-Q3",
+      "base_gold": "RULE-ADVANCE-001",
+      "tamper": "paraphrase of '机票出发日距申请日不少于 3 个自然日。' (rewords, '3'→'三')",
+      "candidate": { "type": "advance_booking_days", "condition": { "mode": "air" }, "value": { "days": 3 }, "unit": "days", "clause": "POL-5", "quote": "机票需提前三天预订。" },
+      "expect_quote_status": "invalid_quote"
+    },
+    {
+      "id": "INJ-Q4",
+      "base_gold": "RULE-AUTO-001",
+      "tamper": "paraphrase of '单次差旅总额不超过 3000 元、无制度违规且不超过申报预算的，可自动通过；…' (drops conditions)",
+      "candidate": { "type": "auto_approve_limit", "condition": { "scope": "all" }, "value": { "value_fen": 300000 }, "unit": "fen", "clause": "POL-6", "quote": "差旅总额低于 3000 元自动通过。" },
+      "expect_quote_status": "invalid_quote"
+    },
+    {
+      "id": "INJ-Q5",
+      "base_gold": "RULE-MEAL-001",
+      "tamper": "paraphrase of '伙食补贴按出差自然日计发：A 类城市每天 100 元；…' (drops the per-tier sentence)",
+      "candidate": { "type": "meal_allowance", "condition": { "scope": "all" }, "value": { "caps_fen": { "A": 10000, "B": 8000, "C": 6000 } }, "unit": "fen_per_day", "clause": "POL-3", "quote": "伙食补贴每天 100 元。" },
+      "expect_quote_status": "invalid_quote"
+    },
+    {
+      "id": "INJ-Q6",
+      "base_gold": "RULE-CLASS-001",
+      "tamper": "paraphrase of '全体员工乘坐经济舱或高铁二等座，不得乘坐公务舱、头等舱或高铁一等座。' (rewords, drops rail)",
+      "candidate": { "type": "cabin_class", "condition": { "scope": "all" }, "value": { "allowed": ["economy", "second_class"] }, "unit": "cabin", "clause": "POL-4", "quote": "员工只能坐经济舱。" },
+      "expect_quote_status": "invalid_quote"
+    }
+  ],
+  "unsupported": [
+    {
+      "id": "INJ-U1",
+      "reason": "taxi_expense is not one of the 7 closed rule types (natural POL-8 clause)",
+      "candidate": { "type": "taxi_expense", "condition": { "scope": "all" }, "value": { "reimbursement": "actual", "counts_toward_total": false }, "unit": "policy_flag", "clause": "POL-8", "quote": "出租车费用实报实销，不计入差旅总额。" },
+      "expect_status": "unsupported",
+      "expect_quote_status": "valid"
+    },
+    {
+      "id": "INJ-U2",
+      "reason": "per_diem_bonus is a fabricated non-closed type over a valid POL-3 quote",
+      "candidate": { "type": "per_diem_bonus", "condition": { "scope": "all" }, "value": { "bonus_fen": 10000 }, "unit": "fen_per_day", "clause": "POL-3", "quote": "伙食补贴按出差自然日计发：A 类城市每天 100 元；B 类城市每天 80 元；C 类城市每天 60 元。" },
+      "expect_status": "unsupported",
+      "expect_quote_status": "valid"
+    },
+    {
+      "id": "INJ-U3",
+      "reason": "cabin_upgrade_reimbursement is a fabricated non-closed type over a valid POL-4 quote",
+      "candidate": { "type": "cabin_upgrade_reimbursement", "condition": { "scope": "all" }, "value": { "reimbursement": "none" }, "unit": "policy_flag", "clause": "POL-4", "quote": "全体员工乘坐经济舱或高铁二等座，不得乘坐公务舱、头等舱或高铁一等座。" },
+      "expect_status": "unsupported",
+      "expect_quote_status": "valid"
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "note": "Demo hotel fixture. available_date_ranges lists bookable NIGHTS as inclusive [first_night, last_night] pairs; null means every night is bookable. A stay occupies nights in [check-in, check-out); the check-out day is not occupied. H-SHA-CONTRACT-02 is full on the nights of 2026-10-28 and 2026-10-29 (contract 7.1).",
+  "hotels": [
+    {
+      "id": "H-SHA-CONTRACT-01",
+      "city": "上海",
+      "name": "星衡协议酒店·外滩店",
+      "price_fen": 48000,
+      "rating": 4.7,
+      "distance_note": "距会议中心约 2 公里",
+      "valid_until": "2026-12-31",
+      "available_date_ranges": null,
+      "source": "demo_fixture",
+      "kind": "contract"
+    },
+    {
+      "id": "H-SHA-CONTRACT-02",
+      "city": "上海",
+      "name": "星衡协议酒店·滨江店",
+      "price_fen": 40000,
+      "rating": 4.5,
+      "distance_note": "距会议中心约 1.2 公里",
+      "valid_until": "2026-12-31",
+      "available_date_ranges": [
+        ["2026-01-01", "2026-10-27"],
+        ["2026-10-30", "2026-12-31"]
+      ],
+      "source": "demo_fixture",
+      "kind": "contract"
+    },
+    {
+      "id": "H-CTU-BACKUP-01",
+      "city": "成都",
+      "name": "锦城商务酒店（已验证备用）",
+      "price_fen": 45000,
+      "rating": 4.4,
+      "distance_note": "距培训中心约 3 公里",
+      "valid_until": "2026-12-31",
+      "available_date_ranges": null,
+      "source": "backup_fixture",
+      "kind": "backup"
+    },
+    {
+      "id": "H-LYG-BACKUP-01",
+      "city": "洛阳",
+      "name": "洛阳牡丹商务酒店（已验证备用）",
+      "price_fen": 38000,
+      "rating": 4.3,
+      "distance_note": "距市中心约 1.5 公里",
+      "valid_until": "2026-12-31",
+      "available_date_ranges": null,
+      "source": "backup_fixture",
+      "kind": "backup"
+    },
+    {
+      "id": "H-BJS-CONTRACT-01",
+      "city": "北京",
+      "name": "京华协议酒店·国贸店",
+      "price_fen": 52000,
+      "rating": 4.6,
+      "distance_note": "距会议中心约 1.5 公里",
+      "valid_until": "2026-12-31",
+      "available_date_ranges": null,
+      "source": "demo_fixture",
+      "kind": "contract"
+    },
+    {
+      "id": "H-BJS-BACKUP-01",
+      "city": "北京",
+      "name": "北京长安商务酒店（已验证备用）",
+      "price_fen": 46000,
+      "rating": 4.4,
+      "distance_note": "距市中心约 2 公里",
+      "valid_until": "2026-12-31",
+      "available_date_ranges": null,
+      "source": "backup_fixture",
+      "kind": "backup"
+    }
+  ]
+}

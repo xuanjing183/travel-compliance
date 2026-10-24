@@ -1,0 +1,254 @@
+{
+  "1-none": {
+    "preferences_api": null,
+    "trip_id": "335dd93e-ca39-4533-82a7-ab08c90645eb",
+    "status": "DELIVERED",
+    "outbound": "T-BJS-SHA-1105-EARLY",
+    "total_fen": 190000,
+    "preference_source": "none",
+    "preferences_used": {},
+    "ranking": {
+      "preference_applied": false,
+      "preference_affected": false,
+      "considered": {
+        "outbound": [
+          "T-BJS-SHA-1105-EARLY",
+          "T-BJS-SHA-1105-LATE"
+        ],
+        "return": [
+          "T-SHA-BJS-1106-P"
+        ],
+        "hotel": [
+          "H-SHA-CONTRACT-02",
+          "H-SHA-CONTRACT-01"
+        ]
+      },
+      "filtered_out": []
+    },
+    "audit": [
+      {
+        "id": "71c7e1c5-e2db-493a-8b09-c92cf145c22a",
+        "seq": 5,
+        "trip_id": "335dd93e-ca39-4533-82a7-ab08c90645eb",
+        "revision": 1,
+        "ts": "2026-10-19T16:19:24.804Z",
+        "actor": "u-zhangsan",
+        "type": "preference_snapshot",
+        "payload": {
+          "preference_source": "none",
+          "preferences": {}
+        },
+        "refs": [],
+        "trace_id": "e294b091a869441faae41a5d5be513a8"
+      },
+      {
+        "id": "77f0fa35-fb6b-4d22-b52d-2c36fb28c3ae",
+        "seq": 12,
+        "trip_id": "335dd93e-ca39-4533-82a7-ab08c90645eb",
+        "revision": 1,
+        "ts": "2026-10-19T16:19:24.823Z",
+        "actor": "system",
+        "type": "candidates_selected",
+        "payload": {
+          "outbound": "T-BJS-SHA-1105-EARLY",
+          "return": "T-SHA-BJS-1106-P",
+          "hotel": "H-SHA-CONTRACT-02",
+          "exception_legs": [],
+          "hotel_exception": false,
+          "ranking": {
+            "preference_applied": false,
+            "preference_affected": false,
+            "considered": {
+              "outbound": [
+                "T-BJS-SHA-1105-EARLY",
+                "T-BJS-SHA-1105-LATE"
+              ],
+              "return": [
+                "T-SHA-BJS-1106-P"
+              ],
+              "hotel": [
+                "H-SHA-CONTRACT-02",
+                "H-SHA-CONTRACT-01"
+              ]
+            },
+            "filtered_out": []
+          }
+        },
+        "refs": [],
+        "trace_id": "e294b091a869441faae41a5d5be513a8"
+      }
+    ]
+  },
+  "2-avoid-early": {
+    "preferences_api": {
+      "user_id": "u-zhangsan",
+      "preferences": {
+        "avoid_early_departure": true
+      }
+    },
+    "trip_id": "6aaa8828-2cb7-4b82-8877-b002c2f37ea8",
+    "status": "DELIVERED",
+    "outbound": "T-BJS-SHA-1105-LATE",
+    "total_fen": 190000,
+    "preference_source": "personal_snapshot",
+    "preferences_used": {
+      "avoid_early_departure": true
+    },
+    "ranking": {
+      "preference_applied": true,
+      "preference_affected": true,
+      "considered": {
+        "outbound": [
+          "T-BJS-SHA-1105-LATE",
+          "T-BJS-SHA-1105-EARLY"
+        ],
+        "return": [
+          "T-SHA-BJS-1106-P"
+        ],
+        "hotel": [
+          "H-SHA-CONTRACT-02",
+          "H-SHA-CONTRACT-01"
+        ]
+      },
+      "filtered_out": []
+    },
+    "audit": [
+      {
+        "id": "6e1d0d86-3cf7-429e-9355-9dc05b7f80ab",
+        "seq": 25,
+        "trip_id": "6aaa8828-2cb7-4b82-8877-b002c2f37ea8",
+        "revision": 1,
+        "ts": "2026-10-19T16:19:24.891Z",
+        "actor": "u-zhangsan",
+        "type": "preference_snapshot",
+        "payload": {
+          "preference_source": "personal_snapshot",
+          "preferences": {
+            "avoid_early_departure": true
+          }
+        },
+        "refs": [],
+        "trace_id": "8fe0f9532f8a4e8eb7a4da033c3c27e8"
+      },
+      {
+        "id": "79f08922-187c-46b9-a8dd-51b35a3833a3",
+        "seq": 32,
+        "trip_id": "6aaa8828-2cb7-4b82-8877-b002c2f37ea8",
+        "revision": 1,
+        "ts": "2026-10-19T16:19:24.907Z",
+        "actor": "system",
+        "type": "candidates_selected",
+        "payload": {
+          "outbound": "T-BJS-SHA-1105-LATE",
+          "return": "T-SHA-BJS-1106-P",
+          "hotel": "H-SHA-CONTRACT-02",
+          "exception_legs": [],
+          "hotel_exception": false,
+          "ranking": {
+            "preference_applied": true,
+            "preference_affected": true,
+            "considered": {
+              "outbound": [
+                "T-BJS-SHA-1105-LATE",
+                "T-BJS-SHA-1105-EARLY"
+              ],
+              "return": [
+                "T-SHA-BJS-1106-P"
+              ],
+              "hotel": [
+                "H-SHA-CONTRACT-02",
+                "H-SHA-CONTRACT-01"
+              ]
+            },
+            "filtered_out": []
+          }
+        },
+        "refs": [],
+        "trace_id": "8fe0f9532f8a4e8eb7a4da033c3c27e8"
+      }
+    ]
+  },
+  "3-cleared": {
+    "preferences_api": {
+      "user_id": "u-zhangsan",
+      "preferences": {}
+    },
+    "trip_id": "e6ed2c1a-d4b4-4076-8f2a-f5a65830b6ce",
+    "status": "DELIVERED",
+    "outbound": "T-BJS-SHA-1105-EARLY",
+    "total_fen": 190000,
+    "preference_source": "none",
+    "preferences_used": {},
+    "ranking": {
+      "preference_applied": false,
+      "preference_affected": false,
+      "considered": {
+        "outbound": [
+          "T-BJS-SHA-1105-EARLY",
+          "T-BJS-SHA-1105-LATE"
+        ],
+        "return": [
+          "T-SHA-BJS-1106-P"
+        ],
+        "hotel": [
+          "H-SHA-CONTRACT-02",
+          "H-SHA-CONTRACT-01"
+        ]
+      },
+      "filtered_out": []
+    },
+    "audit": [
+      {
+        "id": "d2474332-02fb-4b05-90dc-4e1a83862be9",
+        "seq": 45,
+        "trip_id": "e6ed2c1a-d4b4-4076-8f2a-f5a65830b6ce",
+        "revision": 1,
+        "ts": "2026-10-19T16:19:24.975Z",
+        "actor": "u-zhangsan",
+        "type": "preference_snapshot",
+        "payload": {
+          "preference_source": "none",
+          "preferences": {}
+        },
+        "refs": [],
+        "trace_id": "585c6ed6b87441068830c7cb0e62fb82"
+      },
+      {
+        "id": "ab87179a-7a9d-49a1-b1db-84c2cd942553",
+        "seq": 52,
+        "trip_id": "e6ed2c1a-d4b4-4076-8f2a-f5a65830b6ce",
+        "revision": 1,
+        "ts": "2026-10-19T16:19:24.991Z",
+        "actor": "system",
+        "type": "candidates_selected",
+        "payload": {
+          "outbound": "T-BJS-SHA-1105-EARLY",
+          "return": "T-SHA-BJS-1106-P",
+          "hotel": "H-SHA-CONTRACT-02",
+          "exception_legs": [],
+          "hotel_exception": false,
+          "ranking": {
+            "preference_applied": false,
+            "preference_affected": false,
+            "considered": {
+              "outbound": [
+                "T-BJS-SHA-1105-EARLY",
+                "T-BJS-SHA-1105-LATE"
+              ],
+              "return": [
+                "T-SHA-BJS-1106-P"
+              ],
+              "hotel": [
+                "H-SHA-CONTRACT-02",
+                "H-SHA-CONTRACT-01"
+              ]
+            },
+            "filtered_out": []
+          }
+        },
+        "refs": [],
+        "trace_id": "585c6ed6b87441068830c7cb0e62fb82"
+      }
+    ]
+  }
+}

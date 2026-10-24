@@ -1,0 +1,16 @@
+# 演练后 Demo 复位与干净起点核对（2026-10-20T06:07:41Z / 本地 14:07:41）
+
+## GET /api/health
+{"status":"ok","db":"ok","demo_today":"2026-10-20","llm_mode":"fake"}
+## GET /api/demo/faults (X-Demo-User: u-wangwu)
+{"faults":{"no_protocol_hotel":false,"transport_timeout":false,"weather_unavailable":false}}
+## GET /api/trips (u-zhangsan)
+{"scope":"mine","trips":[]}
+## GET /api/approvals (u-lisi)
+{"approvals":[]}
+## GET /api/outbox (u-wangwu)
+{"emails":[]}
+## GET /api/policies (u-wangwu)
+{"policies":[{"version":"v1.0","status":"archived","effective_date":"2025-01-01","document":{"kind":"markdown","sha256":"1b2d05668c9bee60d4ac17e1bd834b32e2fc34fa1aa596294fc2f2b1660d9686"},"created_at":"2026-10-20T06:07:02+00:00","published_at":null,"rule_counts":{"candidate":0,"confirmed":8,"rejected":0,"unsupported":0,"invalid_quote":0}},{"version":"v1.2","status":"published","effective_date":"2026-01-01","document":{"kind":"markdown","sha256":"72f941b6449e5d9519b2270c6f38bf0726428119f7b05fabe84e44502306367b"},"created_at":"2026-10-20T06:07:02+00:00","published_at":"2026-10-20T06:07:02+00:00","rule_counts":{"candidate":0,"confirmed":8,"rejected":0,"unsupported":0,"invalid_quote":0}}]}
+## GET /api/health/providers (u-wangwu)
+{"llm_mode":"fake","llm":{"mode":"fake","text_model":"qwen3.8-max","vision_model":"qwen3.5-plus","api_key_configured":null},"providers":[{"name":"transport","implementation":"demo_transport","mode":"demo","status":"ok","fault":"transport_timeout","last_error":null},{"name":"hotel_contract","implementation":"demo_hotel","mode":"demo","status":"ok","fault":"no_protocol_hotel","last_error":null},{"name":"hotel_backup","implementation":"demo_hotel","mode":"demo","status":"ok","fault":null,"last_error":null},{"name":"weather","implementation":"demo_weather","mode":"demo","status":"ok","fault":"weather_unavailable","last_error":null}],"network":{"installed":true,"allowed_hosts":[],"attempts":0,"external_attempts":0,"blocked":0,"allowed":0,"local":0,"external_hosts":{},"blocked_by_caller":[]}}

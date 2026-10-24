@@ -1,0 +1,111 @@
+[
+  {
+    "id": "e16a0b1d-e575-4bfd-938f-7aeb0b0253d0",
+    "seq": 8,
+    "trip_id": "72c88b3a-894a-4582-8b5f-c7cd73c77bac",
+    "revision": 1,
+    "ts": "2026-10-19T15:51:33.597Z",
+    "actor": "u-zhangsan",
+    "type": "trip_created",
+    "payload": {
+      "employee_id": "u-zhangsan"
+    },
+    "refs": [],
+    "trace_id": "01b14650a0584743bd0517116583229b"
+  },
+  {
+    "id": "fd5a8de3-681c-4c70-befc-81cab4ec4c8b",
+    "seq": 10,
+    "trip_id": "72c88b3a-894a-4582-8b5f-c7cd73c77bac",
+    "revision": 1,
+    "ts": "2026-10-19T15:51:33.620Z",
+    "actor": "u-zhangsan",
+    "type": "image_extracted",
+    "payload": {
+      "extraction_id": "39fe5742-5dfe-4c64-b74f-ad8ea4b7f06b",
+      "upload_id": "64e49628-4b44-4f5f-872f-3d6f24ca21cc",
+      "sha256": "e88ef3b9c44b45849869dfab5ac570e1a0c5aaf44565992aff6615250705bf84",
+      "generator": "recorded:model",
+      "fields": {
+        "destination": "上海",
+        "start_date": "2026-10-28",
+        "end_date": "2026-10-30",
+        "purpose": "供应商大会：年度合作评审与新品对接",
+        "meeting_address": "上海市浦东新区滨江大道 2727 号星衡国际会议中心 3 号厅"
+      }
+    },
+    "refs": [],
+    "trace_id": "e3ba844b3c724e5b8d77444f44c0ef91"
+  },
+  {
+    "id": "6743b81a-440f-4c20-8312-b97c35f1859f",
+    "seq": 11,
+    "trip_id": "72c88b3a-894a-4582-8b5f-c7cd73c77bac",
+    "revision": 1,
+    "ts": "2026-10-19T15:51:33.636Z",
+    "actor": "u-zhangsan",
+    "type": "slots_changed",
+    "payload": {
+      "changes": [
+        {
+          "field": "destination",
+          "before": null,
+          "after": "上海"
+        },
+        {
+          "field": "start_date",
+          "before": null,
+          "after": "2026-10-28"
+        },
+        {
+          "field": "end_date",
+          "before": null,
+          "after": "2026-10-30"
+        },
+        {
+          "field": "purpose",
+          "before": null,
+          "after": "供应商大会：年度合作评审与新品对接"
+        },
+        {
+          "field": "meeting_address",
+          "before": null,
+          "after": "上海市浦东新区滨江大道 2727 号星衡国际会议中心 3 号厅"
+        }
+      ],
+      "origin": "image",
+      "extraction_id": "39fe5742-5dfe-4c64-b74f-ad8ea4b7f06b"
+    },
+    "refs": [],
+    "trace_id": "8d605b697c0b4554b1b8fe5bce30f2b5"
+  },
+  {
+    "id": "0b63aabe-8710-4535-bcc2-535bc9396106",
+    "seq": 12,
+    "trip_id": "72c88b3a-894a-4582-8b5f-c7cd73c77bac",
+    "revision": 1,
+    "ts": "2026-10-19T15:51:33.636Z",
+    "actor": "u-zhangsan",
+    "type": "image_confirmed",
+    "payload": {
+      "extraction_id": "39fe5742-5dfe-4c64-b74f-ad8ea4b7f06b",
+      "applied": {
+        "destination": "上海",
+        "start_date": "2026-10-28",
+        "end_date": "2026-10-30",
+        "purpose": "供应商大会：年度合作评审与新品对接",
+        "meeting_address": "上海市浦东新区滨江大道 2727 号星衡国际会议中心 3 号厅"
+      },
+      "edited_fields": [],
+      "changed_fields": [
+        "destination",
+        "start_date",
+        "end_date",
+        "purpose",
+        "meeting_address"
+      ]
+    },
+    "refs": [],
+    "trace_id": "8d605b697c0b4554b1b8fe5bce30f2b5"
+  }
+]

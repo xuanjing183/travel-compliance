@@ -1,0 +1,151 @@
+{
+  "revision": 1,
+  "policy_version": "v1.2",
+  "incomplete": false,
+  "missing": [],
+  "transport": {
+    "status": "selected",
+    "outbound": {
+      "id": "T-BJS-SHA-1105-LATE",
+      "origin": "北京",
+      "destination": "上海",
+      "mode": "air",
+      "carrier": "星衡航空",
+      "service_no": "XC1105B",
+      "depart_at": "2026-11-05T06:00:00Z",
+      "arrive_at": "2026-11-05T09:00:00Z",
+      "cabin": "economy",
+      "price_fen": 65000,
+      "source": "demo_fixture"
+    },
+    "return": {
+      "id": "T-SHA-BJS-1106-P",
+      "origin": "上海",
+      "destination": "北京",
+      "mode": "air",
+      "carrier": "星衡航空",
+      "service_no": "XC1106",
+      "depart_at": "2026-11-06T10:00:00Z",
+      "arrive_at": "2026-11-06T12:20:00Z",
+      "cabin": "economy",
+      "price_fen": 65000,
+      "source": "demo_fixture"
+    },
+    "exception_legs": [],
+    "note": null
+  },
+  "hotel": {
+    "status": "selected",
+    "candidate": {
+      "id": "H-SHA-CONTRACT-02",
+      "city": "上海",
+      "name": "星衡协议酒店·滨江店",
+      "price_fen": 40000,
+      "rating": 4.5,
+      "distance_note": "距会议中心约 1.2 公里",
+      "valid_until": "2026-12-31",
+      "available_date_ranges": [
+        [
+          "2026-01-01",
+          "2026-10-27"
+        ],
+        [
+          "2026-10-30",
+          "2026-12-31"
+        ]
+      ],
+      "source": "demo_fixture",
+      "kind": "contract"
+    },
+    "nights": 1,
+    "exception": false,
+    "note": null
+  },
+  "weather": {
+    "status": "ok",
+    "days": [
+      {
+        "date": "2026-11-05",
+        "summary": "晴",
+        "temp_low_c": 15,
+        "temp_high_c": 23,
+        "source": "demo_fixture"
+      },
+      {
+        "date": "2026-11-06",
+        "summary": "晴",
+        "temp_low_c": 16,
+        "temp_high_c": 24,
+        "source": "demo_fixture"
+      }
+    ],
+    "note": null
+  },
+  "itinerary": [
+    {
+      "date": "2026-11-05",
+      "items": [
+        {
+          "time": "14:00",
+          "title": "XC1105B 北京→上海 出发",
+          "source": "demo_fixture"
+        },
+        {
+          "time": "17:00",
+          "title": "抵达上海",
+          "source": "demo_fixture"
+        },
+        {
+          "time": null,
+          "title": "入住 星衡协议酒店·滨江店",
+          "source": "demo_fixture"
+        },
+        {
+          "time": null,
+          "title": "客户拜访",
+          "source": null
+        }
+      ]
+    },
+    {
+      "date": "2026-11-06",
+      "items": [
+        {
+          "time": null,
+          "title": "客户拜访",
+          "source": null
+        },
+        {
+          "time": "18:00",
+          "title": "XC1106 上海→北京 出发",
+          "source": "demo_fixture"
+        }
+      ]
+    }
+  ],
+  "ranking": {
+    "preference_applied": true,
+    "preference_affected": true,
+    "considered": {
+      "outbound": [
+        "T-BJS-SHA-1105-LATE",
+        "T-BJS-SHA-1105-EARLY"
+      ],
+      "return": [
+        "T-SHA-BJS-1106-P"
+      ],
+      "hotel": [
+        "H-SHA-CONTRACT-02",
+        "H-SHA-CONTRACT-01"
+      ]
+    },
+    "filtered_out": []
+  },
+  "summary": {
+    "status": "ok",
+    "text": "2026-11-05至2026-11-06赴上海，事由：客户拜访。去程乘 XC1105B 于 14:00 出发、17:00 抵达。入住星衡协议酒店·滨江店，共 1 晚。返程乘 XC1106 于 18:00 出发。",
+    "source": "model",
+    "generator": "fake",
+    "note": null
+  }
+}

@@ -1,0 +1,271 @@
+{
+  "mode": "fake (recorded extraction §7.1.1, source hand_written); no network; no model calls; one throwaway database per AC",
+  "checks": [
+    {
+      "ac": "AC-005",
+      "check": "MD and text PDF → 201 draft; scanned PDF → 415 SCANNED_PDF",
+      "result": "PASS",
+      "observed": [
+        201,
+        201,
+        415,
+        "SCANNED_PDF"
+      ]
+    },
+    {
+      "ac": "AC-005",
+      "check": "independent test versions; v1.0/v1.2 untouched, no v1.3 created",
+      "result": "PASS",
+      "observed": {
+        "v1.0": "archived",
+        "v1.2": "published",
+        "v9.1-test": "draft",
+        "v9.2-test": "draft"
+      }
+    },
+    {
+      "ac": "AC-005",
+      "check": "recorded extraction (§7.1.1): 8 closed candidates + invalid_quote + unsupported",
+      "result": "PASS",
+      "observed": {
+        "RULE-CITY-001": [
+          "candidate",
+          "valid"
+        ],
+        "RULE-HOTEL-001": [
+          "candidate",
+          "valid"
+        ],
+        "RULE-HOTEL-002": [
+          "candidate",
+          "valid"
+        ],
+        "RULE-MEAL-001": [
+          "candidate",
+          "valid"
+        ],
+        "RULE-CLASS-001": [
+          "candidate",
+          "valid"
+        ],
+        "RULE-ADVANCE-001": [
+          "candidate",
+          "valid"
+        ],
+        "RULE-AUTO-001": [
+          "candidate",
+          "valid"
+        ],
+        "RULE-DURATION-001": [
+          "candidate",
+          "valid"
+        ],
+        "RULE-DURATION-002": [
+          "candidate",
+          "invalid_quote"
+        ],
+        "RULE-OTHER-001": [
+          "unsupported",
+          "valid"
+        ]
+      }
+    },
+    {
+      "ac": "AC-005",
+      "check": "quotes located in the document: Markdown line:N, PDF page:N",
+      "result": "PASS",
+      "observed": [
+        "line:13"
+      ]
+    },
+    {
+      "ac": "AC-005",
+      "check": "invalid_quote candidate cannot be confirmed → 422 QUOTE_INVALID",
+      "result": "PASS",
+      "observed": "QUOTE_INVALID"
+    },
+    {
+      "ac": "AC-005",
+      "check": "publish with unprocessed candidates → 409 UNPROCESSED_CANDIDATES",
+      "result": "PASS",
+      "observed": {
+        "rule_ids": [
+          "RULE-CITY-001",
+          "RULE-HOTEL-001",
+          "RULE-HOTEL-002",
+          "RULE-MEAL-001",
+          "RULE-CLASS-001",
+          "RULE-ADVANCE-001",
+          "RULE-AUTO-001",
+          "RULE-DURATION-001",
+          "RULE-DURATION-002"
+        ]
+      }
+    },
+    {
+      "ac": "AC-005",
+      "check": "closed type without a confirmed rule → 422 MISSING_RULE_TYPES",
+      "result": "PASS",
+      "observed": [
+        "meal_allowance"
+      ]
+    },
+    {
+      "ac": "AC-005",
+      "check": "failed publish attempts changed nothing",
+      "result": "PASS",
+      "observed": {
+        "v1.0": "archived",
+        "v1.2": "published",
+        "v9.1-test": "draft",
+        "v9.2-test": "draft"
+      }
+    },
+    {
+      "ac": "AC-005",
+      "check": "atomic publish: v9.1-test published, v1.2 archived, exactly one published",
+      "result": "PASS",
+      "observed": {
+        "v1.0": "archived",
+        "v1.2": "archived",
+        "v9.1-test": "published",
+        "v9.2-test": "draft"
+      }
+    },
+    {
+      "ac": "AC-005",
+      "check": "publish is idempotent per key (same response replayed)",
+      "result": "PASS",
+      "observed": 200
+    },
+    {
+      "ac": "AC-005",
+      "check": "audit: uploaded ×2, extracted ×2, rule updates, one published event by the admin",
+      "result": "PASS",
+      "observed": {
+        "policy_extracted": 2,
+        "policy_published": 1,
+        "policy_rule_updated": 10,
+        "policy_uploaded": 2
+      }
+    },
+    {
+      "ac": "AC-024",
+      "check": "S-12: v1.3 created and published by the admin via #20–#23 (v1.2 archived)",
+      "result": "PASS",
+      "observed": {
+        "v1.0": "archived",
+        "v1.2": "archived",
+        "v1.3": "published"
+      }
+    },
+    {
+      "ac": "AC-024",
+      "check": "v1.3 only changes employee A hotel cap to 45000, quote/locator from v1.3.md",
+      "result": "PASS",
+      "observed": {
+        "changed_vs_v1.2": [
+          "RULE-HOTEL-001"
+        ],
+        "hotel": {
+          "caps_fen": {
+            "A": 45000,
+            "B": 40000,
+            "C": 30000
+          }
+        }
+      }
+    },
+    {
+      "ac": "AC-024",
+      "check": "before: bound v1.2, PENDING_APPROVAL, no HOTEL_OVER_CAP",
+      "result": "PASS",
+      "observed": [
+        "v1.2",
+        "PENDING_APPROVAL"
+      ]
+    },
+    {
+      "ac": "AC-024",
+      "check": "notice shown while bound v1.2 ≠ published v1.3",
+      "result": "PASS",
+      "observed": {
+        "bound_version": "v1.2",
+        "published_version": "v1.3"
+      }
+    },
+    {
+      "ac": "AC-024",
+      "check": "revision 1→2, policy_version v1.3, still PENDING_APPROVAL",
+      "result": "PASS",
+      "observed": [
+        2,
+        "v1.3",
+        "PENDING_APPROVAL"
+      ]
+    },
+    {
+      "ac": "AC-024",
+      "check": "old card superseded, new pending card at revision 2",
+      "result": "PASS",
+      "observed": [
+        [
+          1,
+          "superseded"
+        ],
+        [
+          2,
+          "pending"
+        ]
+      ]
+    },
+    {
+      "ac": "AC-024",
+      "check": "new violation HOTEL_OVER_CAP 48000 > 45000 citing RULE-HOTEL-001 v1.3 (POL-2)",
+      "result": "PASS",
+      "observed": [
+        {
+          "code": "HOTEL_OVER_CAP",
+          "rule_id": "RULE-HOTEL-001",
+          "policy_version": "v1.3",
+          "clause": "POL-2",
+          "quote": "员工住宿上限：A 类城市每晚上限 450 元；B 类城市每晚上限 400 元；C 类城市每晚上限 300 元。",
+          "locator": "line:13",
+          "actual_value": 48000,
+          "limit_value": 45000,
+          "unit": "fen_per_night",
+          "subject": "H-SHA-CONTRACT-01",
+          "source": "policy",
+          "message": "星衡协议酒店·外滩店 每晚 480.00 元，超过 A 类城市上限 450.00 元（超 30.00 元/晚）"
+        }
+      ]
+    },
+    {
+      "ac": "AC-024",
+      "check": "same candidates reused, no provider call",
+      "result": "PASS",
+      "observed": {
+        "outbound": "T-BJS-SHA-1028-A",
+        "return": "T-SHA-BJS-1030-A",
+        "hotel": "H-SHA-CONTRACT-01"
+      }
+    },
+    {
+      "ac": "AC-024",
+      "check": "audit keeps both judgements (v1.2 before, v1.3 after)",
+      "result": "PASS",
+      "observed": [
+        "v1.2",
+        "v1.3"
+      ]
+    },
+    {
+      "ac": "AC-024",
+      "check": "same Idempotency-Key replays; old revision decision → 409 STALE_REVISION",
+      "result": "PASS",
+      "observed": 409
+    }
+  ],
+  "passed": 21,
+  "failed": 0
+}

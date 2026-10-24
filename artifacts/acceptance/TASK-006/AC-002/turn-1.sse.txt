@@ -1,0 +1,19 @@
+POST /api/trips/{id}/messages  text=下周去杭州
+HTTP 200  X-Trace-Id: f3021b3b369942fa88598d84b6fbf83a
+
+id: 418758d2-d441-4b7d-b219-3840b9d55fa5
+event: status
+data: {"event_id": "418758d2-d441-4b7d-b219-3840b9d55fa5", "trip_id": "b0d836bf-a4fc-4adf-afb6-abdbd709f49f", "revision": 1, "type": "status", "ts": "2026-10-19T15:51:33.556Z", "trace_id": "f3021b3b369942fa88598d84b6fbf83a", "payload": {"stage": "extracting", "message": "正在识别差旅信息…"}}
+
+id: eaaca9b5-496f-49d8-8474-76c33eb43dcd
+event: slots
+data: {"event_id": "eaaca9b5-496f-49d8-8474-76c33eb43dcd", "trip_id": "b0d836bf-a4fc-4adf-afb6-abdbd709f49f", "revision": 1, "type": "slots", "ts": "2026-10-19T15:51:33.559Z", "trace_id": "f3021b3b369942fa88598d84b6fbf83a", "payload": {"slots": {"origin": null, "destination": "杭州", "start_date": null, "end_date": null, "purpose": null, "declared_budget_fen": null, "meeting_address": null, "preferences": null}, "missing_fields": ["origin", "start_date", "end_date", "purpose", "declared_budget_fen"], "invalid_fields": [], "changes": [{"field": "destination", "before": null, "after": "杭州"}], "ask": "已记录：目的城市 杭州。还需要：出发城市、出发日期（具体到日，如 10月28日）、返回日期（具体到日）、出差事由、申报预算（元）。", "generator": "fake", "source": "model"}}
+
+id: 7df9a312-8ee7-4f2b-b81b-8d4ddfa6026d
+event: token
+data: {"event_id": "7df9a312-8ee7-4f2b-b81b-8d4ddfa6026d", "trip_id": "b0d836bf-a4fc-4adf-afb6-abdbd709f49f", "revision": 1, "type": "token", "ts": "2026-10-19T15:51:33.559Z", "trace_id": "f3021b3b369942fa88598d84b6fbf83a", "payload": {"text": "已记录：目的城市 杭州。还需要：出发城市、出发日期（具体到日，如 10月28日）、返回日期（具体到日）、出差事由、申报预算（元）。", "generator": "template"}}
+
+id: ca2b86ae-be94-4e0a-9838-c6ad945d0135
+event: done
+data: {"event_id": "ca2b86ae-be94-4e0a-9838-c6ad945d0135", "trip_id": "b0d836bf-a4fc-4adf-afb6-abdbd709f49f", "revision": 1, "type": "done", "ts": "2026-10-19T15:51:33.559Z", "trace_id": "f3021b3b369942fa88598d84b6fbf83a", "payload": {"status": "COLLECTING", "revision": 1}}
+
