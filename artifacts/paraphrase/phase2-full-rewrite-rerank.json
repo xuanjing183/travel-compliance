@@ -1,0 +1,5597 @@
+{
+  "generated_at": "2026-10-24T11:21:15+00:00",
+  "dataset": "evals/paraphrase_set.json",
+  "dataset_version": "0.1-draft",
+  "dataset_status": "draft_for_review",
+  "dataset_sha256": "5333ab58aa8f326ce27c30ae89d0615481a268b34274983efcbc516d01a9b116",
+  "llm_mode": "real",
+  "agent_retrieval_mode": "hybrid",
+  "rewrite": true,
+  "rewrite_model": "qwen3.5-plus",
+  "rerank": true,
+  "rerank_model": "gte-rerank-v2",
+  "rerank_min_score": 0.06,
+  "embedding_model": "qwen3.7-text-embedding",
+  "query_count": 48,
+  "rows": [
+    {
+      "id": "P01-a",
+      "topic": "P01",
+      "category": "住宿",
+      "question": "去上海出差住酒店，普通员工一晚上最多能花多少？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-2",
+      "also_expected": [
+        "POL-1"
+      ],
+      "numeric": {
+        "kind": "fen",
+        "value_fen": 50000,
+        "display": "500元/晚"
+      },
+      "paths": [
+        "去上海出差住酒店，普通员工一晚上最多能花多少？",
+        "上海 普通员工 住宿标准 酒店 费用限额"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-2",
+        "POL-3",
+        "POL-2",
+        "制度信息",
+        "POL-1",
+        "POL-2",
+        "POL-8",
+        "POL-4",
+        "POL-6",
+        "POL-5"
+      ],
+      "final_clauses": [
+        "POL-2",
+        "POL-2",
+        "制度信息",
+        "POL-3",
+        "POL-6",
+        "POL-2",
+        "POL-1",
+        "POL-8",
+        "POL-4"
+      ],
+      "top3": [
+        "POL-2",
+        "POL-2",
+        "制度信息"
+      ],
+      "top5": [
+        "POL-2",
+        "POL-2",
+        "制度信息",
+        "POL-3",
+        "POL-6"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "POL-2",
+          "locator": "line:13",
+          "score": 0.205877
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:15",
+          "score": 0.185004
+        },
+        {
+          "clause": "制度信息",
+          "locator": "line:3-5",
+          "score": 0.157227
+        },
+        {
+          "clause": "POL-3",
+          "locator": "line:21",
+          "score": 0.154239
+        },
+        {
+          "clause": "POL-6",
+          "locator": "line:33",
+          "score": 0.150392
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:17",
+          "score": 0.135915
+        },
+        {
+          "clause": "POL-1",
+          "locator": "line:9",
+          "score": 0.123408
+        },
+        {
+          "clause": "POL-8",
+          "locator": "line:41",
+          "score": 0.109653
+        },
+        {
+          "clause": "POL-4",
+          "locator": "line:25",
+          "score": 0.08711
+        }
+      ],
+      "supplement_clauses": []
+    },
+    {
+      "id": "P01-b",
+      "topic": "P01",
+      "category": "住宿",
+      "question": "上海住宿报销封顶多少钱一晚？我不是经理。",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-2",
+      "also_expected": [
+        "POL-1"
+      ],
+      "numeric": {
+        "kind": "fen",
+        "value_fen": 50000,
+        "display": "500元/晚"
+      },
+      "paths": [
+        "上海住宿报销封顶多少钱一晚？我不是经理。",
+        "上海 住宿标准 报销封顶 非经理"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-2",
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "制度信息",
+        "POL-6",
+        "POL-1",
+        "POL-4",
+        "POL-8",
+        "POL-7"
+      ],
+      "final_clauses": [
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "POL-2",
+        "POL-6",
+        "POL-1",
+        "制度信息",
+        "POL-8",
+        "POL-7"
+      ],
+      "top3": [
+        "POL-2",
+        "POL-2",
+        "POL-3"
+      ],
+      "top5": [
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "POL-2",
+        "POL-6"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "POL-2",
+          "locator": "line:15",
+          "score": 0.196355
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:13",
+          "score": 0.183103
+        },
+        {
+          "clause": "POL-3",
+          "locator": "line:21",
+          "score": 0.149949
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:17",
+          "score": 0.142525
+        },
+        {
+          "clause": "POL-6",
+          "locator": "line:33",
+          "score": 0.128574
+        },
+        {
+          "clause": "POL-1",
+          "locator": "line:9",
+          "score": 0.123522
+        },
+        {
+          "clause": "制度信息",
+          "locator": "line:3-5",
+          "score": 0.116511
+        },
+        {
+          "clause": "POL-8",
+          "locator": "line:41",
+          "score": 0.099157
+        },
+        {
+          "clause": "POL-7",
+          "locator": "line:37",
+          "score": 0.063074
+        }
+      ],
+      "supplement_clauses": []
+    },
+    {
+      "id": "P02-a",
+      "topic": "P02",
+      "category": "住宿",
+      "question": "经理在北京住酒店，每晚最多能报多少？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-2",
+      "also_expected": [
+        "POL-1"
+      ],
+      "numeric": {
+        "kind": "fen",
+        "value_fen": 65000,
+        "display": "650元/晚"
+      },
+      "paths": [
+        "经理在北京住酒店，每晚最多能报多少？",
+        "经理 北京 住宿标准 每晚 报销限额"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-2",
+        "POL-2",
+        "POL-6",
+        "POL-3",
+        "制度信息",
+        "POL-2",
+        "POL-1",
+        "POL-4",
+        "POL-8",
+        "POL-7"
+      ],
+      "final_clauses": [
+        "POL-2",
+        "POL-2",
+        "POL-6",
+        "POL-3",
+        "POL-2",
+        "制度信息",
+        "POL-8",
+        "POL-1",
+        "POL-7"
+      ],
+      "top3": [
+        "POL-2",
+        "POL-2",
+        "POL-6"
+      ],
+      "top5": [
+        "POL-2",
+        "POL-2",
+        "POL-6",
+        "POL-3",
+        "POL-2"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "POL-2",
+          "locator": "line:15",
+          "score": 0.310451
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:13",
+          "score": 0.188513
+        },
+        {
+          "clause": "POL-6",
+          "locator": "line:33",
+          "score": 0.161473
+        },
+        {
+          "clause": "POL-3",
+          "locator": "line:21",
+          "score": 0.158621
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:17",
+          "score": 0.150271
+        },
+        {
+          "clause": "制度信息",
+          "locator": "line:3-5",
+          "score": 0.146643
+        },
+        {
+          "clause": "POL-8",
+          "locator": "line:41",
+          "score": 0.121103
+        },
+        {
+          "clause": "POL-1",
+          "locator": "line:9",
+          "score": 0.11313
+        },
+        {
+          "clause": "POL-7",
+          "locator": "line:37",
+          "score": 0.104333
+        }
+      ],
+      "supplement_clauses": []
+    },
+    {
+      "id": "P02-b",
+      "topic": "P02",
+      "category": "住宿",
+      "question": "北京出差，经理级别的住宿标准一晚上限是多少？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-2",
+      "also_expected": [
+        "POL-1"
+      ],
+      "numeric": {
+        "kind": "fen",
+        "value_fen": 65000,
+        "display": "650元/晚"
+      },
+      "paths": [
+        "北京出差，经理级别的住宿标准一晚上限是多少？",
+        "北京 经理级别 住宿标准 限额"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-2",
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "POL-1",
+        "POL-4",
+        "POL-6",
+        "制度信息",
+        "POL-8",
+        "POL-7"
+      ],
+      "final_clauses": [
+        "POL-2",
+        "POL-2",
+        "POL-7",
+        "POL-2",
+        "制度信息",
+        "POL-3",
+        "POL-6",
+        "POL-1",
+        "POL-4",
+        "POL-8"
+      ],
+      "top3": [
+        "POL-2",
+        "POL-2",
+        "POL-7"
+      ],
+      "top5": [
+        "POL-2",
+        "POL-2",
+        "POL-7",
+        "POL-2",
+        "制度信息"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "POL-2",
+          "locator": "line:15",
+          "score": 0.316835
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:13",
+          "score": 0.209732
+        },
+        {
+          "clause": "POL-7",
+          "locator": "line:37",
+          "score": 0.16525
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:17",
+          "score": 0.162105
+        },
+        {
+          "clause": "制度信息",
+          "locator": "line:3-5",
+          "score": 0.145461
+        },
+        {
+          "clause": "POL-3",
+          "locator": "line:21",
+          "score": 0.141053
+        },
+        {
+          "clause": "POL-6",
+          "locator": "line:33",
+          "score": 0.139684
+        },
+        {
+          "clause": "POL-1",
+          "locator": "line:9",
+          "score": 0.118256
+        },
+        {
+          "clause": "POL-4",
+          "locator": "line:25",
+          "score": 0.111421
+        },
+        {
+          "clause": "POL-8",
+          "locator": "line:41",
+          "score": 0.111204
+        }
+      ],
+      "supplement_clauses": []
+    },
+    {
+      "id": "P03-a",
+      "topic": "P03",
+      "category": "住宿",
+      "question": "成都是B类城市吧，那普通员工住宿一晚能报多少？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-2",
+      "also_expected": [
+        "POL-1"
+      ],
+      "numeric": {
+        "kind": "fen",
+        "value_fen": 40000,
+        "display": "400元/晚"
+      },
+      "paths": [
+        "成都是B类城市吧，那普通员工住宿一晚能报多少？",
+        "成都 B类城市 普通员工 住宿标准 报销金额"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-2",
+        "POL-2",
+        "POL-1",
+        "POL-3",
+        "POL-2",
+        "POL-4",
+        "制度信息",
+        "POL-6",
+        "POL-5",
+        "POL-8"
+      ],
+      "final_clauses": [
+        "POL-2",
+        "POL-2",
+        "POL-1",
+        "POL-3",
+        "制度信息",
+        "POL-2",
+        "POL-6",
+        "POL-8",
+        "POL-4"
+      ],
+      "top3": [
+        "POL-2",
+        "POL-2",
+        "POL-1"
+      ],
+      "top5": [
+        "POL-2",
+        "POL-2",
+        "POL-1",
+        "POL-3",
+        "制度信息"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "POL-2",
+          "locator": "line:13",
+          "score": 0.298045
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:15",
+          "score": 0.198498
+        },
+        {
+          "clause": "POL-1",
+          "locator": "line:9",
+          "score": 0.197241
+        },
+        {
+          "clause": "POL-3",
+          "locator": "line:21",
+          "score": 0.17869
+        },
+        {
+          "clause": "制度信息",
+          "locator": "line:3-5",
+          "score": 0.147586
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:17",
+          "score": 0.146943
+        },
+        {
+          "clause": "POL-6",
+          "locator": "line:33",
+          "score": 0.133544
+        },
+        {
+          "clause": "POL-8",
+          "locator": "line:41",
+          "score": 0.116067
+        },
+        {
+          "clause": "POL-4",
+          "locator": "line:25",
+          "score": 0.081394
+        }
+      ],
+      "supplement_clauses": []
+    },
+    {
+      "id": "P03-b",
+      "topic": "P03",
+      "category": "住宿",
+      "question": "普通员工去成都住酒店，报销上限是多少？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-2",
+      "also_expected": [
+        "POL-1"
+      ],
+      "numeric": {
+        "kind": "fen",
+        "value_fen": 40000,
+        "display": "400元/晚"
+      },
+      "paths": [
+        "普通员工去成都住酒店，报销上限是多少？",
+        "普通员工 成都 住宿标准 报销上限"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-2",
+        "POL-2",
+        "制度信息",
+        "POL-3",
+        "POL-1",
+        "POL-2",
+        "POL-4",
+        "POL-6",
+        "POL-8",
+        "POL-5"
+      ],
+      "final_clauses": [
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "POL-6",
+        "制度信息",
+        "POL-8",
+        "POL-2",
+        "POL-1",
+        "POL-4"
+      ],
+      "top3": [
+        "POL-2",
+        "POL-2",
+        "POL-3"
+      ],
+      "top5": [
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "POL-6",
+        "制度信息"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "POL-2",
+          "locator": "line:13",
+          "score": 0.178366
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:15",
+          "score": 0.166901
+        },
+        {
+          "clause": "POL-3",
+          "locator": "line:21",
+          "score": 0.149626
+        },
+        {
+          "clause": "POL-6",
+          "locator": "line:33",
+          "score": 0.145881
+        },
+        {
+          "clause": "制度信息",
+          "locator": "line:3-5",
+          "score": 0.14482
+        },
+        {
+          "clause": "POL-8",
+          "locator": "line:41",
+          "score": 0.125694
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:17",
+          "score": 0.109761
+        },
+        {
+          "clause": "POL-1",
+          "locator": "line:9",
+          "score": 0.108364
+        },
+        {
+          "clause": "POL-4",
+          "locator": "line:25",
+          "score": 0.070962
+        }
+      ],
+      "supplement_clauses": []
+    },
+    {
+      "id": "P04-a",
+      "topic": "P04",
+      "category": "住宿",
+      "question": "去C类小城市出差，住酒店一晚上最多报多少钱？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-2",
+      "also_expected": [],
+      "numeric": {
+        "kind": "fen",
+        "value_fen": 30000,
+        "display": "300元/晚"
+      },
+      "paths": [
+        "去C类小城市出差，住酒店一晚上最多报多少钱？",
+        "C类城市 住宿标准 酒店 报销限额"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "POL-1",
+        "POL-7",
+        "POL-2",
+        "POL-4",
+        "制度信息",
+        "POL-6",
+        "POL-8"
+      ],
+      "final_clauses": [
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "POL-1",
+        "POL-6",
+        "制度信息",
+        "POL-2",
+        "POL-7",
+        "POL-8"
+      ],
+      "top3": [
+        "POL-2",
+        "POL-2",
+        "POL-3"
+      ],
+      "top5": [
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "POL-1",
+        "POL-6"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "POL-2",
+          "locator": "line:15",
+          "score": 0.292027
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:13",
+          "score": 0.274739
+        },
+        {
+          "clause": "POL-3",
+          "locator": "line:21",
+          "score": 0.198517
+        },
+        {
+          "clause": "POL-1",
+          "locator": "line:9",
+          "score": 0.181227
+        },
+        {
+          "clause": "POL-6",
+          "locator": "line:33",
+          "score": 0.167422
+        },
+        {
+          "clause": "制度信息",
+          "locator": "line:3-5",
+          "score": 0.151672
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:17",
+          "score": 0.143123
+        },
+        {
+          "clause": "POL-7",
+          "locator": "line:37",
+          "score": 0.140359
+        },
+        {
+          "clause": "POL-8",
+          "locator": "line:41",
+          "score": 0.127746
+        }
+      ],
+      "supplement_clauses": []
+    },
+    {
+      "id": "P04-b",
+      "topic": "P04",
+      "category": "住宿",
+      "question": "C类城市普通员工住宿每晚标准是多少？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-2",
+      "also_expected": [],
+      "numeric": {
+        "kind": "fen",
+        "value_fen": 30000,
+        "display": "300元/晚"
+      },
+      "paths": [
+        "C类城市普通员工住宿每晚标准是多少？",
+        "C类城市 普通员工 住宿标准 每晚"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "POL-1",
+        "POL-2",
+        "POL-4",
+        "制度信息",
+        "POL-6",
+        "POL-5",
+        "POL-8"
+      ],
+      "final_clauses": [
+        "POL-2",
+        "POL-2",
+        "POL-1",
+        "POL-2",
+        "POL-3",
+        "制度信息",
+        "POL-4",
+        "POL-6"
+      ],
+      "top3": [
+        "POL-2",
+        "POL-2",
+        "POL-1"
+      ],
+      "top5": [
+        "POL-2",
+        "POL-2",
+        "POL-1",
+        "POL-2",
+        "POL-3"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "POL-2",
+          "locator": "line:13",
+          "score": 0.523432
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:15",
+          "score": 0.436991
+        },
+        {
+          "clause": "POL-1",
+          "locator": "line:9",
+          "score": 0.174473
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:17",
+          "score": 0.164337
+        },
+        {
+          "clause": "POL-3",
+          "locator": "line:21",
+          "score": 0.163964
+        },
+        {
+          "clause": "制度信息",
+          "locator": "line:3-5",
+          "score": 0.116844
+        },
+        {
+          "clause": "POL-4",
+          "locator": "line:25",
+          "score": 0.112692
+        },
+        {
+          "clause": "POL-6",
+          "locator": "line:33",
+          "score": 0.093506
+        }
+      ],
+      "supplement_clauses": []
+    },
+    {
+      "id": "P05-a",
+      "topic": "P05",
+      "category": "住宿",
+      "question": "住三晚第四天退房，退房那天算不算一晚住宿费？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-2",
+      "also_expected": [],
+      "numeric": null,
+      "paths": [
+        "住三晚第四天退房，退房那天算不算一晚住宿费？",
+        "住宿标准 退房日 住宿费计算 入住天数"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-2",
+        "POL-2",
+        "POL-2",
+        "POL-5",
+        "POL-3",
+        "POL-7",
+        "制度信息",
+        "POL-4",
+        "POL-8",
+        "POL-6"
+      ],
+      "final_clauses": [
+        "POL-2",
+        "POL-2",
+        "POL-2",
+        "制度信息",
+        "POL-3",
+        "POL-8",
+        "POL-7",
+        "POL-6",
+        "POL-5"
+      ],
+      "top3": [
+        "POL-2",
+        "POL-2",
+        "POL-2"
+      ],
+      "top5": [
+        "POL-2",
+        "POL-2",
+        "POL-2",
+        "制度信息",
+        "POL-3"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "POL-2",
+          "locator": "line:17",
+          "score": 0.389641
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:15",
+          "score": 0.164219
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:13",
+          "score": 0.156988
+        },
+        {
+          "clause": "制度信息",
+          "locator": "line:3-5",
+          "score": 0.143622
+        },
+        {
+          "clause": "POL-3",
+          "locator": "line:21",
+          "score": 0.132412
+        },
+        {
+          "clause": "POL-8",
+          "locator": "line:41",
+          "score": 0.10815
+        },
+        {
+          "clause": "POL-7",
+          "locator": "line:37",
+          "score": 0.097869
+        },
+        {
+          "clause": "POL-6",
+          "locator": "line:33",
+          "score": 0.071674
+        },
+        {
+          "clause": "POL-5",
+          "locator": "line:29",
+          "score": 0.067903
+        }
+      ],
+      "supplement_clauses": [
+        "POL-1"
+      ]
+    },
+    {
+      "id": "P05-b",
+      "topic": "P05",
+      "category": "住宿",
+      "question": "酒店退房当天还计入报销晚数吗？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-2",
+      "also_expected": [],
+      "numeric": null,
+      "paths": [
+        "酒店退房当天还计入报销晚数吗？",
+        "酒店 退房 当天 报销 晚数 住宿标准"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-2",
+        "POL-8",
+        "制度信息",
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "POL-4",
+        "POL-7",
+        "POL-1",
+        "POL-5"
+      ],
+      "final_clauses": [
+        "POL-2",
+        "POL-8",
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "制度信息"
+      ],
+      "top3": [
+        "POL-2",
+        "POL-8",
+        "POL-2"
+      ],
+      "top5": [
+        "POL-2",
+        "POL-8",
+        "POL-2",
+        "POL-2",
+        "POL-3"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "POL-2",
+          "locator": "line:17",
+          "score": 0.3946
+        },
+        {
+          "clause": "POL-8",
+          "locator": "line:41",
+          "score": 0.130566
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:15",
+          "score": 0.127304
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:13",
+          "score": 0.12356
+        },
+        {
+          "clause": "POL-3",
+          "locator": "line:21",
+          "score": 0.121178
+        },
+        {
+          "clause": "制度信息",
+          "locator": "line:3-5",
+          "score": 0.118219
+        }
+      ],
+      "supplement_clauses": [
+        "POL-1"
+      ]
+    },
+    {
+      "id": "P06-a",
+      "topic": "P06",
+      "category": "住宿",
+      "question": "经理去C类城市住宿，每晚能报多少？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-2",
+      "also_expected": [],
+      "numeric": {
+        "kind": "fen",
+        "value_fen": 40000,
+        "display": "400元/晚"
+      },
+      "paths": [
+        "经理去C类城市住宿，每晚能报多少？",
+        "经理 C类城市 住宿标准 每晚报销金额"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "POL-6",
+        "POL-2",
+        "POL-1",
+        "POL-4",
+        "制度信息",
+        "POL-8",
+        "POL-5"
+      ],
+      "final_clauses": [
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "POL-1",
+        "POL-6",
+        "POL-2",
+        "制度信息",
+        "POL-8"
+      ],
+      "top3": [
+        "POL-2",
+        "POL-2",
+        "POL-3"
+      ],
+      "top5": [
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "POL-1",
+        "POL-6"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "POL-2",
+          "locator": "line:15",
+          "score": 0.569628
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:13",
+          "score": 0.39109
+        },
+        {
+          "clause": "POL-3",
+          "locator": "line:21",
+          "score": 0.187693
+        },
+        {
+          "clause": "POL-1",
+          "locator": "line:9",
+          "score": 0.174702
+        },
+        {
+          "clause": "POL-6",
+          "locator": "line:33",
+          "score": 0.15345
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:17",
+          "score": 0.146683
+        },
+        {
+          "clause": "制度信息",
+          "locator": "line:3-5",
+          "score": 0.141212
+        },
+        {
+          "clause": "POL-8",
+          "locator": "line:41",
+          "score": 0.123143
+        }
+      ],
+      "supplement_clauses": []
+    },
+    {
+      "id": "P06-b",
+      "topic": "P06",
+      "category": "住宿",
+      "question": "C类城市经理住宿上限是多少钱一晚？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-2",
+      "also_expected": [],
+      "numeric": {
+        "kind": "fen",
+        "value_fen": 40000,
+        "display": "400元/晚"
+      },
+      "paths": [
+        "C类城市经理住宿上限是多少钱一晚？",
+        "C类城市 经理 住宿标准 上限 金额"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-2",
+        "POL-2",
+        "POL-1",
+        "POL-3",
+        "POL-2",
+        "POL-6",
+        "POL-4",
+        "制度信息",
+        "POL-8",
+        "POL-5"
+      ],
+      "final_clauses": [
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "POL-1",
+        "POL-6",
+        "POL-2",
+        "制度信息",
+        "POL-8"
+      ],
+      "top3": [
+        "POL-2",
+        "POL-2",
+        "POL-3"
+      ],
+      "top5": [
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "POL-1",
+        "POL-6"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "POL-2",
+          "locator": "line:15",
+          "score": 0.588451
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:13",
+          "score": 0.467858
+        },
+        {
+          "clause": "POL-3",
+          "locator": "line:21",
+          "score": 0.16573
+        },
+        {
+          "clause": "POL-1",
+          "locator": "line:9",
+          "score": 0.152379
+        },
+        {
+          "clause": "POL-6",
+          "locator": "line:33",
+          "score": 0.152177
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:17",
+          "score": 0.124663
+        },
+        {
+          "clause": "制度信息",
+          "locator": "line:3-5",
+          "score": 0.104333
+        },
+        {
+          "clause": "POL-8",
+          "locator": "line:41",
+          "score": 0.064079
+        }
+      ],
+      "supplement_clauses": []
+    },
+    {
+      "id": "P07-a",
+      "topic": "P07",
+      "category": "伙食",
+      "question": "去深圳出差吃饭每天补多少钱？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-3",
+      "also_expected": [
+        "POL-1"
+      ],
+      "numeric": {
+        "kind": "fen",
+        "value_fen": 10000,
+        "display": "100元/天"
+      },
+      "paths": [
+        "去深圳出差吃饭每天补多少钱？",
+        "深圳 出差 伙食补贴 标准"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-3",
+        "制度信息",
+        "POL-7",
+        "POL-2",
+        "POL-2",
+        "POL-2",
+        "POL-1",
+        "POL-4",
+        "POL-6",
+        "POL-8"
+      ],
+      "final_clauses": [
+        "POL-3",
+        "POL-7",
+        "制度信息",
+        "POL-6",
+        "POL-1",
+        "POL-8",
+        "POL-2",
+        "POL-2"
+      ],
+      "top3": [
+        "POL-3",
+        "POL-7",
+        "制度信息"
+      ],
+      "top5": [
+        "POL-3",
+        "POL-7",
+        "制度信息",
+        "POL-6",
+        "POL-1"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "POL-3",
+          "locator": "line:21",
+          "score": 0.196946
+        },
+        {
+          "clause": "POL-7",
+          "locator": "line:37",
+          "score": 0.14498
+        },
+        {
+          "clause": "制度信息",
+          "locator": "line:3-5",
+          "score": 0.136584
+        },
+        {
+          "clause": "POL-6",
+          "locator": "line:33",
+          "score": 0.132295
+        },
+        {
+          "clause": "POL-1",
+          "locator": "line:9",
+          "score": 0.118293
+        },
+        {
+          "clause": "POL-8",
+          "locator": "line:41",
+          "score": 0.104859
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:15",
+          "score": 0.091937
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:13",
+          "score": 0.065557
+        }
+      ],
+      "supplement_clauses": []
+    },
+    {
+      "id": "P07-b",
+      "topic": "P07",
+      "category": "伙食",
+      "question": "深圳餐补一天多少？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-3",
+      "also_expected": [
+        "POL-1"
+      ],
+      "numeric": {
+        "kind": "fen",
+        "value_fen": 10000,
+        "display": "100元/天"
+      },
+      "paths": [
+        "深圳餐补一天多少？",
+        "深圳 伙食补贴 标准"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "制度信息",
+        "POL-2",
+        "POL-3",
+        "POL-2",
+        "POL-1",
+        "POL-2",
+        "POL-4",
+        "POL-6",
+        "POL-5",
+        "POL-8"
+      ],
+      "final_clauses": [
+        "POL-3",
+        "POL-1"
+      ],
+      "top3": [
+        "POL-3",
+        "POL-1"
+      ],
+      "top5": [
+        "POL-3",
+        "POL-1"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "POL-3",
+          "locator": "line:21",
+          "score": 0.160231
+        },
+        {
+          "clause": "POL-1",
+          "locator": "line:9",
+          "score": 0.095856
+        }
+      ],
+      "supplement_clauses": []
+    },
+    {
+      "id": "P08-a",
+      "topic": "P08",
+      "category": "伙食",
+      "question": "在成都出差，伙食补贴一天多少钱？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-3",
+      "also_expected": [
+        "POL-1"
+      ],
+      "numeric": {
+        "kind": "fen",
+        "value_fen": 8000,
+        "display": "80元/天"
+      },
+      "paths": [
+        "在成都出差，伙食补贴一天多少钱？",
+        "成都 出差 伙食补贴 标准"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-3",
+        "POL-2",
+        "制度信息",
+        "POL-2",
+        "POL-7",
+        "POL-2",
+        "POL-1",
+        "POL-4",
+        "POL-8",
+        "POL-6"
+      ],
+      "final_clauses": [
+        "POL-3",
+        "POL-2",
+        "POL-7",
+        "POL-2",
+        "POL-6",
+        "制度信息",
+        "POL-8",
+        "POL-1",
+        "POL-2"
+      ],
+      "top3": [
+        "POL-3",
+        "POL-2",
+        "POL-7"
+      ],
+      "top5": [
+        "POL-3",
+        "POL-2",
+        "POL-7",
+        "POL-2",
+        "POL-6"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "POL-3",
+          "locator": "line:21",
+          "score": 0.349388
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:15",
+          "score": 0.143722
+        },
+        {
+          "clause": "POL-7",
+          "locator": "line:37",
+          "score": 0.13682
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:13",
+          "score": 0.136722
+        },
+        {
+          "clause": "POL-6",
+          "locator": "line:33",
+          "score": 0.132432
+        },
+        {
+          "clause": "制度信息",
+          "locator": "line:3-5",
+          "score": 0.124968
+        },
+        {
+          "clause": "POL-8",
+          "locator": "line:41",
+          "score": 0.113934
+        },
+        {
+          "clause": "POL-1",
+          "locator": "line:9",
+          "score": 0.110373
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:17",
+          "score": 0.088436
+        }
+      ],
+      "supplement_clauses": []
+    },
+    {
+      "id": "P08-b",
+      "topic": "P08",
+      "category": "伙食",
+      "question": "B类城市餐补标准每天多少？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-3",
+      "also_expected": [],
+      "numeric": {
+        "kind": "fen",
+        "value_fen": 8000,
+        "display": "80元/天"
+      },
+      "paths": [
+        "B类城市餐补标准每天多少？",
+        "B类城市 伙食补贴 标准 每天"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-3",
+        "POL-2",
+        "POL-2",
+        "POL-1",
+        "POL-2",
+        "POL-4",
+        "制度信息",
+        "POL-6",
+        "POL-5",
+        "POL-8"
+      ],
+      "final_clauses": [
+        "POL-3",
+        "POL-1",
+        "POL-2",
+        "POL-2",
+        "POL-2"
+      ],
+      "top3": [
+        "POL-3",
+        "POL-1",
+        "POL-2"
+      ],
+      "top5": [
+        "POL-3",
+        "POL-1",
+        "POL-2",
+        "POL-2",
+        "POL-2"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "POL-3",
+          "locator": "line:21",
+          "score": 0.193966
+        },
+        {
+          "clause": "POL-1",
+          "locator": "line:9",
+          "score": 0.164162
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:13",
+          "score": 0.151249
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:15",
+          "score": 0.146362
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:17",
+          "score": 0.066384
+        }
+      ],
+      "supplement_clauses": []
+    },
+    {
+      "id": "P09-a",
+      "topic": "P09",
+      "category": "伙食",
+      "question": "小城市出差餐补一天给多少？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-3",
+      "also_expected": [],
+      "numeric": {
+        "kind": "fen",
+        "value_fen": 6000,
+        "display": "60元/天"
+      },
+      "paths": [
+        "小城市出差餐补一天给多少？",
+        "小城市 出差 伙食补贴 标准"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-3",
+        "POL-2",
+        "POL-2",
+        "POL-7",
+        "制度信息",
+        "POL-2",
+        "POL-4",
+        "POL-1",
+        "POL-8",
+        "POL-6"
+      ],
+      "final_clauses": [
+        "POL-3",
+        "POL-7",
+        "POL-2",
+        "POL-2",
+        "制度信息",
+        "POL-1",
+        "POL-6",
+        "POL-8"
+      ],
+      "top3": [
+        "POL-3",
+        "POL-7",
+        "POL-2"
+      ],
+      "top5": [
+        "POL-3",
+        "POL-7",
+        "POL-2",
+        "POL-2",
+        "制度信息"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "POL-3",
+          "locator": "line:21",
+          "score": 0.250419
+        },
+        {
+          "clause": "POL-7",
+          "locator": "line:37",
+          "score": 0.13686
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:15",
+          "score": 0.132666
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:13",
+          "score": 0.129675
+        },
+        {
+          "clause": "制度信息",
+          "locator": "line:3-5",
+          "score": 0.114154
+        },
+        {
+          "clause": "POL-1",
+          "locator": "line:9",
+          "score": 0.113532
+        },
+        {
+          "clause": "POL-6",
+          "locator": "line:33",
+          "score": 0.11313
+        },
+        {
+          "clause": "POL-8",
+          "locator": "line:41",
+          "score": 0.090289
+        }
+      ],
+      "supplement_clauses": []
+    },
+    {
+      "id": "P09-b",
+      "topic": "P09",
+      "category": "伙食",
+      "question": "C类城市伙食补贴每天标准是多少？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-3",
+      "also_expected": [],
+      "numeric": {
+        "kind": "fen",
+        "value_fen": 6000,
+        "display": "60元/天"
+      },
+      "paths": [
+        "C类城市伙食补贴每天标准是多少？",
+        "C类城市 伙食补贴 每天标准"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-3",
+        "POL-2",
+        "POL-2",
+        "POL-1",
+        "POL-2",
+        "POL-4",
+        "制度信息",
+        "POL-6",
+        "POL-5",
+        "POL-8"
+      ],
+      "final_clauses": [
+        "POL-3",
+        "POL-2",
+        "POL-2",
+        "POL-1",
+        "POL-2"
+      ],
+      "top3": [
+        "POL-3",
+        "POL-2",
+        "POL-2"
+      ],
+      "top5": [
+        "POL-3",
+        "POL-2",
+        "POL-2",
+        "POL-1",
+        "POL-2"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "POL-3",
+          "locator": "line:21",
+          "score": 0.447205
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:13",
+          "score": 0.17957
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:15",
+          "score": 0.174737
+        },
+        {
+          "clause": "POL-1",
+          "locator": "line:9",
+          "score": 0.163643
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:17",
+          "score": 0.108114
+        }
+      ],
+      "supplement_clauses": []
+    },
+    {
+      "id": "P10-a",
+      "topic": "P10",
+      "category": "伙食",
+      "question": "去杭州出差，每天的饭钱补贴是多少？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-3",
+      "also_expected": [
+        "POL-1"
+      ],
+      "numeric": {
+        "kind": "fen",
+        "value_fen": 8000,
+        "display": "80元/天"
+      },
+      "paths": [
+        "去杭州出差，每天的饭钱补贴是多少？",
+        "杭州 出差 伙食补贴 标准"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-3",
+        "POL-2",
+        "POL-2",
+        "制度信息",
+        "POL-7",
+        "POL-2",
+        "POL-1",
+        "POL-4",
+        "POL-8",
+        "POL-6"
+      ],
+      "final_clauses": [
+        "POL-3",
+        "POL-2",
+        "POL-2",
+        "POL-7",
+        "POL-6",
+        "制度信息",
+        "POL-1",
+        "POL-8",
+        "POL-2"
+      ],
+      "top3": [
+        "POL-3",
+        "POL-2",
+        "POL-2"
+      ],
+      "top5": [
+        "POL-3",
+        "POL-2",
+        "POL-2",
+        "POL-7",
+        "POL-6"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "POL-3",
+          "locator": "line:21",
+          "score": 0.301379
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:15",
+          "score": 0.153197
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:13",
+          "score": 0.149939
+        },
+        {
+          "clause": "POL-7",
+          "locator": "line:37",
+          "score": 0.142008
+        },
+        {
+          "clause": "POL-6",
+          "locator": "line:33",
+          "score": 0.134757
+        },
+        {
+          "clause": "制度信息",
+          "locator": "line:3-5",
+          "score": 0.131167
+        },
+        {
+          "clause": "POL-1",
+          "locator": "line:9",
+          "score": 0.121932
+        },
+        {
+          "clause": "POL-8",
+          "locator": "line:41",
+          "score": 0.114227
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:17",
+          "score": 0.093703
+        }
+      ],
+      "supplement_clauses": []
+    },
+    {
+      "id": "P10-b",
+      "topic": "P10",
+      "category": "伙食",
+      "question": "杭州餐补一天能报多少？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-3",
+      "also_expected": [
+        "POL-1"
+      ],
+      "numeric": {
+        "kind": "fen",
+        "value_fen": 8000,
+        "display": "80元/天"
+      },
+      "paths": [
+        "杭州餐补一天能报多少？",
+        "杭州 餐补 伙食补贴 标准 金额 天数"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "制度信息",
+        "POL-2",
+        "POL-3",
+        "POL-2",
+        "POL-1",
+        "POL-2",
+        "POL-4",
+        "POL-7",
+        "POL-6",
+        "POL-5"
+      ],
+      "final_clauses": [
+        "POL-3",
+        "POL-1",
+        "POL-6",
+        "POL-2",
+        "POL-2"
+      ],
+      "top3": [
+        "POL-3",
+        "POL-1",
+        "POL-6"
+      ],
+      "top5": [
+        "POL-3",
+        "POL-1",
+        "POL-6",
+        "POL-2",
+        "POL-2"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "POL-3",
+          "locator": "line:21",
+          "score": 0.172493
+        },
+        {
+          "clause": "POL-1",
+          "locator": "line:9",
+          "score": 0.108364
+        },
+        {
+          "clause": "POL-6",
+          "locator": "line:33",
+          "score": 0.101692
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:15",
+          "score": 0.088754
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:13",
+          "score": 0.082117
+        }
+      ],
+      "supplement_clauses": []
+    },
+    {
+      "id": "P11-a",
+      "topic": "P11",
+      "category": "交通",
+      "question": "出差能坐头等舱吗？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-4",
+      "also_expected": [],
+      "numeric": null,
+      "paths": [
+        "出差能坐头等舱吗？",
+        "出差 交通标准 舱位 头等舱"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-4",
+        "制度信息",
+        "POL-3",
+        "POL-7",
+        "POL-2",
+        "POL-2",
+        "POL-2",
+        "POL-8",
+        "POL-6",
+        "POL-1"
+      ],
+      "final_clauses": [
+        "POL-4",
+        "制度信息",
+        "POL-7",
+        "POL-8",
+        "POL-3",
+        "POL-6"
+      ],
+      "top3": [
+        "POL-4",
+        "制度信息",
+        "POL-7"
+      ],
+      "top5": [
+        "POL-4",
+        "制度信息",
+        "POL-7",
+        "POL-8",
+        "POL-3"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "POL-4",
+          "locator": "line:25",
+          "score": 0.185175
+        },
+        {
+          "clause": "制度信息",
+          "locator": "line:3-5",
+          "score": 0.150654
+        },
+        {
+          "clause": "POL-7",
+          "locator": "line:37",
+          "score": 0.137984
+        },
+        {
+          "clause": "POL-8",
+          "locator": "line:41",
+          "score": 0.127957
+        },
+        {
+          "clause": "POL-3",
+          "locator": "line:21",
+          "score": 0.127919
+        },
+        {
+          "clause": "POL-6",
+          "locator": "line:33",
+          "score": 0.114814
+        }
+      ],
+      "supplement_clauses": [
+        "POL-1"
+      ]
+    },
+    {
+      "id": "P11-b",
+      "topic": "P11",
+      "category": "交通",
+      "question": "公司给订头等舱飞机票吗？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-4",
+      "also_expected": [],
+      "numeric": null,
+      "paths": [
+        "公司给订头等舱飞机票吗？",
+        "头等舱 机票 交通标准 差旅制度"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-4",
+        "制度信息",
+        "POL-2",
+        "POL-5",
+        "POL-2",
+        "POL-8",
+        "POL-6",
+        "POL-2",
+        "POL-3",
+        "POL-1"
+      ],
+      "final_clauses": [
+        "POL-4",
+        "POL-5",
+        "制度信息",
+        "POL-6"
+      ],
+      "top3": [
+        "POL-4",
+        "POL-5",
+        "制度信息"
+      ],
+      "top5": [
+        "POL-4",
+        "POL-5",
+        "制度信息",
+        "POL-6"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "POL-4",
+          "locator": "line:25",
+          "score": 0.150221
+        },
+        {
+          "clause": "POL-5",
+          "locator": "line:29",
+          "score": 0.123788
+        },
+        {
+          "clause": "制度信息",
+          "locator": "line:3-5",
+          "score": 0.102176
+        },
+        {
+          "clause": "POL-6",
+          "locator": "line:33",
+          "score": 0.061491
+        }
+      ],
+      "supplement_clauses": []
+    },
+    {
+      "id": "P12-a",
+      "topic": "P12",
+      "category": "交通",
+      "question": "高铁能不能坐一等座？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-4",
+      "also_expected": [],
+      "numeric": null,
+      "paths": [
+        "高铁能不能坐一等座？",
+        "高铁 一等座 交通标准"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-4",
+        "制度信息",
+        "POL-1",
+        "POL-2",
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "POL-6",
+        "POL-5",
+        "POL-8"
+      ],
+      "final_clauses": [
+        "POL-4"
+      ],
+      "top3": [
+        "POL-4"
+      ],
+      "top5": [
+        "POL-4"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "POL-4",
+          "locator": "line:25",
+          "score": 0.247671
+        }
+      ],
+      "supplement_clauses": []
+    },
+    {
+      "id": "P12-b",
+      "topic": "P12",
+      "category": "交通",
+      "question": "出差坐高铁买一等座能报销吗？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-4",
+      "also_expected": [],
+      "numeric": null,
+      "paths": [
+        "出差坐高铁买一等座能报销吗？",
+        "出差 高铁 一等座 报销 交通标准"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-4",
+        "制度信息",
+        "POL-3",
+        "POL-7",
+        "POL-8",
+        "POL-2",
+        "POL-2",
+        "POL-2",
+        "POL-6",
+        "POL-1"
+      ],
+      "final_clauses": [
+        "POL-4",
+        "POL-3",
+        "POL-7",
+        "POL-8",
+        "制度信息",
+        "POL-6"
+      ],
+      "top3": [
+        "POL-4",
+        "POL-3",
+        "POL-7"
+      ],
+      "top5": [
+        "POL-4",
+        "POL-3",
+        "POL-7",
+        "POL-8",
+        "制度信息"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "POL-4",
+          "locator": "line:25",
+          "score": 0.170953
+        },
+        {
+          "clause": "POL-3",
+          "locator": "line:21",
+          "score": 0.14859
+        },
+        {
+          "clause": "POL-7",
+          "locator": "line:37",
+          "score": 0.140676
+        },
+        {
+          "clause": "POL-8",
+          "locator": "line:41",
+          "score": 0.115698
+        },
+        {
+          "clause": "制度信息",
+          "locator": "line:3-5",
+          "score": 0.112219
+        },
+        {
+          "clause": "POL-6",
+          "locator": "line:33",
+          "score": 0.095923
+        }
+      ],
+      "supplement_clauses": [
+        "POL-1"
+      ]
+    },
+    {
+      "id": "P13-a",
+      "topic": "P13",
+      "category": "交通",
+      "question": "坐飞机出差只能买经济舱吗？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-4",
+      "also_expected": [],
+      "numeric": null,
+      "paths": [
+        "坐飞机出差只能买经济舱吗？",
+        "飞机 出差 经济舱 交通标准 舱位等级"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-4",
+        "制度信息",
+        "POL-7",
+        "POL-3",
+        "POL-2",
+        "POL-2",
+        "POL-2",
+        "POL-8",
+        "POL-6",
+        "POL-1"
+      ],
+      "final_clauses": [
+        "POL-4",
+        "POL-7",
+        "POL-3",
+        "制度信息",
+        "POL-6",
+        "POL-8"
+      ],
+      "top3": [
+        "POL-4",
+        "POL-7",
+        "POL-3"
+      ],
+      "top5": [
+        "POL-4",
+        "POL-7",
+        "POL-3",
+        "制度信息",
+        "POL-6"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "POL-4",
+          "locator": "line:25",
+          "score": 0.168201
+        },
+        {
+          "clause": "POL-7",
+          "locator": "line:37",
+          "score": 0.141888
+        },
+        {
+          "clause": "POL-3",
+          "locator": "line:21",
+          "score": 0.134503
+        },
+        {
+          "clause": "制度信息",
+          "locator": "line:3-5",
+          "score": 0.1279
+        },
+        {
+          "clause": "POL-6",
+          "locator": "line:33",
+          "score": 0.126728
+        },
+        {
+          "clause": "POL-8",
+          "locator": "line:41",
+          "score": 0.114227
+        }
+      ],
+      "supplement_clauses": [
+        "POL-1"
+      ]
+    },
+    {
+      "id": "P13-b",
+      "topic": "P13",
+      "category": "交通",
+      "question": "飞机票能买商务舱吗？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-4",
+      "also_expected": [],
+      "numeric": null,
+      "paths": [
+        "飞机票能买商务舱吗？",
+        "飞机票 商务舱 交通标准 差旅制度"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-5",
+        "制度信息",
+        "POL-2",
+        "POL-4",
+        "POL-2",
+        "POL-8",
+        "POL-6",
+        "POL-2",
+        "POL-3",
+        "POL-1"
+      ],
+      "final_clauses": [
+        "POL-4",
+        "POL-5",
+        "制度信息",
+        "POL-6"
+      ],
+      "top3": [
+        "POL-4",
+        "POL-5",
+        "制度信息"
+      ],
+      "top5": [
+        "POL-4",
+        "POL-5",
+        "制度信息",
+        "POL-6"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "POL-4",
+          "locator": "line:25",
+          "score": 0.145621
+        },
+        {
+          "clause": "POL-5",
+          "locator": "line:29",
+          "score": 0.135032
+        },
+        {
+          "clause": "制度信息",
+          "locator": "line:3-5",
+          "score": 0.102938
+        },
+        {
+          "clause": "POL-6",
+          "locator": "line:33",
+          "score": 0.073057
+        }
+      ],
+      "supplement_clauses": []
+    },
+    {
+      "id": "P14-a",
+      "topic": "P14",
+      "category": "交通",
+      "question": "机票要提前几天订？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-5",
+      "also_expected": [],
+      "numeric": {
+        "kind": "count",
+        "value": 3,
+        "unit": "天",
+        "display": "3个自然日"
+      },
+      "paths": [
+        "机票要提前几天订？",
+        "机票 预订 提前天数 交通标准"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-5",
+        "制度信息",
+        "POL-2",
+        "POL-7",
+        "POL-2",
+        "POL-4",
+        "POL-2",
+        "POL-3",
+        "POL-1",
+        "POL-8"
+      ],
+      "final_clauses": [
+        "POL-5",
+        "制度信息",
+        "POL-7"
+      ],
+      "top3": [
+        "POL-5",
+        "制度信息",
+        "POL-7"
+      ],
+      "top5": [
+        "POL-5",
+        "制度信息",
+        "POL-7"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "POL-5",
+          "locator": "line:29",
+          "score": 0.472043
+        },
+        {
+          "clause": "制度信息",
+          "locator": "line:3-5",
+          "score": 0.117104
+        },
+        {
+          "clause": "POL-7",
+          "locator": "line:37",
+          "score": 0.074855
+        }
+      ],
+      "supplement_clauses": []
+    },
+    {
+      "id": "P14-b",
+      "topic": "P14",
+      "category": "交通",
+      "question": "出差机票离出发至少提前几天申请？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-5",
+      "also_expected": [],
+      "numeric": {
+        "kind": "count",
+        "value": 3,
+        "unit": "天",
+        "display": "3个自然日"
+      },
+      "paths": [
+        "出差机票离出发至少提前几天申请？",
+        "出差 机票 申请 提前天数 审批"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-5",
+        "POL-7",
+        "POL-3",
+        "制度信息",
+        "POL-6",
+        "POL-8",
+        "POL-2",
+        "POL-1",
+        "POL-2",
+        "POL-2"
+      ],
+      "final_clauses": [
+        "POL-5",
+        "POL-7",
+        "制度信息",
+        "POL-3",
+        "POL-6",
+        "POL-8"
+      ],
+      "top3": [
+        "POL-5",
+        "POL-7",
+        "制度信息"
+      ],
+      "top5": [
+        "POL-5",
+        "POL-7",
+        "制度信息",
+        "POL-3",
+        "POL-6"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "POL-5",
+          "locator": "line:29",
+          "score": 0.306475
+        },
+        {
+          "clause": "POL-7",
+          "locator": "line:37",
+          "score": 0.16494
+        },
+        {
+          "clause": "制度信息",
+          "locator": "line:3-5",
+          "score": 0.119638
+        },
+        {
+          "clause": "POL-3",
+          "locator": "line:21",
+          "score": 0.112802
+        },
+        {
+          "clause": "POL-6",
+          "locator": "line:33",
+          "score": 0.101347
+        },
+        {
+          "clause": "POL-8",
+          "locator": "line:41",
+          "score": 0.063625
+        }
+      ],
+      "supplement_clauses": [
+        "POL-1"
+      ]
+    },
+    {
+      "id": "P15-a",
+      "topic": "P15",
+      "category": "审批",
+      "question": "多少钱以内的出差不用经理批？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-6",
+      "also_expected": [],
+      "numeric": {
+        "kind": "fen",
+        "value_fen": 300000,
+        "display": "3000元"
+      },
+      "paths": [
+        "多少钱以内的出差不用经理批？",
+        "出差金额 审批权限 经理 自动通过"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-6",
+        "POL-7",
+        "制度信息",
+        "POL-2",
+        "POL-3",
+        "POL-8",
+        "POL-2",
+        "POL-4",
+        "POL-1",
+        "POL-2"
+      ],
+      "final_clauses": [
+        "POL-6",
+        "POL-3",
+        "POL-7",
+        "POL-2",
+        "制度信息",
+        "POL-8",
+        "POL-2",
+        "POL-4"
+      ],
+      "top3": [
+        "POL-6",
+        "POL-3",
+        "POL-7"
+      ],
+      "top5": [
+        "POL-6",
+        "POL-3",
+        "POL-7",
+        "POL-2",
+        "制度信息"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "POL-6",
+          "locator": "line:33",
+          "score": 0.189112
+        },
+        {
+          "clause": "POL-3",
+          "locator": "line:21",
+          "score": 0.15518
+        },
+        {
+          "clause": "POL-7",
+          "locator": "line:37",
+          "score": 0.154704
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:15",
+          "score": 0.142545
+        },
+        {
+          "clause": "制度信息",
+          "locator": "line:3-5",
+          "score": 0.128111
+        },
+        {
+          "clause": "POL-8",
+          "locator": "line:41",
+          "score": 0.12493
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:13",
+          "score": 0.123257
+        },
+        {
+          "clause": "POL-4",
+          "locator": "line:25",
+          "score": 0.060518
+        }
+      ],
+      "supplement_clauses": [
+        "POL-1"
+      ]
+    },
+    {
+      "id": "P15-b",
+      "topic": "P15",
+      "category": "审批",
+      "question": "差旅费在什么额度以下能系统自动通过？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-6",
+      "also_expected": [],
+      "numeric": {
+        "kind": "fen",
+        "value_fen": 300000,
+        "display": "3000元"
+      },
+      "paths": [
+        "差旅费在什么额度以下能系统自动通过？",
+        "差旅费 额度 系统自动通过"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-6",
+        "制度信息",
+        "POL-8",
+        "POL-2",
+        "POL-3",
+        "POL-2",
+        "POL-1",
+        "POL-7",
+        "POL-2",
+        "POL-4"
+      ],
+      "final_clauses": [
+        "POL-6",
+        "POL-8",
+        "POL-2",
+        "制度信息",
+        "POL-2",
+        "POL-7",
+        "POL-3",
+        "POL-1"
+      ],
+      "top3": [
+        "POL-6",
+        "POL-8",
+        "POL-2"
+      ],
+      "top5": [
+        "POL-6",
+        "POL-8",
+        "POL-2",
+        "制度信息",
+        "POL-2"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "POL-6",
+          "locator": "line:33",
+          "score": 0.531537
+        },
+        {
+          "clause": "POL-8",
+          "locator": "line:41",
+          "score": 0.142525
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:15",
+          "score": 0.138794
+        },
+        {
+          "clause": "制度信息",
+          "locator": "line:3-5",
+          "score": 0.133876
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:13",
+          "score": 0.130081
+        },
+        {
+          "clause": "POL-7",
+          "locator": "line:37",
+          "score": 0.114704
+        },
+        {
+          "clause": "POL-3",
+          "locator": "line:21",
+          "score": 0.109259
+        },
+        {
+          "clause": "POL-1",
+          "locator": "line:9",
+          "score": 0.063274
+        }
+      ],
+      "supplement_clauses": []
+    },
+    {
+      "id": "P16-a",
+      "topic": "P16",
+      "category": "审批",
+      "question": "什么情况下出差申请能自动通过？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-6",
+      "also_expected": [],
+      "numeric": null,
+      "paths": [
+        "什么情况下出差申请能自动通过？",
+        "出差申请 自动通过 条件 审批"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-6",
+        "POL-7",
+        "POL-5",
+        "制度信息",
+        "POL-3",
+        "POL-2",
+        "POL-2",
+        "POL-1",
+        "POL-8",
+        "POL-4"
+      ],
+      "final_clauses": [
+        "POL-6",
+        "POL-7",
+        "POL-5",
+        "POL-3",
+        "制度信息",
+        "POL-8"
+      ],
+      "top3": [
+        "POL-6",
+        "POL-7",
+        "POL-5"
+      ],
+      "top5": [
+        "POL-6",
+        "POL-7",
+        "POL-5",
+        "POL-3",
+        "制度信息"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "POL-6",
+          "locator": "line:33",
+          "score": 0.350031
+        },
+        {
+          "clause": "POL-7",
+          "locator": "line:37",
+          "score": 0.13751
+        },
+        {
+          "clause": "POL-5",
+          "locator": "line:29",
+          "score": 0.097061
+        },
+        {
+          "clause": "POL-3",
+          "locator": "line:21",
+          "score": 0.095723
+        },
+        {
+          "clause": "制度信息",
+          "locator": "line:3-5",
+          "score": 0.080139
+        },
+        {
+          "clause": "POL-8",
+          "locator": "line:41",
+          "score": 0.06822
+        }
+      ],
+      "supplement_clauses": [
+        "POL-1"
+      ]
+    },
+    {
+      "id": "P16-b",
+      "topic": "P16",
+      "category": "审批",
+      "question": "自动审批要满足哪些条件？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-6",
+      "also_expected": [],
+      "numeric": null,
+      "paths": [
+        "自动审批要满足哪些条件？",
+        "自动审批 条件 差旅制度"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-6",
+        "制度信息",
+        "POL-1",
+        "POL-5",
+        "POL-2",
+        "POL-8",
+        "POL-3",
+        "POL-2",
+        "POL-4",
+        "POL-7"
+      ],
+      "final_clauses": [
+        "POL-6"
+      ],
+      "top3": [
+        "POL-6"
+      ],
+      "top5": [
+        "POL-6"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "POL-6",
+          "locator": "line:33",
+          "score": 0.198066
+        }
+      ],
+      "supplement_clauses": []
+    },
+    {
+      "id": "P17-a",
+      "topic": "P17",
+      "category": "审批",
+      "question": "如果出差总费用超过三千，是不是要经理签字？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-6",
+      "also_expected": [],
+      "numeric": null,
+      "paths": [
+        "如果出差总费用超过三千，是不是要经理签字？",
+        "出差总费用 超过3000元 审批 经理签字"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-6",
+        "POL-8",
+        "POL-7",
+        "POL-3",
+        "制度信息",
+        "POL-2",
+        "POL-2",
+        "POL-4",
+        "POL-2",
+        "POL-1"
+      ],
+      "final_clauses": [
+        "POL-6",
+        "POL-8",
+        "POL-3",
+        "POL-7",
+        "制度信息",
+        "POL-2",
+        "POL-2"
+      ],
+      "top3": [
+        "POL-6",
+        "POL-8",
+        "POL-3"
+      ],
+      "top5": [
+        "POL-6",
+        "POL-8",
+        "POL-3",
+        "POL-7",
+        "制度信息"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "POL-6",
+          "locator": "line:33",
+          "score": 0.191505
+        },
+        {
+          "clause": "POL-8",
+          "locator": "line:41",
+          "score": 0.129153
+        },
+        {
+          "clause": "POL-3",
+          "locator": "line:21",
+          "score": 0.129114
+        },
+        {
+          "clause": "POL-7",
+          "locator": "line:37",
+          "score": 0.12692
+        },
+        {
+          "clause": "制度信息",
+          "locator": "line:3-5",
+          "score": 0.126306
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:15",
+          "score": 0.094098
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:13",
+          "score": 0.085673
+        }
+      ],
+      "supplement_clauses": [
+        "POL-1"
+      ]
+    },
+    {
+      "id": "P17-b",
+      "topic": "P17",
+      "category": "审批",
+      "question": "差旅总额超过3000块一定要领导批吗？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-6",
+      "also_expected": [],
+      "numeric": null,
+      "paths": [
+        "差旅总额超过3000块一定要领导批吗？",
+        "差旅总额 3000元 审批 领导"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-6",
+        "POL-8",
+        "制度信息",
+        "POL-7",
+        "POL-2",
+        "POL-3",
+        "POL-2",
+        "POL-4",
+        "POL-2",
+        "POL-1"
+      ],
+      "final_clauses": [
+        "POL-6",
+        "POL-8",
+        "制度信息",
+        "POL-2",
+        "POL-3",
+        "POL-7",
+        "POL-2"
+      ],
+      "top3": [
+        "POL-6",
+        "POL-8",
+        "制度信息"
+      ],
+      "top5": [
+        "POL-6",
+        "POL-8",
+        "制度信息",
+        "POL-2",
+        "POL-3"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "POL-6",
+          "locator": "line:33",
+          "score": 0.369582
+        },
+        {
+          "clause": "POL-8",
+          "locator": "line:41",
+          "score": 0.156299
+        },
+        {
+          "clause": "制度信息",
+          "locator": "line:3-5",
+          "score": 0.14478
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:13",
+          "score": 0.099736
+        },
+        {
+          "clause": "POL-3",
+          "locator": "line:21",
+          "score": 0.098783
+        },
+        {
+          "clause": "POL-7",
+          "locator": "line:37",
+          "score": 0.097869
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:15",
+          "score": 0.089871
+        }
+      ],
+      "supplement_clauses": [
+        "POL-1"
+      ]
+    },
+    {
+      "id": "P18-a",
+      "topic": "P18",
+      "category": "审批",
+      "question": "一次出差最多能去几天？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-7",
+      "also_expected": [],
+      "numeric": {
+        "kind": "count",
+        "value": 15,
+        "unit": "天",
+        "display": "15个自然日"
+      },
+      "paths": [
+        "一次出差最多能去几天？",
+        "出差时长 最大天数 限制"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-7",
+        "POL-3",
+        "制度信息",
+        "POL-6",
+        "POL-5",
+        "POL-2",
+        "POL-2",
+        "POL-1",
+        "POL-8",
+        "POL-2"
+      ],
+      "final_clauses": [
+        "POL-7",
+        "制度信息",
+        "POL-3",
+        "POL-6",
+        "POL-5",
+        "POL-8",
+        "POL-2",
+        "POL-2"
+      ],
+      "top3": [
+        "POL-7",
+        "制度信息",
+        "POL-3"
+      ],
+      "top5": [
+        "POL-7",
+        "制度信息",
+        "POL-3",
+        "POL-6",
+        "POL-5"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "POL-7",
+          "locator": "line:37",
+          "score": 0.243312
+        },
+        {
+          "clause": "制度信息",
+          "locator": "line:3-5",
+          "score": 0.151107
+        },
+        {
+          "clause": "POL-3",
+          "locator": "line:21",
+          "score": 0.137451
+        },
+        {
+          "clause": "POL-6",
+          "locator": "line:33",
+          "score": 0.127323
+        },
+        {
+          "clause": "POL-5",
+          "locator": "line:29",
+          "score": 0.099293
+        },
+        {
+          "clause": "POL-8",
+          "locator": "line:41",
+          "score": 0.098342
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:15",
+          "score": 0.086671
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:13",
+          "score": 0.074459
+        }
+      ],
+      "supplement_clauses": [
+        "POL-1"
+      ]
+    },
+    {
+      "id": "P18-b",
+      "topic": "P18",
+      "category": "审批",
+      "question": "单次出差超过15天行不行？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-7",
+      "also_expected": [],
+      "numeric": {
+        "kind": "count",
+        "value": 15,
+        "unit": "天",
+        "display": "15个自然日"
+      },
+      "paths": [
+        "单次出差超过15天行不行？",
+        "单次出差 超过15天 出差时长 审批"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-7",
+        "POL-6",
+        "制度信息",
+        "POL-3",
+        "POL-8",
+        "POL-5",
+        "POL-2",
+        "POL-2",
+        "POL-1",
+        "POL-2"
+      ],
+      "final_clauses": [
+        "POL-7",
+        "POL-6",
+        "制度信息",
+        "POL-3",
+        "POL-8",
+        "POL-5",
+        "POL-2"
+      ],
+      "top3": [
+        "POL-7",
+        "POL-6",
+        "制度信息"
+      ],
+      "top5": [
+        "POL-7",
+        "POL-6",
+        "制度信息",
+        "POL-3",
+        "POL-8"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "POL-7",
+          "locator": "line:37",
+          "score": 0.598571
+        },
+        {
+          "clause": "POL-6",
+          "locator": "line:33",
+          "score": 0.154208
+        },
+        {
+          "clause": "制度信息",
+          "locator": "line:3-5",
+          "score": 0.149949
+        },
+        {
+          "clause": "POL-3",
+          "locator": "line:21",
+          "score": 0.140418
+        },
+        {
+          "clause": "POL-8",
+          "locator": "line:41",
+          "score": 0.116844
+        },
+        {
+          "clause": "POL-5",
+          "locator": "line:29",
+          "score": 0.110121
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:15",
+          "score": 0.063524
+        }
+      ],
+      "supplement_clauses": [
+        "POL-1"
+      ]
+    },
+    {
+      "id": "P19-a",
+      "topic": "P19",
+      "category": "其他费用",
+      "question": "出差打车费怎么报？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-8",
+      "also_expected": [],
+      "numeric": null,
+      "paths": [
+        "出差打车费怎么报？",
+        "出差 打车费 报销 交通标准"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-3",
+        "POL-7",
+        "制度信息",
+        "POL-8",
+        "POL-6",
+        "POL-4",
+        "POL-2",
+        "POL-2",
+        "POL-2",
+        "POL-1"
+      ],
+      "final_clauses": [
+        "POL-8",
+        "POL-3",
+        "POL-7",
+        "制度信息",
+        "POL-6",
+        "POL-4"
+      ],
+      "top3": [
+        "POL-8",
+        "POL-3",
+        "POL-7"
+      ],
+      "top5": [
+        "POL-8",
+        "POL-3",
+        "POL-7",
+        "制度信息",
+        "POL-6"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "POL-8",
+          "locator": "line:41",
+          "score": 0.188633
+        },
+        {
+          "clause": "POL-3",
+          "locator": "line:21",
+          "score": 0.142187
+        },
+        {
+          "clause": "POL-7",
+          "locator": "line:37",
+          "score": 0.123522
+        },
+        {
+          "clause": "制度信息",
+          "locator": "line:3-5",
+          "score": 0.11544
+        },
+        {
+          "clause": "POL-6",
+          "locator": "line:33",
+          "score": 0.109187
+        },
+        {
+          "clause": "POL-4",
+          "locator": "line:25",
+          "score": 0.065096
+        }
+      ],
+      "supplement_clauses": [
+        "POL-1"
+      ]
+    },
+    {
+      "id": "P19-b",
+      "topic": "P19",
+      "category": "其他费用",
+      "question": "出差打出租车的钱能报销吗？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-8",
+      "also_expected": [],
+      "numeric": null,
+      "paths": [
+        "出差打出租车的钱能报销吗？",
+        "出租车 报销 交通标准 费用类型"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-8",
+        "POL-3",
+        "POL-7",
+        "制度信息",
+        "POL-6",
+        "POL-4",
+        "POL-2",
+        "POL-2",
+        "POL-2",
+        "POL-1"
+      ],
+      "final_clauses": [
+        "POL-8",
+        "POL-7",
+        "POL-3",
+        "制度信息",
+        "POL-6",
+        "POL-4"
+      ],
+      "top3": [
+        "POL-8",
+        "POL-7",
+        "POL-3"
+      ],
+      "top5": [
+        "POL-8",
+        "POL-7",
+        "POL-3",
+        "制度信息",
+        "POL-6"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "POL-8",
+          "locator": "line:41",
+          "score": 0.18427
+        },
+        {
+          "clause": "POL-7",
+          "locator": "line:37",
+          "score": 0.150956
+        },
+        {
+          "clause": "POL-3",
+          "locator": "line:21",
+          "score": 0.148962
+        },
+        {
+          "clause": "制度信息",
+          "locator": "line:3-5",
+          "score": 0.13288
+        },
+        {
+          "clause": "POL-6",
+          "locator": "line:33",
+          "score": 0.108471
+        },
+        {
+          "clause": "POL-4",
+          "locator": "line:25",
+          "score": 0.073896
+        }
+      ],
+      "supplement_clauses": [
+        "POL-1"
+      ]
+    },
+    {
+      "id": "P20-a",
+      "topic": "P20",
+      "category": "其他费用",
+      "question": "打车费算不算在差旅总额里？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-8",
+      "also_expected": [],
+      "numeric": null,
+      "paths": [
+        "打车费算不算在差旅总额里？",
+        "打车费 差旅总额 费用类型 报销标准"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-8",
+        "POL-6",
+        "制度信息",
+        "POL-3",
+        "POL-2",
+        "POL-2",
+        "POL-2",
+        "POL-4",
+        "POL-1",
+        "POL-7"
+      ],
+      "final_clauses": [
+        "POL-8",
+        "POL-6",
+        "制度信息",
+        "POL-3",
+        "POL-7",
+        "POL-2",
+        "POL-2"
+      ],
+      "top3": [
+        "POL-8",
+        "POL-6",
+        "制度信息"
+      ],
+      "top5": [
+        "POL-8",
+        "POL-6",
+        "制度信息",
+        "POL-3",
+        "POL-7"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "POL-8",
+          "locator": "line:41",
+          "score": 0.460387
+        },
+        {
+          "clause": "POL-6",
+          "locator": "line:33",
+          "score": 0.158972
+        },
+        {
+          "clause": "制度信息",
+          "locator": "line:3-5",
+          "score": 0.1447
+        },
+        {
+          "clause": "POL-3",
+          "locator": "line:21",
+          "score": 0.1079
+        },
+        {
+          "clause": "POL-7",
+          "locator": "line:37",
+          "score": 0.103077
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:17",
+          "score": 0.078077
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:15",
+          "score": 0.07531
+        }
+      ],
+      "supplement_clauses": [
+        "POL-1"
+      ]
+    },
+    {
+      "id": "P20-b",
+      "topic": "P20",
+      "category": "其他费用",
+      "question": "出租车费用会不会占用3000的自动审批额度？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-8",
+      "also_expected": [],
+      "numeric": null,
+      "paths": [
+        "出租车费用会不会占用3000的自动审批额度？",
+        "出租车费用 自动审批额度 3000"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-6",
+        "POL-8",
+        "制度信息",
+        "POL-3",
+        "POL-5",
+        "POL-2",
+        "POL-2",
+        "POL-1",
+        "POL-2",
+        "POL-4"
+      ],
+      "final_clauses": [
+        "POL-6",
+        "POL-8",
+        "POL-2"
+      ],
+      "top3": [
+        "POL-6",
+        "POL-8",
+        "POL-2"
+      ],
+      "top5": [
+        "POL-6",
+        "POL-8",
+        "POL-2"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "POL-6",
+          "locator": "line:33",
+          "score": 0.180783
+        },
+        {
+          "clause": "POL-8",
+          "locator": "line:41",
+          "score": 0.165134
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:13",
+          "score": 0.061786
+        }
+      ],
+      "supplement_clauses": [
+        "POL-1"
+      ]
+    },
+    {
+      "id": "P21-a",
+      "topic": "P21",
+      "category": "拒答",
+      "question": "公司年假有几天？",
+      "answerable": false,
+      "refusal": true,
+      "primary_clause": null,
+      "also_expected": [],
+      "numeric": null,
+      "paths": [
+        "公司年假有几天？",
+        "年假 天数 休假标准"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "制度信息",
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "POL-7",
+        "POL-2",
+        "POL-4",
+        "POL-1",
+        "POL-5",
+        "POL-6"
+      ],
+      "final_clauses": [],
+      "top3": [],
+      "top5": [],
+      "rerank_scores": [],
+      "supplement_clauses": []
+    },
+    {
+      "id": "P21-b",
+      "topic": "P21",
+      "category": "拒答",
+      "question": "带薪休假一年多少天？",
+      "answerable": false,
+      "refusal": true,
+      "primary_clause": null,
+      "also_expected": [],
+      "numeric": null,
+      "paths": [
+        "带薪休假一年多少天？",
+        "带薪休假 年假 天数 标准"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "制度信息",
+        "POL-2",
+        "POL-3",
+        "POL-7",
+        "POL-2",
+        "POL-2",
+        "POL-4",
+        "POL-1",
+        "POL-5",
+        "POL-6"
+      ],
+      "final_clauses": [
+        "POL-7"
+      ],
+      "top3": [
+        "POL-7"
+      ],
+      "top5": [
+        "POL-7"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "POL-7",
+          "locator": "line:37",
+          "score": 0.114117
+        }
+      ],
+      "supplement_clauses": []
+    },
+    {
+      "id": "P22-a",
+      "topic": "P22",
+      "category": "拒答",
+      "question": "公积金公司交多少比例？",
+      "answerable": false,
+      "refusal": true,
+      "primary_clause": null,
+      "also_expected": [],
+      "numeric": null,
+      "paths": [
+        "公积金公司交多少比例？",
+        "公积金 缴纳比例 公司"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-2",
+        "制度信息",
+        "POL-2",
+        "POL-1",
+        "POL-4",
+        "POL-2",
+        "POL-3",
+        "POL-6",
+        "POL-5",
+        "POL-8"
+      ],
+      "final_clauses": [],
+      "top3": [],
+      "top5": [],
+      "rerank_scores": [],
+      "supplement_clauses": []
+    },
+    {
+      "id": "P22-b",
+      "topic": "P22",
+      "category": "拒答",
+      "question": "社保缴纳比例是多少？",
+      "answerable": false,
+      "refusal": true,
+      "primary_clause": null,
+      "also_expected": [],
+      "numeric": null,
+      "paths": [
+        "社保缴纳比例是多少？",
+        "社保 缴纳比例"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-2",
+        "POL-1",
+        "制度信息",
+        "POL-4",
+        "POL-2",
+        "POL-3",
+        "POL-2",
+        "POL-7",
+        "POL-6",
+        "POL-5"
+      ],
+      "final_clauses": [],
+      "top3": [],
+      "top5": [],
+      "rerank_scores": [],
+      "supplement_clauses": []
+    },
+    {
+      "id": "P23-a",
+      "topic": "P23",
+      "category": "拒答",
+      "question": "出差晚上加班有加班费吗？",
+      "answerable": false,
+      "refusal": true,
+      "primary_clause": null,
+      "also_expected": [],
+      "numeric": null,
+      "paths": [
+        "出差晚上加班有加班费吗？",
+        "出差 晚上加班 加班费"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-3",
+        "POL-7",
+        "制度信息",
+        "POL-2",
+        "POL-2",
+        "POL-2",
+        "POL-8",
+        "POL-1",
+        "POL-4",
+        "POL-6"
+      ],
+      "final_clauses": [
+        "POL-7",
+        "POL-3",
+        "POL-2",
+        "POL-2",
+        "制度信息",
+        "POL-8"
+      ],
+      "top3": [
+        "POL-7",
+        "POL-3",
+        "POL-2"
+      ],
+      "top5": [
+        "POL-7",
+        "POL-3",
+        "POL-2",
+        "POL-2",
+        "制度信息"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "POL-7",
+          "locator": "line:37",
+          "score": 0.151844
+        },
+        {
+          "clause": "POL-3",
+          "locator": "line:21",
+          "score": 0.146743
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:15",
+          "score": 0.130042
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:13",
+          "score": 0.128593
+        },
+        {
+          "clause": "制度信息",
+          "locator": "line:3-5",
+          "score": 0.12114
+        },
+        {
+          "clause": "POL-8",
+          "locator": "line:41",
+          "score": 0.061638
+        }
+      ],
+      "supplement_clauses": [
+        "POL-1"
+      ]
+    },
+    {
+      "id": "P23-b",
+      "topic": "P23",
+      "category": "拒答",
+      "question": "周末出差能不能调休？",
+      "answerable": false,
+      "refusal": true,
+      "primary_clause": null,
+      "also_expected": [],
+      "numeric": null,
+      "paths": [
+        "周末出差能不能调休？",
+        "周末出差 调休 规定"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-7",
+        "制度信息",
+        "POL-3",
+        "POL-8",
+        "POL-2",
+        "POL-6",
+        "POL-1",
+        "POL-5",
+        "POL-2",
+        "POL-4"
+      ],
+      "final_clauses": [
+        "POL-7",
+        "制度信息",
+        "POL-3",
+        "POL-8",
+        "POL-6"
+      ],
+      "top3": [
+        "POL-7",
+        "制度信息",
+        "POL-3"
+      ],
+      "top5": [
+        "POL-7",
+        "制度信息",
+        "POL-3",
+        "POL-8",
+        "POL-6"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "POL-7",
+          "locator": "line:37",
+          "score": 0.148339
+        },
+        {
+          "clause": "制度信息",
+          "locator": "line:3-5",
+          "score": 0.138557
+        },
+        {
+          "clause": "POL-3",
+          "locator": "line:21",
+          "score": 0.133818
+        },
+        {
+          "clause": "POL-8",
+          "locator": "line:41",
+          "score": 0.095889
+        },
+        {
+          "clause": "POL-6",
+          "locator": "line:33",
+          "score": 0.0695
+        }
+      ],
+      "supplement_clauses": [
+        "POL-1"
+      ]
+    },
+    {
+      "id": "P24-a",
+      "topic": "P24",
+      "category": "拒答",
+      "question": "出差可以带老婆孩子吗？",
+      "answerable": false,
+      "refusal": true,
+      "primary_clause": null,
+      "also_expected": [],
+      "numeric": null,
+      "paths": [
+        "出差可以带老婆孩子吗？",
+        "出差 家属 随行 配偶 子女 规定"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "制度信息",
+        "POL-7",
+        "POL-3",
+        "POL-8",
+        "POL-2",
+        "POL-4",
+        "POL-2",
+        "POL-6",
+        "POL-1",
+        "POL-2"
+      ],
+      "final_clauses": [
+        "制度信息",
+        "POL-7",
+        "POL-6",
+        "POL-3",
+        "POL-8"
+      ],
+      "top3": [
+        "制度信息",
+        "POL-7",
+        "POL-6"
+      ],
+      "top5": [
+        "制度信息",
+        "POL-7",
+        "POL-6",
+        "POL-3",
+        "POL-8"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "制度信息",
+          "locator": "line:3-5",
+          "score": 0.151259
+        },
+        {
+          "clause": "POL-7",
+          "locator": "line:37",
+          "score": 0.150997
+        },
+        {
+          "clause": "POL-6",
+          "locator": "line:33",
+          "score": 0.134131
+        },
+        {
+          "clause": "POL-3",
+          "locator": "line:21",
+          "score": 0.130566
+        },
+        {
+          "clause": "POL-8",
+          "locator": "line:41",
+          "score": 0.119264
+        }
+      ],
+      "supplement_clauses": [
+        "POL-1"
+      ]
+    },
+    {
+      "id": "P24-b",
+      "topic": "P24",
+      "category": "拒答",
+      "question": "能不能带家属一起出差？",
+      "answerable": false,
+      "refusal": true,
+      "primary_clause": null,
+      "also_expected": [],
+      "numeric": null,
+      "paths": [
+        "能不能带家属一起出差？",
+        "家属 随行 出差 规定"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-7",
+        "制度信息",
+        "POL-3",
+        "POL-4",
+        "POL-2",
+        "POL-2",
+        "POL-8",
+        "POL-1",
+        "POL-6",
+        "POL-2"
+      ],
+      "final_clauses": [
+        "制度信息",
+        "POL-7",
+        "POL-6",
+        "POL-3",
+        "POL-8"
+      ],
+      "top3": [
+        "制度信息",
+        "POL-7",
+        "POL-6"
+      ],
+      "top5": [
+        "制度信息",
+        "POL-7",
+        "POL-6",
+        "POL-3",
+        "POL-8"
+      ],
+      "rerank_scores": [
+        {
+          "clause": "制度信息",
+          "locator": "line:3-5",
+          "score": 0.14845
+        },
+        {
+          "clause": "POL-7",
+          "locator": "line:37",
+          "score": 0.141292
+        },
+        {
+          "clause": "POL-6",
+          "locator": "line:33",
+          "score": 0.124968
+        },
+        {
+          "clause": "POL-3",
+          "locator": "line:21",
+          "score": 0.12099
+        },
+        {
+          "clause": "POL-8",
+          "locator": "line:41",
+          "score": 0.108686
+        }
+      ],
+      "supplement_clauses": [
+        "POL-1"
+      ]
+    }
+  ],
+  "metrics": {
+    "recall@3": {
+      "hit": 40,
+      "total": 40,
+      "value": 1.0
+    },
+    "recall@5": {
+      "hit": 40,
+      "total": 40,
+      "value": 1.0
+    },
+    "recall@10": {
+      "hit": 40,
+      "total": 40,
+      "value": 1.0
+    },
+    "also_expected@5_including_supplements": {
+      "hit": 4,
+      "total": 11,
+      "value": 0.3636
+    },
+    "also_expected@10_including_supplements": {
+      "hit": 11,
+      "total": 11,
+      "value": 1.0
+    },
+    "empty_after_rerank": 3,
+    "by_category": {
+      "住宿": {
+        "recall@3": {
+          "hit": 12,
+          "total": 12,
+          "value": 1.0
+        },
+        "recall@5": {
+          "hit": 12,
+          "total": 12,
+          "value": 1.0
+        },
+        "recall@10": {
+          "hit": 12,
+          "total": 12,
+          "value": 1.0
+        },
+        "also_expected@5": {
+          "hit": 1,
+          "total": 6,
+          "value": 0.1667
+        },
+        "also_expected@10": {
+          "hit": 6,
+          "total": 6,
+          "value": 1.0
+        }
+      },
+      "伙食": {
+        "recall@3": {
+          "hit": 8,
+          "total": 8,
+          "value": 1.0
+        },
+        "recall@5": {
+          "hit": 8,
+          "total": 8,
+          "value": 1.0
+        },
+        "recall@10": {
+          "hit": 8,
+          "total": 8,
+          "value": 1.0
+        },
+        "also_expected@5": {
+          "hit": 3,
+          "total": 5,
+          "value": 0.6
+        },
+        "also_expected@10": {
+          "hit": 5,
+          "total": 5,
+          "value": 1.0
+        }
+      },
+      "交通": {
+        "recall@3": {
+          "hit": 8,
+          "total": 8,
+          "value": 1.0
+        },
+        "recall@5": {
+          "hit": 8,
+          "total": 8,
+          "value": 1.0
+        },
+        "recall@10": {
+          "hit": 8,
+          "total": 8,
+          "value": 1.0
+        },
+        "also_expected@5": {
+          "hit": 0,
+          "total": 0,
+          "value": null
+        },
+        "also_expected@10": {
+          "hit": 0,
+          "total": 0,
+          "value": null
+        }
+      },
+      "审批": {
+        "recall@3": {
+          "hit": 8,
+          "total": 8,
+          "value": 1.0
+        },
+        "recall@5": {
+          "hit": 8,
+          "total": 8,
+          "value": 1.0
+        },
+        "recall@10": {
+          "hit": 8,
+          "total": 8,
+          "value": 1.0
+        },
+        "also_expected@5": {
+          "hit": 0,
+          "total": 0,
+          "value": null
+        },
+        "also_expected@10": {
+          "hit": 0,
+          "total": 0,
+          "value": null
+        }
+      },
+      "其他费用": {
+        "recall@3": {
+          "hit": 4,
+          "total": 4,
+          "value": 1.0
+        },
+        "recall@5": {
+          "hit": 4,
+          "total": 4,
+          "value": 1.0
+        },
+        "recall@10": {
+          "hit": 4,
+          "total": 4,
+          "value": 1.0
+        },
+        "also_expected@5": {
+          "hit": 0,
+          "total": 0,
+          "value": null
+        },
+        "also_expected@10": {
+          "hit": 0,
+          "total": 0,
+          "value": null
+        }
+      },
+      "拒答": {
+        "recall@3": {
+          "hit": 0,
+          "total": 0,
+          "value": null
+        },
+        "recall@5": {
+          "hit": 0,
+          "total": 0,
+          "value": null
+        },
+        "recall@10": {
+          "hit": 0,
+          "total": 0,
+          "value": null
+        },
+        "also_expected@5": {
+          "hit": 0,
+          "total": 0,
+          "value": null
+        },
+        "also_expected@10": {
+          "hit": 0,
+          "total": 0,
+          "value": null
+        }
+      }
+    }
+  },
+  "detail": [
+    {
+      "id": "P01-a",
+      "topic": "P01",
+      "category": "住宿",
+      "recall3": true,
+      "recall5": true,
+      "recall10": true,
+      "also_expected_hit": false,
+      "also_expected_hit10": true
+    },
+    {
+      "id": "P01-b",
+      "topic": "P01",
+      "category": "住宿",
+      "recall3": true,
+      "recall5": true,
+      "recall10": true,
+      "also_expected_hit": false,
+      "also_expected_hit10": true
+    },
+    {
+      "id": "P02-a",
+      "topic": "P02",
+      "category": "住宿",
+      "recall3": true,
+      "recall5": true,
+      "recall10": true,
+      "also_expected_hit": false,
+      "also_expected_hit10": true
+    },
+    {
+      "id": "P02-b",
+      "topic": "P02",
+      "category": "住宿",
+      "recall3": true,
+      "recall5": true,
+      "recall10": true,
+      "also_expected_hit": false,
+      "also_expected_hit10": true
+    },
+    {
+      "id": "P03-a",
+      "topic": "P03",
+      "category": "住宿",
+      "recall3": true,
+      "recall5": true,
+      "recall10": true,
+      "also_expected_hit": true,
+      "also_expected_hit10": true
+    },
+    {
+      "id": "P03-b",
+      "topic": "P03",
+      "category": "住宿",
+      "recall3": true,
+      "recall5": true,
+      "recall10": true,
+      "also_expected_hit": false,
+      "also_expected_hit10": true
+    },
+    {
+      "id": "P04-a",
+      "topic": "P04",
+      "category": "住宿",
+      "recall3": true,
+      "recall5": true,
+      "recall10": true
+    },
+    {
+      "id": "P04-b",
+      "topic": "P04",
+      "category": "住宿",
+      "recall3": true,
+      "recall5": true,
+      "recall10": true
+    },
+    {
+      "id": "P05-a",
+      "topic": "P05",
+      "category": "住宿",
+      "recall3": true,
+      "recall5": true,
+      "recall10": true
+    },
+    {
+      "id": "P05-b",
+      "topic": "P05",
+      "category": "住宿",
+      "recall3": true,
+      "recall5": true,
+      "recall10": true
+    },
+    {
+      "id": "P06-a",
+      "topic": "P06",
+      "category": "住宿",
+      "recall3": true,
+      "recall5": true,
+      "recall10": true
+    },
+    {
+      "id": "P06-b",
+      "topic": "P06",
+      "category": "住宿",
+      "recall3": true,
+      "recall5": true,
+      "recall10": true
+    },
+    {
+      "id": "P07-a",
+      "topic": "P07",
+      "category": "伙食",
+      "recall3": true,
+      "recall5": true,
+      "recall10": true,
+      "also_expected_hit": true,
+      "also_expected_hit10": true
+    },
+    {
+      "id": "P07-b",
+      "topic": "P07",
+      "category": "伙食",
+      "recall3": true,
+      "recall5": true,
+      "recall10": true,
+      "also_expected_hit": true,
+      "also_expected_hit10": true
+    },
+    {
+      "id": "P08-a",
+      "topic": "P08",
+      "category": "伙食",
+      "recall3": true,
+      "recall5": true,
+      "recall10": true,
+      "also_expected_hit": false,
+      "also_expected_hit10": true
+    },
+    {
+      "id": "P08-b",
+      "topic": "P08",
+      "category": "伙食",
+      "recall3": true,
+      "recall5": true,
+      "recall10": true
+    },
+    {
+      "id": "P09-a",
+      "topic": "P09",
+      "category": "伙食",
+      "recall3": true,
+      "recall5": true,
+      "recall10": true
+    },
+    {
+      "id": "P09-b",
+      "topic": "P09",
+      "category": "伙食",
+      "recall3": true,
+      "recall5": true,
+      "recall10": true
+    },
+    {
+      "id": "P10-a",
+      "topic": "P10",
+      "category": "伙食",
+      "recall3": true,
+      "recall5": true,
+      "recall10": true,
+      "also_expected_hit": false,
+      "also_expected_hit10": true
+    },
+    {
+      "id": "P10-b",
+      "topic": "P10",
+      "category": "伙食",
+      "recall3": true,
+      "recall5": true,
+      "recall10": true,
+      "also_expected_hit": true,
+      "also_expected_hit10": true
+    },
+    {
+      "id": "P11-a",
+      "topic": "P11",
+      "category": "交通",
+      "recall3": true,
+      "recall5": true,
+      "recall10": true
+    },
+    {
+      "id": "P11-b",
+      "topic": "P11",
+      "category": "交通",
+      "recall3": true,
+      "recall5": true,
+      "recall10": true
+    },
+    {
+      "id": "P12-a",
+      "topic": "P12",
+      "category": "交通",
+      "recall3": true,
+      "recall5": true,
+      "recall10": true
+    },
+    {
+      "id": "P12-b",
+      "topic": "P12",
+      "category": "交通",
+      "recall3": true,
+      "recall5": true,
+      "recall10": true
+    },
+    {
+      "id": "P13-a",
+      "topic": "P13",
+      "category": "交通",
+      "recall3": true,
+      "recall5": true,
+      "recall10": true
+    },
+    {
+      "id": "P13-b",
+      "topic": "P13",
+      "category": "交通",
+      "recall3": true,
+      "recall5": true,
+      "recall10": true
+    },
+    {
+      "id": "P14-a",
+      "topic": "P14",
+      "category": "交通",
+      "recall3": true,
+      "recall5": true,
+      "recall10": true
+    },
+    {
+      "id": "P14-b",
+      "topic": "P14",
+      "category": "交通",
+      "recall3": true,
+      "recall5": true,
+      "recall10": true
+    },
+    {
+      "id": "P15-a",
+      "topic": "P15",
+      "category": "审批",
+      "recall3": true,
+      "recall5": true,
+      "recall10": true
+    },
+    {
+      "id": "P15-b",
+      "topic": "P15",
+      "category": "审批",
+      "recall3": true,
+      "recall5": true,
+      "recall10": true
+    },
+    {
+      "id": "P16-a",
+      "topic": "P16",
+      "category": "审批",
+      "recall3": true,
+      "recall5": true,
+      "recall10": true
+    },
+    {
+      "id": "P16-b",
+      "topic": "P16",
+      "category": "审批",
+      "recall3": true,
+      "recall5": true,
+      "recall10": true
+    },
+    {
+      "id": "P17-a",
+      "topic": "P17",
+      "category": "审批",
+      "recall3": true,
+      "recall5": true,
+      "recall10": true
+    },
+    {
+      "id": "P17-b",
+      "topic": "P17",
+      "category": "审批",
+      "recall3": true,
+      "recall5": true,
+      "recall10": true
+    },
+    {
+      "id": "P18-a",
+      "topic": "P18",
+      "category": "审批",
+      "recall3": true,
+      "recall5": true,
+      "recall10": true
+    },
+    {
+      "id": "P18-b",
+      "topic": "P18",
+      "category": "审批",
+      "recall3": true,
+      "recall5": true,
+      "recall10": true
+    },
+    {
+      "id": "P19-a",
+      "topic": "P19",
+      "category": "其他费用",
+      "recall3": true,
+      "recall5": true,
+      "recall10": true
+    },
+    {
+      "id": "P19-b",
+      "topic": "P19",
+      "category": "其他费用",
+      "recall3": true,
+      "recall5": true,
+      "recall10": true
+    },
+    {
+      "id": "P20-a",
+      "topic": "P20",
+      "category": "其他费用",
+      "recall3": true,
+      "recall5": true,
+      "recall10": true
+    },
+    {
+      "id": "P20-b",
+      "topic": "P20",
+      "category": "其他费用",
+      "recall3": true,
+      "recall5": true,
+      "recall10": true
+    },
+    {
+      "id": "P21-a",
+      "topic": "P21",
+      "category": "拒答"
+    },
+    {
+      "id": "P21-b",
+      "topic": "P21",
+      "category": "拒答"
+    },
+    {
+      "id": "P22-a",
+      "topic": "P22",
+      "category": "拒答"
+    },
+    {
+      "id": "P22-b",
+      "topic": "P22",
+      "category": "拒答"
+    },
+    {
+      "id": "P23-a",
+      "topic": "P23",
+      "category": "拒答"
+    },
+    {
+      "id": "P23-b",
+      "topic": "P23",
+      "category": "拒答"
+    },
+    {
+      "id": "P24-a",
+      "topic": "P24",
+      "category": "拒答"
+    },
+    {
+      "id": "P24-b",
+      "topic": "P24",
+      "category": "拒答"
+    }
+  ],
+  "usage": {
+    "calls": [
+      {
+        "purpose": "policy_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 562,
+        "est_cost_cny": 0.020232,
+        "latency_ms": 813
+      },
+      {
+        "purpose": "policy_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 38,
+        "est_cost_cny": 0.001368,
+        "latency_ms": 313
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 31,
+        "est_cost_cny": 0.001116,
+        "latency_ms": 192
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 28,
+        "est_cost_cny": 0.001008,
+        "latency_ms": 2580
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 576,
+        "est_cost_cny": 0.020736,
+        "latency_ms": 291
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 26,
+        "est_cost_cny": 0.000936,
+        "latency_ms": 505
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 26,
+        "est_cost_cny": 0.000936,
+        "latency_ms": 3994
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 564,
+        "est_cost_cny": 0.020304,
+        "latency_ms": 112
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 27,
+        "est_cost_cny": 0.000972,
+        "latency_ms": 179
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 27,
+        "est_cost_cny": 0.000972,
+        "latency_ms": 229
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 544,
+        "est_cost_cny": 0.019584,
+        "latency_ms": 659
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 28,
+        "est_cost_cny": 0.001008,
+        "latency_ms": 462
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 25,
+        "est_cost_cny": 0.0009,
+        "latency_ms": 433
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 564,
+        "est_cost_cny": 0.020304,
+        "latency_ms": 94
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 32,
+        "est_cost_cny": 0.001152,
+        "latency_ms": 488
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 29,
+        "est_cost_cny": 0.001044,
+        "latency_ms": 425
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 596,
+        "est_cost_cny": 0.021456,
+        "latency_ms": 177
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 27,
+        "est_cost_cny": 0.000972,
+        "latency_ms": 482
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 26,
+        "est_cost_cny": 0.000936,
+        "latency_ms": 494
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 556,
+        "est_cost_cny": 0.020016,
+        "latency_ms": 120
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 31,
+        "est_cost_cny": 0.001116,
+        "latency_ms": 195
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 27,
+        "est_cost_cny": 0.000972,
+        "latency_ms": 488
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 574,
+        "est_cost_cny": 0.020664,
+        "latency_ms": 90
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 26,
+        "est_cost_cny": 0.000936,
+        "latency_ms": 192
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 27,
+        "est_cost_cny": 0.000972,
+        "latency_ms": 518
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 536,
+        "est_cost_cny": 0.019296,
+        "latency_ms": 126
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 30,
+        "est_cost_cny": 0.00108,
+        "latency_ms": 198
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 27,
+        "est_cost_cny": 0.000972,
+        "latency_ms": 213
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 576,
+        "est_cost_cny": 0.020736,
+        "latency_ms": 105
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 26,
+        "est_cost_cny": 0.000936,
+        "latency_ms": 366
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 29,
+        "est_cost_cny": 0.001044,
+        "latency_ms": 208
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 536,
+        "est_cost_cny": 0.019296,
+        "latency_ms": 110
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 28,
+        "est_cost_cny": 0.001008,
+        "latency_ms": 189
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 27,
+        "est_cost_cny": 0.000972,
+        "latency_ms": 605
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 556,
+        "est_cost_cny": 0.020016,
+        "latency_ms": 101
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 26,
+        "est_cost_cny": 0.000936,
+        "latency_ms": 408
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 28,
+        "est_cost_cny": 0.001008,
+        "latency_ms": 205
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 526,
+        "est_cost_cny": 0.018936,
+        "latency_ms": 99
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 24,
+        "est_cost_cny": 0.000864,
+        "latency_ms": 518
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 24,
+        "est_cost_cny": 0.000864,
+        "latency_ms": 180
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 504,
+        "est_cost_cny": 0.018144,
+        "latency_ms": 166
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 21,
+        "est_cost_cny": 0.000756,
+        "latency_ms": 506
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 22,
+        "est_cost_cny": 0.000792,
+        "latency_ms": 176
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 486,
+        "est_cost_cny": 0.017496,
+        "latency_ms": 98
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 24,
+        "est_cost_cny": 0.000864,
+        "latency_ms": 430
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 24,
+        "est_cost_cny": 0.000864,
+        "latency_ms": 201
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 514,
+        "est_cost_cny": 0.018504,
+        "latency_ms": 386
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 24,
+        "est_cost_cny": 0.000864,
+        "latency_ms": 1005
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 26,
+        "est_cost_cny": 0.000936,
+        "latency_ms": 192
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 506,
+        "est_cost_cny": 0.018216,
+        "latency_ms": 95
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 24,
+        "est_cost_cny": 0.000864,
+        "latency_ms": 185
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 25,
+        "est_cost_cny": 0.0009,
+        "latency_ms": 617
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 504,
+        "est_cost_cny": 0.018144,
+        "latency_ms": 352
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 25,
+        "est_cost_cny": 0.0009,
+        "latency_ms": 430
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 25,
+        "est_cost_cny": 0.0009,
+        "latency_ms": 228
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 526,
+        "est_cost_cny": 0.018936,
+        "latency_ms": 446
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 26,
+        "est_cost_cny": 0.000936,
+        "latency_ms": 469
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 24,
+        "est_cost_cny": 0.000864,
+        "latency_ms": 603
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 544,
+        "est_cost_cny": 0.019584,
+        "latency_ms": 128
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 23,
+        "est_cost_cny": 0.000828,
+        "latency_ms": 450
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 28,
+        "est_cost_cny": 0.001008,
+        "latency_ms": 453
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 504,
+        "est_cost_cny": 0.018144,
+        "latency_ms": 130
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 23,
+        "est_cost_cny": 0.000828,
+        "latency_ms": 330
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 26,
+        "est_cost_cny": 0.000936,
+        "latency_ms": 444
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 504,
+        "est_cost_cny": 0.018144,
+        "latency_ms": 78
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 25,
+        "est_cost_cny": 0.0009,
+        "latency_ms": 868
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 26,
+        "est_cost_cny": 0.000936,
+        "latency_ms": 461
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 516,
+        "est_cost_cny": 0.018576,
+        "latency_ms": 87
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 22,
+        "est_cost_cny": 0.000792,
+        "latency_ms": 851
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 23,
+        "est_cost_cny": 0.000828,
+        "latency_ms": 463
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 496,
+        "est_cost_cny": 0.017856,
+        "latency_ms": 150
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 26,
+        "est_cost_cny": 0.000936,
+        "latency_ms": 787
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 27,
+        "est_cost_cny": 0.000972,
+        "latency_ms": 510
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 544,
+        "est_cost_cny": 0.019584,
+        "latency_ms": 79
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 25,
+        "est_cost_cny": 0.0009,
+        "latency_ms": 427
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 29,
+        "est_cost_cny": 0.001044,
+        "latency_ms": 547
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 514,
+        "est_cost_cny": 0.018504,
+        "latency_ms": 131
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 24,
+        "est_cost_cny": 0.000864,
+        "latency_ms": 527
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 27,
+        "est_cost_cny": 0.000972,
+        "latency_ms": 435
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 506,
+        "est_cost_cny": 0.018216,
+        "latency_ms": 86
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 22,
+        "est_cost_cny": 0.000792,
+        "latency_ms": 472
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 25,
+        "est_cost_cny": 0.0009,
+        "latency_ms": 187
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 466,
+        "est_cost_cny": 0.016776,
+        "latency_ms": 102
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 25,
+        "est_cost_cny": 0.0009,
+        "latency_ms": 541
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 26,
+        "est_cost_cny": 0.000936,
+        "latency_ms": 161
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 502,
+        "est_cost_cny": 0.018072,
+        "latency_ms": 117
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 24,
+        "est_cost_cny": 0.000864,
+        "latency_ms": 193
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 26,
+        "est_cost_cny": 0.000936,
+        "latency_ms": 408
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 504,
+        "est_cost_cny": 0.018144,
+        "latency_ms": 105
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 27,
+        "est_cost_cny": 0.000972,
+        "latency_ms": 971
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 24,
+        "est_cost_cny": 0.000864,
+        "latency_ms": 512
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 554,
+        "est_cost_cny": 0.019944,
+        "latency_ms": 111
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 24,
+        "est_cost_cny": 0.000864,
+        "latency_ms": 470
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 25,
+        "est_cost_cny": 0.0009,
+        "latency_ms": 204
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 503,
+        "est_cost_cny": 0.018108,
+        "latency_ms": 117
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 23,
+        "est_cost_cny": 0.000828,
+        "latency_ms": 433
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 23,
+        "est_cost_cny": 0.000828,
+        "latency_ms": 255
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 493,
+        "est_cost_cny": 0.017748,
+        "latency_ms": 95
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 28,
+        "est_cost_cny": 0.001008,
+        "latency_ms": 442
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 31,
+        "est_cost_cny": 0.001116,
+        "latency_ms": 311
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 554,
+        "est_cost_cny": 0.019944,
+        "latency_ms": 135
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 29,
+        "est_cost_cny": 0.001044,
+        "latency_ms": 281
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 28,
+        "est_cost_cny": 0.001008,
+        "latency_ms": 492
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 534,
+        "est_cost_cny": 0.019224,
+        "latency_ms": 170
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 23,
+        "est_cost_cny": 0.000828,
+        "latency_ms": 167
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 23,
+        "est_cost_cny": 0.000828,
+        "latency_ms": 196
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 482,
+        "est_cost_cny": 0.017352,
+        "latency_ms": 91
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 25,
+        "est_cost_cny": 0.0009,
+        "latency_ms": 323
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 28,
+        "est_cost_cny": 0.001008,
+        "latency_ms": 252
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 502,
+        "est_cost_cny": 0.018072,
+        "latency_ms": 106
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 22,
+        "est_cost_cny": 0.000792,
+        "latency_ms": 670
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 25,
+        "est_cost_cny": 0.0009,
+        "latency_ms": 186
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 494,
+        "est_cost_cny": 0.017784,
+        "latency_ms": 122
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 25,
+        "est_cost_cny": 0.0009,
+        "latency_ms": 423
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 25,
+        "est_cost_cny": 0.0009,
+        "latency_ms": 532
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 524,
+        "est_cost_cny": 0.018864,
+        "latency_ms": 123
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 25,
+        "est_cost_cny": 0.0009,
+        "latency_ms": 184
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 27,
+        "est_cost_cny": 0.000972,
+        "latency_ms": 439
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 534,
+        "est_cost_cny": 0.019224,
+        "latency_ms": 95
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 29,
+        "est_cost_cny": 0.001044,
+        "latency_ms": 734
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 27,
+        "est_cost_cny": 0.000972,
+        "latency_ms": 538
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 546,
+        "est_cost_cny": 0.019656,
+        "latency_ms": 110
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 21,
+        "est_cost_cny": 0.000756,
+        "latency_ms": 772
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 22,
+        "est_cost_cny": 0.000792,
+        "latency_ms": 462
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 474,
+        "est_cost_cny": 0.017064,
+        "latency_ms": 101
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 22,
+        "est_cost_cny": 0.000792,
+        "latency_ms": 284
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 24,
+        "est_cost_cny": 0.000864,
+        "latency_ms": 509
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 504,
+        "est_cost_cny": 0.018144,
+        "latency_ms": 102
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 22,
+        "est_cost_cny": 0.000792,
+        "latency_ms": 485
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 22,
+        "est_cost_cny": 0.000792,
+        "latency_ms": 406
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 506,
+        "est_cost_cny": 0.018216,
+        "latency_ms": 93
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 21,
+        "est_cost_cny": 0.000756,
+        "latency_ms": 436
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 20,
+        "est_cost_cny": 0.00072,
+        "latency_ms": 165
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 494,
+        "est_cost_cny": 0.017784,
+        "latency_ms": 463
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 24,
+        "est_cost_cny": 0.000864,
+        "latency_ms": 559
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 23,
+        "est_cost_cny": 0.000828,
+        "latency_ms": 214
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 504,
+        "est_cost_cny": 0.018144,
+        "latency_ms": 106
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 22,
+        "est_cost_cny": 0.000792,
+        "latency_ms": 189
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 23,
+        "est_cost_cny": 0.000828,
+        "latency_ms": 466
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 459,
+        "est_cost_cny": 0.016524,
+        "latency_ms": 109
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 23,
+        "est_cost_cny": 0.000828,
+        "latency_ms": 170
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 27,
+        "est_cost_cny": 0.000972,
+        "latency_ms": 415
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 494,
+        "est_cost_cny": 0.017784,
+        "latency_ms": 124
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 22,
+        "est_cost_cny": 0.000792,
+        "latency_ms": 209
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 23,
+        "est_cost_cny": 0.000828,
+        "latency_ms": 506
+      },
+      {
+        "purpose": "policy_rerank",
+        "model": "gte-rerank-v2",
+        "total_tokens": 484,
+        "est_cost_cny": 0.017424,
+        "latency_ms": 97
+      }
+    ],
+    "n": 146,
+    "total_tokens": 28014,
+    "est_cost_cny": 1.008504
+  }
+}

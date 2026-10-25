@@ -16,7 +16,7 @@ FastAPI（travel_desk.main / api/*）── 错误体、trace_id、权限依赖�
    ├─ domain/        确定性规则核心：值类型、规则集、槽位、规则评估、状态机（已实现，TASK-003）
    ├─ providers/     Transport / Hotel / Weather / Clock 接口与 Demo 实现（已实现，TASK-004；LLM 计划）
    ├─ planning/      候选过滤、排序、防伪造与方案组装（已实现，TASK-004）
-   ├─ policy/        制度文件解析、规范化与引用定位、候选规则抽取（已实现，TASK-008a）；制度问答 RAG（`rag.py`，已实现，TASK-008b，见 §7c）
+   ├─ policy/        制度文件解析、规范化与引用定位、候选规则抽取（已实现，TASK-008a）；制度问答 RAG（`rag.py`，已实现，TASK-008b，见 §7c）；增强 Agent RAG（`query_optimizer.py`、`synonyms.py`、`enhanced_retriever.py`、`reranker.py`、`rag_agent.py`，已实现，见 §7e）
    └─ db/            SQLite schema、种子、仓储（已实现）
 ```
 
@@ -44,14 +44,18 @@ FastAPI（travel_desk.main / api/*）── 错误体、trace_id、权限依赖�
 | `DASHSCOPE_API_KEY` | — | 仅 `real` 模式读取；只从进程环境读取，从不记录或返回 |
 | `TRAVEL_DESK_TEXT_MODEL` / `_VISION_MODEL` / `_EMBED_MODEL` | qwen3.8-max / qwen3.5-plus / qwen3.7-text-embedding | TASK-001 尖峰验证过的组合 |
 | `DEMO_TODAY` | `2026-10-20` | Demo 时钟，严格 `YYYY-MM-DD` |
-| `TRAVEL_DESK_RETRIEVAL` | `vector` | 制度问答在 `real` 模式下的检索方式：`vector` / `hybrid`（§7c）；`fake`/`recorded` 固定 BM25，不读此变量 |
+| `TRAVEL_DESK_RETRIEVAL` | `vector` | 老端点 `POST /api/policy/ask` 在 `real` 模式下的检索方式：`vector` / `hybrid`（§7c）；`fake`/`recorded` 固定 BM25，不读此变量 |
+| `TRAVEL_DESK_AGENT_RETRIEVAL` | `hybrid` | 增强 Agent 端点 `POST /api/policy/ask-agent` 的底层检索方式：`bm25` / `vector` / `hybrid`（§7e）；只有 `real` 模式使用 |
+| `TRAVEL_DESK_REWRITE_MODEL` | `qwen3.5-plus` | Query Rewrite + Split 的小模型（§7e） |
+| `TRAVEL_DESK_RERANK_MODEL` | `gte-rerank-v2` | 交叉编码器 Reranker 模型（§7e） |
+| `TRAVEL_DESK_RERANK_MIN_SCORE` | `0.06` | Reranker 分数阈值；低于阈值的候选被丢弃（48 题 paraphrase 校准，见 `artifacts/paraphrase/`） |
 | `TRAVEL_DESK_PROVIDERS_DIR` | `tests/fixtures/providers` | Demo Provider fixture 目录 |
 | `TRAVEL_DESK_DATA_DIR`、`TRAVEL_DESK_HOST`、`TRAVEL_DESK_PORT` | `var/`、127.0.0.1、8000 | — |
 
 - 非法配置（未知 LLM 模式、非法日期、非整数）在启动时报 `ConfigError`，不回退默认值。
 - 进程启动即强制 `LANGSMITH_TRACING=false`、`LANGCHAIN_TRACING_V2=false`：素材目录的 `.env` 打开了 LangSmith 上传，本项目不加载任何 `.env`，也不上传 trace。
 - 调用 DashScope 时显式传入 `api_key` 与 `base_url`，避免环境中的 `OPENAI_*` 变量把请求导向其他服务。
-- 网络边界（AC-021，已实现，`travel_desk/network_guard.py`）：应用启动即在进程内安装出站拦截（`socket.getaddrinfo` / `create_connection` / `socket.connect` / `urllib.request.urlopen`）。允许清单由配置推导而非运维开关：`fake`/`recorded` 模式允许清单为空，任何外部请求在 DNS 离开机器前被拒（`NetworkBoundaryError`，是 `OSError` 子类，LLM 层归约为 `ModelUnavailable`、Provider 层归约为方案降级）；`real` 模式只允许 `dashscope_base_url` 的主机名（AUTH-01）。回环/本地地址放行并单独归类为 `local`。每次尝试追加到 `<data_dir>/network-guard.jsonl`，`GET /api/admin/provider-health` 的 `network` 字段汇总（外部尝试数、被拒数、外部主机、被拒调用点）。这是证据与纵深防御，不是沙箱：无法阻止子进程或 C 扩展自建 socket。正向对照见 `tests/test_network_guard.py`，运行期负向证据见 `artifacts/acceptance/TASK-010/ac021-network-boundary/`。
+- 网络边界（AC-021，已实现，`travel_desk/network_guard.py`）：应用启动即在进程内安装出站拦截（`socket.getaddrinfo` / `create_connection` / `socket.connect` / `urllib.request.urlopen`）。允许清单由配置推导而非运维开关：`fake`/`recorded` 模式允许清单为空，任何外部请求在 DNS 离开机器前被拒（`NetworkBoundaryError`，是 `OSError` 子类，LLM 层归约为 `ModelUnavailable`、Provider 层归约为方案降级）；`real` 模式只允许 `dashscope_base_url` 的主机名，以及该主机**在 300 秒内解析出的 IP**（urllib3 等 SDK 先 `getaddrinfo` 拿到 IP、再用 IP `connect`；未解析过的 IP 仍被拒，解析被拒时不会记住任何地址）。回环/本地地址放行并单独归类为 `local`。每次尝试追加到 `<data_dir>/network-guard.jsonl`，`GET /api/admin/provider-health` 的 `network` 字段汇总（外部尝试数、被拒数、外部主机、被拒调用点）。这是证据与纵深防御，不是沙箱：无法阻止子进程或 C 扩展自建 socket。正向对照见 `tests/test_network_guard.py`，运行期负向证据见 `artifacts/acceptance/TASK-010/ac021-network-boundary/`。
 
 ## 4. 确定性规则核心（TASK-003，已实现）
 
@@ -263,6 +267,27 @@ START → validate ─(阻断)→ END                      POLICY_BLOCKED，不�
 **响应与审计**（IMP-84/85）：除契约字段 `answer`/`answerable`/`citations`/`version`/`source` 外，额外返回 `generator`（区分 fake 与真实模型）与 `retrieval`（方式、排名块的 rank/clause/locator/score、补充块），便于前端展示与评测。每次成功回答写一条 `policy_question` 审计：版本、请求版本、问题前 200 字（`question_truncated`）、是否可回答、生成器、检索方式、检索与补充的条款位置、引用、丢弃的 ID、是否降级。
 
 **验证**：`tests/test_policy_qa.py`（32 项：切块定位、BM25/RRF 计算、fake 模式 HTTP 行为与拒答、版本差异 v1.0/v1.2 的 POL-5、权限与 9 种 422、版本可见性、审计内容；用桩替身覆盖真实模式的丢弃/降级/拒答清空、503 与错误审计、向量与混合检索、嵌入缓存与缺密钥、关联条款补充）；`scripts/policy_qa_smoke.py`（真实模型 3 题冒烟，计入台账，证据见 `artifacts/acceptance/TASK-008/`）。AC-004/017/018/025 的质量指标由 TASK-011 用冻结题集运行。
+
+## 7e. 增强 Agent 制度问答（#18b，已实现）
+
+老端点 `POST /api/policy/ask` 与 AC-004/017/025 的口径完全不动。增强链路是独立的 `POST /api/policy/ask-agent`：只在 `real` 模式启用；`fake`/`recorded` 直接复用老链路（BM25 + 抽取式回答，零网络，HC-06），响应标 `agent.mode="fallback"`、`generator="fake:extractive"`，并补齐 `grounded=true`、`confidence=0.0`、`needs_clarification=false`。
+
+代码：`policy/query_optimizer.py`（一次结构化调用完成 Rewrite + Split）、`policy/synonyms.py`（差旅领域同义词表）、`policy/enhanced_retriever.py`（多路检索 + 加权 RRF）、`policy/reranker.py`（DashScope `gte-rerank-v2` 交叉编码器）、`policy/rag_agent.py`（LangGraph ReAct Agent、Tool、结构化回答、引用终审）、`services/policy_agent.py`（版本/权限/审计/回退）。`app.state.policy_agent` 在启动时构造（非 `real` 为 `None`，不加载 LangChain）。
+
+**链路**：Agent 判断问题是否需要制度依据 → 需要则调用 `search_policy`（闲聊不调用）→ Tool 内一次 `optimize()` 产出 1 条改写；复杂问题同一次调用拆成 2–4 条子查询 → `query_paths()` 始终把原始问题放在第一路 → `EnhancedRetriever.search_multi()` 每路跑一次 `Retriever.search()`（`Retriever` 本身一字未改），再加一路同义词扩展 BM25 → 加权 RRF 合并、按 `Chunk.id` 去重；原始问题的前 5 名固定在前（交付顺序），改写/拆分/同义词只填充剩余候选位，权重上限保证补充候选的总分不超过最低的固定分 → 交叉编码器用**原始问题**（不是改写）重排，取 top 3 → 按已确认规则补充关联条款（POL-1 等）→ Tool 返回带 `citation_id=clause@locator` 的片段。
+
+**同义词与 Split**：`SYNONYM_MAP` 只覆盖差旅高频词（住宿/酒店、伙食/餐补、审批/签字、出租车/打车等），双向展开且不递归；扩展只进入额外 BM25 一路，不改文档索引、不改老检索器。`optimize()` 的 `QueryPlan{split, queries}` 一次调用返回：简单问题 `split=false` 且 1 条查询；复合问题 `split=true`、2–4 条互不重复的子查询。`EnhancedRetriever.use_synonyms` 仅用于消融实验。
+
+**回答契约**：`EnhancedAnswerOut{grounded, answerable, answer, citation_ids, confidence, needs_clarification}`。
+- `grounded=true`：制度回答。代码只接受本次 Tool 实际展示过的 `citation_id`；声称可答但没有有效引用或正文为空 → 降级为固定拒答（`downgraded=true`）。
+- `grounded=false` 且非澄清：闲聊，直接返回，引用一律忽略。调用过 Tool 后仍声称闲聊（通常是模型自己写“制度里没有”）→ 视为无依据，返回固定拒答。
+- `needs_clarification=true`：缺少目的地/职级/天数/金额等关键信息，返回模型提出的澄清问题（无引用，200）。
+- `confidence` 是模型自评（0–1），只用于展示与审计，不参与代码判定。
+- 正文中模型回显的内联 `【citation_id: …】` 由代码清理；拒答文本始终为 `refusal_text(version)`。
+
+**响应与审计**：在 PolicyAnswer 字段之外增加 `grounded`、`confidence`、`needs_clarification`、`agent{mode, tool_calls, queries, split, paths}`；`retrieval` 仍是 `hybrid+multi+rerank` 的排名块与补充块。审计仍为 `policy_question`，`extra` 带 `chain="agent"`、grounded、tool_calls、queries、split、paths、confidence、needs_clarification。模型不可用 → 503 `MODEL_UNAVAILABLE`（`stage="policy_agent"`，写 `error` 审计）。
+
+**验证**：`tests/test_policy_agent.py`、`tests/test_policy_agent_api.py`（Phase 3/4/5 共 37 项：改写/Split、同义词、RRF、Rerank 缺省/错误/阈值、引用接受与丢弃、闲聊/澄清/拒答、fake 回退、503 审计、API 字段）；`scripts/eval_paraphrase.py`（48 题 paraphrase 检索评测）、`scripts/eval_agent_paraphrase.py`（11 题 + 2 个闲聊探针的端到端评测；`evals/compound_probes.json` 为 4 题 Split 探针），证据在 `artifacts/paraphrase/`。Phase 5 实测：agent 小集 grounded/tool_called/primary_cited/numeric/refused/chat 全部 100%，平均自评置信度 0.984；48 题检索 Recall@3/5/10=40/40，empty=3；4 题复合问题 split/引用/数值全部通过。已知限制：`gte-rerank-v2` 阈值无法区分拒答题（P23/P24 的 top1 分数与可答题重叠），由 Agent 判断与代码拒答兜底；paraphrase 集在 rewrite+rerank 下已饱和，同义词对 top3 无可测增益（候选顺序有变化，消融见 `phase4-norewrite-*.json`）；端到端平均延迟约 10 秒/题（含 2 次模型调用与多次检索）。
 
 ## 7d. 三角色工作台（TASK-007，已实现）
 

@@ -51,6 +51,16 @@ def _env_int(name: str, default: int) -> int:
         raise ConfigError(f"{name} must be an integer") from exc
 
 
+def _env_float(name: str, default: float) -> float:
+    raw = os.environ.get(name)
+    if not raw:
+        return default
+    try:
+        return float(raw)
+    except ValueError as exc:
+        raise ConfigError(f"{name} must be a number") from exc
+
+
 class ConfigError(ValueError):
     """Invalid configuration: fail at startup rather than run with a silent default."""
 
@@ -74,6 +84,12 @@ class Settings:
     # Real-mode policy Q&A retrieval: "vector" or "hybrid" (BM25 + RRF); AC-025 decides (REQ-029).
     # Fake/recorded modes always use BM25 (no embeddings without network, HC-06).
     retrieval_mode: str = "vector"
+    # Enhanced agent chain (`/api/policy/ask-agent`), independent from the delivered
+    # `retrieval_mode`: the old endpoint keeps its AC-025 configuration. Real mode only.
+    agent_retrieval_mode: str = "hybrid"
+    rewrite_model: str = "qwen3.5-plus"
+    rerank_model: str = "gte-rerank-v2"
+    rerank_min_score: float = 0.06
     providers_dir: Path = REPO_ROOT / "tests" / "fixtures" / "providers"
     recorded_dir: Path = REPO_ROOT / "tests" / "fixtures" / "recorded"
     # AUTH-01 evidence: every real model call is appended here; the guard also reads the ledger.
@@ -109,6 +125,9 @@ class Settings:
         retrieval = _env_str("TRAVEL_DESK_RETRIEVAL", "vector").lower()
         if retrieval not in {"vector", "hybrid"}:
             raise ConfigError("TRAVEL_DESK_RETRIEVAL must be one of vector, hybrid")
+        agent_retrieval = _env_str("TRAVEL_DESK_AGENT_RETRIEVAL", "hybrid").lower()
+        if agent_retrieval not in {"bm25", "vector", "hybrid"}:
+            raise ConfigError("TRAVEL_DESK_AGENT_RETRIEVAL must be one of bm25, vector, hybrid")
         return cls(
             root_dir=REPO_ROOT,
             data_dir=data_dir,
@@ -129,6 +148,10 @@ class Settings:
             demo_today=demo_today,
             max_upload_bytes=_env_int("TRAVEL_DESK_MAX_UPLOAD_BYTES", MAX_UPLOAD_BYTES),
             retrieval_mode=retrieval,
+            agent_retrieval_mode=agent_retrieval,
+            rewrite_model=_env_str("TRAVEL_DESK_REWRITE_MODEL", "qwen3.5-plus"),
+            rerank_model=_env_str("TRAVEL_DESK_RERANK_MODEL", "gte-rerank-v2"),
+            rerank_min_score=_env_float("TRAVEL_DESK_RERANK_MIN_SCORE", 0.06),
             providers_dir=_env_path(
                 "TRAVEL_DESK_PROVIDERS_DIR", REPO_ROOT / "tests" / "fixtures" / "providers"
             ),

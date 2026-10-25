@@ -41,6 +41,15 @@ uv run travel-desk
 > 上述安装、启动与演示步骤已由实施负责人在全新克隆的临时目录中实际执行验证（AC-001，证据见
 > `artifacts/acceptance/TASK-012/`）。
 
+### 增强制度问答（可选，仅 real 模式）
+
+在原有 `/api/policy/ask` 之外，新增 `POST /api/policy/ask-agent`：LangGraph ReAct Agent 必须调用
+`search_policy` 工具检索制度，工具内部完成查询改写/拆分、BM25+向量混合检索与 `gte-rerank-v2`
+重排，代码按 `clause@locator` 校验引用；与制度无关的闲聊直接回答，缺少关键信息时返回澄清问题。
+界面「制度问答」页有开关可切换。fake/recorded 模式自动回退原链路，老端点行为不变。字段与语义见
+[docs/api.md](docs/api.md#210-policyansweragent18b已实现)，链路、配置与评测结果见
+[docs/architecture.md](docs/architecture.md#7e-增强-agent-制度问答18b已实现)。
+
 ## 运行测试
 
 ```powershell

@@ -63,3 +63,17 @@ stage=full mode=real retrieval=vector Recall@3=20/20=1.0 Recall@5=20/20=1.0
 |---|---|
 | `full-vector.json` | 逐题 `rows`（问题/答案/generator/引用/排序/解析数值）+ `detail`（逐题命中判定）+ `metrics`（三项指标与阈值）+ `usage`（52 次调用明细）+ `qa_set_sha256` + 模型名 |
 | `../../../scripts/eval_qa.py` | 评测脚本（`--stage full`；引用/数值/拒答打分；冻结口径见 `evals/METRICS.md`） |
+
+## 增强 Agent 链路上线后的旧端点回归（2026-10-24）
+
+新增 `POST /api/policy/ask-agent` 与 `policy/query_optimizer.py`、`synonyms.py`、`enhanced_retriever.py`、`reranker.py`、`rag_agent.py` 期间，`Retriever.search()`、`/api/policy/ask` 与交付配置（`vector`、TOP_K=5）均未改动。上线后用同一冻结集、同一命令复跑旧端点，指标不变：
+
+| 指标 | 阈值 | 复跑实测 | 判定 |
+|---|---|---|---|
+| 引用命中率 | ≥ 90% | 20/20 = 100.00% | ✓ |
+| 关键数值正确率 | ≥ 85% | 11/11 = 100.00% | ✓ |
+| 无答案题正确拒答 | ≥ 4/5 | 5/5 | ✓ |
+| Recall@3（参考） | — | 20/20 = 100.00% | ✓ |
+
+- 证据：`full-vector-after-agent-rag.json`（52 次调用，22951 token，0.8262 元，已入费用台账）。
+- 新端点的口语小集与检索实验另见 `artifacts/paraphrase/`；AC-025 的 vector/hybrid 对比结论不变。

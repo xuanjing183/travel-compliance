@@ -38,6 +38,16 @@
 | 2026-10-20 | policy_extraction | qwen3.8-max | 1 | 2193 | 0.0789 |
 | 2026-10-20 | policy_query_embedding | qwen3.7-text-embedding | 75 | 1890 | 0.0680 |
 | 2026-10-20 | slot_extraction | qwen3.8-max | 12 | 9558 | 0.3441 |
+| 2026-10-22 | itinerary_summary | qwen3.8-max | 10 | 3938 | 0.1418 |
+| 2026-10-22 | slot_extraction | qwen3.8-max | 11 | 9093 | 0.3273 |
+| 2026-10-24 | itinerary_summary | qwen3.8-max | 1 | 456 | 0.0164 |
+| 2026-10-24 | policy_agent | qwen3.8-max | 231 | 176043 | 6.3375 |
+| 2026-10-24 | policy_answer | qwen3.8-max | 25 | 21721 | 0.7820 |
+| 2026-10-24 | policy_embedding | qwen3.7-text-embedding | 54 | 16200 | 0.5832 |
+| 2026-10-24 | policy_query_embedding | qwen3.7-text-embedding | 699 | 17804 | 0.6409 |
+| 2026-10-24 | policy_query_rewrite | qwen3.5-plus | 184 | 100047 | 3.6017 |
+| 2026-10-24 | policy_rerank | gte-rerank-v2 | 315 | 165577 | 5.9608 |
+| 2026-10-24 | slot_extraction | qwen3.8-max | 3 | 2402 | 0.0865 |
 
-**运行期合计：2.0781 元；含手工行累计估算：2.4900 元 / 上限 50 元（暂停线 40 元）**
+**运行期合计：20.5563 元；含手工行累计估算：20.9682 元 / 上限 50 元（暂停线 40 元）**
 <!-- runtime-table:end -->

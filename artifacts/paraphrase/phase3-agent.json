@@ -1,0 +1,413 @@
+{
+  "generated_at": "2026-10-24T11:34:21+00:00",
+  "endpoint": "/api/policy/ask-agent",
+  "llm_mode": "real",
+  "dataset": "evals/paraphrase_set.json",
+  "dataset_version": "0.1-draft",
+  "dataset_status": "draft_for_review",
+  "dataset_sha256": "5333ab58aa8f326ce27c30ae89d0615481a268b34274983efcbc516d01a9b116",
+  "model": "qwen3.8-max",
+  "retrieval_mode": "hybrid",
+  "elapsed_s": 104.58,
+  "metrics": {
+    "grounded": {
+      "hit": 11,
+      "total": 11,
+      "value": 1.0
+    },
+    "tool_called": {
+      "hit": 11,
+      "total": 11,
+      "value": 1.0
+    },
+    "primary_cited": {
+      "hit": 9,
+      "total": 9,
+      "value": 1.0
+    },
+    "numeric_ok": {
+      "hit": 6,
+      "total": 6,
+      "value": 1.0
+    },
+    "refused": {
+      "hit": 2,
+      "total": 2,
+      "value": 1.0
+    },
+    "chat_ok": {
+      "hit": 2,
+      "total": 2,
+      "value": 1.0
+    }
+  },
+  "rows": [
+    {
+      "id": "P01-a",
+      "category": "住宿",
+      "question": "去上海出差住酒店，普通员工一晚上最多能花多少？",
+      "status": 200,
+      "answer": "根据公司的差旅制度，上海属于A类城市（北京、上海、广州、深圳）。普通员工在A类城市的住宿上限为每晚上限500元。因此，您去上海出差住酒店，一晚上最多能花500元。",
+      "grounded": true,
+      "answerable": true,
+      "citations": [
+        {
+          "clause": "POL-1",
+          "locator": "line:9"
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:13"
+        }
+      ],
+      "agent": {
+        "mode": "react",
+        "tool_calls": 1,
+        "queries": [
+          "普通员工上海出差住宿标准一晚最多多少钱"
+        ]
+      },
+      "retrieval_mode": "hybrid+multi+rerank",
+      "numeric": {
+        "kind": "fen",
+        "value_fen": 50000,
+        "display": "500元/晚"
+      },
+      "tool_called": true,
+      "primary_cited": true,
+      "numeric_ok": true,
+      "refused": null
+    },
+    {
+      "id": "P02-b",
+      "category": "住宿",
+      "question": "北京出差，经理级别的住宿标准一晚上限是多少？",
+      "status": 200,
+      "answer": "根据公司的差旅政策，北京属于A类城市（A类城市包括：北京、上海、广州、深圳）。对于经理及以上人员，在A类城市的住宿标准为每晚上限650元。因此，经理级别在北京出差的住宿标准一晚上限是650元。",
+      "grounded": true,
+      "answerable": true,
+      "citations": [
+        {
+          "clause": "POL-1",
+          "locator": "line:9"
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:15"
+        }
+      ],
+      "agent": {
+        "mode": "react",
+        "tool_calls": 1,
+        "queries": [
+          "北京出差经理级别住宿标准一晚上限"
+        ]
+      },
+      "retrieval_mode": "hybrid+multi+rerank",
+      "numeric": {
+        "kind": "fen",
+        "value_fen": 65000,
+        "display": "650元/晚"
+      },
+      "tool_called": true,
+      "primary_cited": true,
+      "numeric_ok": true,
+      "refused": null
+    },
+    {
+      "id": "P05-a",
+      "category": "住宿",
+      "question": "住三晚第四天退房，退房那天算不算一晚住宿费？",
+      "status": 200,
+      "answer": "不算。根据规定，住宿费按实际入住晚数计算，退房当日不计入。因此，住三晚第四天退房，只算3晚的住宿费，退房那天（第四天）不额外计算一晚住宿费。",
+      "grounded": true,
+      "answerable": true,
+      "citations": [
+        {
+          "clause": "POL-2",
+          "locator": "line:17"
+        }
+      ],
+      "agent": {
+        "mode": "react",
+        "tool_calls": 1,
+        "queries": [
+          "住三晚第四天退房，退房那天算不算一晚住宿费？出差住宿天数如何计算？"
+        ]
+      },
+      "retrieval_mode": "hybrid+multi+rerank",
+      "numeric": null,
+      "tool_called": true,
+      "primary_cited": true,
+      "numeric_ok": null,
+      "refused": null
+    },
+    {
+      "id": "P07-a",
+      "category": "伙食",
+      "question": "去深圳出差吃饭每天补多少钱？",
+      "status": 200,
+      "answer": "根据星衡科技差旅制度（v1.2），深圳属于A类城市，去深圳出差的伙食补贴标准为每天100元。",
+      "grounded": true,
+      "answerable": true,
+      "citations": [
+        {
+          "clause": "POL-3",
+          "locator": "line:21"
+        },
+        {
+          "clause": "POL-1",
+          "locator": "line:9"
+        }
+      ],
+      "agent": {
+        "mode": "react",
+        "tool_calls": 1,
+        "queries": [
+          "深圳出差伙食补贴标准每天多少钱"
+        ]
+      },
+      "retrieval_mode": "hybrid+multi+rerank",
+      "numeric": {
+        "kind": "fen",
+        "value_fen": 10000,
+        "display": "100元/天"
+      },
+      "tool_called": true,
+      "primary_cited": true,
+      "numeric_ok": true,
+      "refused": null
+    },
+    {
+      "id": "P09-b",
+      "category": "伙食",
+      "question": "C类城市伙食补贴每天标准是多少？",
+      "status": 200,
+      "answer": "根据相关规定，C类城市的伙食补贴标准为每天 **60元**（按出差自然日计发）。",
+      "grounded": true,
+      "answerable": true,
+      "citations": [
+        {
+          "clause": "POL-3",
+          "locator": "line:21"
+        }
+      ],
+      "agent": {
+        "mode": "react",
+        "tool_calls": 1,
+        "queries": [
+          "C类城市伙食补贴每天标准是多少"
+        ]
+      },
+      "retrieval_mode": "hybrid+multi+rerank",
+      "numeric": {
+        "kind": "fen",
+        "value_fen": 6000,
+        "display": "60元/天"
+      },
+      "tool_called": true,
+      "primary_cited": true,
+      "numeric_ok": true,
+      "refused": null
+    },
+    {
+      "id": "P11-a",
+      "category": "交通",
+      "question": "出差能坐头等舱吗？",
+      "status": 200,
+      "answer": "根据公司的差旅制度，出差**不能**乘坐头等舱。公司规定全体员工出差只能乘坐经济舱或高铁二等座，不得乘坐公务舱、头等舱或高铁一等座。",
+      "grounded": true,
+      "answerable": true,
+      "citations": [
+        {
+          "clause": "POL-4",
+          "locator": "line:25"
+        }
+      ],
+      "agent": {
+        "mode": "react",
+        "tool_calls": 1,
+        "queries": [
+          "出差能坐头等舱吗"
+        ]
+      },
+      "retrieval_mode": "hybrid+multi+rerank",
+      "numeric": null,
+      "tool_called": true,
+      "primary_cited": true,
+      "numeric_ok": null,
+      "refused": null
+    },
+    {
+      "id": "P14-a",
+      "category": "交通",
+      "question": "机票要提前几天订？",
+      "status": 200,
+      "answer": "根据星衡科技差旅制度（v1.2）的规定，机票出发日距申请日不少于3个自然日。",
+      "grounded": true,
+      "answerable": true,
+      "citations": [
+        {
+          "clause": "POL-5",
+          "locator": "line:29"
+        }
+      ],
+      "agent": {
+        "mode": "react",
+        "tool_calls": 1,
+        "queries": [
+          "机票要提前几天订？"
+        ]
+      },
+      "retrieval_mode": "hybrid+multi+rerank",
+      "numeric": {
+        "kind": "count",
+        "value": 3,
+        "unit": "天",
+        "display": "3个自然日"
+      },
+      "tool_called": true,
+      "primary_cited": true,
+      "numeric_ok": true,
+      "refused": null
+    },
+    {
+      "id": "P15-a",
+      "category": "审批",
+      "question": "多少钱以内的出差不用经理批？",
+      "status": 200,
+      "answer": "根据公司的差旅审批制度，单次差旅总额不超过 **3000元**、无制度违规且不超过申报预算的出差申请，可以自动通过，不需要经理审批。如果超过该金额或存在其他不符合规定的情况，则需要由直属经理进行审批。",
+      "grounded": true,
+      "answerable": true,
+      "citations": [
+        {
+          "clause": "POL-6",
+          "locator": "line:33"
+        }
+      ],
+      "agent": {
+        "mode": "react",
+        "tool_calls": 1,
+        "queries": [
+          "多少钱以内的出差不用经理审批"
+        ]
+      },
+      "retrieval_mode": "hybrid+multi+rerank",
+      "numeric": {
+        "kind": "fen",
+        "value_fen": 300000,
+        "display": "3000元"
+      },
+      "tool_called": true,
+      "primary_cited": true,
+      "numeric_ok": true,
+      "refused": null
+    },
+    {
+      "id": "P19-a",
+      "category": "其他费用",
+      "question": "出差打车费怎么报？",
+      "status": 200,
+      "answer": "根据差旅政策，出差打车费（出租车费用）实行**实报实销**，并且**不计入差旅总额**。",
+      "grounded": true,
+      "answerable": true,
+      "citations": [
+        {
+          "clause": "POL-8",
+          "locator": "line:41"
+        }
+      ],
+      "agent": {
+        "mode": "react",
+        "tool_calls": 1,
+        "queries": [
+          "出差打车费怎么报销"
+        ]
+      },
+      "retrieval_mode": "hybrid+multi+rerank",
+      "numeric": null,
+      "tool_called": true,
+      "primary_cited": true,
+      "numeric_ok": null,
+      "refused": null
+    },
+    {
+      "id": "P21-a",
+      "category": "拒答",
+      "question": "公司年假有几天？",
+      "status": 200,
+      "answer": "不知道：当前制度（v1.2）中没有找到能回答这个问题的条款。",
+      "grounded": true,
+      "answerable": false,
+      "citations": [],
+      "agent": {
+        "mode": "react",
+        "tool_calls": 1,
+        "queries": [
+          "公司年假有几天"
+        ]
+      },
+      "retrieval_mode": "hybrid+multi+rerank",
+      "numeric": null,
+      "tool_called": true,
+      "primary_cited": null,
+      "numeric_ok": null,
+      "refused": true
+    },
+    {
+      "id": "P23-a",
+      "category": "拒答",
+      "question": "出差晚上加班有加班费吗？",
+      "status": 200,
+      "answer": "不知道：当前制度（v1.2）中没有找到能回答这个问题的条款。",
+      "grounded": true,
+      "answerable": false,
+      "citations": [],
+      "agent": {
+        "mode": "react",
+        "tool_calls": 1,
+        "queries": [
+          "出差晚上加班有加班费吗"
+        ]
+      },
+      "retrieval_mode": "hybrid+multi+rerank",
+      "numeric": null,
+      "tool_called": true,
+      "primary_cited": null,
+      "numeric_ok": null,
+      "refused": true
+    }
+  ],
+  "chat": [
+    {
+      "question": "你好，你是谁？",
+      "status": 200,
+      "ok": true,
+      "grounded": false,
+      "tool_calls": 0,
+      "citations": [],
+      "answer": "你好！我是星衡科技差旅制度问答助手，可以为你解答关于公司差旅制度的相关问题，包括住宿、伙食、交通、报销、审批等方面的内容。有什么我可以帮你的吗？"
+    },
+    {
+      "question": "今天北京天气怎么样？",
+      "status": 200,
+      "ok": true,
+      "grounded": false,
+      "tool_calls": 0,
+      "citations": [],
+      "answer": "抱歉，作为一个人工智能模型，我无法联网获取实时的天气数据，因此无法告诉您今天北京的确切天气情况。建议您通过手机自带的天气应用、搜索引擎或中国气象局官网查询最新的实时天气预报。"
+    }
+  ],
+  "usage": {
+    "calls": 94,
+    "total_tokens": 46175,
+    "est_cost_cny": 1.6623,
+    "by_purpose": {
+      "policy_agent": 48,
+      "policy_embedding": 2,
+      "policy_query_embedding": 22,
+      "policy_query_rewrite": 11,
+      "policy_rerank": 11
+    }
+  }
+}

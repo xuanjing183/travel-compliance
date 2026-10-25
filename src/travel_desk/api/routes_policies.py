@@ -7,7 +7,7 @@ from fastapi import APIRouter, Body, Depends, File, Form, Header, Request, Uploa
 
 from travel_desk.api.deps import current_user
 from travel_desk.api.errors import get_trace_id
-from travel_desk.services import policies, policy_qa
+from travel_desk.services import policies, policy_agent, policy_qa
 
 router = APIRouter(prefix="/api", tags=["policies"])
 
@@ -16,6 +16,14 @@ router = APIRouter(prefix="/api", tags=["policies"])
 async def ask(request: Request, body: Any = Body(None), user: dict = Depends(current_user)):
     state = request.app.state
     return await policy_qa.ask(state.settings, state.policy_qa, user, body, trace_id=get_trace_id(request))
+
+
+@router.post("/policy/ask-agent")
+async def ask_agent(request: Request, body: Any = Body(None), user: dict = Depends(current_user)):
+    """Enhanced agent chain (real mode); fake/recorded falls back to the delivered path."""
+    state = request.app.state
+    return await policy_agent.ask_agent(state.settings, state.policy_agent, state.policy_qa, user, body,
+                                        trace_id=get_trace_id(request))
 
 
 @router.get("/policies")

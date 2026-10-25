@@ -13,6 +13,14 @@ The allowlist is derived from configuration, never from an operator switch:
 endpoint). Loopback is allowed and logged separately, so the evidence can state
 "external attempts: 0" while `uv run travel-desk` and the browser keep working.
 
+A host name alone is not enough for an actual connection: synchronous clients
+(urllib3, and therefore `dashscope.TextReRank.call`) resolve the allowlisted name
+first and then call `socket.connect` with the *resolved address*. So whenever
+`getaddrinfo` is allowed, the addresses it returned are remembered for a short
+TTL and a later connect to exactly those addresses is allowed too. Addresses that
+were never returned for an allowlisted name stay blocked; a blocked resolution
+raises before the original resolver runs, so it remembers nothing (fail closed).
+
 Every host name reaches the decision through one normalisation step
 (`_host_text`), because `getaddrinfo` also accepts `bytes` host names and
 httpcore hands them over in that form. A host that cannot be normalised is
@@ -26,6 +34,7 @@ subprocess or a C extension that opens its own sockets.
 """
 from __future__ import annotations
 
+import ipaddress
 import json
 import socket
 import sys
@@ -40,6 +49,21 @@ LOG_NAME = "network-guard.jsonl"
 # Local addresses that are not "external" by definition (HC-06 is about the internet).
 LOCAL_HOSTS = frozenset({"localhost", "127.0.0.1", "::1", "0.0.0.0", "[::]", ""})
 LOCAL_SUFFIXES = (".local", ".internal")
+# How long an address returned for an allowlisted host may be reconnected to. DNS TTL is
+# not exposed by `getaddrinfo`; this is deliberately short and in-process only.
+RESOLVED_ADDRESS_TTL_SECONDS = 300.0
+
+
+def _ip_text(host: Any) -> str | None:
+    """Canonical text for an IP literal (IPv4, IPv6, optional scope/brackets), else None."""
+    text = _host_text(host)
+    if text is None:
+        return None
+    text = text.strip().strip("[]").split("%", 1)[0]
+    try:
+        return str(ipaddress.ip_address(text))
+    except ValueError:
+        return None
 
 
 class NetworkBoundaryError(OSError):
@@ -133,6 +157,8 @@ class NetworkGuard:
         self.attempts: list[dict[str, Any]] = []
         self._lock = threading.Lock()
         self._saved: dict[str, Any] = {}
+        # Addresses returned by an allowed `getaddrinfo`, with their expiry (monotonic).
+        self._resolved_addresses: dict[str, float] = {}
 
     # ------------------------------------------------------------------ reporting
 
@@ -142,7 +168,35 @@ class NetworkGuard:
         text = _host_text(host)
         if text is not None and text.lower() in self.allowed_hosts:
             return "allowed"
+        if text is not None and self._remembered_address(text):
+            return "allowed"
         return "blocked"
+
+    def _remembered_address(self, text: str) -> bool:
+        address = _ip_text(text)
+        if address is None:
+            return False
+        now = time.monotonic()
+        with self._lock:
+            expires = self._resolved_addresses.get(address)
+            if expires is None:
+                return False
+            if expires < now:
+                self._resolved_addresses.pop(address, None)
+                return False
+            return True
+
+    def _remember_resolution(self, results: list[Any]) -> None:
+        expires = time.monotonic() + RESOLVED_ADDRESS_TTL_SECONDS
+        with self._lock:
+            for entry in results:
+                try:
+                    sockaddr = entry[4]
+                    address = _ip_text(sockaddr[0])
+                except (IndexError, TypeError):
+                    continue
+                if address is not None:
+                    self._resolved_addresses[address] = expires
 
     def record(self, host: Any, port: Any, *, via: str) -> str:
         decision = self._classify(host)
@@ -193,9 +247,15 @@ class NetworkGuard:
                     "connect": socket.socket.connect, "urlopen": urllib.request.urlopen}
 
         def getaddrinfo(host, port, *args, **kwargs):
-            if guard.record(host, port, via="getaddrinfo") == "blocked":
+            decision = guard.record(host, port, via="getaddrinfo")
+            if decision == "blocked":
                 raise guard.refuse(host, port, via="getaddrinfo")
-            return original["getaddrinfo"](host, port, *args, **kwargs)
+            results = original["getaddrinfo"](host, port, *args, **kwargs)
+            if decision == "allowed":
+                # A resolved address is only trusted because the *name* it came from is
+                # on the allowlist. Blocked names never reach the original resolver.
+                guard._remember_resolution(results)
+            return results
 
         def create_connection(address, *args, **kwargs):
             host, port = address[0], address[1] if len(address) > 1 else None

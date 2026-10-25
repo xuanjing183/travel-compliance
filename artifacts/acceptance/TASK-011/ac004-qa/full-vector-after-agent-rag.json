@@ -1,0 +1,1771 @@
+{
+  "generated_at": "2026-10-24T11:52:33+00:00",
+  "stage": "full",
+  "llm_mode": "real",
+  "retrieval_mode": "vector",
+  "text_model": "qwen3.8-max",
+  "embedding_model": "qwen3.7-text-embedding",
+  "qa_set_sha256": "469c17a4f1adcfab13a9a8bcf677737cdaf0ed8a74900b9547fef3352da880f6",
+  "question_count": 25,
+  "metric_spec": "evals/METRICS.md",
+  "rows": [
+    {
+      "id": "Q01",
+      "question": "上海属于哪一类差旅城市？",
+      "primary_clause": "POL-1",
+      "also_expected": [],
+      "status_code": 200,
+      "answerable": true,
+      "answer": "上海属于A类差旅城市。",
+      "generator": "qwen3.8-max",
+      "retrieval_mode": "vector",
+      "cited_clauses": [
+        "POL-1"
+      ],
+      "ranked_clauses": [
+        "POL-1",
+        "POL-2",
+        "POL-3",
+        "POL-2",
+        "制度信息"
+      ],
+      "top3": [
+        "POL-1",
+        "POL-2",
+        "POL-3"
+      ],
+      "top5": [
+        "POL-1",
+        "POL-2",
+        "POL-3",
+        "POL-2",
+        "制度信息"
+      ],
+      "parsed_fen": [],
+      "parsed_count": []
+    },
+    {
+      "id": "Q02",
+      "question": "成都属于哪一类差旅城市？",
+      "primary_clause": "POL-1",
+      "also_expected": [],
+      "status_code": 200,
+      "answerable": true,
+      "answer": "成都属于B类差旅城市。",
+      "generator": "qwen3.8-max",
+      "retrieval_mode": "vector",
+      "cited_clauses": [
+        "POL-1"
+      ],
+      "ranked_clauses": [
+        "POL-1",
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "制度信息"
+      ],
+      "top3": [
+        "POL-1",
+        "POL-2",
+        "POL-2"
+      ],
+      "top5": [
+        "POL-1",
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "制度信息"
+      ],
+      "parsed_fen": [],
+      "parsed_count": []
+    },
+    {
+      "id": "Q03",
+      "question": "员工去上海出差，住宿每晚最多能报销多少元？",
+      "primary_clause": "POL-2",
+      "also_expected": [
+        "POL-1"
+      ],
+      "status_code": 200,
+      "answerable": true,
+      "answer": "员工去上海出差，住宿每晚最多能报销500元。",
+      "generator": "qwen3.8-max",
+      "retrieval_mode": "vector",
+      "cited_clauses": [
+        "POL-2",
+        "POL-1"
+      ],
+      "ranked_clauses": [
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "制度信息",
+        "POL-8"
+      ],
+      "top3": [
+        "POL-2",
+        "POL-2",
+        "POL-3"
+      ],
+      "top5": [
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "制度信息",
+        "POL-8"
+      ],
+      "parsed_fen": [
+        50000
+      ],
+      "parsed_count": []
+    },
+    {
+      "id": "Q04",
+      "question": "经理去北京出差，酒店每晚上限是多少元？",
+      "primary_clause": "POL-2",
+      "also_expected": [
+        "POL-1"
+      ],
+      "status_code": 200,
+      "answerable": true,
+      "answer": "经理去北京出差，酒店每晚上限是650元。",
+      "generator": "qwen3.8-max",
+      "retrieval_mode": "vector",
+      "cited_clauses": [
+        "POL-2",
+        "POL-1"
+      ],
+      "ranked_clauses": [
+        "POL-2",
+        "POL-2",
+        "POL-6",
+        "POL-3",
+        "制度信息"
+      ],
+      "top3": [
+        "POL-2",
+        "POL-2",
+        "POL-6"
+      ],
+      "top5": [
+        "POL-2",
+        "POL-2",
+        "POL-6",
+        "POL-3",
+        "制度信息"
+      ],
+      "parsed_fen": [
+        65000
+      ],
+      "parsed_count": []
+    },
+    {
+      "id": "Q05",
+      "question": "员工在B类城市住宿，每晚上限是多少元？",
+      "primary_clause": "POL-2",
+      "also_expected": [],
+      "status_code": 200,
+      "answerable": true,
+      "answer": "员工在B类城市住宿，每晚上限是400元。",
+      "generator": "qwen3.8-max",
+      "retrieval_mode": "vector",
+      "cited_clauses": [
+        "POL-2"
+      ],
+      "ranked_clauses": [
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "POL-2",
+        "POL-4"
+      ],
+      "top3": [
+        "POL-2",
+        "POL-2",
+        "POL-3"
+      ],
+      "top5": [
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "POL-2",
+        "POL-4"
+      ],
+      "parsed_fen": [
+        40000
+      ],
+      "parsed_count": []
+    },
+    {
+      "id": "Q06",
+      "question": "住宿费退房当日是否计入报销晚数？",
+      "primary_clause": "POL-2",
+      "also_expected": [],
+      "status_code": 200,
+      "answerable": true,
+      "answer": "住宿费退房当日不计入报销晚数。",
+      "generator": "qwen3.8-max",
+      "retrieval_mode": "vector",
+      "cited_clauses": [
+        "POL-2"
+      ],
+      "ranked_clauses": [
+        "POL-2",
+        "POL-8",
+        "POL-7",
+        "制度信息",
+        "POL-2"
+      ],
+      "top3": [
+        "POL-2",
+        "POL-8",
+        "POL-7"
+      ],
+      "top5": [
+        "POL-2",
+        "POL-8",
+        "POL-7",
+        "制度信息",
+        "POL-2"
+      ],
+      "parsed_fen": [],
+      "parsed_count": []
+    },
+    {
+      "id": "Q07",
+      "question": "去深圳出差，伙食补贴每天是多少元？",
+      "primary_clause": "POL-3",
+      "also_expected": [
+        "POL-1"
+      ],
+      "status_code": 200,
+      "answerable": true,
+      "answer": "去深圳出差，伙食补贴每天100元。",
+      "generator": "qwen3.8-max",
+      "retrieval_mode": "vector",
+      "cited_clauses": [
+        "POL-1",
+        "POL-3"
+      ],
+      "ranked_clauses": [
+        "POL-3",
+        "POL-2",
+        "制度信息",
+        "POL-2",
+        "POL-6"
+      ],
+      "top3": [
+        "POL-3",
+        "POL-2",
+        "制度信息"
+      ],
+      "top5": [
+        "POL-3",
+        "POL-2",
+        "制度信息",
+        "POL-2",
+        "POL-6"
+      ],
+      "parsed_fen": [
+        10000
+      ],
+      "parsed_count": []
+    },
+    {
+      "id": "Q08",
+      "question": "C类城市伙食补贴每天是多少元？",
+      "primary_clause": "POL-3",
+      "also_expected": [],
+      "status_code": 200,
+      "answerable": true,
+      "answer": "C类城市伙食补贴每天60元。",
+      "generator": "qwen3.8-max",
+      "retrieval_mode": "vector",
+      "cited_clauses": [
+        "POL-3"
+      ],
+      "ranked_clauses": [
+        "POL-3",
+        "POL-2",
+        "POL-2",
+        "POL-1",
+        "POL-6"
+      ],
+      "top3": [
+        "POL-3",
+        "POL-2",
+        "POL-2"
+      ],
+      "top5": [
+        "POL-3",
+        "POL-2",
+        "POL-2",
+        "POL-1",
+        "POL-6"
+      ],
+      "parsed_fen": [
+        6000
+      ],
+      "parsed_count": []
+    },
+    {
+      "id": "Q09",
+      "question": "员工出差可以乘坐飞机头等舱吗？",
+      "primary_clause": "POL-4",
+      "also_expected": [],
+      "status_code": 200,
+      "answerable": true,
+      "answer": "不可以。根据制度规定，全体员工乘坐飞机仅限经济舱，不得乘坐头等舱。",
+      "generator": "qwen3.8-max",
+      "retrieval_mode": "vector",
+      "cited_clauses": [
+        "POL-4"
+      ],
+      "ranked_clauses": [
+        "POL-4",
+        "制度信息",
+        "POL-8",
+        "POL-6",
+        "POL-3"
+      ],
+      "top3": [
+        "POL-4",
+        "制度信息",
+        "POL-8"
+      ],
+      "top5": [
+        "POL-4",
+        "制度信息",
+        "POL-8",
+        "POL-6",
+        "POL-3"
+      ],
+      "parsed_fen": [],
+      "parsed_count": []
+    },
+    {
+      "id": "Q10",
+      "question": "公司允许员工乘坐哪些舱位？",
+      "primary_clause": "POL-4",
+      "also_expected": [],
+      "status_code": 200,
+      "answerable": true,
+      "answer": "公司允许员工乘坐经济舱或高铁二等座。",
+      "generator": "qwen3.8-max",
+      "retrieval_mode": "vector",
+      "cited_clauses": [
+        "POL-4"
+      ],
+      "ranked_clauses": [
+        "POL-4",
+        "POL-2",
+        "制度信息",
+        "POL-2",
+        "POL-3"
+      ],
+      "top3": [
+        "POL-4",
+        "POL-2",
+        "制度信息"
+      ],
+      "top5": [
+        "POL-4",
+        "POL-2",
+        "制度信息",
+        "POL-2",
+        "POL-3"
+      ],
+      "parsed_fen": [
+        200
+      ],
+      "parsed_count": [
+        2
+      ]
+    },
+    {
+      "id": "Q11",
+      "question": "机票出发日距申请日至少需要间隔几个自然日？",
+      "primary_clause": "POL-5",
+      "also_expected": [],
+      "status_code": 200,
+      "answerable": true,
+      "answer": "机票出发日距申请日至少需要间隔3个自然日。",
+      "generator": "qwen3.8-max",
+      "retrieval_mode": "vector",
+      "cited_clauses": [
+        "POL-5"
+      ],
+      "ranked_clauses": [
+        "POL-5",
+        "POL-7",
+        "POL-6",
+        "制度信息",
+        "POL-2"
+      ],
+      "top3": [
+        "POL-5",
+        "POL-7",
+        "POL-6"
+      ],
+      "top5": [
+        "POL-5",
+        "POL-7",
+        "POL-6",
+        "制度信息",
+        "POL-2"
+      ],
+      "parsed_fen": [],
+      "parsed_count": [
+        3
+      ]
+    },
+    {
+      "id": "Q12",
+      "question": "单次差旅总额不超过多少元可以自动通过审批？",
+      "primary_clause": "POL-6",
+      "also_expected": [],
+      "status_code": 200,
+      "answerable": true,
+      "answer": "单次差旅总额不超过3000元可以自动通过审批。",
+      "generator": "qwen3.8-max",
+      "retrieval_mode": "vector",
+      "cited_clauses": [
+        "POL-6"
+      ],
+      "ranked_clauses": [
+        "POL-6",
+        "制度信息",
+        "POL-8",
+        "POL-7",
+        "POL-3"
+      ],
+      "top3": [
+        "POL-6",
+        "制度信息",
+        "POL-8"
+      ],
+      "top5": [
+        "POL-6",
+        "制度信息",
+        "POL-8",
+        "POL-7",
+        "POL-3"
+      ],
+      "parsed_fen": [
+        300000
+      ],
+      "parsed_count": []
+    },
+    {
+      "id": "Q13",
+      "question": "满足哪些条件单次差旅可以自动通过？",
+      "primary_clause": "POL-6",
+      "also_expected": [],
+      "status_code": 200,
+      "answerable": true,
+      "answer": "单次差旅自动通过需同时满足以下三个条件：1. 单次差旅总额不超过3000元；2. 无制度违规；3. 不超过申报预算。",
+      "generator": "qwen3.8-max",
+      "retrieval_mode": "vector",
+      "cited_clauses": [
+        "POL-6"
+      ],
+      "ranked_clauses": [
+        "POL-6",
+        "POL-7",
+        "制度信息",
+        "POL-8",
+        "POL-4"
+      ],
+      "top3": [
+        "POL-6",
+        "POL-7",
+        "制度信息"
+      ],
+      "top5": [
+        "POL-6",
+        "POL-7",
+        "制度信息",
+        "POL-8",
+        "POL-4"
+      ],
+      "parsed_fen": [
+        100,
+        200,
+        300,
+        300000
+      ],
+      "parsed_count": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "Q14",
+      "question": "单次出差最长不超过多少个自然日？",
+      "primary_clause": "POL-7",
+      "also_expected": [],
+      "status_code": 200,
+      "answerable": true,
+      "answer": "单次出差最长不超过15个自然日。",
+      "generator": "qwen3.8-max",
+      "retrieval_mode": "vector",
+      "cited_clauses": [
+        "POL-7"
+      ],
+      "ranked_clauses": [
+        "POL-7",
+        "POL-6",
+        "POL-3",
+        "POL-5",
+        "制度信息"
+      ],
+      "top3": [
+        "POL-7",
+        "POL-6",
+        "POL-3"
+      ],
+      "top5": [
+        "POL-7",
+        "POL-6",
+        "POL-3",
+        "POL-5",
+        "制度信息"
+      ],
+      "parsed_fen": [],
+      "parsed_count": [
+        15
+      ]
+    },
+    {
+      "id": "Q15",
+      "question": "出差期间的出租车费用如何报销？",
+      "primary_clause": "POL-8",
+      "also_expected": [],
+      "status_code": 200,
+      "answerable": true,
+      "answer": "出差期间的出租车费用实行实报实销，且不计入差旅总额。",
+      "generator": "qwen3.8-max",
+      "retrieval_mode": "vector",
+      "cited_clauses": [
+        "POL-8"
+      ],
+      "ranked_clauses": [
+        "POL-8",
+        "POL-6",
+        "POL-3",
+        "制度信息",
+        "POL-7"
+      ],
+      "top3": [
+        "POL-8",
+        "POL-6",
+        "POL-3"
+      ],
+      "top5": [
+        "POL-8",
+        "POL-6",
+        "POL-3",
+        "制度信息",
+        "POL-7"
+      ],
+      "parsed_fen": [],
+      "parsed_count": []
+    },
+    {
+      "id": "Q16",
+      "question": "出租车费用是否计入差旅总额？",
+      "primary_clause": "POL-8",
+      "also_expected": [],
+      "status_code": 200,
+      "answerable": true,
+      "answer": "出租车费用不计入差旅总额，实行实报实销。",
+      "generator": "qwen3.8-max",
+      "retrieval_mode": "vector",
+      "cited_clauses": [
+        "POL-8"
+      ],
+      "ranked_clauses": [
+        "POL-8",
+        "POL-6",
+        "制度信息",
+        "POL-3",
+        "POL-2"
+      ],
+      "top3": [
+        "POL-8",
+        "POL-6",
+        "制度信息"
+      ],
+      "top5": [
+        "POL-8",
+        "POL-6",
+        "制度信息",
+        "POL-3",
+        "POL-2"
+      ],
+      "parsed_fen": [],
+      "parsed_count": []
+    },
+    {
+      "id": "Q17",
+      "question": "员工去成都出差，住宿每晚上限是多少元？",
+      "primary_clause": "POL-2",
+      "also_expected": [
+        "POL-1"
+      ],
+      "status_code": 200,
+      "answerable": true,
+      "answer": "员工去成都出差，住宿每晚上限是400元。",
+      "generator": "qwen3.8-max",
+      "retrieval_mode": "vector",
+      "cited_clauses": [
+        "POL-2",
+        "POL-1"
+      ],
+      "ranked_clauses": [
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "POL-2",
+        "制度信息"
+      ],
+      "top3": [
+        "POL-2",
+        "POL-2",
+        "POL-3"
+      ],
+      "top5": [
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "POL-2",
+        "制度信息"
+      ],
+      "parsed_fen": [
+        40000
+      ],
+      "parsed_count": []
+    },
+    {
+      "id": "Q18",
+      "question": "员工去杭州出差，伙食补贴每天是多少元？",
+      "primary_clause": "POL-3",
+      "also_expected": [
+        "POL-1"
+      ],
+      "status_code": 200,
+      "answerable": true,
+      "answer": "员工去杭州出差，伙食补贴每天80元。",
+      "generator": "qwen3.8-max",
+      "retrieval_mode": "vector",
+      "cited_clauses": [
+        "POL-3",
+        "POL-1"
+      ],
+      "ranked_clauses": [
+        "POL-3",
+        "POL-2",
+        "POL-2",
+        "制度信息",
+        "POL-8"
+      ],
+      "top3": [
+        "POL-3",
+        "POL-2",
+        "POL-2"
+      ],
+      "top5": [
+        "POL-3",
+        "POL-2",
+        "POL-2",
+        "制度信息",
+        "POL-8"
+      ],
+      "parsed_fen": [
+        8000
+      ],
+      "parsed_count": []
+    },
+    {
+      "id": "Q19",
+      "question": "经理去广州出差，住宿每晚上限是多少元？",
+      "primary_clause": "POL-2",
+      "also_expected": [
+        "POL-1"
+      ],
+      "status_code": 200,
+      "answerable": true,
+      "answer": "经理去广州出差，住宿每晚上限是650元。",
+      "generator": "qwen3.8-max",
+      "retrieval_mode": "vector",
+      "cited_clauses": [
+        "POL-2",
+        "POL-1"
+      ],
+      "ranked_clauses": [
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "POL-6",
+        "制度信息"
+      ],
+      "top3": [
+        "POL-2",
+        "POL-2",
+        "POL-3"
+      ],
+      "top5": [
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "POL-6",
+        "制度信息"
+      ],
+      "parsed_fen": [
+        65000
+      ],
+      "parsed_count": []
+    },
+    {
+      "id": "Q20",
+      "question": "西安属于哪一类差旅城市？",
+      "primary_clause": "POL-1",
+      "also_expected": [],
+      "status_code": 200,
+      "answerable": true,
+      "answer": "西安属于B类差旅城市。",
+      "generator": "qwen3.8-max",
+      "retrieval_mode": "vector",
+      "cited_clauses": [
+        "POL-1"
+      ],
+      "ranked_clauses": [
+        "POL-1",
+        "POL-3",
+        "POL-2",
+        "POL-2",
+        "制度信息"
+      ],
+      "top3": [
+        "POL-1",
+        "POL-3",
+        "POL-2"
+      ],
+      "top5": [
+        "POL-1",
+        "POL-3",
+        "POL-2",
+        "POL-2",
+        "制度信息"
+      ],
+      "parsed_fen": [],
+      "parsed_count": []
+    },
+    {
+      "id": "Q21",
+      "question": "公司每年有多少天带薪年假？",
+      "primary_clause": null,
+      "also_expected": [],
+      "status_code": 200,
+      "answerable": false,
+      "answer": "不知道：当前制度（v1.2）中没有找到能回答这个问题的条款。",
+      "generator": "qwen3.8-max",
+      "retrieval_mode": "vector",
+      "cited_clauses": [],
+      "ranked_clauses": [
+        "POL-7",
+        "制度信息",
+        "POL-3",
+        "POL-2",
+        "POL-6"
+      ],
+      "top3": [
+        "POL-7",
+        "制度信息",
+        "POL-3"
+      ],
+      "top5": [
+        "POL-7",
+        "制度信息",
+        "POL-3",
+        "POL-2",
+        "POL-6"
+      ],
+      "parsed_fen": [
+        120
+      ],
+      "parsed_count": [
+        1
+      ]
+    },
+    {
+      "id": "Q22",
+      "question": "员工的五险一金缴纳比例是多少？",
+      "primary_clause": null,
+      "also_expected": [],
+      "status_code": 200,
+      "answerable": false,
+      "answer": "不知道：当前制度（v1.2）中没有找到能回答这个问题的条款。",
+      "generator": "qwen3.8-max",
+      "retrieval_mode": "vector",
+      "cited_clauses": [],
+      "ranked_clauses": [
+        "POL-2",
+        "POL-4",
+        "制度信息",
+        "POL-2",
+        "POL-3"
+      ],
+      "top3": [
+        "POL-2",
+        "POL-4",
+        "制度信息"
+      ],
+      "top5": [
+        "POL-2",
+        "POL-4",
+        "制度信息",
+        "POL-2",
+        "POL-3"
+      ],
+      "parsed_fen": [
+        120
+      ],
+      "parsed_count": [
+        1
+      ]
+    },
+    {
+      "id": "Q23",
+      "question": "出差期间加班有加班费吗？",
+      "primary_clause": null,
+      "also_expected": [],
+      "status_code": 200,
+      "answerable": false,
+      "answer": "不知道：当前制度（v1.2）中没有找到能回答这个问题的条款。",
+      "generator": "qwen3.8-max",
+      "retrieval_mode": "vector",
+      "cited_clauses": [],
+      "ranked_clauses": [
+        "POL-3",
+        "POL-8",
+        "POL-7",
+        "制度信息",
+        "POL-6"
+      ],
+      "top3": [
+        "POL-3",
+        "POL-8",
+        "POL-7"
+      ],
+      "top5": [
+        "POL-3",
+        "POL-8",
+        "POL-7",
+        "制度信息",
+        "POL-6"
+      ],
+      "parsed_fen": [
+        120
+      ],
+      "parsed_count": [
+        1
+      ]
+    },
+    {
+      "id": "Q24",
+      "question": "公司报销员工每年的体检费用吗？",
+      "primary_clause": null,
+      "also_expected": [],
+      "status_code": 200,
+      "answerable": false,
+      "answer": "不知道：当前制度（v1.2）中没有找到能回答这个问题的条款。",
+      "generator": "qwen3.8-max",
+      "retrieval_mode": "vector",
+      "cited_clauses": [],
+      "ranked_clauses": [
+        "POL-8",
+        "制度信息",
+        "POL-6",
+        "POL-3",
+        "POL-7"
+      ],
+      "top3": [
+        "POL-8",
+        "制度信息",
+        "POL-6"
+      ],
+      "top5": [
+        "POL-8",
+        "制度信息",
+        "POL-6",
+        "POL-3",
+        "POL-7"
+      ],
+      "parsed_fen": [
+        120
+      ],
+      "parsed_count": [
+        1
+      ]
+    },
+    {
+      "id": "Q25",
+      "question": "员工出差可以带家属同行吗？",
+      "primary_clause": null,
+      "also_expected": [],
+      "status_code": 200,
+      "answerable": false,
+      "answer": "不知道：当前制度（v1.2）中没有找到能回答这个问题的条款。",
+      "generator": "qwen3.8-max",
+      "retrieval_mode": "vector",
+      "cited_clauses": [],
+      "ranked_clauses": [
+        "制度信息",
+        "POL-8",
+        "POL-4",
+        "POL-6",
+        "POL-7"
+      ],
+      "top3": [
+        "制度信息",
+        "POL-8",
+        "POL-4"
+      ],
+      "top5": [
+        "制度信息",
+        "POL-8",
+        "POL-4",
+        "POL-6",
+        "POL-7"
+      ],
+      "parsed_fen": [
+        120
+      ],
+      "parsed_count": [
+        1
+      ]
+    }
+  ],
+  "metrics": {
+    "recall@3": {
+      "hit": 20,
+      "total": 20,
+      "value": 1.0
+    },
+    "recall@5": {
+      "hit": 20,
+      "total": 20,
+      "value": 1.0
+    },
+    "citation_hit_rate": {
+      "hit": 20,
+      "total": 20,
+      "value": 1.0,
+      "threshold": 0.9
+    },
+    "numeric_correct_rate": {
+      "hit": 11,
+      "total": 11,
+      "value": 1.0,
+      "threshold": 0.85
+    },
+    "refusal_correct": {
+      "hit": 5,
+      "total": 5,
+      "threshold_rule": ">=4 of 5"
+    }
+  },
+  "detail": [
+    {
+      "id": "Q01",
+      "answerable_gold": true,
+      "refusal": false,
+      "recall3": true,
+      "recall5": true,
+      "citation_hit": true,
+      "cited_clauses": [
+        "POL-1"
+      ],
+      "answerable_model": true,
+      "answer": "上海属于A类差旅城市。"
+    },
+    {
+      "id": "Q02",
+      "answerable_gold": true,
+      "refusal": false,
+      "recall3": true,
+      "recall5": true,
+      "citation_hit": true,
+      "cited_clauses": [
+        "POL-1"
+      ],
+      "answerable_model": true,
+      "answer": "成都属于B类差旅城市。"
+    },
+    {
+      "id": "Q03",
+      "answerable_gold": true,
+      "refusal": false,
+      "recall3": true,
+      "recall5": true,
+      "citation_hit": true,
+      "cited_clauses": [
+        "POL-1",
+        "POL-2"
+      ],
+      "numeric_gold": {
+        "kind": "fen",
+        "value_fen": 50000,
+        "display": "500元/晚"
+      },
+      "numeric_hit": true,
+      "parsed_fen": [
+        50000
+      ],
+      "parsed_count": [],
+      "answerable_model": true,
+      "answer": "员工去上海出差，住宿每晚最多能报销500元。"
+    },
+    {
+      "id": "Q04",
+      "answerable_gold": true,
+      "refusal": false,
+      "recall3": true,
+      "recall5": true,
+      "citation_hit": true,
+      "cited_clauses": [
+        "POL-1",
+        "POL-2"
+      ],
+      "numeric_gold": {
+        "kind": "fen",
+        "value_fen": 65000,
+        "display": "650元/晚"
+      },
+      "numeric_hit": true,
+      "parsed_fen": [
+        65000
+      ],
+      "parsed_count": [],
+      "answerable_model": true,
+      "answer": "经理去北京出差，酒店每晚上限是650元。"
+    },
+    {
+      "id": "Q05",
+      "answerable_gold": true,
+      "refusal": false,
+      "recall3": true,
+      "recall5": true,
+      "citation_hit": true,
+      "cited_clauses": [
+        "POL-2"
+      ],
+      "numeric_gold": {
+        "kind": "fen",
+        "value_fen": 40000,
+        "display": "400元/晚"
+      },
+      "numeric_hit": true,
+      "parsed_fen": [
+        40000
+      ],
+      "parsed_count": [],
+      "answerable_model": true,
+      "answer": "员工在B类城市住宿，每晚上限是400元。"
+    },
+    {
+      "id": "Q06",
+      "answerable_gold": true,
+      "refusal": false,
+      "recall3": true,
+      "recall5": true,
+      "citation_hit": true,
+      "cited_clauses": [
+        "POL-2"
+      ],
+      "answerable_model": true,
+      "answer": "住宿费退房当日不计入报销晚数。"
+    },
+    {
+      "id": "Q07",
+      "answerable_gold": true,
+      "refusal": false,
+      "recall3": true,
+      "recall5": true,
+      "citation_hit": true,
+      "cited_clauses": [
+        "POL-1",
+        "POL-3"
+      ],
+      "numeric_gold": {
+        "kind": "fen",
+        "value_fen": 10000,
+        "display": "100元/天"
+      },
+      "numeric_hit": true,
+      "parsed_fen": [
+        10000
+      ],
+      "parsed_count": [],
+      "answerable_model": true,
+      "answer": "去深圳出差，伙食补贴每天100元。"
+    },
+    {
+      "id": "Q08",
+      "answerable_gold": true,
+      "refusal": false,
+      "recall3": true,
+      "recall5": true,
+      "citation_hit": true,
+      "cited_clauses": [
+        "POL-3"
+      ],
+      "numeric_gold": {
+        "kind": "fen",
+        "value_fen": 6000,
+        "display": "60元/天"
+      },
+      "numeric_hit": true,
+      "parsed_fen": [
+        6000
+      ],
+      "parsed_count": [],
+      "answerable_model": true,
+      "answer": "C类城市伙食补贴每天60元。"
+    },
+    {
+      "id": "Q09",
+      "answerable_gold": true,
+      "refusal": false,
+      "recall3": true,
+      "recall5": true,
+      "citation_hit": true,
+      "cited_clauses": [
+        "POL-4"
+      ],
+      "answerable_model": true,
+      "answer": "不可以。根据制度规定，全体员工乘坐飞机仅限经济舱，不得乘坐头等舱。"
+    },
+    {
+      "id": "Q10",
+      "answerable_gold": true,
+      "refusal": false,
+      "recall3": true,
+      "recall5": true,
+      "citation_hit": true,
+      "cited_clauses": [
+        "POL-4"
+      ],
+      "answerable_model": true,
+      "answer": "公司允许员工乘坐经济舱或高铁二等座。"
+    },
+    {
+      "id": "Q11",
+      "answerable_gold": true,
+      "refusal": false,
+      "recall3": true,
+      "recall5": true,
+      "citation_hit": true,
+      "cited_clauses": [
+        "POL-5"
+      ],
+      "numeric_gold": {
+        "kind": "count",
+        "value": 3,
+        "unit": "天",
+        "display": "3个自然日"
+      },
+      "numeric_hit": true,
+      "parsed_fen": [],
+      "parsed_count": [
+        3
+      ],
+      "answerable_model": true,
+      "answer": "机票出发日距申请日至少需要间隔3个自然日。"
+    },
+    {
+      "id": "Q12",
+      "answerable_gold": true,
+      "refusal": false,
+      "recall3": true,
+      "recall5": true,
+      "citation_hit": true,
+      "cited_clauses": [
+        "POL-6"
+      ],
+      "numeric_gold": {
+        "kind": "fen",
+        "value_fen": 300000,
+        "display": "3000元"
+      },
+      "numeric_hit": true,
+      "parsed_fen": [
+        300000
+      ],
+      "parsed_count": [],
+      "answerable_model": true,
+      "answer": "单次差旅总额不超过3000元可以自动通过审批。"
+    },
+    {
+      "id": "Q13",
+      "answerable_gold": true,
+      "refusal": false,
+      "recall3": true,
+      "recall5": true,
+      "citation_hit": true,
+      "cited_clauses": [
+        "POL-6"
+      ],
+      "answerable_model": true,
+      "answer": "单次差旅自动通过需同时满足以下三个条件：1. 单次差旅总额不超过3000元；2. 无制度违规；3. 不超过申报预算。"
+    },
+    {
+      "id": "Q14",
+      "answerable_gold": true,
+      "refusal": false,
+      "recall3": true,
+      "recall5": true,
+      "citation_hit": true,
+      "cited_clauses": [
+        "POL-7"
+      ],
+      "numeric_gold": {
+        "kind": "count",
+        "value": 15,
+        "unit": "天",
+        "display": "15个自然日"
+      },
+      "numeric_hit": true,
+      "parsed_fen": [],
+      "parsed_count": [
+        15
+      ],
+      "answerable_model": true,
+      "answer": "单次出差最长不超过15个自然日。"
+    },
+    {
+      "id": "Q15",
+      "answerable_gold": true,
+      "refusal": false,
+      "recall3": true,
+      "recall5": true,
+      "citation_hit": true,
+      "cited_clauses": [
+        "POL-8"
+      ],
+      "answerable_model": true,
+      "answer": "出差期间的出租车费用实行实报实销，且不计入差旅总额。"
+    },
+    {
+      "id": "Q16",
+      "answerable_gold": true,
+      "refusal": false,
+      "recall3": true,
+      "recall5": true,
+      "citation_hit": true,
+      "cited_clauses": [
+        "POL-8"
+      ],
+      "answerable_model": true,
+      "answer": "出租车费用不计入差旅总额，实行实报实销。"
+    },
+    {
+      "id": "Q17",
+      "answerable_gold": true,
+      "refusal": false,
+      "recall3": true,
+      "recall5": true,
+      "citation_hit": true,
+      "cited_clauses": [
+        "POL-1",
+        "POL-2"
+      ],
+      "numeric_gold": {
+        "kind": "fen",
+        "value_fen": 40000,
+        "display": "400元/晚"
+      },
+      "numeric_hit": true,
+      "parsed_fen": [
+        40000
+      ],
+      "parsed_count": [],
+      "answerable_model": true,
+      "answer": "员工去成都出差，住宿每晚上限是400元。"
+    },
+    {
+      "id": "Q18",
+      "answerable_gold": true,
+      "refusal": false,
+      "recall3": true,
+      "recall5": true,
+      "citation_hit": true,
+      "cited_clauses": [
+        "POL-1",
+        "POL-3"
+      ],
+      "numeric_gold": {
+        "kind": "fen",
+        "value_fen": 8000,
+        "display": "80元/天"
+      },
+      "numeric_hit": true,
+      "parsed_fen": [
+        8000
+      ],
+      "parsed_count": [],
+      "answerable_model": true,
+      "answer": "员工去杭州出差，伙食补贴每天80元。"
+    },
+    {
+      "id": "Q19",
+      "answerable_gold": true,
+      "refusal": false,
+      "recall3": true,
+      "recall5": true,
+      "citation_hit": true,
+      "cited_clauses": [
+        "POL-1",
+        "POL-2"
+      ],
+      "numeric_gold": {
+        "kind": "fen",
+        "value_fen": 65000,
+        "display": "650元/晚"
+      },
+      "numeric_hit": true,
+      "parsed_fen": [
+        65000
+      ],
+      "parsed_count": [],
+      "answerable_model": true,
+      "answer": "经理去广州出差，住宿每晚上限是650元。"
+    },
+    {
+      "id": "Q20",
+      "answerable_gold": true,
+      "refusal": false,
+      "recall3": true,
+      "recall5": true,
+      "citation_hit": true,
+      "cited_clauses": [
+        "POL-1"
+      ],
+      "answerable_model": true,
+      "answer": "西安属于B类差旅城市。"
+    },
+    {
+      "id": "Q21",
+      "answerable_gold": false,
+      "refusal": true,
+      "refusal_correct": true,
+      "answerable_model": false,
+      "answer": "不知道：当前制度（v1.2）中没有找到能回答这个问题的条款。"
+    },
+    {
+      "id": "Q22",
+      "answerable_gold": false,
+      "refusal": true,
+      "refusal_correct": true,
+      "answerable_model": false,
+      "answer": "不知道：当前制度（v1.2）中没有找到能回答这个问题的条款。"
+    },
+    {
+      "id": "Q23",
+      "answerable_gold": false,
+      "refusal": true,
+      "refusal_correct": true,
+      "answerable_model": false,
+      "answer": "不知道：当前制度（v1.2）中没有找到能回答这个问题的条款。"
+    },
+    {
+      "id": "Q24",
+      "answerable_gold": false,
+      "refusal": true,
+      "refusal_correct": true,
+      "answerable_model": false,
+      "answer": "不知道：当前制度（v1.2）中没有找到能回答这个问题的条款。"
+    },
+    {
+      "id": "Q25",
+      "answerable_gold": false,
+      "refusal": true,
+      "refusal_correct": true,
+      "answerable_model": false,
+      "answer": "不知道：当前制度（v1.2）中没有找到能回答这个问题的条款。"
+    }
+  ],
+  "usage": {
+    "calls": [
+      {
+        "purpose": "policy_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 562,
+        "est_cost_cny": 0.020232,
+        "latency_ms": 910
+      },
+      {
+        "purpose": "policy_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 38,
+        "est_cost_cny": 0.001368,
+        "latency_ms": 300
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 23,
+        "est_cost_cny": 0.000828,
+        "latency_ms": 400
+      },
+      {
+        "purpose": "policy_answer",
+        "model": "qwen3.8-max",
+        "total_tokens": 862,
+        "est_cost_cny": 0.031032,
+        "latency_ms": 1701
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 23,
+        "est_cost_cny": 0.000828,
+        "latency_ms": 471
+      },
+      {
+        "purpose": "policy_answer",
+        "model": "qwen3.8-max",
+        "total_tokens": 862,
+        "est_cost_cny": 0.031032,
+        "latency_ms": 1505
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 29,
+        "est_cost_cny": 0.001044,
+        "latency_ms": 195
+      },
+      {
+        "purpose": "policy_answer",
+        "model": "qwen3.8-max",
+        "total_tokens": 913,
+        "est_cost_cny": 0.032868,
+        "latency_ms": 1205
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 28,
+        "est_cost_cny": 0.001008,
+        "latency_ms": 455
+      },
+      {
+        "purpose": "policy_answer",
+        "model": "qwen3.8-max",
+        "total_tokens": 933,
+        "est_cost_cny": 0.033588,
+        "latency_ms": 1546
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 29,
+        "est_cost_cny": 0.001044,
+        "latency_ms": 229
+      },
+      {
+        "purpose": "policy_answer",
+        "model": "qwen3.8-max",
+        "total_tokens": 903,
+        "est_cost_cny": 0.032508,
+        "latency_ms": 1498
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 25,
+        "est_cost_cny": 0.0009,
+        "latency_ms": 334
+      },
+      {
+        "purpose": "policy_answer",
+        "model": "qwen3.8-max",
+        "total_tokens": 835,
+        "est_cost_cny": 0.03006,
+        "latency_ms": 1308
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 26,
+        "est_cost_cny": 0.000936,
+        "latency_ms": 1116
+      },
+      {
+        "purpose": "policy_answer",
+        "model": "qwen3.8-max",
+        "total_tokens": 928,
+        "est_cost_cny": 0.033408,
+        "latency_ms": 1340
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 25,
+        "est_cost_cny": 0.0009,
+        "latency_ms": 173
+      },
+      {
+        "purpose": "policy_answer",
+        "model": "qwen3.8-max",
+        "total_tokens": 871,
+        "est_cost_cny": 0.031356,
+        "latency_ms": 1442
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 25,
+        "est_cost_cny": 0.0009,
+        "latency_ms": 311
+      },
+      {
+        "purpose": "policy_answer",
+        "model": "qwen3.8-max",
+        "total_tokens": 868,
+        "est_cost_cny": 0.031248,
+        "latency_ms": 1293
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 24,
+        "est_cost_cny": 0.000864,
+        "latency_ms": 183
+      },
+      {
+        "purpose": "policy_answer",
+        "model": "qwen3.8-max",
+        "total_tokens": 909,
+        "est_cost_cny": 0.032724,
+        "latency_ms": 1320
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 29,
+        "est_cost_cny": 0.001044,
+        "latency_ms": 455
+      },
+      {
+        "purpose": "policy_answer",
+        "model": "qwen3.8-max",
+        "total_tokens": 831,
+        "est_cost_cny": 0.029916,
+        "latency_ms": 1402
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 27,
+        "est_cost_cny": 0.000972,
+        "latency_ms": 432
+      },
+      {
+        "purpose": "policy_answer",
+        "model": "qwen3.8-max",
+        "total_tokens": 857,
+        "est_cost_cny": 0.030852,
+        "latency_ms": 1513
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 25,
+        "est_cost_cny": 0.0009,
+        "latency_ms": 474
+      },
+      {
+        "purpose": "policy_answer",
+        "model": "qwen3.8-max",
+        "total_tokens": 792,
+        "est_cost_cny": 0.028512,
+        "latency_ms": 1678
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 24,
+        "est_cost_cny": 0.000864,
+        "latency_ms": 499
+      },
+      {
+        "purpose": "policy_answer",
+        "model": "qwen3.8-max",
+        "total_tokens": 852,
+        "est_cost_cny": 0.030672,
+        "latency_ms": 1267
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 23,
+        "est_cost_cny": 0.000828,
+        "latency_ms": 415
+      },
+      {
+        "purpose": "policy_answer",
+        "model": "qwen3.8-max",
+        "total_tokens": 855,
+        "est_cost_cny": 0.03078,
+        "latency_ms": 1189
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 23,
+        "est_cost_cny": 0.000828,
+        "latency_ms": 417
+      },
+      {
+        "purpose": "policy_answer",
+        "model": "qwen3.8-max",
+        "total_tokens": 853,
+        "est_cost_cny": 0.030708,
+        "latency_ms": 1191
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 28,
+        "est_cost_cny": 0.001008,
+        "latency_ms": 507
+      },
+      {
+        "purpose": "policy_answer",
+        "model": "qwen3.8-max",
+        "total_tokens": 913,
+        "est_cost_cny": 0.032868,
+        "latency_ms": 1606
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 27,
+        "est_cost_cny": 0.000972,
+        "latency_ms": 493
+      },
+      {
+        "purpose": "policy_answer",
+        "model": "qwen3.8-max",
+        "total_tokens": 908,
+        "est_cost_cny": 0.032688,
+        "latency_ms": 1332
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 28,
+        "est_cost_cny": 0.001008,
+        "latency_ms": 270
+      },
+      {
+        "purpose": "policy_answer",
+        "model": "qwen3.8-max",
+        "total_tokens": 933,
+        "est_cost_cny": 0.033588,
+        "latency_ms": 1349
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 23,
+        "est_cost_cny": 0.000828,
+        "latency_ms": 1358
+      },
+      {
+        "purpose": "policy_answer",
+        "model": "qwen3.8-max",
+        "total_tokens": 862,
+        "est_cost_cny": 0.031032,
+        "latency_ms": 1447
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 22,
+        "est_cost_cny": 0.000792,
+        "latency_ms": 185
+      },
+      {
+        "purpose": "policy_answer",
+        "model": "qwen3.8-max",
+        "total_tokens": 868,
+        "est_cost_cny": 0.031248,
+        "latency_ms": 1270
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 22,
+        "est_cost_cny": 0.000792,
+        "latency_ms": 479
+      },
+      {
+        "purpose": "policy_answer",
+        "model": "qwen3.8-max",
+        "total_tokens": 892,
+        "est_cost_cny": 0.032112,
+        "latency_ms": 1124
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 24,
+        "est_cost_cny": 0.000864,
+        "latency_ms": 277
+      },
+      {
+        "purpose": "policy_answer",
+        "model": "qwen3.8-max",
+        "total_tokens": 836,
+        "est_cost_cny": 0.030096,
+        "latency_ms": 1165
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 24,
+        "est_cost_cny": 0.000864,
+        "latency_ms": 470
+      },
+      {
+        "purpose": "policy_answer",
+        "model": "qwen3.8-max",
+        "total_tokens": 836,
+        "est_cost_cny": 0.030096,
+        "latency_ms": 1367
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 24,
+        "est_cost_cny": 0.000864,
+        "latency_ms": 567
+      },
+      {
+        "purpose": "policy_answer",
+        "model": "qwen3.8-max",
+        "total_tokens": 749,
+        "est_cost_cny": 0.026964,
+        "latency_ms": 1184
+      }
+    ],
+    "n": 52,
+    "total_tokens": 22951,
+    "est_cost_cny": 0.826236
+  }
+}

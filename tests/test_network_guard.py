@@ -20,6 +20,7 @@ from typing import Any
 
 import pytest
 from travel_desk.network_guard import (
+    RESOLVED_ADDRESS_TTL_SECONDS,
     NetworkBoundaryError,
     NetworkGuard,
     allowed_hosts_for,
@@ -153,6 +154,102 @@ def test_uninstall_restores_the_original_resolver() -> None:
     assert socket.getaddrinfo is not original
     guard.uninstall()
     assert socket.getaddrinfo is original
+
+
+# ------------------------------- resolved addresses of an allowlisted host (AUTH-01)
+
+RESOLVED = "93.184.216.34"
+
+
+def test_connect_to_an_address_resolved_for_an_allowed_host_is_allowed(tmp_path, monkeypatch) -> None:
+    """A sync client resolves the allowlisted name, then connects by address.
+
+    urllib3 (and therefore the DashScope SDK) does exactly this; allowing only the
+    name would break every real call while pretending to authorise it.
+    """
+    reached: dict[str, Any] = {}
+
+    def fake_getaddrinfo(host, port, *args, **kwargs):
+        return [(socket.AF_INET, socket.SOCK_STREAM, 6, "", (RESOLVED, port or 443))]
+
+    def fake_connect(self, address):
+        reached["connect"] = address
+
+    monkeypatch.setattr(socket, "getaddrinfo", fake_getaddrinfo)
+    monkeypatch.setattr(socket.socket, "connect", fake_connect)
+    guard = NetworkGuard(allowed_hosts=frozenset({MODEL_HOST}), log_path=tmp_path / "g.jsonl")
+    guard.install()
+    try:
+        socket.getaddrinfo(MODEL_HOST, 443)
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        try:
+            sock.connect((RESOLVED, 443))
+        finally:
+            sock.close()
+    finally:
+        guard.uninstall()
+
+    assert reached["connect"] == (RESOLVED, 443)
+    summary = guard.summary()
+    assert summary["allowed"] == 2 and summary["blocked"] == 0
+    assert summary["external_hosts"][f"{RESOLVED}:443"] == {"allowed": 1, "blocked": 0}
+
+
+def test_connect_to_an_address_no_allowed_host_resolved_is_blocked(tmp_path) -> None:
+    guard = NetworkGuard(allowed_hosts=frozenset({MODEL_HOST}), log_path=tmp_path / "g.jsonl")
+    guard.install()
+    try:
+        with pytest.raises(NetworkBoundaryError):
+            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            try:
+                sock.connect((RESOLVED, 443))
+            finally:
+                sock.close()
+    finally:
+        guard.uninstall()
+    assert guard.summary()["blocked"] == 1
+
+
+def test_a_blocked_resolution_remembers_no_address(tmp_path, monkeypatch) -> None:
+    """Fail closed: the original resolver never runs for a blocked name, so there is
+    nothing to remember and a follow-up connect to that address stays blocked."""
+    reached: dict[str, Any] = {}
+
+    def fake_getaddrinfo(host, port, *args, **kwargs):
+        reached["resolved"] = host
+        return [(socket.AF_INET, socket.SOCK_STREAM, 6, "", (RESOLVED, port or 443))]
+
+    def fake_connect(self, address):
+        reached["connect"] = address
+
+    monkeypatch.setattr(socket, "getaddrinfo", fake_getaddrinfo)
+    monkeypatch.setattr(socket.socket, "connect", fake_connect)
+    guard = NetworkGuard(allowed_hosts=frozenset({MODEL_HOST}), log_path=tmp_path / "g.jsonl")
+    guard.install()
+    try:
+        with pytest.raises(NetworkBoundaryError):
+            socket.getaddrinfo(EXTERNAL, 443)
+        with pytest.raises(NetworkBoundaryError):
+            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            try:
+                sock.connect((RESOLVED, 443))
+            finally:
+                sock.close()
+    finally:
+        guard.uninstall()
+
+    assert "resolved" not in reached and "connect" not in reached
+    assert guard.summary()["blocked"] == 2
+
+
+def test_a_resolved_address_expires(tmp_path, monkeypatch) -> None:
+    now = {"t": 1000.0}
+    monkeypatch.setattr("travel_desk.network_guard.time.monotonic", lambda: now["t"])
+    guard = NetworkGuard(allowed_hosts=frozenset({MODEL_HOST}), log_path=tmp_path / "g.jsonl")
+    guard._remember_resolution([(socket.AF_INET, socket.SOCK_STREAM, 6, "", (RESOLVED, 443))])
+    assert guard.record(RESOLVED, 443, via="test") == "allowed"
+    now["t"] += RESOLVED_ADDRESS_TTL_SECONDS + 1
+    assert guard.record(RESOLVED, 443, via="test") == "blocked"
 
 
 # ------------------------------------------- IMP-97: host-form normalisation (fail closed)

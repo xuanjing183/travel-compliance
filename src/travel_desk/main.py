@@ -20,6 +20,7 @@ from travel_desk.api import (
 )
 from travel_desk.api.errors import install_error_handlers, new_trace_id
 from travel_desk.config import Settings, get_settings, warn_live_credential_gaps
+from travel_desk.services import policy_agent
 from travel_desk.db.database import initialize_database
 from travel_desk.llm.slots import build_slot_extractor
 from travel_desk.llm.vision import build_invitation_extractor
@@ -82,6 +83,8 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.state.invitation_extractor = build_invitation_extractor(resolved)
     app.state.rule_extractor = build_rule_extractor(resolved)
     app.state.policy_qa = build_policy_qa(resolved)
+    # Enhanced agent chain; None outside real mode, so /api/policy/ask-agent falls back.
+    app.state.policy_agent = policy_agent.build_agent_engine(resolved)
 
     @app.middleware("http")
     async def trace_id_middleware(request: Request, call_next):

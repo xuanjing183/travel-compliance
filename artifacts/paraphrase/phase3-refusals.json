@@ -1,0 +1,128 @@
+{
+  "generated_at": "2026-10-24T11:32:33+00:00",
+  "endpoint": "/api/policy/ask-agent",
+  "llm_mode": "real",
+  "dataset": "evals/paraphrase_set.json",
+  "dataset_version": "0.1-draft",
+  "dataset_status": "draft_for_review",
+  "dataset_sha256": "5333ab58aa8f326ce27c30ae89d0615481a268b34274983efcbc516d01a9b116",
+  "model": "qwen3.8-max",
+  "retrieval_mode": "hybrid",
+  "elapsed_s": 25.91,
+  "metrics": {
+    "grounded": {
+      "hit": 3,
+      "total": 3,
+      "value": 1.0
+    },
+    "tool_called": {
+      "hit": 3,
+      "total": 3,
+      "value": 1.0
+    },
+    "primary_cited": {
+      "hit": 0,
+      "total": 0,
+      "value": null
+    },
+    "numeric_ok": {
+      "hit": 0,
+      "total": 0,
+      "value": null
+    },
+    "refused": {
+      "hit": 3,
+      "total": 3,
+      "value": 1.0
+    },
+    "chat_ok": {
+      "hit": 0,
+      "total": 0,
+      "value": null
+    }
+  },
+  "rows": [
+    {
+      "id": "P21-a",
+      "category": "拒答",
+      "question": "公司年假有几天？",
+      "status": 200,
+      "answer": "不知道：当前制度（v1.2）中没有找到能回答这个问题的条款。",
+      "grounded": true,
+      "answerable": false,
+      "citations": [],
+      "agent": {
+        "mode": "react",
+        "tool_calls": 1,
+        "queries": [
+          "公司年假有几天？"
+        ]
+      },
+      "retrieval_mode": "hybrid+multi+rerank",
+      "numeric": null,
+      "tool_called": true,
+      "primary_cited": null,
+      "numeric_ok": null,
+      "refused": true
+    },
+    {
+      "id": "P23-a",
+      "category": "拒答",
+      "question": "出差晚上加班有加班费吗？",
+      "status": 200,
+      "answer": "不知道：当前制度（v1.2）中没有找到能回答这个问题的条款。",
+      "grounded": true,
+      "answerable": false,
+      "citations": [],
+      "agent": {
+        "mode": "react",
+        "tool_calls": 1,
+        "queries": [
+          "出差晚上加班有加班费吗"
+        ]
+      },
+      "retrieval_mode": "hybrid+multi+rerank",
+      "numeric": null,
+      "tool_called": true,
+      "primary_cited": null,
+      "numeric_ok": null,
+      "refused": true
+    },
+    {
+      "id": "P24-a",
+      "category": "拒答",
+      "question": "出差可以带老婆孩子吗？",
+      "status": 200,
+      "answer": "不知道：当前制度（v1.2）中没有找到能回答这个问题的条款。",
+      "grounded": true,
+      "answerable": false,
+      "citations": [],
+      "agent": {
+        "mode": "react",
+        "tool_calls": 1,
+        "queries": [
+          "出差可以带家属老婆孩子吗"
+        ]
+      },
+      "retrieval_mode": "hybrid+multi+rerank",
+      "numeric": null,
+      "tool_called": true,
+      "primary_cited": null,
+      "numeric_ok": null,
+      "refused": true
+    }
+  ],
+  "chat": [],
+  "usage": {
+    "calls": 26,
+    "total_tokens": 11595,
+    "est_cost_cny": 0.41742,
+    "by_purpose": {
+      "policy_agent": 12,
+      "policy_embedding": 2,
+      "policy_query_embedding": 6,
+      "policy_query_rewrite": 3,
+      "policy_rerank": 3
+    }
+  }
+}

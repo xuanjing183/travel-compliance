@@ -301,6 +301,25 @@ data: {"event_id":"…","trip_id":"…","revision":1,"type":"plan","ts":"…Z","
 - `retrieval.chunks` 为检索排序结果（最多 5 条，AC-025 的 Recall@3 按它计算）；`supplements` 是按已确认规则的依赖补充给模型的条款（如住宿/伙食分档依赖 POL-1 城市分类），不参与排序。
 - `generator="fake:extractive"`：fake/recorded 模式的确定性抽取式回答（BM25，零网络），只用于流程验收，不得用于问答指标（D-08）。
 
+### 2.10 PolicyAnswerAgent（#18b，已实现）
+
+```json
+{"answer": "经理级别去北京出差 4 天，住宿和伙食合计上限 3000 元。", "answerable": true,
+ "grounded": true, "confidence": 0.97, "needs_clarification": false,
+ "citations": [{"version": "v1.2", "clause": "POL-2", "locator": "line:15", "quote": "…", "source": "policy"}],
+ "version": "v1.2", "source": "model", "generator": "qwen3.8-max",
+ "retrieval": {"mode": "hybrid+multi+rerank",
+               "chunks": [{"rank": 1, "clause": "POL-2", "locator": "line:15", "score": 0.83}],
+               "supplements": [{"clause": "POL-1", "locator": "line:9", "reason": "rule_dependency"}]},
+ "agent": {"mode": "react", "tool_calls": 2, "queries": ["经理北京住宿标准", "经理北京伙食补贴"],
+           "split": true, "paths": ["北京 经理 住宿标准", "北京 经理 伙食补贴"]}}
+```
+
+- `grounded=true`：制度回答，`citations` 必须是本次 `search_policy` 实际展示过的片段（`clause@locator` 由代码校验）；无效引用或空正文 → 降级为固定拒答（`answerable=false`、`citations=[]`、answer 为“不知道…”）。
+- `grounded=false`：闲聊直接回答、无引用；缺少关键信息时 `needs_clarification=true`，answer 为澄清问题。调用过检索仍返回 `grounded=false` 的非空回答 → 视为无依据，按拒答处理。
+- `confidence` 是模型自评 0–1（拒答/澄清/闲聊为 0），仅供展示；`agent.split/paths` 是本次 Tool 的拆分结果与检索路径。
+- `agent.mode="fallback"`：`fake`/`recorded` 模式复用老链路（BM25 + `fake:extractive`），零网络；此时 `grounded=true`、`confidence=0`、`needs_clarification=false`。
+
 ### 2.7 OutboxEmail
 
 ```json
@@ -331,6 +350,7 @@ data: {"event_id":"…","trip_id":"…","revision":1,"type":"plan","ts":"…Z","
 | 16 | `GET /api/trips/{id}/audit` | 可见者 | — | `{events: [AuditEvent]}`，按 seq 升序 | 404 | 已实现 |
 | 17 | `GET /api/trips/{id}/itinerary` | 可见者 | `?revision=` | `{trip_id, revision, created_at, itinerary}`（`trip_delivery` 邮件中的链接）；revision 默认当前值 | 404（含 `ITINERARY_NOT_FOUND`：该 revision 未交付） | 已实现 |
 | 18 | `POST /api/policy/ask` | 任意（需身份） | `{question: string(1～500), version?: string}`，不接受其他字段 | 200 PolicyAnswer（§2.9）：`{answer, answerable, citations: [Citation], version, source: "model", generator, retrieval}`；默认用当前 published 版本，可显式指定 archived 版本；无依据时 `answerable=false`、citations 为空、answer 为固定的“不知道”文本；引用只能是本次检索给模型看过的片段（代码校验，模型声称可答但没有有效引用 → 降级为拒答）；每次问答审计 `policy_question`（trip_id=null） | 401；422 `VALIDATION_ERROR`（question 空/超长/非字符串、version 格式、未知字段、非对象）；404 `POLICY_VERSION_NOT_FOUND`（版本不存在、非 admin 指定 draft、没有 published 版本）；503 `MODEL_UNAVAILABLE`（details 带 `retryable`、`stage: "policy_qa"`，并写 `error` 审计） | 已实现 |
+| 18b | `POST /api/policy/ask-agent` | 任意（需身份） | 同 #18：`{question: string(1～500), version?: string}`，不接受其他字段 | 200 PolicyAnswerAgent（§2.10）：在 #18 字段外增加 `grounded`、`confidence`、`needs_clarification`、`agent{mode, tool_calls, queries, split, paths}`；real 模式走 LangGraph ReAct Agent + `search_policy` Tool（Query Rewrite/Split、hybrid+同义词多路检索、`gte-rerank-v2` 重排、关联条款补充），代码按 `clause@locator` 校验引用；闲聊 `grounded=false` 不检索，缺关键信息时返回澄清问题；fake/recorded 回退 #18 链路并标 `agent.mode="fallback"`；审计 `policy_question` 带 `chain="agent"` 等字段 | 同 #18；503 时 `details.stage="policy_agent"` | 已实现 |
 | 19 | `GET /api/policies` / `GET /api/policies/{version}` | 任意 | — | 列表 `{policies: [PolicyVersion]}`（不含 rules）；单个版本 = PolicyVersion 含 `rules: [PolicyRule]`；admin 看到全部版本与全部候选并带 `rule_counts`；其他角色看不到 draft，且只看到 `confirmed` 规则（IMP-72） | 404 `POLICY_VERSION_NOT_FOUND`（含非 admin 读 draft） | 已实现 |
 | 20 | `POST /api/policies` | admin | multipart `file`（`.md`/`.markdown` UTF-8，或文本型 PDF，按 `%PDF-` 魔数判定，≤10 MiB）、`version`（`v1.2`、`v9.1-test` 形式）、`effective_date`（YYYY-MM-DD） | 201 PolicyVersion（`status=draft`、`rules=[]`）；文件存 `uploads/policies/`；审计 `policy_uploaded`（trip_id=null，含 kind、pages、sha256） | 422 `VALIDATION_ERROR` 字段格式 / `EMPTY_DOCUMENT`；413；415 `SCANNED_PDF`/`UNSUPPORTED_MEDIA_TYPE`；403 非 admin；409 `VERSION_EXISTS` | 已实现 |
 | 21 | `POST /api/policies/{version}/extract` | admin | `{overwrite?: false}` | 200 `{version, reused, replaced, generator, candidates: [PolicyRule]}`；已有候选且未 `overwrite` 时原样返回（`reused=true`，不再调用模型、不写审计）；`overwrite=true` 时替换（`replaced` 列出被替换的规则摘要）；每次真正抽取审计 `policy_extracted`；规则 ID 由代码按类型与顺序分配；原文找不到的引用标 `invalid_quote`，7 类以外的类型标 `unsupported` | 422 overwrite 非布尔；404；403；409 `POLICY_NOT_DRAFT`；503 `MODEL_UNAVAILABLE`（details 带 `retryable`、`stage`；fake 模式下未录制的文档也走这里） | 已实现 |

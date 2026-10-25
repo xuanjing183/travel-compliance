@@ -61,9 +61,8 @@ def _response(version: str, answer: Answer, retrieval: Retrieval) -> dict[str, A
     }
 
 
-async def ask(settings: Settings, engine: PolicyQA, actor: dict[str, Any], body: Any, *,
-              trace_id: str) -> dict[str, Any]:
-    question, requested = check_ask(body)
+def _resolve_version(settings: Settings, actor: dict[str, Any], requested: str | None):
+    """The single version-resolution rule shared by /ask and /ask-agent."""
     with read_session(settings.db_path) as conn:
         if requested is None:
             row = conn.execute("SELECT * FROM policy_versions WHERE status = 'published'").fetchone()
@@ -75,32 +74,52 @@ async def ask(settings: Settings, engine: PolicyQA, actor: dict[str, Any], body:
         version, document_hash = row["version"], row["document_hash"]
         document = _document_of(settings, row)
         links = clause_links(_rules(conn, version))
+    return version, document_hash, document, links
 
-    refs = [{"kind": "policy", "id": version}]
+
+def _audit(settings: Settings, actor: dict[str, Any], *, version: str, requested: str | None,
+           question: str, answer, retrieval: Retrieval, trace_id: str,
+           extra: dict[str, Any] | None = None) -> None:
+    payload = {"version": version, "requested_version": requested,
+               "question": question[:AUDIT_QUESTION_CHARS],
+               "question_truncated": len(question) > AUDIT_QUESTION_CHARS,
+               "answerable": answer.answerable, "generator": answer.generator,
+               "retrieval_mode": retrieval.mode,
+               "retrieved": [{"rank": h.rank, "clause": h.chunk.clause,
+                              "locator": h.chunk.locator} for h in retrieval.hits],
+               "supplements": [{"clause": c.clause, "locator": c.locator}
+                               for c in retrieval.supplements],
+               "cited": [{"clause": c.clause, "locator": c.locator} for c in answer.citations],
+               "dropped_citation_ids": answer.dropped_citation_ids,
+               "downgraded": answer.downgraded}
+    if extra:
+        payload.update(extra)
+    with db_session(settings.db_path) as conn:
+        audit.record(conn, trip_id=None, revision=None, actor=actor["id"], event_type="policy_question",
+                     payload=payload, trace_id=trace_id,
+                     refs=[{"kind": "policy", "id": version}])
+
+
+def _audit_error(settings: Settings, *, version: str, trace_id: str, stage: str,
+                 exc: ModelUnavailable) -> None:
+    with db_session(settings.db_path) as conn:
+        audit.record(conn, trip_id=None, revision=None, actor="system", event_type="error",
+                     payload={"stage": stage, "version": version, "message": exc.reason,
+                              "error_type": exc.error_type, "retryable": exc.retryable},
+                     trace_id=trace_id, refs=[{"kind": "policy", "id": version}])
+
+
+async def ask(settings: Settings, engine: PolicyQA, actor: dict[str, Any], body: Any, *,
+              trace_id: str) -> dict[str, Any]:
+    question, requested = check_ask(body)
+    version, document_hash, document, links = _resolve_version(settings, actor, requested)
     try:
         answer, retrieval = await engine.ask(version, document_hash, document, question, links=links)
     except ModelUnavailable as exc:
-        with db_session(settings.db_path) as conn:
-            audit.record(conn, trip_id=None, revision=None, actor="system", event_type="error",
-                         payload={"stage": "policy_qa", "version": version, "message": exc.reason,
-                                  "error_type": exc.error_type, "retryable": exc.retryable},
-                         trace_id=trace_id, refs=refs)
+        _audit_error(settings, version=version, trace_id=trace_id, stage="policy_qa", exc=exc)
         raise ServiceError(503, "MODEL_UNAVAILABLE", exc.reason,
                            {"retryable": exc.retryable, "stage": "policy_qa"}) from None
 
-    with db_session(settings.db_path) as conn:
-        audit.record(conn, trip_id=None, revision=None, actor=actor["id"], event_type="policy_question",
-                     payload={"version": version, "requested_version": requested,
-                              "question": question[:AUDIT_QUESTION_CHARS],
-                              "question_truncated": len(question) > AUDIT_QUESTION_CHARS,
-                              "answerable": answer.answerable, "generator": answer.generator,
-                              "retrieval_mode": retrieval.mode,
-                              "retrieved": [{"rank": h.rank, "clause": h.chunk.clause,
-                                             "locator": h.chunk.locator} for h in retrieval.hits],
-                              "supplements": [{"clause": c.clause, "locator": c.locator}
-                                              for c in retrieval.supplements],
-                              "cited": [{"clause": c.clause, "locator": c.locator} for c in answer.citations],
-                              "dropped_citation_ids": answer.dropped_citation_ids,
-                              "downgraded": answer.downgraded},
-                     trace_id=trace_id, refs=refs)
+    _audit(settings, actor, version=version, requested=requested, question=question,
+           answer=answer, retrieval=retrieval, trace_id=trace_id)
     return _response(version, answer, retrieval)

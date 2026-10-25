@@ -1,0 +1,61 @@
+{
+  "version": "0.1",
+  "status": "phase4_split_probe",
+  "policy_version": "v1.2",
+  "description": "Phase 4 Query Split 探针：每题跨多个条款、角色或费用类型，用于验证一次 optimize 调用能拆成 2-4 条子查询，并由 Agent 组合引用回答。不属于待 review 的 paraphrase 集，也不改动冻结的 qa_set.json。",
+  "corpus": "tests/fixtures/policies/v1.2.md",
+  "counts": {
+    "queries": 4,
+    "answerable": 4
+  },
+  "queries": [
+    {
+      "id": "C01",
+      "topic": "C01",
+      "category": "跨条款",
+      "question": "去北京出差4天，经理级别，住宿和伙食一共能报多少？",
+      "answerable": true,
+      "primary_clause": "POL-2",
+      "expected_clauses": ["POL-1", "POL-2", "POL-3"],
+      "also_expected": [],
+      "numeric": {"kind": "fen", "value_fen": 300000, "display": "3000元"},
+      "refusal": false
+    },
+    {
+      "id": "C02",
+      "topic": "C02",
+      "category": "跨角色",
+      "question": "我和经理一起去上海出差，各住3晚，普通员工和经理的住宿费分别最多能报多少？",
+      "answerable": true,
+      "primary_clause": "POL-2",
+      "expected_clauses": ["POL-1", "POL-2"],
+      "also_expected": [],
+      "numeric": null,
+      "refusal": false
+    },
+    {
+      "id": "C03",
+      "topic": "C03",
+      "category": "跨条款",
+      "question": "出差总额3200元、没有违规，能自动通过吗？打车费算进总额吗？",
+      "answerable": true,
+      "primary_clause": "POL-6",
+      "expected_clauses": ["POL-6", "POL-8"],
+      "also_expected": [],
+      "numeric": {"kind": "fen", "value_fen": 300000, "display": "3000元"},
+      "refusal": false
+    },
+    {
+      "id": "C04",
+      "topic": "C04",
+      "category": "跨条款",
+      "question": "去成都出差3晚，普通员工，机票只提前2天订，可以吗？住宿能报多少？",
+      "answerable": true,
+      "primary_clause": "POL-2",
+      "expected_clauses": ["POL-1", "POL-2", "POL-5"],
+      "also_expected": [],
+      "numeric": {"kind": "fen", "value_fen": 120000, "display": "1200元"},
+      "refusal": false
+    }
+  ]
+}

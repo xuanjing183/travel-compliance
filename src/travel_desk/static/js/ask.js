@@ -4,9 +4,11 @@ import { api } from "./api.js";
 import { quoteBlock } from "./parts.js";
 import { busy, button, clear, el, errorBox, generatorLabel, kv, notice, section, sourceBadge } from "./ui.js";
 
-export async function renderAsk(root) {
+export async function renderAsk(root, ctx) {
   const { policies } = await api.get("/api/policies");
   const published = policies.find((p) => p.status === "published");
+  const realMode = ctx?.health?.llm_mode === "real";
+  const enhanced = el("input", { type: "checkbox", disabled: !realMode });
   const select = el("select", null,
     el("option", { value: "" }, published ? `当前发布版本（${published.version}）` : "当前发布版本"),
     policies.filter((p) => p.status !== "draft" && p !== published)
@@ -20,7 +22,8 @@ export async function renderAsk(root) {
       clear(out, el("p", { class: "muted" }, "检索中…"));
       try {
         const body = select.value ? { question: q, version: select.value } : { question: q };
-        clear(out, answerView(await api.post("/api/policy/ask", body)));
+        const endpoint = realMode && enhanced.checked ? "/api/policy/ask-agent" : "/api/policy/ask";
+        clear(out, answerView(await api.post(endpoint, body)));
       } catch (e) {
         clear(out, errorBox(e));
       }
@@ -34,19 +37,34 @@ export async function renderAsk(root) {
     section("提问",
       el("p", { class: "muted small" }, "回答只依据所选版本的制度原文；找不到依据时会明确回答“不知道”，不做猜测。引用原文与定位由代码给出。"),
       el("div", { class: "form-inline" }, el("label", null, "制度版本 ", select)),
+      el("label", { class: "check" }, enhanced,
+        realMode ? " 增强 Agent（查询改写 + 混合检索 + Rerank）" : " 增强 Agent（仅 real 模式可用；当前走原链路）"),
       question, el("div", { class: "actions" }, el("span", { class: "muted small" }, "Ctrl+Enter 提问"), go)),
     out);
 }
 
 function answerView(a) {
+  const chat = a.grounded === false;
+  const agent = a.agent;
   return section(`回答 · ${a.version}`,
     el("div", { class: `answer ${a.answerable ? "" : "answer-refused"}` },
       el("p", null, a.answer),
-      el("p", { class: "muted small" }, sourceBadge(a.source), ` 生成方式：${generatorLabel(a.generator)}`)),
+      el("p", { class: "muted small" }, sourceBadge(a.source), ` 生成方式：${generatorLabel(a.generator)}`,
+        chat ? " · 闲聊（未检索制度）" : "",
+        a.needs_clarification ? " · 需要补充信息" : "",
+        a.confidence > 0 ? ` · 置信度 ${Math.round(a.confidence * 100)}%` : "")),
     a.citations.length ? [el("h4", null, "引用"), a.citations.map(quoteBlock)]
-      : el("p", { class: "muted small" }, a.answerable ? "" : "拒答时不展示引用。"),
+      : el("p", { class: "muted small" }, a.answerable || chat ? "" : "拒答时不展示引用。"),
     el("details", { class: "small" },
       el("summary", null, `检索明细（${a.retrieval.mode}）`),
+      agent && agent.mode === "react"
+        ? el("p", { class: "muted small" },
+          `Agent 工具调用：${agent.tool_calls} 次`,
+          agent.split && agent.paths?.length ? `；已拆分 ${agent.paths.length} 条检索路径：${agent.paths.join("；")}`
+            : agent.queries?.length ? `；查询：${agent.queries.join("；")}` : "")
+        : null,
+      agent && agent.mode === "fallback"
+        ? el("p", { class: "muted small" }, "增强 Agent 仅在 real 模式启用；本次走原链路。") : null,
       el("table", { class: "list" },
         el("thead", null, el("tr", null, ["排名", "条款", "定位", "得分"].map((h) => el("th", null, h)))),
         el("tbody", null, a.retrieval.chunks.map((c) => el("tr", null,

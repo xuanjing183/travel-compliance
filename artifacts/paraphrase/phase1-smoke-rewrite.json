@@ -1,0 +1,206 @@
+{
+  "generated_at": "2026-10-24T11:08:32+00:00",
+  "dataset": "evals/paraphrase_set.json",
+  "dataset_version": "0.1-draft",
+  "dataset_status": "draft_for_review",
+  "dataset_sha256": "5333ab58aa8f326ce27c30ae89d0615481a268b34274983efcbc516d01a9b116",
+  "llm_mode": "real",
+  "agent_retrieval_mode": "hybrid",
+  "rewrite": true,
+  "rewrite_model": "qwen3.5-plus",
+  "embedding_model": "qwen3.7-text-embedding",
+  "query_count": 2,
+  "rows": [
+    {
+      "id": "P01-a",
+      "topic": "P01",
+      "category": "住宿",
+      "question": "去上海出差住酒店，普通员工一晚上最多能花多少？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-2",
+      "also_expected": [
+        "POL-1"
+      ],
+      "numeric": {
+        "kind": "fen",
+        "value_fen": 50000,
+        "display": "500元/晚"
+      },
+      "paths": [
+        "去上海出差住酒店，普通员工一晚上最多能花多少？",
+        "上海 普通员工 住宿标准 酒店 费用限额"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "POL-2",
+        "制度信息",
+        "POL-1",
+        "POL-4",
+        "POL-8",
+        "POL-6",
+        "POL-7"
+      ],
+      "top3": [
+        "POL-2",
+        "POL-2",
+        "POL-3"
+      ],
+      "top5": [
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "POL-2",
+        "制度信息"
+      ],
+      "supplement_clauses": []
+    },
+    {
+      "id": "P01-b",
+      "topic": "P01",
+      "category": "住宿",
+      "question": "上海住宿报销封顶多少钱一晚？我不是经理。",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-2",
+      "also_expected": [
+        "POL-1"
+      ],
+      "numeric": {
+        "kind": "fen",
+        "value_fen": 50000,
+        "display": "500元/晚"
+      },
+      "paths": [
+        "上海住宿报销封顶多少钱一晚？我不是经理。",
+        "上海 住宿标准 报销封顶 非经理"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-2",
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "POL-6",
+        "制度信息",
+        "POL-1",
+        "POL-4",
+        "POL-8",
+        "POL-7"
+      ],
+      "top3": [
+        "POL-2",
+        "POL-2",
+        "POL-2"
+      ],
+      "top5": [
+        "POL-2",
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "POL-6"
+      ],
+      "supplement_clauses": []
+    }
+  ],
+  "metrics": {
+    "recall@3": {
+      "hit": 2,
+      "total": 2,
+      "value": 1.0
+    },
+    "recall@5": {
+      "hit": 2,
+      "total": 2,
+      "value": 1.0
+    },
+    "also_expected@5_including_supplements": {
+      "hit": 0,
+      "total": 2
+    }
+  },
+  "detail": [
+    {
+      "id": "P01-a",
+      "topic": "P01",
+      "category": "住宿",
+      "recall3": true,
+      "recall5": true,
+      "also_expected_hit": false
+    },
+    {
+      "id": "P01-b",
+      "topic": "P01",
+      "category": "住宿",
+      "recall3": true,
+      "recall5": true,
+      "also_expected_hit": false
+    }
+  ],
+  "usage": {
+    "calls": [
+      {
+        "purpose": "policy_query_rewrite",
+        "model": "qwen3.5-plus",
+        "total_tokens": 519,
+        "est_cost_cny": 0.018684,
+        "latency_ms": 1933
+      },
+      {
+        "purpose": "policy_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 562,
+        "est_cost_cny": 0.020232,
+        "latency_ms": 713
+      },
+      {
+        "purpose": "policy_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 38,
+        "est_cost_cny": 0.001368,
+        "latency_ms": 473
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 31,
+        "est_cost_cny": 0.001116,
+        "latency_ms": 205
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 28,
+        "est_cost_cny": 0.001008,
+        "latency_ms": 182
+      },
+      {
+        "purpose": "policy_query_rewrite",
+        "model": "qwen3.5-plus",
+        "total_tokens": 512,
+        "est_cost_cny": 0.018432,
+        "latency_ms": 2326
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 26,
+        "est_cost_cny": 0.000936,
+        "latency_ms": 230
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 26,
+        "est_cost_cny": 0.000936,
+        "latency_ms": 201
+      }
+    ],
+    "n": 8,
+    "total_tokens": 1742,
+    "est_cost_cny": 0.062712
+  }
+}

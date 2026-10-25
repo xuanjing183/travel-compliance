@@ -1,0 +1,248 @@
+{
+  "generated_at": "2026-10-24T11:46:36+00:00",
+  "endpoint": "/api/policy/ask-agent",
+  "llm_mode": "real",
+  "dataset": "evals/compound_probes.json",
+  "dataset_version": "0.1",
+  "dataset_status": "phase4_split_probe",
+  "dataset_sha256": "4171717a57b2b6d3b6e2c4b42c7cdf3985da1a2ac7cd9123cc5515ff74620407",
+  "model": "qwen3.8-max",
+  "retrieval_mode": "hybrid",
+  "elapsed_s": 64.74,
+  "metrics": {
+    "grounded": {
+      "hit": 4,
+      "total": 4,
+      "value": 1.0
+    },
+    "tool_called": {
+      "hit": 4,
+      "total": 4,
+      "value": 1.0
+    },
+    "primary_cited": {
+      "hit": 4,
+      "total": 4,
+      "value": 1.0
+    },
+    "numeric_ok": {
+      "hit": 3,
+      "total": 3,
+      "value": 1.0
+    },
+    "refused": {
+      "hit": 0,
+      "total": 0,
+      "value": null
+    },
+    "chat_ok": {
+      "hit": 0,
+      "total": 0,
+      "value": null
+    }
+  },
+  "rows": [
+    {
+      "id": "C01",
+      "category": "跨条款",
+      "question": "去北京出差4天，经理级别，住宿和伙食一共能报多少？",
+      "status": 200,
+      "answer": "根据《星衡科技差旅制度（v1.2）》，北京属于A类城市。经理级别去北京出差4天，住宿和伙食合计最高可报销 **3000元**。具体明细如下： 1. **住宿费**：经理及以上人员在A类城市的住宿上限为每晚上限650元。出差4天通常计为4晚，住宿费最高可报 650元 × 4晚 = **2600元**。 2. **伙食补贴**：伙食补贴按出差自然日计发，A类城市每天100元。出差4天，伙食补贴共计 100元 × 4天 = **400元**。 因此，住宿和伙食一共最高能报 2600 + 400 = **3000元**。",
+      "grounded": true,
+      "answerable": true,
+      "citations": [
+        {
+          "clause": "POL-1",
+          "locator": "line:9"
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:15"
+        },
+        {
+          "clause": "POL-3",
+          "locator": "line:21"
+        }
+      ],
+      "agent": {
+        "mode": "react",
+        "tool_calls": 2,
+        "queries": [
+          "经理级别北京出差伙食补贴标准",
+          "经理级别北京出差住宿标准"
+        ],
+        "split": false,
+        "paths": [
+          "经理级别北京出差伙食补贴标准",
+          "经理级别 北京 出差 伙食补贴标准",
+          "经理级别北京出差住宿标准",
+          "经理级别 北京 出差 住宿标准"
+        ]
+      },
+      "retrieval_mode": "hybrid+multi+rerank",
+      "numeric": {
+        "kind": "fen",
+        "value_fen": 300000,
+        "display": "3000元"
+      },
+      "tool_called": true,
+      "primary_cited": true,
+      "numeric_ok": true,
+      "refused": null
+    },
+    {
+      "id": "C02",
+      "category": "跨角色",
+      "question": "我和经理一起去上海出差，各住3晚，普通员工和经理的住宿费分别最多能报多少？",
+      "status": 200,
+      "answer": "根据公司的差旅政策，上海属于A类城市。各住3晚的住宿费报销上限计算如下： 1. **普通员工**：A类城市每晚上限500元，住3晚最多能报 **1500元**（500元/晚 × 3晚）。 2. **经理**：A类城市每晚上限650元，住3晚最多能报 **1950元**（650元/晚 × 3晚）。",
+      "grounded": true,
+      "answerable": true,
+      "citations": [
+        {
+          "clause": "POL-1",
+          "locator": "line:9"
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:13"
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:15"
+        }
+      ],
+      "agent": {
+        "mode": "react",
+        "tool_calls": 2,
+        "queries": [
+          "普通员工上海出差住宿费标准",
+          "经理上海出差住宿费标准"
+        ],
+        "split": false,
+        "paths": [
+          "普通员工上海出差住宿费标准",
+          "普通员工 上海 出差 住宿费标准",
+          "经理上海出差住宿费标准",
+          "经理 上海 出差 住宿费标准"
+        ]
+      },
+      "retrieval_mode": "hybrid+multi+rerank",
+      "numeric": null,
+      "tool_called": true,
+      "primary_cited": true,
+      "numeric_ok": null,
+      "refused": null
+    },
+    {
+      "id": "C03",
+      "category": "跨条款",
+      "question": "出差总额3200元、没有违规，能自动通过吗？打车费算进总额吗？",
+      "status": 200,
+      "answer": "根据星衡科技差旅制度（v1.2）： 1. **不能自动通过**：制度规定，单次差旅总额不超过3000元、无制度违规且不超过申报预算的，可自动通过；否则由直属经理审批。您的出差总额为3200元，已超过3000元的自动通过限额，因此即使没有违规，也无法自动通过，需要由直属经理进行审批。 2. **打车费不算进总额**：制度明确规定，出租车费用实报实销，不计入差旅总额。",
+      "grounded": true,
+      "answerable": true,
+      "citations": [
+        {
+          "clause": "POL-6",
+          "locator": "line:33"
+        },
+        {
+          "clause": "POL-8",
+          "locator": "line:41"
+        }
+      ],
+      "agent": {
+        "mode": "react",
+        "tool_calls": 2,
+        "queries": [
+          "出差总额3200元没有违规能否自动通过",
+          "打车费是否算进出差总额"
+        ],
+        "split": true,
+        "paths": [
+          "出差总额3200元没有违规能否自动通过",
+          "出差总额 3200元 违规判定 标准",
+          "差旅报销 自动通过 条件 审批流程",
+          "打车费是否算进出差总额",
+          "打车费 交通费 差旅总额 费用构成"
+        ]
+      },
+      "retrieval_mode": "hybrid+multi+rerank",
+      "numeric": {
+        "kind": "fen",
+        "value_fen": 300000,
+        "display": "3000元"
+      },
+      "tool_called": true,
+      "primary_cited": true,
+      "numeric_ok": true,
+      "refused": null
+    },
+    {
+      "id": "C04",
+      "category": "跨条款",
+      "question": "去成都出差3晚，普通员工，机票只提前2天订，可以吗？住宿能报多少？",
+      "status": 200,
+      "answer": "根据星衡科技差旅制度（v1.2），针对您去成都出差3晚的情况，具体解答如下： **1. 机票只提前2天订可以吗？** **不可以。** 根据公司差旅政策规定，机票出发日距申请日不少于3个自然日。您只提前2天预订不符合该要求。 **2. 住宿能报多少？** 成都属于B类城市。作为普通员工，您的住宿报销上限为每晚上限400元。您此次出差共3晚，因此住宿费最高可报销总额为 **1200元**（400元/晚 × 3晚）。 *注：以上标准适用于全体在职员工，自2026年1月1日起生效。*",
+      "grounded": true,
+      "answerable": true,
+      "citations": [
+        {
+          "clause": "POL-5",
+          "locator": "line:29"
+        },
+        {
+          "clause": "POL-1",
+          "locator": "line:9"
+        },
+        {
+          "clause": "POL-2",
+          "locator": "line:13"
+        },
+        {
+          "clause": "制度信息",
+          "locator": "line:3-5"
+        }
+      ],
+      "agent": {
+        "mode": "react",
+        "tool_calls": 2,
+        "queries": [
+          "普通员工机票提前2天预订是否可以",
+          "普通员工成都出差住宿标准"
+        ],
+        "split": false,
+        "paths": [
+          "普通员工机票提前2天预订是否可以",
+          "普通员工 机票 提前2天 预订 审批规则",
+          "普通员工成都出差住宿标准",
+          "普通员工 成都 出差 住宿标准"
+        ]
+      },
+      "retrieval_mode": "hybrid+multi+rerank",
+      "numeric": {
+        "kind": "fen",
+        "value_fen": 120000,
+        "display": "1200元"
+      },
+      "tool_called": true,
+      "primary_cited": true,
+      "numeric_ok": true,
+      "refused": null
+    }
+  ],
+  "chat": [],
+  "usage": {
+    "calls": 55,
+    "total_tokens": 30661,
+    "est_cost_cny": 1.103796,
+    "by_purpose": {
+      "policy_agent": 20,
+      "policy_embedding": 2,
+      "policy_query_embedding": 17,
+      "policy_query_rewrite": 8,
+      "policy_rerank": 8
+    }
+  }
+}

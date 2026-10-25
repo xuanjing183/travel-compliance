@@ -1,0 +1,940 @@
+{
+  "generated_at": "2026-10-24T11:09:56+00:00",
+  "dataset": "evals/paraphrase_set.json",
+  "dataset_version": "0.1-draft",
+  "dataset_status": "draft_for_review",
+  "dataset_sha256": "5333ab58aa8f326ce27c30ae89d0615481a268b34274983efcbc516d01a9b116",
+  "llm_mode": "real",
+  "agent_retrieval_mode": "hybrid",
+  "rewrite": true,
+  "rewrite_model": "qwen3.5-plus",
+  "embedding_model": "qwen3.7-text-embedding",
+  "query_count": 12,
+  "rows": [
+    {
+      "id": "P01-a",
+      "topic": "P01",
+      "category": "住宿",
+      "question": "去上海出差住酒店，普通员工一晚上最多能花多少？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-2",
+      "also_expected": [
+        "POL-1"
+      ],
+      "numeric": {
+        "kind": "fen",
+        "value_fen": 50000,
+        "display": "500元/晚"
+      },
+      "paths": [
+        "去上海出差住酒店，普通员工一晚上最多能花多少？",
+        "上海 普通员工 住宿标准 酒店费用限额"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "制度信息",
+        "POL-2",
+        "POL-1",
+        "POL-4",
+        "POL-8",
+        "POL-6",
+        "POL-7"
+      ],
+      "top3": [
+        "POL-2",
+        "POL-2",
+        "POL-3"
+      ],
+      "top5": [
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "制度信息",
+        "POL-2"
+      ],
+      "supplement_clauses": []
+    },
+    {
+      "id": "P01-b",
+      "topic": "P01",
+      "category": "住宿",
+      "question": "上海住宿报销封顶多少钱一晚？我不是经理。",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-2",
+      "also_expected": [
+        "POL-1"
+      ],
+      "numeric": {
+        "kind": "fen",
+        "value_fen": 50000,
+        "display": "500元/晚"
+      },
+      "paths": [
+        "上海住宿报销封顶多少钱一晚？我不是经理。",
+        "上海 住宿标准 报销封顶 非经理"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-2",
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "POL-6",
+        "制度信息",
+        "POL-1",
+        "POL-4",
+        "POL-8",
+        "POL-7"
+      ],
+      "top3": [
+        "POL-2",
+        "POL-2",
+        "POL-2"
+      ],
+      "top5": [
+        "POL-2",
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "POL-6"
+      ],
+      "supplement_clauses": []
+    },
+    {
+      "id": "P02-a",
+      "topic": "P02",
+      "category": "住宿",
+      "question": "经理在北京住酒店，每晚最多能报多少？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-2",
+      "also_expected": [
+        "POL-1"
+      ],
+      "numeric": {
+        "kind": "fen",
+        "value_fen": 65000,
+        "display": "650元/晚"
+      },
+      "paths": [
+        "经理在北京住酒店，每晚最多能报多少？",
+        "经理 北京 住宿标准 每晚 报销限额"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-2",
+        "POL-2",
+        "POL-6",
+        "POL-3",
+        "POL-2",
+        "制度信息",
+        "POL-1",
+        "POL-4",
+        "POL-8",
+        "POL-7"
+      ],
+      "top3": [
+        "POL-2",
+        "POL-2",
+        "POL-6"
+      ],
+      "top5": [
+        "POL-2",
+        "POL-2",
+        "POL-6",
+        "POL-3",
+        "POL-2"
+      ],
+      "supplement_clauses": []
+    },
+    {
+      "id": "P02-b",
+      "topic": "P02",
+      "category": "住宿",
+      "question": "北京出差，经理级别的住宿标准一晚上限是多少？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-2",
+      "also_expected": [
+        "POL-1"
+      ],
+      "numeric": {
+        "kind": "fen",
+        "value_fen": 65000,
+        "display": "650元/晚"
+      },
+      "paths": [
+        "北京出差，经理级别的住宿标准一晚上限是多少？",
+        "北京 经理级别 住宿标准 限额"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-2",
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "POL-4",
+        "POL-1",
+        "POL-6",
+        "制度信息",
+        "POL-7",
+        "POL-8"
+      ],
+      "top3": [
+        "POL-2",
+        "POL-2",
+        "POL-2"
+      ],
+      "top5": [
+        "POL-2",
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "POL-4"
+      ],
+      "supplement_clauses": []
+    },
+    {
+      "id": "P03-a",
+      "topic": "P03",
+      "category": "住宿",
+      "question": "成都是B类城市吧，那普通员工住宿一晚能报多少？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-2",
+      "also_expected": [
+        "POL-1"
+      ],
+      "numeric": {
+        "kind": "fen",
+        "value_fen": 40000,
+        "display": "400元/晚"
+      },
+      "paths": [
+        "成都是B类城市吧，那普通员工住宿一晚能报多少？",
+        "成都 B类城市 普通员工 住宿标准 报销金额"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-2",
+        "POL-2",
+        "POL-1",
+        "POL-3",
+        "POL-2",
+        "制度信息",
+        "POL-4",
+        "POL-6",
+        "POL-5",
+        "POL-8"
+      ],
+      "top3": [
+        "POL-2",
+        "POL-2",
+        "POL-1"
+      ],
+      "top5": [
+        "POL-2",
+        "POL-2",
+        "POL-1",
+        "POL-3",
+        "POL-2"
+      ],
+      "supplement_clauses": []
+    },
+    {
+      "id": "P03-b",
+      "topic": "P03",
+      "category": "住宿",
+      "question": "普通员工去成都住酒店，报销上限是多少？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-2",
+      "also_expected": [
+        "POL-1"
+      ],
+      "numeric": {
+        "kind": "fen",
+        "value_fen": 40000,
+        "display": "400元/晚"
+      },
+      "paths": [
+        "普通员工去成都住酒店，报销上限是多少？",
+        "普通员工 成都 住宿标准 报销上限"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-2",
+        "POL-2",
+        "制度信息",
+        "POL-3",
+        "POL-1",
+        "POL-4",
+        "POL-2",
+        "POL-6",
+        "POL-8",
+        "POL-5"
+      ],
+      "top3": [
+        "POL-2",
+        "POL-2",
+        "制度信息"
+      ],
+      "top5": [
+        "POL-2",
+        "POL-2",
+        "制度信息",
+        "POL-3",
+        "POL-1"
+      ],
+      "supplement_clauses": []
+    },
+    {
+      "id": "P04-a",
+      "topic": "P04",
+      "category": "住宿",
+      "question": "去C类小城市出差，住酒店一晚上最多报多少钱？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-2",
+      "also_expected": [],
+      "numeric": {
+        "kind": "fen",
+        "value_fen": 30000,
+        "display": "300元/晚"
+      },
+      "paths": [
+        "去C类小城市出差，住酒店一晚上最多报多少钱？",
+        "C类城市 住宿标准 酒店 报销限额"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "POL-1",
+        "POL-2",
+        "制度信息",
+        "POL-6",
+        "POL-4",
+        "POL-8",
+        "POL-7"
+      ],
+      "top3": [
+        "POL-2",
+        "POL-2",
+        "POL-3"
+      ],
+      "top5": [
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "POL-1",
+        "POL-2"
+      ],
+      "supplement_clauses": []
+    },
+    {
+      "id": "P04-b",
+      "topic": "P04",
+      "category": "住宿",
+      "question": "C类城市普通员工住宿每晚标准是多少？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-2",
+      "also_expected": [],
+      "numeric": {
+        "kind": "fen",
+        "value_fen": 30000,
+        "display": "300元/晚"
+      },
+      "paths": [
+        "C类城市普通员工住宿每晚标准是多少？",
+        "C类城市 普通员工 住宿标准 每晚"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "POL-1",
+        "POL-2",
+        "POL-4",
+        "制度信息",
+        "POL-8",
+        "POL-6",
+        "POL-5"
+      ],
+      "top3": [
+        "POL-2",
+        "POL-2",
+        "POL-3"
+      ],
+      "top5": [
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "POL-1",
+        "POL-2"
+      ],
+      "supplement_clauses": []
+    },
+    {
+      "id": "P05-a",
+      "topic": "P05",
+      "category": "住宿",
+      "question": "住三晚第四天退房，退房那天算不算一晚住宿费？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-2",
+      "also_expected": [],
+      "numeric": null,
+      "paths": [
+        "住三晚第四天退房，退房那天算不算一晚住宿费？",
+        "住宿标准 退房日 住宿费计算 出差时长"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-2",
+        "POL-2",
+        "POL-2",
+        "POL-5",
+        "POL-3",
+        "POL-7",
+        "制度信息",
+        "POL-4",
+        "POL-8",
+        "POL-1"
+      ],
+      "top3": [
+        "POL-2",
+        "POL-2",
+        "POL-2"
+      ],
+      "top5": [
+        "POL-2",
+        "POL-2",
+        "POL-2",
+        "POL-5",
+        "POL-3"
+      ],
+      "supplement_clauses": []
+    },
+    {
+      "id": "P05-b",
+      "topic": "P05",
+      "category": "住宿",
+      "question": "酒店退房当天还计入报销晚数吗？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-2",
+      "also_expected": [],
+      "numeric": null,
+      "paths": [
+        "酒店退房当天还计入报销晚数吗？",
+        "酒店 退房 当天 报销 晚数 住宿标准"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-2",
+        "POL-2",
+        "制度信息",
+        "POL-8",
+        "POL-2",
+        "POL-7",
+        "POL-1",
+        "POL-3",
+        "POL-4",
+        "POL-6"
+      ],
+      "top3": [
+        "POL-2",
+        "POL-2",
+        "制度信息"
+      ],
+      "top5": [
+        "POL-2",
+        "POL-2",
+        "制度信息",
+        "POL-8",
+        "POL-2"
+      ],
+      "supplement_clauses": []
+    },
+    {
+      "id": "P06-a",
+      "topic": "P06",
+      "category": "住宿",
+      "question": "经理去C类城市住宿，每晚能报多少？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-2",
+      "also_expected": [],
+      "numeric": {
+        "kind": "fen",
+        "value_fen": 40000,
+        "display": "400元/晚"
+      },
+      "paths": [
+        "经理去C类城市住宿，每晚能报多少？",
+        "经理 C类城市 住宿标准 每晚 报销金额"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "POL-6",
+        "POL-2",
+        "POL-1",
+        "制度信息",
+        "POL-4",
+        "POL-8",
+        "POL-5"
+      ],
+      "top3": [
+        "POL-2",
+        "POL-2",
+        "POL-3"
+      ],
+      "top5": [
+        "POL-2",
+        "POL-2",
+        "POL-3",
+        "POL-6",
+        "POL-2"
+      ],
+      "supplement_clauses": []
+    },
+    {
+      "id": "P06-b",
+      "topic": "P06",
+      "category": "住宿",
+      "question": "C类城市经理住宿上限是多少钱一晚？",
+      "answerable": true,
+      "refusal": false,
+      "primary_clause": "POL-2",
+      "also_expected": [],
+      "numeric": {
+        "kind": "fen",
+        "value_fen": 40000,
+        "display": "400元/晚"
+      },
+      "paths": [
+        "C类城市经理住宿上限是多少钱一晚？",
+        "C类城市 经理 住宿标准 上限 金额"
+      ],
+      "rewrite_split": false,
+      "ranked_clauses": [
+        "POL-2",
+        "POL-2",
+        "POL-1",
+        "POL-3",
+        "POL-2",
+        "POL-6",
+        "POL-4",
+        "制度信息",
+        "POL-8",
+        "POL-5"
+      ],
+      "top3": [
+        "POL-2",
+        "POL-2",
+        "POL-1"
+      ],
+      "top5": [
+        "POL-2",
+        "POL-2",
+        "POL-1",
+        "POL-3",
+        "POL-2"
+      ],
+      "supplement_clauses": []
+    }
+  ],
+  "metrics": {
+    "recall@3": {
+      "hit": 12,
+      "total": 12,
+      "value": 1.0
+    },
+    "recall@5": {
+      "hit": 12,
+      "total": 12,
+      "value": 1.0
+    },
+    "also_expected@5_including_supplements": {
+      "hit": 2,
+      "total": 6
+    }
+  },
+  "detail": [
+    {
+      "id": "P01-a",
+      "topic": "P01",
+      "category": "住宿",
+      "recall3": true,
+      "recall5": true,
+      "also_expected_hit": false
+    },
+    {
+      "id": "P01-b",
+      "topic": "P01",
+      "category": "住宿",
+      "recall3": true,
+      "recall5": true,
+      "also_expected_hit": false
+    },
+    {
+      "id": "P02-a",
+      "topic": "P02",
+      "category": "住宿",
+      "recall3": true,
+      "recall5": true,
+      "also_expected_hit": false
+    },
+    {
+      "id": "P02-b",
+      "topic": "P02",
+      "category": "住宿",
+      "recall3": true,
+      "recall5": true,
+      "also_expected_hit": false
+    },
+    {
+      "id": "P03-a",
+      "topic": "P03",
+      "category": "住宿",
+      "recall3": true,
+      "recall5": true,
+      "also_expected_hit": true
+    },
+    {
+      "id": "P03-b",
+      "topic": "P03",
+      "category": "住宿",
+      "recall3": true,
+      "recall5": true,
+      "also_expected_hit": true
+    },
+    {
+      "id": "P04-a",
+      "topic": "P04",
+      "category": "住宿",
+      "recall3": true,
+      "recall5": true
+    },
+    {
+      "id": "P04-b",
+      "topic": "P04",
+      "category": "住宿",
+      "recall3": true,
+      "recall5": true
+    },
+    {
+      "id": "P05-a",
+      "topic": "P05",
+      "category": "住宿",
+      "recall3": true,
+      "recall5": true
+    },
+    {
+      "id": "P05-b",
+      "topic": "P05",
+      "category": "住宿",
+      "recall3": true,
+      "recall5": true
+    },
+    {
+      "id": "P06-a",
+      "topic": "P06",
+      "category": "住宿",
+      "recall3": true,
+      "recall5": true
+    },
+    {
+      "id": "P06-b",
+      "topic": "P06",
+      "category": "住宿",
+      "recall3": true,
+      "recall5": true
+    }
+  ],
+  "usage": {
+    "calls": [
+      {
+        "purpose": "policy_query_rewrite",
+        "model": "qwen3.5-plus",
+        "total_tokens": 518,
+        "est_cost_cny": 0.018648,
+        "latency_ms": 3658
+      },
+      {
+        "purpose": "policy_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 562,
+        "est_cost_cny": 0.020232,
+        "latency_ms": 380
+      },
+      {
+        "purpose": "policy_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 38,
+        "est_cost_cny": 0.001368,
+        "latency_ms": 248
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 31,
+        "est_cost_cny": 0.001116,
+        "latency_ms": 204
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 27,
+        "est_cost_cny": 0.000972,
+        "latency_ms": 179
+      },
+      {
+        "purpose": "policy_query_rewrite",
+        "model": "qwen3.5-plus",
+        "total_tokens": 512,
+        "est_cost_cny": 0.018432,
+        "latency_ms": 2058
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 26,
+        "est_cost_cny": 0.000936,
+        "latency_ms": 401
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 26,
+        "est_cost_cny": 0.000936,
+        "latency_ms": 250
+      },
+      {
+        "purpose": "policy_query_rewrite",
+        "model": "qwen3.5-plus",
+        "total_tokens": 514,
+        "est_cost_cny": 0.018504,
+        "latency_ms": 1516
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 27,
+        "est_cost_cny": 0.000972,
+        "latency_ms": 205
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 27,
+        "est_cost_cny": 0.000972,
+        "latency_ms": 198
+      },
+      {
+        "purpose": "policy_query_rewrite",
+        "model": "qwen3.5-plus",
+        "total_tokens": 513,
+        "est_cost_cny": 0.018468,
+        "latency_ms": 2427
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 28,
+        "est_cost_cny": 0.001008,
+        "latency_ms": 253
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 25,
+        "est_cost_cny": 0.0009,
+        "latency_ms": 393
+      },
+      {
+        "purpose": "policy_query_rewrite",
+        "model": "qwen3.5-plus",
+        "total_tokens": 521,
+        "est_cost_cny": 0.018756,
+        "latency_ms": 1911
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 32,
+        "est_cost_cny": 0.001152,
+        "latency_ms": 395
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 29,
+        "est_cost_cny": 0.001044,
+        "latency_ms": 285
+      },
+      {
+        "purpose": "policy_query_rewrite",
+        "model": "qwen3.5-plus",
+        "total_tokens": 513,
+        "est_cost_cny": 0.018468,
+        "latency_ms": 1758
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 27,
+        "est_cost_cny": 0.000972,
+        "latency_ms": 239
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 26,
+        "est_cost_cny": 0.000936,
+        "latency_ms": 196
+      },
+      {
+        "purpose": "policy_query_rewrite",
+        "model": "qwen3.5-plus",
+        "total_tokens": 518,
+        "est_cost_cny": 0.018648,
+        "latency_ms": 2132
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 31,
+        "est_cost_cny": 0.001116,
+        "latency_ms": 291
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 27,
+        "est_cost_cny": 0.000972,
+        "latency_ms": 213
+      },
+      {
+        "purpose": "policy_query_rewrite",
+        "model": "qwen3.5-plus",
+        "total_tokens": 513,
+        "est_cost_cny": 0.018468,
+        "latency_ms": 2115
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 26,
+        "est_cost_cny": 0.000936,
+        "latency_ms": 228
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 27,
+        "est_cost_cny": 0.000972,
+        "latency_ms": 209
+      },
+      {
+        "purpose": "policy_query_rewrite",
+        "model": "qwen3.5-plus",
+        "total_tokens": 517,
+        "est_cost_cny": 0.018612,
+        "latency_ms": 2527
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 30,
+        "est_cost_cny": 0.00108,
+        "latency_ms": 384
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 27,
+        "est_cost_cny": 0.000972,
+        "latency_ms": 234
+      },
+      {
+        "purpose": "policy_query_rewrite",
+        "model": "qwen3.5-plus",
+        "total_tokens": 515,
+        "est_cost_cny": 0.01854,
+        "latency_ms": 2619
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 26,
+        "est_cost_cny": 0.000936,
+        "latency_ms": 200
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 29,
+        "est_cost_cny": 0.001044,
+        "latency_ms": 199
+      },
+      {
+        "purpose": "policy_query_rewrite",
+        "model": "qwen3.5-plus",
+        "total_tokens": 516,
+        "est_cost_cny": 0.018576,
+        "latency_ms": 3018
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 28,
+        "est_cost_cny": 0.001008,
+        "latency_ms": 286
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 28,
+        "est_cost_cny": 0.001008,
+        "latency_ms": 208
+      },
+      {
+        "purpose": "policy_query_rewrite",
+        "model": "qwen3.5-plus",
+        "total_tokens": 514,
+        "est_cost_cny": 0.018504,
+        "latency_ms": 2196
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 26,
+        "est_cost_cny": 0.000936,
+        "latency_ms": 213
+      },
+      {
+        "purpose": "policy_query_embedding",
+        "model": "qwen3.7-text-embedding",
+        "total_tokens": 28,
+        "est_cost_cny": 0.001008,
+        "latency_ms": 230
+      }
+    ],
+    "n": 38,
+    "total_tokens": 7448,
+    "est_cost_cny": 0.268128
+  }
+}
